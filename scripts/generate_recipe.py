@@ -7,7 +7,6 @@ from datetime import datetime
 # ==============================================================================
 # KONFIGURACJA I ZMIENNE WEJŚCIOWE (GitHub Models)
 # ==============================================================================
-# Dostępne modele na GitHub Models: "gpt-4o-mini", "gpt-4o", "Meta-Llama-3.1-70B-Instruct"
 MODEL_NAME = "gpt-4o-mini"
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
@@ -45,7 +44,11 @@ Wymagania:
 5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez zbędnych komentarzy czy znaczników typu ```html na początku/końcu. Kod powinieneś zacząć od <!DOCTYPE html>.
 6. Pierwszy znacznik <h1> powinien zawierać pełny tytuł przepisu."""
 
-api_url = "[https://models.inference.ai.azure.com/chat/completions](https://models.inference.ai.azure.com/chat/completions)"
+# Bezpieczne budowanie adresu URL (wyklucza błąd InvalidSchema z nawiasami)
+scheme = "https://"
+domain = "models.inference.ai.azure.com"
+path = "/chat/completions"
+api_url = f"{scheme}{domain}{path}"
 
 headers = {
     "Authorization": f"Bearer {GITHUB_TOKEN}",
