@@ -32,7 +32,7 @@ Wymagania:
 5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez zbędnych komentarzy czy znaczników typu ```html na początku/końcu. Kod powinieneś zacząć od <!DOCTYPE html>.
 6. Pierwszy znacznik <h1> powinien zawierać pełny tytuł przepisu."""
 
-url = f"[https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=](https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=){GEMINI_API_KEY}"
+url = f"[https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=){GEMINI_API_KEY}"
 payload = {
     "contents": [{"parts": [{"text": prompt_text}]}],
     "tools": [{"google_search": {}}]
