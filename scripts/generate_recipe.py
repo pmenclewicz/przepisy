@@ -7,7 +7,7 @@ from datetime import datetime
 # ==============================================================================
 # KONFIGURACJA I ZMIENNE WEJŚCIOWE
 # ==============================================================================
-# Tutaj wpisujesz aktualną nazwę modelu z Google AI Studio
+# Wybierz prawidłowy model Gemini (np. gemini-2.5-flash, gemini-2.0-flash, gemini-1.5-flash)
 MODEL_NAME = "gemini-3.6-flash"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -44,7 +44,10 @@ Wymagania:
 5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez zbędnych komentarzy czy znaczników typu ```html na początku/końcu. Kod powinieneś zacząć od <!DOCTYPE html>.
 6. Pierwszy znacznik <h1> powinien zawierać pełny tytuł przepisu."""
 
-url = f"[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/){MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
+# Budowa adresu URL rozbita na zmienne, aby wykluczyć błędy formatowania Markdown
+domain = "generativelanguage.googleapis.com"
+endpoint = f"/v1beta/models/{MODEL_NAME}:generateContent"
+url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY}"
 
 payload = {
     "contents": [{"parts": [{"text": prompt_text}]}],
