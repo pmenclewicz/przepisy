@@ -4,7 +4,7 @@ import json
 import requests
 from datetime import datetime
 
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3.6-flash"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 RECIPE_URL = os.environ.get("RECIPE_URL")
