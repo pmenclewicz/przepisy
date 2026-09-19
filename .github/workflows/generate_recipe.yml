@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Generator Script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           RECIPE_URL: ${{ github.event.inputs.recipe_url }}
         run: python scripts/generate_recipe.py
 
