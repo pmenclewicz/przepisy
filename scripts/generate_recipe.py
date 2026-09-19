@@ -7,7 +7,8 @@ from datetime import datetime
 # ==============================================================================
 # KONFIGURACJA I ZMIENNE WEJŚCIOWE
 # ==============================================================================
-MODEL_NAME = "gemini-3.6-flash"  # Nazwa modelu Gemini
+# Tutaj wpisujesz aktualną nazwę modelu z Google AI Studio
+MODEL_NAME = "gemini-3.6-flash"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 RECIPE_URL = os.environ.get("RECIPE_URL")
