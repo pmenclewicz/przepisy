@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admina – Generator Przepisów</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1 { margin-top: 0; color: #2c3e50; font-size: 24px; }
+        label { font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px; font-size: 14px; }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #219150; }
+        button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
+        #status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .status-info { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
+        .status-success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+        .status-error { background: #ffebee; color: #b71c1c; border: 1px solid #ffcdd2; }
+        .nav-link { display: inline-block; margin-bottom: 15px; color: #2980b9; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="nav-link">← Powrót do biblioteki przepisów</a>
+
+<div class="card">
+    <h1>Dodaj nowy przepis (AI)</h1>
+    <p>Wklej link do przepisu. Gemini AI pobierze go, przekształci w kartkę A4 i automatycznie opublikuje w Twoim repozytorium GitHub.</p>
+
+    <form id="recipeForm">
+        <label for="recipeUrl">Link do przepisu kulinardnego:</label>
+        <input type="text" id="recipeUrl" placeholder="https://aniagotuje.pl/przepis/..." required>
+
+        <label for="ghRepo">Twój GitHub (Użytkownik/Repozytorium):</label>
+        <input type="text" id="ghRepo" placeholder="mojanazwa/przepisy" required>
+
+        <label for="ghToken">GitHub Personal Access Token (PAT):</label>
+        <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" required>
+        <small style="color: #666; display:block; margin-top:3px;">Token potrzebny jest tylko do zapisu plików w Twoim repozytorium.</small>
+
+        <button type="submit" id="submitBtn">Generuj i Opublikuj Przepis</button>
+    </form>
+
+    <div id="status"></div>
+</div>
+
+<script>
+// Twój klucz API Google Gemini
+const GEMINI_API_KEY = "AQ.Ab8RN6JSQQE7jQae-J3qXgtyEKWBiY14-WhMVvbL2_lvC4XJZA";
+
+// Wczytywanie zapamiętanych danych konfiguracji GitHub
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("ghRepo")) document.getElementById("ghRepo").value = localStorage.getItem("ghRepo");
+    if (localStorage.getItem("ghToken")) document.getElementById("ghToken").value = localStorage.getItem("ghToken");
+});
+
+function showStatus(text, type) {
+    const el = document.getElementById("status");
+    el.style.display = "block";
+    el.className = "status-" + type;
+    el.innerHTML = text;
+}
+
+function slugify(text) {
+    return text.toString().toLowerCase().trim()
+        .replace(/ł/g, 'l').replace(/ą/g, 'a').replace(/ę/g, 'e')
+        .replace(/ć/g, 'c').replace(/ń/g, 'n').replace(/ó/g, 'o')
+        .replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z')
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-');
+}
+
+function utf8_to_b64(str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
+}
+
+function b64_to_utf8(str) {
+    return decodeURIComponent(escape(window.atob(str)));
+}
+
+document.getElementById("recipeForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const recipeUrl = document.getElementById("recipeUrl").value.trim();
+    const ghRepo = document.getElementById("ghRepo").value.trim();
+    const ghToken = document.getElementById("ghToken").value.trim();
+    const submitBtn = document.getElementById("submitBtn");
+
+    // Zapamiętaj dane w przeglądarce
+    localStorage.setItem("ghRepo", ghRepo);
+    localStorage.setItem("ghToken", ghToken);
+
+    submitBtn.disabled = true;
+    showStatus("<b>Krok 1/3:</b> Łączenie z Gemini AI i tworzenie układu A4...", "info");
+
+    try {
+        // 1. ZAPYTANIE DO GEMINI API
+        const promptText = `Pobierz i przeanalizuj przepis ze strony: ${recipeUrl}.
+Wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML.
+Wymagania:
+1. Kieruj się promptem użytkownika: "Przygotuj mi przepis do wydrukowania na jednej kartce a4, dodaj zdjęcie aby kartka wyglądała jak z książki kucharskiej, przygotuj pdf".
+2. Strona musi zawierać dedykowane style CSS do druku (@page { size: A4 portrait; margin: 10mm; }), tak aby po otwarciu i wybraniu Druku (Ctrl+P / Zapisz jako PDF) cały przepis mieścił się idealnie na JEDNEJ stronie A4.
+3. Styl ma przypominać elegancką stronę z tradycyjnej książki kucharskiej (ładne nagłówki, estetyczne marginesy, czytelne składniki, krok po kroku).
+4. Dołącz ładne zdjęcie potrawy (znajdź pasujący link lub z oryginalnej strony).
+5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez zbędnych komentarzy czy znaczników typu \`\`\`html na początku/końcu. Kod powinieneś zacząć od <!DOCTYPE html>.
+6. Pierwszy znacznik <h1> powinien zawierać pełny tytuł przepisu.`;
+
+        const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: promptText }] }],
+                tools: [{ google_search: {} }] // Umożliwia pobranie treści URL z sieci
+            })
+        });
+
+        if (!geminiResponse.ok) throw new Error("Błąd podczas komunikacji z Gemini API.");
+        const geminiData = await geminiResponse.json();
+        
+        let htmlCode = geminiData.candidates[0].content.parts[0].text;
+        // Oczyszczenie z ew. znaczników markdown
+        htmlCode = htmlCode.replace(/^```html\s*/i, '').replace(/```\s*$/i, '').trim();
+
+        // Wyciągnij tytuł z wygenerowanego kodu HTML (z <h1>)
+        const titleMatch = htmlCode.match(/<h1[^>]*>(.*?)<\/h1>/i);
+        const recipeTitle = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, '').trim() : "Nowy Przepis";
+        const fileSlug = slugify(recipeTitle) || "przepis-" + Date.now();
+        const htmlFilePath = `przepisy/${fileSlug}.html`;
+
+        showStatus("<b>Krok 2/3:</b> Zapisywanie pliku przepisu w GitHub repozytorium...", "info");
+
+        // 2. ZAPIS PLIKU HTML NA GITHUB
+        const commitMsg = `Dodano przepis: ${recipeTitle}`;
+        const putFileRes = await fetch(`https://api.github.com/repos/${ghRepo}/contents/${htmlFilePath}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${ghToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: commitMsg,
+                content: utf8_to_b64(htmlCode)
+            })
+        });
+
+        if (!putFileRes.ok) {
+            const err = await putFileRes.json();
+            throw new Error(`Błąd tworzenia pliku HTML w GitHub: ${err.message}`);
+        }
+
+        showStatus("<b>Krok 3/3:</b> Aktualizacja pliku bazy przepisów (recipes.json)...", "info");
+
+        // 3. AKTUALIZACJA PLIKU recipes.json
+        let currentRecipes = [];
+        let jsonSha = null;
+
+        // Pobierz aktualny plik recipes.json z GitHuba
+        const getJsonRes = await fetch(`https://api.github.com/repos/${ghRepo}/contents/recipes.json`, {
+            headers: { 'Authorization': `token ${ghToken}` }
+        });
+
+        if (getJsonRes.ok) {
+            const jsonFileData = await getJsonRes.json();
+            jsonSha = jsonFileData.sha;
+            try {
+                currentRecipes = JSON.parse(b64_to_utf8(jsonFileData.content));
+            } catch(e) { currentRecipes = []; }
+        }
+
+        // Dodaj nowy przepis do bazy
+        const newEntry = {
+            id: fileSlug,
+            title: recipeTitle,
+            file: htmlFilePath,
+            date: new Date().toISOString().split('T')[0]
+        };
+        currentRecipes.unshift(newEntry); // Dodaj na początku listy
+
+        // Zapisz zaktualizowany recipes.json w GitHub
+        const putJsonRes = await fetch(`https://api.github.com/repos/${ghRepo}/contents/recipes.json`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${ghToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: `Aktualizacja indeksu: ${recipeTitle}`,
+                content: utf8_to_b64(JSON.stringify(currentRecipes, null, 2)),
+                sha: jsonSha
+            })
+        });
+
+        if (!putJsonRes.ok) throw new Error("Nie udało się zaktualizować pliku recipes.json.");
+
+        showStatus(`<b>Sukces!</b> Przepis "${recipeTitle}" został zapisany i opublikowany.<br>
+            <a href="${htmlFilePath}" target="_blank" style="color:#1b5e20; font-weight:bold;">Otwórz wygenerowany przepis A4</a>`, "success");
+
+        document.getElementById("recipeUrl").value = "";
+
+    } catch (err) {
+        showStatus(`<b>Wystąpił błąd:</b> ${err.message}`, "error");
+    } finally {
+        submitBtn.disabled = false;
+    }
+});
+</script>
+
+</body>
+</html>
