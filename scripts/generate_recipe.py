@@ -4,13 +4,20 @@ import json
 import requests
 from datetime import datetime
 
+# ==============================================================================
+# KONFIGURACJA I ZMIENNE WEJŚCIOWE
+# ==============================================================================
+MODEL_NAME = "gemini-3.5-flash"  # Nazwa modelu Gemini
+
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 RECIPE_URL = os.environ.get("RECIPE_URL")
 
 if not GEMINI_API_KEY or not RECIPE_URL:
-    raise ValueError("Brak wymaganego GEMINI_API_KEY lub RECIPE_URL!")
+    raise ValueError("Brak wymaganego GEMINI_API_KEY lub RECIPE_URL w zmiennych środowiskowych!")
+
 
 def slugify(text):
+    """Przekształca tekst na przyjazny dla URL-i i nazw plików format."""
     text = text.lower().strip()
     replacements = {
         'ł': 'l', 'ą': 'a', 'ę': 'e', 'ć': 'c', 'ń': 'n',
@@ -22,6 +29,10 @@ def slugify(text):
     text = re.sub(r'[^\w\-]+', '', text)
     return re.sub(r'\-\-+', '-', text)
 
+
+# ==============================================================================
+# ZAPYTANIE DO GEMINI API
+# ==============================================================================
 prompt_text = f"""Pobierz i przeanalizuj przepis ze strony: {RECIPE_URL}.
 Wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML.
 Wymagania:
@@ -32,35 +43,46 @@ Wymagania:
 5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez zbędnych komentarzy czy znaczników typu ```html na początku/końcu. Kod powinieneś zacząć od <!DOCTYPE html>.
 6. Pierwszy znacznik <h1> powinien zawierać pełny tytuł przepisu."""
 
-url = f"[https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=){GEMINI_API_KEY}"
+url = f"[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/){MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
+
 payload = {
     "contents": [{"parts": [{"text": prompt_text}]}],
     "tools": [{"google_search": {}}]
 }
 
+print(f"Wysyłanie zapytania do Gemini API (Model: {MODEL_NAME})...")
 response = requests.post(url, json=payload)
 response.raise_for_status()
 
 res_data = response.json()
+
+# Wyciągnięcie kodu HTML z odpowiedzi
 html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
 html_code = re.sub(r'^```html\s*', '', html_code, flags=re.I)
 html_code = re.sub(r'```\s*$', '', html_code).strip()
 
+# Wydobycie tytułu z pierwszego nagłówka <h1>
 title_match = re.search(r'<h1[^>]*>(.*?)</h1>', html_code, re.I | re.S)
 if title_match:
     recipe_title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip()
 else:
     recipe_title = "Nowy Przepis"
 
+# ==============================================================================
+# ZAPIS PLIKU HTML I AKTUALIZACJA BAZY RECIPES.JSON
+# ==============================================================================
 file_slug = slugify(recipe_title) or f"przepis-{int(datetime.now().timestamp())}"
 os.makedirs("przepisy", exist_ok=True)
 html_file_path = f"przepisy/{file_slug}.html"
 
+# Zapis pliku przepisu
 with open(html_file_path, "w", encoding="utf-8") as f:
     f.write(html_code)
 
+# Aktualizacja pliku recipes.json
 recipes_file = "recipes.json"
 recipes = []
+
 if os.path.exists(recipes_file):
     try:
         with open(recipes_file, "r", encoding="utf-8") as f:
@@ -80,4 +102,4 @@ recipes.insert(0, new_entry)
 with open(recipes_file, "w", encoding="utf-8") as f:
     json.dump(recipes, f, ensure_ascii=False, indent=2)
 
-print(f"Pomyślnie wygenerowano przepis: {recipe_title} ({html_file_path})")
+print(f"Pomyślnie wygenerowano przepis: '{recipe_title}' w pliku {html_file_path}")
