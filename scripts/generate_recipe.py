@@ -7,7 +7,7 @@ from datetime import datetime
 # ==============================================================================
 # KONFIGURACJA I ZMIENNE WEJŚCIOWE
 # ==============================================================================
-MODEL_NAME = "gemini-3.5-flash"  # Nazwa modelu Gemini
+MODEL_NAME = "gemini-3.6-flash"  # Nazwa modelu Gemini
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 RECIPE_URL = os.environ.get("RECIPE_URL")
