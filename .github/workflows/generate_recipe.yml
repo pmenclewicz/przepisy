@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       recipe_url:
-        description: 'Link do przepisu kulinardnego'
+        description: 'Link do przepisu kulinarnego'
         required: true
         type: string
 
@@ -23,11 +23,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests google-genai
+          pip install requests
 
       - name: Run Generator Script
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RECIPE_URL: ${{ github.event.inputs.recipe_url }}
         run: python scripts/generate_recipe.py
 
