@@ -36,7 +36,7 @@ Wymagania:
 
 domain = "generativelanguage.googleapis.com"
 endpoint = f"/v1beta/models/{MODEL_NAME}:generateContent"
-url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY}"
+url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY_przepisy}"
 
 payload = {
     "contents": [{"parts": [{"text": prompt_text}]}],
