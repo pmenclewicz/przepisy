@@ -6,7 +6,7 @@ from datetime import datetime
 
 MODEL_NAME = "gemini-3.6-flash"
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY_przepisy")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY_PRZEPISY")
 RECIPE_URL = os.environ.get("RECIPE_URL")
 
 if not GEMINI_API_KEY or not RECIPE_URL:
@@ -36,7 +36,7 @@ Wymagania:
 
 domain = "generativelanguage.googleapis.com"
 endpoint = f"/v1beta/models/{MODEL_NAME}:generateContent"
-url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY_przepisy}"
+url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY_PRZEPISY}"
 
 payload = {
     "contents": [{"parts": [{"text": prompt_text}]}],
