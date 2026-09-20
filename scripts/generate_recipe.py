@@ -6,7 +6,7 @@ from datetime import datetime
 
 MODEL_NAME = "gemini-3.6-flash"
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY_przepisy")
 RECIPE_URL = os.environ.get("RECIPE_URL")
 
 if not GEMINI_API_KEY or not RECIPE_URL:
