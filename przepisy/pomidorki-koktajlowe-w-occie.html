@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomidorki koktajlowe w occie</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-container {
+        border: 2px solid #5a3d28 !important;
+        box-shadow: none !important;
+        padding: 20px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      background-color: #f7f3ee;
+      color: #2b2b2b;
+      line-height: 1.5;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-container {
+      background: #fffefb;
+      max-width: 800px;
+      width: 100%;
+      border: 3px double #8b5e3c;
+      border-radius: 4px;
+      padding: 30px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #4a2c11;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    @media (max-width: 600px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .recipe-container {
+        padding: 18px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #6b3e1b;
+      border-bottom: 1px solid #d4c2b2;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .ingredients-box {
+      background: #fbf8f4;
+      border-left: 3px solid #8b5e3c;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+
+    .ingredients-box h3 {
+      font-size: 15px;
+      color: #5a3d28;
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    ul li::before {
+      content: "•";
+      color: #8b5e3c;
+      position: absolute;
+      left: 4px;
+      font-size: 16px;
+    }
+
+    .instructions-section {
+      margin-top: 10px;
+    }
+
+    .instruction-text {
+      font-size: 15px;
+      line-height: 1.65;
+      text-align: justify;
+    }
+
+    .instruction-text p {
+      margin-bottom: 10px;
+    }
+
+    .footer-decor {
+      text-align: center;
+      margin-top: 20px;
+      color: #a08068;
+      font-size: 18px;
+      letter-spacing: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="header">
+      <h1>Pomidorki koktajlowe w occie</h1>
+    </div>
+
+    <div class="content-grid">
+      <div>
+        <h2>Składniki</h2>
+        <div class="ingredients-box">
+          <ul>
+            <li>1 kg pomidorów</li>
+            <li>1 cebula + czosnek, papryka</li>
+            <li>pieprz czarny ziarnisty</li>
+            <li>gorczyca</li>
+            <li>liście laurowe, ziele angielskie</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h2>Zalewa</h2>
+        <div class="ingredients-box">
+          <ul>
+            <li>3,5 litra wody</li>
+            <li>1 szklanka cukru</li>
+            <li>3 łyżki soli</li>
+            <li>0,5 litra octu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="instructions-section">
+      <h2>Sposób przygotowania</h2>
+      <div class="instruction-text">
+        <p>Zalewę zagotować. Pomidorki umyć i ponakłuwać. Ułożyć w słoikach, kolei zaś zalewę dodając po trochu przypraw i zalewy. Pasteryzować ok 7 minut.</p>
+      </div>
+    </div>
+
+    <div class="footer-decor">❦ ❦ ❦</div>
+  </div>
+
+</body>
+</html>
