@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurczak pieczony na butelce piwa z warzywami</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .page-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2b2b2b;
+      line-height: 1.5;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px 40px;
+      border: 1px solid #d4c8b8;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .recipe-border {
+      border: 2px solid #5a3e28;
+      padding: 25px 30px;
+      outline: 1px solid #b39b82;
+      outline-offset: -6px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 15px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: normal;
+      color: #3b2314;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
+
+    .recipe-layout {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .ingredients-column {
+      flex: 0 0 38%;
+      background: #faf7f2;
+      padding: 18px 20px;
+      border-left: 3px solid #8b5e3c;
+    }
+
+    .instructions-column {
+      flex: 1;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 18px;
+      color: #653b1b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #c9b7a4;
+      padding-bottom: 4px;
+    }
+
+    .subheading {
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      color: #4a3324;
+      font-style: italic;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      list-style-type: square;
+    }
+
+    li {
+      margin-bottom: 4px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .instructions-column p {
+      margin: 0 0 12px 0;
+      font-size: 14.5px;
+      text-align: justify;
+      color: #2b2b2b;
+    }
+
+    .instructions-column p:last-child {
+      margin-bottom: 0;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed #c9b7a4;
+      font-style: italic;
+      color: #553a26;
+      font-size: 14px;
+    }
+
+    .smacznego {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 14px;
+      font-size: 16px;
+      color: #8b5e3c;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-border {
+        padding: 15px;
+      }
+      .recipe-layout {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .ingredients-column {
+        width: 100%;
+        flex: none;
+      }
+      h1 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <div class="recipe-border">
+      <header>
+        <h1>Kurczak pieczony na butelce piwa z warzywami</h1>
+      </header>
+
+      <div class="recipe-layout">
+        <section class="ingredients-column">
+          <h2>Składniki</h2>
+          <ul>
+            <li>Kurczak o wadze ok 1,5kg</li>
+            <li>Przyprawa do kurczaka</li>
+            <li>Papryka słodka</li>
+            <li>Sól, pieprz</li>
+            <li>Piwo małe 0,33l</li>
+          </ul>
+
+          <div class="subheading">Dodatkowo:</div>
+          <ul>
+            <li>5-6 ziemniaków</li>
+            <li>2 marchewki</li>
+            <li>Cebula</li>
+            <li>Pomidorki koktajlowe (niekoniecznie)</li>
+            <li>2 łyżki oliwy</li>
+            <li>Przyprawa do ziemniaków</li>
+            <li>Sól, pieprz</li>
+          </ul>
+        </section>
+
+        <section class="instructions-column">
+          <h2>Przepis</h2>
+          <p>Kurczaka natrzeć porządnie przyprawą do drobiu, solą i pieprzem na zewnątrz i od środka. Zostawić na 2 godziny w lodówce aby przeszedł przyprawami.</p>
+          <p>Ziemniaki i cebulę kroimy w ósemki, marchewkę w cienkie słupki. Posypujemy przyprawą do ziemniaków, solą i pieprzem, dodajemy oliwę i dokładnie mieszamy.</p>
+          <p>Usuwamy etykietkę z piwa, zanurzając butelkę w wodzie. Nadziewamy kurczaka na butelkę, tak aby szyjka butelki wyszła obok szyi kurczaka. Ważne aby szyjka butelki ciasno była owinięta skórą z kurczaka, tak aby piwo spływało po tuszce.</p>
+          <p>Ustawiamy kurczaka w brytfannie, obok układamy warzywa. Pieczemy 1,5 godziny w temp. 170 stopni C. Pół godziny przed końcem pieczenia dorzucamy pomidorki koktajlowe.</p>
+          
+          <div class="smacznego">Smacznego!</div>
+          
+          <div class="note">
+            Tak przygotowany kurczak to prawdziwa poezja smaku! Polecam!
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
