@@ -5,7 +5,7 @@ import base64
 import requests
 from datetime import datetime
 
-MODEL_NAME = "gemini-3.8-flash"
+MODEL_NAME = "gemini-3.5-flash"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 INPUT_TYPE = os.environ.get("INPUT_TYPE", "url")
