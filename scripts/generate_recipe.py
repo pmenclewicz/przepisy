@@ -28,24 +28,25 @@ def slugify(text):
     return re.sub(r'\-+', '-', text)
 
 prompt_base = """Przeanalizuj dostarczone materiały (link lub zdjęcie przepisu) i wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML dla strony książki kucharskiej.
-Wymagania:
-1. **Responsywność mobilna i A4**: Strona musi wyglądać świetnie na telefonach (pełna responsywność, płynne skalowanie) oraz idealnie mieścić się na **jednej stronie A4** po wydrukowaniu. Użyj stylów CSS: `@page { size: A4 portrait; margin: 10mm; }`.
-2. **Bezpieczne szerokości**: Używaj elastycznych kontenerów (`max-width: 100%`, `box-sizing: border-box`), obrazków z `max-width: 100%; height: auto;` oraz unikaj sztywnych szerokości w pikselach. Teksty i listy składników muszą się zawijać i nigdy nie wychodzić poza ekran telefonu.
-3. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
-4. Dołącz ładne zdjęcie potrawy (jeśli pochodzi z linku lub ze zdjęcia, wykorzystaj pasujący link graficzny lub zdekodowane zdjęcie).
-5. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
+
+Najważniejsze zasady:
+1. **Wierne odwzorowanie**: Nie zmieniaj, nie modyfikuj ani nie ulepszaj przepisu. Przepis (składniki, proporcje, kroki przygotowania) ma być **wierną kopią** tego, co znajduje się w dostarczonych materiałach.
+2. **Brak zdjęć**: Nie dodawaj żadnych zdjęć ani grafik potrawy. Strona ma zawierać **wyłącznie czysty tekst**, sformatowany w czytelny sposób.
+3. **Responsywność mobilna i A4**: Strona musi wyglądać świetnie na telefonach oraz idealnie mieścić się na **jednej stronie A4** po wydrukowaniu. Użyj stylów CSS: `@page { size: A4 portrait; margin: 10mm; }`.
+4. **Bezpieczne szerokości**: Używaj elastycznych kontenerów (`max-width: 100%`, `box-sizing: border-box`). Teksty i listy składników muszą się zawijać i nigdy nie wychodzić poza ekran telefonu.
+5. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
+6. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
    - W sekcji <style> dodaj: `@media print { .no-print { display: none; } }`
    - W sekcji <body> (jako pierwszy element) dodaj pływający panel:
      <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
        <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
        <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
      </div>
-6. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
-7. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
+7. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
+8. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
 
-# Jeśli użytkownik podał własną nazwę, instruujemy Gemini, aby użyło jej jako głównego nagłówka H1
 if CUSTOM_TITLE:
-    prompt_base += f"\n8. **WAŻNE**: Główne nagłówek H1 na tej stronie HTML MUSI brzmieć dokładnie: '{CUSTOM_TITLE}'."
+    prompt_base += f"\n9. **WAŻNE**: Główne nagłówek H1 na tej stronie HTML MUSI brzmieć dokładnie: '{CUSTOM_TITLE}'."
 
 contents_payload = []
 
@@ -70,9 +71,10 @@ domain = "generativelanguage.googleapis.com"
 endpoint = f"/v1beta/models/{MODEL_NAME}:generateContent"
 url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY}"
 
+# Bez wyszukiwania zewnętrznego, ponieważ rezygnujemy ze zdjęć
 payload = {
     "contents": [{"parts": contents_payload}],
-    "tools": [{"google_search": {}}] if INPUT_TYPE == "url" else []
+    "tools": []
 }
 
 response = requests.post(url, json=payload)
@@ -84,7 +86,6 @@ html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
 html_code = re.sub(r'^```html\s*', '', html_code, flags=re.I)
 html_code = re.sub(r'```\s*$', '', html_code).strip()
 
-# Ustalanie ostatecznego tytułu do pliku recipes.json
 if CUSTOM_TITLE:
     recipe_title = CUSTOM_TITLE
 else:
