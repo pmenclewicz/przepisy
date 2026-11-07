@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papryka konserwowa z miodem</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #c4b5a5 !important;
+        box-shadow: none !important;
+        padding: 18mm 15mm !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2c2523;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 2px solid #8b5e3c;
+      outline: 4px double #8b5e3c;
+      outline-offset: -8px;
+      padding: 35px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 1px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #612f18;
+      text-transform: uppercase;
+    }
+
+    .meta-info {
+      font-size: 13px;
+      font-style: italic;
+      color: #7a6a5d;
+      margin-top: 4px;
+    }
+
+    .handwritten-note {
+      background-color: #fff9e6;
+      border: 1px dashed #c29d47;
+      padding: 10px 15px;
+      border-radius: 4px;
+      margin: 15px 0 20px 0;
+      font-size: 14.5px;
+      color: #5c3b12;
+      font-style: italic;
+    }
+
+    .handwritten-note strong {
+      font-style: normal;
+      color: #3f2608;
+    }
+
+    .recipe-content {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .recipe-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .recipe-card {
+        padding: 25px 18px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #612f18;
+      border-bottom: 1px solid #d4c3b3;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients-section ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    .ingredients-section li {
+      padding: 3px 0;
+      border-bottom: 1px dotted #e6ded6;
+    }
+
+    .sub-heading {
+      font-weight: bold;
+      color: #4a2c1a;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .steps-section ol {
+      padding-left: 20px;
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    .steps-section li {
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+
+    .steps-section li:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header>
+      <h1>Papryka konserwowa z miodem</h1>
+      <div class="meta-info">Dodane przez: Szukająca</div>
+    </header>
+
+    <div class="handwritten-note">
+      <strong>Notatka z przepisu:</strong> na 5 kg / 11 słoików 4 porcje zalewy!
+    </div>
+
+    <div class="recipe-content">
+      <section class="ingredients-section">
+        <h2>Składniki</h2>
+        <ul>
+          <li>2,5 kg papryki</li>
+        </ul>
+
+        <span class="sub-heading">Zalewa:</span>
+        <ul>
+          <li>1 szkl. octu 10%</li>
+          <li>5 szkl. wody</li>
+          <li>1/2 szkl. cukru</li>
+          <li>1/2 szkl. miodu</li>
+          <li>1 łyżka soli</li>
+        </ul>
+
+        <span class="sub-heading">Przyprawy na każdy słoik:</span>
+        <ul>
+          <li>1 ząbek czosnku</li>
+          <li>1 mały listek laurowy</li>
+          <li>2 goździki</li>
+          <li>2 ziela angielskie</li>
+          <li>2-3 ziarnka pieprzu</li>
+          <li>10 ziaren gorczycy</li>
+          <li>1/2 łyżeczki oliwy</li>
+        </ul>
+      </section>
+
+      <section class="steps-section">
+        <h2>Etapy przygotowania</h2>
+        <ol>
+          <li>Zalewę zagotować i wystudzić.</li>
+          <li>Pokrojoną paprykę ułożyć w słoiczkach wraz z przyprawami, zalać przestudzonym wywarem.</li>
+          <li>Na wierzch dodać 1/2 łyżeczki oliwy.</li>
+          <li>Zamknąć słoiki i pasteryzować 20 minut.</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>
