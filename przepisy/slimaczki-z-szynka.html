@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ślimaczki z szynką</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none;
+        border: 2px solid #8b5e3c;
+        max-width: 100%;
+        margin: 0;
+        padding: 20mm 15mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f3ed;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #332822;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .recipe-card {
+      background: #fffdf9;
+      width: 100%;
+      max-width: 800px;
+      padding: 40px;
+      border: 1px solid #d4c5b9;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      border: 1px solid #e8ded4;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      color: #5c3821;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #e2d4c5;
+      padding-bottom: 15px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr 1.3fr;
+      }
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: #8b5e3c;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 1.05rem;
+      border-bottom: 1px solid #ecdcd0;
+      padding-bottom: 6px;
+    }
+
+    .ingredients ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ingredients li {
+      padding: 7px 0;
+      border-bottom: 1px dashed #eee3d8;
+      font-size: 0.98rem;
+      line-height: 1.4;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .ingredients li::before {
+      content: "•";
+      color: #8b5e3c;
+      margin-right: 10px;
+      font-size: 1.1rem;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .instructions li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #3b2f28;
+    }
+
+    .instructions li::marker {
+      color: #8b5e3c;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>Ślimaczki z szynką</h1>
+
+    <div class="content-grid">
+      <section class="ingredients">
+        <h2>Składniki</h2>
+        <ul>
+          <li>400 g makaronu ślimaczki</li>
+          <li>5 plastrów szynki</li>
+          <li>100 g rozdrobnionych pomidorów</li>
+          <li>1 cebula</li>
+          <li>1 łyżka oliwy</li>
+          <li>1 łyżka świeżego rozmarynu</li>
+          <li>50 g startego parmezanu</li>
+        </ul>
+      </section>
+
+      <section class="instructions">
+        <h2>Przygotowanie</h2>
+        <ol>
+          <li>Makaron gotujemy al dente.</li>
+          <li>Oliwę rozgrzewamy na patelni.</li>
+          <li>Podsmażamy szynkę i posiekaną cebulę, rozmaryn, pomidorki i pieprz do smaku.</li>
+          <li>Gotujemy 8–10 min.</li>
+        </ol>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
