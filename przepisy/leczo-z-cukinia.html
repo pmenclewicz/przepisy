@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leczo z cukinią</title>
+  <style>
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c !important;
+        box-shadow: none !important;
+        padding: 15mm 12mm !important;
+        max-width: 100% !important;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #fbf9f5;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 40px auto 0 auto;
+      background: #ffffff;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4c5b9;
+      outline-offset: -6px;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a2e17;
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 10px;
+    }
+
+    .meta-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px 25px;
+      font-size: 14px;
+      color: #634735;
+      font-style: italic;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #c9b09a;
+    }
+
+    .meta-item strong {
+      font-style: normal;
+      color: #3b2010;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .content-grid {
+        grid-template-columns: 260px 1fr;
+      }
+    }
+
+    h2 {
+      color: #6b3e23;
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #e0d0c1;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      word-wrap: break-word;
+    }
+
+    .method-section ol {
+      padding-left: 20px;
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    .method-section li {
+      margin-bottom: 10px;
+      text-align: justify;
+      line-height: 1.55;
+    }
+
+    .footer-flourish {
+      text-align: center;
+      margin-top: 20px;
+      color: #8b5e3c;
+      font-size: 18px;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <h1>Leczo z cukinią</h1>
+
+    <div class="meta-info">
+      <div class="meta-item"><strong>Czas:</strong> 45 minut</div>
+      <div class="meta-item"><strong>Porcji:</strong> 4</div>
+      <div class="meta-item"><strong>Trudność:</strong> łatwe</div>
+      <div class="meta-item"><strong>Koszt:</strong> do 10 zł</div>
+    </div>
+
+    <div class="content-grid">
+      <section class="ingredients-section">
+        <h2>Składniki:</h2>
+        <ul>
+          <li>3 różnokolorowe papryki (zielona, czerwona, żółta)</li>
+          <li>3-4 młode (małe) cukinie</li>
+          <li>2 kawałki kiełbasy podwawelskiej</li>
+          <li>1 duża cebula</li>
+          <li>Ząbek czosnku</li>
+          <li>Koncentrat pomidorowy</li>
+          <li>2 obrane ze skóry pomidory</li>
+          <li>Olej</li>
+          <li><strong>Przyprawy:</strong> sól, pieprz, słodka i ostra papryka, vegeta.</li>
+          <li><strong>Zioła:</strong> majeranek, bazylia</li>
+        </ul>
+      </section>
+
+      <section class="method-section">
+        <h2>Sposób wykonania:</h2>
+        <ol>
+          <li>Na rozgrzanej oliwie podsmażamy pokrojoną w plasterki kiełbasę, przekładamy do rondelka.</li>
+          <li>Cebulę i czosnek obieramy, kroimy w kosteczkę. Papryki myjemy, usuwamy gniazda nasienne i kroimy w paski lub większą kostkę.</li>
+          <li>Pomidory siekamy. Młodej cukinii nie trzeba obierać, umytą kroimy w plasterki. Na patelni ponownie rozgrzewamy olej, smażymy cebulę i czosnek, dodajemy papryki, cukinię, smażymy 3-4 minuty. Zawartość patelni przekładamy do rondelka.</li>
+          <li>Wlewamy 3/4 szklanki gorącej wody. Dusimy pod pokrywką, na małym ogniu ok. 20 minut. Dodajemy posiekane pomidory, dusimy kolejne 3 minuty, dodajemy koncentrat i dokładnie mieszamy, przyprawiamy danie do smaku.</li>
+          <li>Gdy zdejmiemy leczo z ognia posypujemy je ziołami.</li>
+        </ol>
+      </section>
+    </div>
+
+    <div class="footer-flourish">❦</div>
+  </main>
+
+</body>
+</html>
