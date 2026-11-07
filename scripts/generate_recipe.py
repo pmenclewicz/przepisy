@@ -28,18 +28,19 @@ def slugify(text):
 
 prompt_base = """Przeanalizuj dostarczone materiały (link lub zdjęcie przepisu) i wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML dla strony książki kucharskiej.
 Wymagania:
-1. Strona ma być zaprojektowana tak, aby idealnie mieściła się na **jednej stronie A4** po wydrukowaniu (użyj dedykovanych stylów CSS: @page { size: A4 portrait; margin: 10mm; }).
-2. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
-3. Dołącz ładne zdjęcie potrawy (jeśli pochodzi z linku lub ze zdjęcia, wykorzystaj pasujący link graficzny lub zdekodowane zdjęcie).
-4. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
+1. **Responsywność mobilna i A4**: Strona musi wyglądać świetnie na telefonach (pełna responsywność, płynne skalowanie) oraz idealnie mieścić się na **jednej stronie A4** po wydrukowaniu. Użyj stylów CSS: `@page { size: A4 portrait; margin: 10mm; }`.
+2. **Bezpieczne szerokości**: Używaj elastycznych kontenerów (`max-width: 100%`, `box-sizing: border-box`), obrazków z `max-width: 100%; height: auto;` oraz unikaj sztywnych szerokości w pikselach typu `width: 800px` (zamiast tego stosuj `max-width: 800px; width: 100%;`). Teksty i listy składników muszą się zawijać i nigdy nie wychodzić poza ekran telefonu.
+3. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
+4. Dołącz ładne zdjęcie potrawy (jeśli pochodzi z linku lub ze zdjęcia, wykorzystaj pasujący link graficzny lub zdekodowane zdjęcie).
+5. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
    - W sekcji <style> dodaj: `@media print { .no-print { display: none; } }`
    - W sekcji <body> (jako pierwszy element) dodaj pływający panel:
      <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
        <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
        <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
      </div>
-5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
-6. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
+6. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
+7. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
 
 contents_payload = []
 
@@ -111,4 +112,4 @@ recipes.insert(0, new_entry)
 with open(recipes_file, "w", encoding="utf-8") as f:
     json.dump(recipes, f, ensure_ascii=False, indent=2)
 
-print(f"Pomyślnie wygenerowano przepis: '{recipe_title}' in {html_file_path}")
+print(f"Pomyślnie wygenerowano przepis: '{recipe_title}' w pliku {html_file_path}")
