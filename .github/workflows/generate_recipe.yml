@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -39,8 +41,12 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git pull --rebase origin main
+          
+          # Pobieramy i nakładamy najnowsze zmiany zanim zatwierdzimy lokalne pliki
+          git fetch origin main
+          git rebase origin/main || true
+          
           git add przepisy/ recipes.json
           git status
           git diff-index --quiet HEAD || git commit -m "Automatycznie dodano nowy przepis"
-          git push
+          git push origin main
