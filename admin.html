@@ -60,7 +60,38 @@
             border-color: #8b5e3c;
         }
 
-        button {
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: #f4ede4;
+            border: 1px solid #e2d7cd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #5c3a21;
+        }
+
+        .tab-btn.active {
+            background: #8b5e3c;
+            color: white;
+            border-color: #8b5e3c;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        button.submit-btn {
             background: #8b5e3c;
             color: white;
             border: none;
@@ -74,11 +105,11 @@
             transition: background-color 0.2s ease;
         }
 
-        button:hover {
+        button.submit-btn:hover {
             background: #704a2e;
         }
 
-        button:disabled {
+        button.submit-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
         }
@@ -91,45 +122,59 @@
             font-size: 14px;
         }
 
-        .info {
-            background: #e3f2fd;
-            color: #0d47a1;
-            border: 1px solid #bbdefb;
-        }
-
-        .success {
-            background: #e8f5e9;
-            color: #1b5e20;
-            border: 1px solid #c8e6c9;
-        }
-
-        .error {
-            background: #ffebee;
-            color: #b71c1c;
-            border: 1px solid #ffcdd2;
-        }
+        .info { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
+        .success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+        .error { background: #ffebee; color: #b71c1c; border: 1px solid #ffcdd2; }
     </style>
 </head>
 <body>
 
-<a href="index.html">← Powrót do przepisów</a>
+<a href="index.html">← Powrót do książki kucharskiej</a>
 
 <div class="card">
-    <h2>Dodaj przepis do biblioteki</h2>
+    <h2>Dodaj przepis do książki</h2>
+    
+    <div class="tab-buttons">
+        <button type="button" class="tab-btn active" onclick="switchTab('url')">Z Linku WWW</button>
+        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęcia (np. z książki)</button>
+    </div>
+
     <form id="adminForm">
-        <label for="recipeUrl">Link do przepisu:</label>
-        <input type="url" id="recipeUrl" placeholder="https://aniagotuje.pl/przepis/..." required>
+        <div id="tab-url" class="tab-content active">
+            <label for="recipeUrl">Link do przepisu:</label>
+            <input type="url" id="recipeUrl" placeholder="https://aniagotuje.pl/przepis/...">
+        </div>
+
+        <div id="tab-image" class="tab-content">
+            <label for="recipeImage">Wgraj zdjęcie przepisu:</label>
+            <input type="file" id="recipeImage" accept="image/*">
+        </div>
 
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
-        <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx lub github_pat_xxxxxxxx" required>
+        <input type="password" id="ghToken" placeholder="github_pat_xxxxxxxx" required>
 
-        <button type="submit" id="btn">Uruchom generowanie przepisu</button>
+        <button type="submit" id="btn" class="submit-btn">Uruchom generowanie przepisu</button>
     </form>
     <div id="status"></div>
 </div>
 
 <script>
 const REPO = "pmenclewicz/przepisy";
+let currentMode = 'url';
+
+function switchTab(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    
+    if(mode === 'url') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('tab-url').classList.add('active');
+    } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('tab-image').classList.add('active');
+    }
+}
 
 if (localStorage.getItem("ghToken")) {
     document.getElementById("ghToken").value = localStorage.getItem("ghToken");
@@ -137,7 +182,6 @@ if (localStorage.getItem("ghToken")) {
 
 document.getElementById("adminForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const recipeUrl = document.getElementById("recipeUrl").value.trim();
     const token = document.getElementById("ghToken").value.trim();
     const status = document.getElementById("status");
     const btn = document.getElementById("btn");
@@ -148,8 +192,30 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     status.className = "info";
     status.innerHTML = "Wysyłanie zlecenia do GitHub Actions...";
 
+    let inputData = "";
+    let inputType = currentMode;
+
+    if (currentMode === 'url') {
+        inputData = document.getElementById("recipeUrl").value.trim();
+        if (!inputData) {
+            alert("Podaj link do przepisu!");
+            btn.disabled = false;
+            status.style.display = "none";
+            return;
+        }
+    } else {
+        const fileInput = document.getElementById("recipeImage");
+        if (fileInput.files.length === 0) {
+            alert("Wybierz plik ze zdjęciem!");
+            btn.disabled = false;
+            status.style.display = "none";
+            return;
+        }
+        inputData = await toBase64(fileInput.files[0]);
+    }
+
     try {
-        const apiUrl = `https://api.github.com/repos/${REPO}/actions/workflows/generate_recipe.yml/dispatches`;
+        const apiUrl = `https://api.github.com/repos/${REPO}/dispatches`;
 
         const res = await fetch(apiUrl, {
             method: 'POST',
@@ -159,18 +225,22 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                ref: 'main',
-                inputs: { recipe_url: recipeUrl }
+                event_type: 'generate_recipe',
+                client_payload: {
+                    input_type: inputType,
+                    recipe_input: inputData
+                }
             })
         });
 
         if (!res.ok) {
-            throw new Error(`Błąd HTTP ${res.status}: Brak uprawnień lub błąd w pliku workflow.`);
+            throw new Error(`Błąd HTTP ${res.status}: Brak uprawnień tokena lub zła nazwa repozytorium.`);
         }
 
         status.className = "success";
-        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions właśnie generuje przepis. Za około 1–2 minuty nowy przepis pojawi się na stronie głównej.";
+        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis. Za około 1–2 minuty odśwież stronę główną.";
         document.getElementById("recipeUrl").value = "";
+        document.getElementById("recipeImage").value = "";
 
     } catch (err) {
         status.className = "error";
@@ -179,6 +249,15 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         btn.disabled = false;
     }
 });
+
+function toBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+}
 </script>
 
 </body>
