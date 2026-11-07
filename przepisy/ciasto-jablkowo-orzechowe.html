@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciasto jabłkowo-orzechowe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #7c5c43 !important;
+        padding: 18px 22px !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f7f3ed;
+      color: #2e241c;
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.5;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background: #fffdfa;
+      width: 100%;
+      max-width: 820px;
+      border: 2px solid #cfb89f;
+      border-radius: 4px;
+      padding: 28px 32px;
+      box-shadow: 0 4px 15px rgba(60, 40, 20, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #e5d8cb;
+      padding: 16px;
+      border-radius: 2px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #4a2f1b;
+      font-size: 1.95rem;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: #72533d;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-bar span::after {
+      content: "•";
+      margin-left: 16px;
+      color: #bfa693;
+    }
+
+    .meta-bar span:last-child::after {
+      content: "";
+      margin: 0;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: #6b3e1f;
+      border-bottom: 1px solid #dccdc0;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .ingredients-column {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      font-size: 0.92rem;
+    }
+
+    .ingredients-list li {
+      padding: 4px 0;
+      border-bottom: 1px dashed #eee3d8;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .ingredients-list li::before {
+      content: "▪";
+      color: #8b5e3c;
+      font-size: 1rem;
+      margin-right: 8px;
+      line-height: 1;
+    }
+
+    .recipe-image-container {
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #e1d3c5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .recipe-image-container img {
+      width: 100%;
+      max-width: 100%;
+      height: 165px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step-counter;
+      font-size: 0.93rem;
+    }
+
+    .steps-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 36px;
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    .steps-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: #8b5e3c;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+    }
+
+    .steps-list li strong {
+      color: #56331a;
+    }
+
+    .note-box {
+      margin-top: 10px;
+      background-color: #fbf6ef;
+      border-left: 3px solid #8b5e3c;
+      padding: 8px 12px;
+      font-size: 0.86rem;
+      font-style: italic;
+      color: #5a4535;
+    }
+
+    @media (max-width: 680px) {
+      .recipe-card {
+        padding: 16px 14px;
+      }
+      .inner-border {
+        padding: 10px;
+      }
+      .main-content {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      h1 {
+        font-size: 1.55rem;
+      }
+      .recipe-image-container img {
+        height: 190px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <div class="inner-border">
+      
+      <header class="header">
+        <h1>Ciasto jabłkowo-orzechowe</h1>
+        <div class="meta-bar">
+          <span>Temperatura: 180°C</span>
+          <span>Czas pieczenia: 45–50 min</span>
+          <span>Forma: Blacha / Tortownica</span>
+        </div>
+      </header>
+
+      <div class="main-content">
+        
+        <aside class="ingredients-column">
+          <div>
+            <h2 class="section-title">Składniki</h2>
+            <ul class="ingredients-list">
+              <li>1,5 szklanki cukru</li>
+              <li>3 jajka</li>
+              <li>1/2 szklanki ciepłej wody</li>
+              <li>1 szklanka mleka</li>
+              <li>1/2 szklanki oleju</li>
+              <li>2,5 szklanki mąki pszennej</li>
+              <li>1 łyżeczka sody oczyszczonej</li>
+              <li>1,5 łyżeczki proszku do pieczenia</li>
+              <li>5 łyżek kakao</li>
+              <li>3 słodkie jabłka</li>
+              <li>1 szklanka grubo posiekanych orzechów (laskowych lub włoskich)</li>
+              <li>1/2 łyżeczki cynamonu</li>
+              <li>Cukier puder do oprószenia</li>
+              <li>Tłuszcz i mąka do wysmarowania formy</li>
+            </ul>
+          </div>
+
+          <div class="recipe-image-container">
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80" alt="Aromatyczne ciasto jabłkowo-orzechowe z kakao">
+          </div>
+        </aside>
+
+        <section class="instructions-column">
+          <h2 class="section-title">Jak to zrobić?</h2>
+          <ol class="steps-list">
+            <li>
+              <strong>Przygotowanie bakalii i owoców:</strong> Jabłka umyj, obierz ze skórki, usuń gniazda nasienne, a następnie pokrój w średniej wielkości kostkę. Przełóż do miski, dodaj grubo posiekane orzechy laskowe lub włoskie, posyp cynamonem oraz odrobiną cukru. Całość dokładnie wymieszaj i odstaw.
+            </li>
+            <li>
+              <strong>Ukręcenie ciasta:</strong> W osobnej misce ubij całe jajka z pozostałym cukrem na jasną, puszystą masę. Dodaj ciepłą wodę, mleko oraz olej. Następnie wsyp przesianą mąkę wymieszaną z sodą, proszkiem do pieczenia i kakao. Wszystko dokładnie zmiksuj na jednolitą masę.
+            </li>
+            <li>
+              <strong>Łączenie składników:</strong> Do przygotowanego ciasta kakaowego dodaj zamarynowane wcześniej jabłka z orzechami. Delikatnie i dokładnie wymieszaj całość drewnianą łyżką.
+            </li>
+            <li>
+              <strong>Pieczenie:</strong> Blachę lub tortownicę wysmaruj dokładnie tłuszczem i oprósz mąką. Przelej ciasto i piecz przez 45–50 minut (do tzw. suchego patyczka) w piekarniku nagrzanym do temperatury 180°C.
+            </li>
+            <li>
+              <strong>Podanie:</strong> Gotowe ciasto wyjmij z piekarnika i pozostaw do całkowitego ostudzenia. Przed samym podaniem obficie oprósz cukrem pudrem.
+            </li>
+          </ol>
+
+          <div class="note-box">
+            <strong>Wskazówka:</strong> Ciasto zachowuje wspaniałą wilgotność dzięki soczystym jabłkom, a chrupiące orzechy i kakao nadają mu głęboki, korzenny charakter.
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </article>
+
+</body>
+</html>
