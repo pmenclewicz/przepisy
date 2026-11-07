@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Owoce zapiekane pod kruszonką z płatków owsianych</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10mm;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #2c2c2c;
+            line-height: 1.35;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            font-size: 13.5pt;
+        }
+
+        .recipe-sheet {
+            width: 100%;
+            max-width: 190mm;
+            margin: 0 auto;
+            padding: 5mm;
+            background: #fff;
+            border: 2px solid #3d2314;
+            position: relative;
+        }
+
+        .recipe-sheet::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 4px;
+            right: 4px;
+            border: 1px solid #c8b9a6;
+            pointer-events: none;
+        }
+
+        .header-container {
+            text-align: center;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #8b5a2b;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 24pt;
+            color: #3d2314;
+            margin: 0 0 6px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 11pt;
+            font-style: italic;
+            color: #6b5344;
+            margin-bottom: 6px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 10.5pt;
+            color: #555;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .meta-info span {
+            background: #f7f3ed;
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 1px solid #e3d7c8;
+        }
+
+        .content-grid {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .left-column {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .right-column {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .image-box {
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 3px solid #dcd1c1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-height: 200px;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 14pt;
+            color: #8b5a2b;
+            border-bottom: 1px solid #c8b9a6;
+            padding-bottom: 2px;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ingredients-box {
+            background-color: #faf7f2;
+            border: 1px solid #e3d7c8;
+            padding: 10px 12px;
+            border-radius: 5px;
+        }
+
+        .ingredients-box h3 {
+            margin: 0 0 6px 0;
+            font-size: 11pt;
+            color: #3d2314;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #dcd1c1;
+            padding-bottom: 3px;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 16px;
+            font-size: 11.5pt;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        ol {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 11.5pt;
+        }
+
+        ol li {
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+
+        ol li::marker {
+            font-weight: bold;
+            color: #8b5a2b;
+        }
+
+        .tips-box {
+            background-color: #f4efe6;
+            border-left: 4px solid #8b5a2b;
+            padding: 8px 10px;
+            font-size: 10pt;
+            font-style: italic;
+            border-radius: 0 4px 4px 0;
+            margin-top: 5px;
+        }
+
+        .tips-box strong {
+            font-style: normal;
+            color: #3d2314;
+        }
+    </style>
+</head>
+<body>
+
+<div class="recipe-sheet">
+    <div class="header-container">
+        <h1>Owoce zapiekane pod kruszonką z płatków owsianych</h1>
+        <div class="subtitle">Zdrowy, niesamowicie aromatyczny i szybki w przygotowaniu deser pod chrupiącą pierzynką</div>
+        <div class="meta-info">
+            <span>⏱️ Przygotowanie: 20 min</span>
+            <span>🔥 Pieczenie: 30 min</span>
+            <span>🍽️ Porcje: ok. 1400 g</span>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <!-- Kolumna lewa: Zdjęcie + Składniki -->
+        <div class="left-column">
+            <div class="image-box">
+                <img src="https://cdn.aniagotuje.com/pictures/articles/2024/07/64646581-v-360x360.jpg" alt="Owoce zapiekane pod kruszonką z płatków owsianych">
+            </div>
+
+            <div class="ingredients-box">
+                <h3>Składniki na kruszonkę</h3>
+                <ul>
+                    <li>2 szklanki płatków owsianych (np. górskich) – ok. 220 g</li>
+                    <li>100 g masła (pół kostki)</li>
+                    <li>80 g cukru drobnego + szczypta soli</li>
+                    <li>30 g płatków migdałowych (opcjonalnie)</li>
+                </ul>
+
+                <h3 style="margin-top: 10px;">Składniki na owoce</h3>
+                <ul>
+                    <li>850 g mieszanki owoców (mogą być mrożone)</li>
+                    <li>10 g proszku kisielowego lub skrobi</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Kolumna prawa: Przygotowanie krok po kroku -->
+        <div class="right-column">
+            <div>
+                <h2 class="section-title">Sposób przygotowania</h2>
+                <ol>
+                    <li><strong>Przygotowanie płatków:</strong> 220 g płatków owsianych podziel na dwie równe porcje. Jedną wsyp do miski w całości, a drugą wsyp do malaksera i zmiksuj na grubszą „kaszkę”.</li>
+                    <li><strong>Wyrabianie kruszonki:</strong> Do obu porcji płatków dodaj pokrojone zimne masło, cukier drobny, szczyptę soli oraz opcjonalnie płatki migdałowe. Wyrabiaj składniki dłońmi lub mikserem, aż powstanie maślana kruszonka.</li>
+                    <li><strong>Przygotowanie owoców:</strong> Owoce (świeże lub wcześniej rozmrożone i lekko odcedzone) wymieszaj dokładnie z proszkiem kisielowym lub skrobią, co pozwoli związać nadmiar soku podczas pieczenia.</li>
+                    <li><strong>Układanie w formie:</strong> Przełóż owoce do naczynia żaroodpornego wysmarowanego odrobiną masła, tworząc równomierną warstwę na dnie.</li>
+                    <li><strong>Formowanie deseru:</strong> Równomiernie rozsyp przygotowaną kruszonkę owsianą na wierzchu owoców, pokrywając je całkowicie.</li>
+                    <li><strong>Pieczenie:</strong> Wstaw naczynie do piekarnika rozgrzanego do <strong>180°C</strong> (najlepiej z termoobiegiem). Piecz przez około <strong>30 minut</strong>, aż kruszonka będzie mocno złocista, a owoce zaczną apetycznie bulgotać.</li>
+                </ol>
+            </div>
+
+            <div class="tips-box">
+                <strong>Wskazówka:</strong> Deser smakuje obłędnie podawany na ciepło, bezpośrednio po wyjęciu z piekarnika, idealnie komponuje się z gałką lodów waniliowych lub łyżką gęstego jogurtu greckiego.
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
