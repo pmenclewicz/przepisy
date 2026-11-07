@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marynata do karkówki z grilla</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #c8b9a6 !important;
+        box-shadow: none !important;
+        padding: 20px !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 15px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #332a24;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #fffdfa;
+      border: 2px solid #bfa588;
+      border-radius: 4px;
+      padding: 35px 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #d9ccb8;
+      padding: 25px;
+      border-radius: 2px;
+    }
+
+    h1 {
+      font-size: 26px;
+      text-align: center;
+      margin: 0 0 15px 0;
+      color: #5c3a21;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #bfa588;
+      padding-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #6d472b;
+      margin: 20px 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: normal;
+      border-bottom: 1px dashed #d9ccb8;
+      padding-bottom: 5px;
+    }
+
+    ul.ingredients {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+    }
+
+    ul.ingredients li {
+      padding: 4px 0;
+      border-bottom: 1px dotted #e8decb;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 15px;
+    }
+
+    ul.ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-top: 10px;
+      text-align: justify;
+      color: #2b231c;
+    }
+
+    .footer-flourish {
+      text-align: center;
+      margin-top: 20px;
+      color: #bfa588;
+      font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+      .recipe-card {
+        padding: 15px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      ul.ingredients li {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <div class="inner-border">
+      <h1>Marynata do karkówki z grilla</h1>
+
+      <h2>Składniki</h2>
+      <ul class="ingredients">
+        <li>1/4 szkl oliwy lub oleju</li>
+        <li>5 ząbków czosnku</li>
+        <li>1 duża cebula</li>
+        <li>3 liście laurowe</li>
+        <li>1 łyżeczka soli</li>
+        <li>1 łyżeczka pieprzu ziołowego</li>
+        <li>1 łyżka dowolnej przyprawy grillowej</li>
+        <li>1 łyżeczka przyprawy do kurczaka</li>
+        <li>1 łyżeczka ziół prowansalskich</li>
+        <li>1 łyżeczka suszonego majeranku</li>
+        <li>1 łyżeczka słodkiej papryki</li>
+        <li>1 łyżka musztardy</li>
+        <li>2 łyżki ketchupu</li>
+      </ul>
+
+      <h2>Sposób przygotowania</h2>
+      <div class="instructions">
+        <p>i wymieszać i zamarynować mięso na parę godzin leżeć</p>
+      </div>
+
+      <div class="footer-flourish">❦</div>
+    </div>
+  </main>
+
+</body>
+</html>
