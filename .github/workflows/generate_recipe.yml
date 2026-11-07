@@ -1,11 +1,13 @@
 name: Generate Recipe A4
 
 on:
+  repository_dispatch:
+    types: [generate_recipe]
   workflow_dispatch:
     inputs:
       recipe_url:
-        description: 'Link do przepisu kulinarnego'
-        required: true
+        description: 'Link do przepisu kulinarnego (gdy uruchamiasz ręcznie)'
+        required: false
         type: string
 
 jobs:
@@ -28,7 +30,9 @@ jobs:
       - name: Run Generator Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          RECIPE_URL: ${{ github.event.inputs.recipe_url }}
+          # Obsługuje dane zarówno z panelu admina (dispatch), jak i z ręcznego uruchomienia na GitHubie
+          INPUT_TYPE: ${{ github.event.client_payload.input_type || 'url' }}
+          RECIPE_INPUT: ${{ github.event.client_payload.recipe_input || github.event.inputs.recipe_url }}
         run: python scripts/generate_recipe.py
 
       - name: Commit and Push changes
@@ -37,5 +41,5 @@ jobs:
           git config --global user.email 'action@github.com'
           git add przepisy/ recipes.json
           git status
-          git diff-index --quiet HEAD || git commit -m "Dodano nowy przepis z URL: ${{ github.event.inputs.recipe_url }}"
+          git diff-index --quiet HEAD || git commit -m "Automatycznie dodano nowy przepis"
           git push
