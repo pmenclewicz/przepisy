@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zupa cygańska</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #777 !important;
+        box-shadow: none !important;
+        padding: 18mm 15mm !important;
+        margin: 0 !important;
+        width: 100% !important;
+        min-height: calc(297mm - 20mm) !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2c2520;
+      line-height: 1.6;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .recipe-card {
+      background-color: #fffdf9;
+      width: 100%;
+      max-width: 780px;
+      padding: 40px;
+      border: 2px solid #8b5e3c;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #c9b097;
+      padding: 30px;
+      position: relative;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: normal;
+      color: #4a2f1b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .ornament {
+      font-size: 1.2rem;
+      color: #8b5e3c;
+      letter-spacing: 4px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: #5c3b20;
+      border-bottom: 1px solid #e0d0c1;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .ingredients-list li {
+      padding: 6px 0;
+      border-bottom: 1px dotted #e3d5c8;
+      display: flex;
+      align-items: center;
+    }
+
+    .ingredients-list li::before {
+      content: "•";
+      color: #8b5e3c;
+      font-size: 1.3em;
+      margin-right: 12px;
+      line-height: 1;
+    }
+
+    .preparation-text {
+      text-align: justify;
+      white-space: pre-line;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .preparation-text p {
+      margin-bottom: 14px;
+    }
+
+    @media (min-width: 650px) {
+      .content-grid {
+        grid-template-columns: 240px 1fr;
+      }
+      .ingredients-section {
+        border-right: 1px solid #eedecf;
+        padding-right: 25px;
+      }
+    }
+
+    @media (max-width: 649px) {
+      .recipe-card {
+        padding: 20px 15px;
+      }
+      .inner-border {
+        padding: 20px 15px;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="inner-border">
+      <header class="header-section">
+        <h1>Zupa cygańska</h1>
+        <div class="ornament">❧ ❦ ❧</div>
+      </header>
+
+      <div class="content-grid">
+        <section class="ingredients-section">
+          <h2>Składniki</h2>
+          <ul class="ingredients-list">
+            <li>1 puszka groszku</li>
+            <li>1 puszka fasoli czerwonej</li>
+            <li>1 papryka czerwona</li>
+            <li>1 mały przecier pomidorowy</li>
+            <li>5 ziemniaków</li>
+            <li>30 dkg boczku</li>
+          </ul>
+        </section>
+
+        <section class="preparation-section">
+          <h2>Przygotowanie</h2>
+          <div class="preparation-text">
+            <p>Ziemniaki ugotować i pokroić w kostkę. Paprykę pokroić w kostkę i podsmażyć z ziemniakami.</p>
+            <p>Boczek usmażyć na skwarki, wrzucić do ziemniaków i papryki. Na koniec wody, dodać odsączony groszek, fasolkę, przecier pomidorowy. Zupę zagęścić śmietaną.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
