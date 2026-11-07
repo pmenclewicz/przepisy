@@ -1,11 +1,5 @@
 [
   {
-    "id": "papryka-konserwowa",
-    "title": "Papryka konserwowa",
-    "file": "przepisy/papryka-konserwowa.html",
-    "date": "2026-11-07"
-  },
-  {
     "id": "ogorki-w-zalewie-curry",
     "title": "Ogórki w zalewie curry",
     "file": "przepisy/ogorki-w-zalewie-curry.html",
@@ -37,7 +31,7 @@
   },
   {
     "id": "jagodowy",
-    "title": "Jagodowy",
+    "title": "Sernik jagodowy",
     "file": "przepisy/jagodowy.html",
     "date": "2026-11-07"
   },
