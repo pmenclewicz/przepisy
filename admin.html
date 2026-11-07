@@ -136,7 +136,7 @@
     
     <div class="tab-buttons">
         <button type="button" class="tab-btn active" onclick="switchTab('url')">Z Linku WWW</button>
-        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęcia (np. z książki)</button>
+        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęcia / Aparatu</button>
     </div>
 
     <form id="adminForm">
@@ -146,8 +146,9 @@
         </div>
 
         <div id="tab-image" class="tab-content">
-            <label for="recipeImage">Wgraj zdjęcie przepisu:</label>
-            <input type="file" id="recipeImage" accept="image/*">
+            <label for="recipeImage">Zrób zdjęcie przepisu lub wybierz z galerii:</label>
+            <!-- capture="environment" otwiera tylny aparat w telefonie -->
+            <input type="file" id="recipeImage" accept="image/*" capture="environment">
         </div>
 
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
@@ -206,7 +207,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     } else {
         const fileInput = document.getElementById("recipeImage");
         if (fileInput.files.length === 0) {
-            alert("Wybierz plik ze zdjęciem!");
+            alert("Zrób zdjęcie lub wybierz plik!");
             btn.disabled = false;
             status.style.display = "none";
             return;
@@ -238,7 +239,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         }
 
         status.className = "success";
-        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis. Za około 1–2 minuty odśwież stronę główną.";
+        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis ze zdjęcia. Za około 1–2 minuty odśwież stronę główną.";
         document.getElementById("recipeUrl").value = "";
         document.getElementById("recipeImage").value = "";
 
