@@ -183,18 +183,19 @@
         <div id="tab-image" class="tab-content">
             <label>Wybierz metodę dodania przepisu:</label>
             <div class="photo-options">
-                <!-- Przycisk dedykowany wyłącznie do aparatu -->
                 <button type="button" class="photo-btn" onclick="document.getElementById('cameraInput').click()">📸 Zrób zdjęcie</button>
-                <!-- Przycisk dedykowany do galerii / plików -->
                 <button type="button" class="photo-btn" onclick="document.getElementById('galleryInput').click()">📁 Wybierz plik</button>
             </div>
 
-            <!-- Ukryte pola wyboru (inputy) obsługujące urządzenia -->
             <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none" onchange="handleFileSelected(this)">
             <input type="file" id="galleryInput" accept="image/*" style="display:none" onchange="handleFileSelected(this)">
 
             <div id="fileInfo">Status: Nie wybrano żadnego zdjęcia.</div>
         </div>
+
+        <!-- Nowe pole na własną nazwę przepisu -->
+        <label for="customTitle">Własna nazwa przepisu (opcjonalnie):</label>
+        <input type="text" id="customTitle" placeholder="Zostaw puste, aby AI samo wykryło nazwę">
 
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
         <input type="password" id="ghToken" placeholder="github_pat_xxxxxxxx" required>
@@ -228,7 +229,6 @@ function handleFileSelected(input) {
         selectedFileObject = input.files[0];
         document.getElementById('fileInfo').innerHTML = `✅ <b>Wybrano zdjęcie:</b> ${selectedFileObject.name}`;
         
-        // Resetujemy drugi input, żeby nie kolidowały
         if (input.id === 'cameraInput') {
             document.getElementById('galleryInput').value = '';
         } else {
@@ -255,6 +255,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
 
     let inputData = "";
     let inputType = currentMode;
+    let customTitle = document.getElementById("customTitle").value.trim();
 
     if (currentMode === 'url') {
         inputData = document.getElementById("recipeUrl").value.trim();
@@ -271,7 +272,6 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
             status.style.display = "none";
             return;
         }
-        // Kompresja obrazu zapobiegająca błędowi 422
         inputData = await resizeAndCompressImage(selectedFileObject);
     }
 
@@ -289,7 +289,8 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
                 event_type: 'generate_recipe',
                 client_payload: {
                     input_type: inputType,
-                    recipe_input: inputData
+                    recipe_input: inputData,
+                    custom_title: customTitle
                 }
             })
         });
@@ -301,6 +302,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         status.className = "success";
         status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis. Za około 1–2 minuty odśwież stronę główną.";
         document.getElementById("recipeUrl").value = "";
+        document.getElementById("customTitle").value = "";
         selectedFileObject = null;
         document.getElementById('cameraInput').value = '';
         document.getElementById('galleryInput').value = '';
@@ -314,7 +316,6 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     }
 });
 
-// Funkcja pomniejszająca i kompresująca zdjęcie przed wysyłką (eliminuje błąd 422)
 function resizeAndCompressImage(file) {
     return new Promise((resolve) => {
         const reader = new FileReader();
@@ -324,7 +325,6 @@ function resizeAndCompressImage(file) {
             img.src = event.target.result;
             img.onload = () => {
                 const canvas = document.createElement('canvas');
-                // Zmniejszamy maksymalne wymiary do 600x600, żeby base64 było lekkie
                 const MAX_WIDTH = 600;
                 const MAX_HEIGHT = 600;
                 let width = img.width;
@@ -347,7 +347,6 @@ function resizeAndCompressImage(file) {
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
                 
-                // Zmniejszamy jakość do 0.6, co drastycznie zmniejsza wagę pliku dla GitHuba
                 resolve(canvas.toDataURL('image/jpeg', 0.6));
             };
         };
