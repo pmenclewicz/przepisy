@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warstwowa sałatka z tuńczykiem</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .page-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f5f0;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2b2b2b;
+      line-height: 1.5;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #d4c5b9;
+      border-radius: 4px;
+      padding: 30px 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .decorative-border {
+      border: 1px solid #e0d5cb;
+      padding: 24px;
+      border-radius: 2px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 26px;
+      color: #3e2723;
+      margin: 0 0 10px 0;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+    }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .column-left {
+      flex: 1 1 240px;
+    }
+
+    .column-right {
+      flex: 1.5 1 320px;
+    }
+
+    h2 {
+      font-size: 16px;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 10px 0;
+      border-bottom: 1px dashed #d4c5b9;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+    }
+
+    ul li {
+      padding: 3px 0;
+      font-size: 14.5px;
+      border-bottom: 1px dotted #eee;
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions p {
+      margin: 0 0 10px 0;
+      font-size: 14.5px;
+      text-align: justify;
+    }
+
+    .layers-section {
+      margin-top: 15px;
+      background: #faf8f5;
+      padding: 12px 16px;
+      border-left: 3px solid #8b5e3c;
+      border-radius: 2px;
+    }
+
+    .layers-section h3 {
+      font-size: 15px;
+      color: #3e2723;
+      margin: 0 0 8px 0;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    ol.layers-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    ol.layers-list li {
+      padding: 2px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <div class="decorative-border">
+      <h1>Warstwowo sałatka z tuńczykiem</h1>
+
+      <div class="columns">
+        <div class="column-left">
+          <h2>Składniki</h2>
+          <ul>
+            <li>3 jajka</li>
+            <li>puszka tuńczyka</li>
+            <li>0,5 puszki kukurydzy</li>
+            <li>200 gr żółtego sera</li>
+            <li>2 średnie cebule</li>
+            <li>4 łyżki majonezu</li>
+            <li>2 łyżki musztardy</li>
+            <li>pieprz</li>
+            <li>chili</li>
+          </ul>
+        </div>
+
+        <div class="column-right">
+          <h2>Przygotowanie</h2>
+          <div class="instructions">
+            <p>Cebulę pokroić w kostkę, wrzucić na wrzątek i poczekać, aż się ponownie zagotuje. Odcedzić i pozostawić do ostygnięcia.</p>
+            <p>Jajka ugotować na twardo i oddzielić białka od żółtek.</p>
+            <p>W misce wymieszać majonez z musztardą, doprawić pieprzem i chili.</p>
+          </div>
+
+          <div class="layers-section">
+            <h3>Układać warstwami:</h3>
+            <ol class="layers-list">
+              <li>połowa startego żółtego sera</li>
+              <li>białka starte na tarce</li>
+              <li>połowa sosu majonezowego</li>
+              <li>cebula</li>
+              <li>tuńczyk</li>
+              <li>reszta sosu majonezowego</li>
+              <li>kukurydza</li>
+              <li>reszta startego żółtego sera</li>
+              <li>żółtka pokruszone</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
