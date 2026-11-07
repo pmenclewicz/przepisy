@@ -10,129 +10,121 @@
       margin: 10mm;
     }
 
-    @media print {
-      .no-print {
-        display: none !important;
-      }
-      body {
-        background: #ffffff !important;
-        padding: 0 !important;
-      }
-      .recipe-card {
-        border: 1px solid #8b5e3c !important;
-        box-shadow: none !important;
-        padding: 20mm !important;
-      }
-    }
-
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      padding: 20px 10px;
-      font-family: "Georgia", "Baskerville", "Palatino Linotype", serif;
-      background-color: #f7f3ed;
+      padding: 20px;
+      background-color: #f7f4ee;
       color: #2b231d;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
       line-height: 1.6;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
     }
 
-    .recipe-card {
-      width: 100%;
-      max-width: 650px;
-      background-color: #fffefb;
+    .recipe-container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #fffefb;
       border: 2px solid #8b5e3c;
-      outline: 1px solid #8b5e3c;
-      outline-offset: -6px;
-      padding: 40px 35px;
+      padding: 35px 40px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       position: relative;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #d4beab;
+    .inner-border {
+      border: 1px solid #d4c1b0;
+      padding: 30px;
     }
 
     h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #5c3a21;
+      text-align: center;
+      font-size: 28px;
       margin: 0 0 10px 0;
+      color: #63391b;
+      font-weight: normal;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      word-wrap: break-word;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
     }
 
     .ornament {
-      font-size: 1.2rem;
+      text-align: center;
       color: #8b5e3c;
-      margin: 5px 0;
-    }
-
-    .content-section {
-      margin-bottom: 25px;
-    }
-
-    .main-ingredient {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #3e2717;
+      font-size: 18px;
       margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed #d4beab;
     }
 
     h2 {
-      font-size: 1.2rem;
-      color: #704729;
-      margin: 20px 0 10px 0;
-      font-weight: 600;
+      font-size: 18px;
+      color: #8b5e3c;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed #c4ad99;
+      padding-bottom: 5px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-      margin: 0 0 20px 0;
+    ul, ol {
+      padding-left: 24px;
+      margin: 10px 0;
     }
 
     li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 8px;
-      font-size: 1.05rem;
+      margin-bottom: 6px;
+      font-size: 16px;
+      word-wrap: break-word;
     }
 
-    li::before {
-      content: "•";
-      position: absolute;
-      left: 4px;
-      color: #8b5e3c;
-      font-size: 1.2rem;
-      line-height: 1;
+    .instructions p {
+      font-size: 16px;
+      margin-bottom: 12px;
+      text-align: justify;
     }
 
-    @media (max-width: 480px) {
-      .recipe-card {
-        padding: 25px 18px;
-        outline-offset: -4px;
+    .footer-note {
+      margin-top: 25px;
+      padding: 10px 15px;
+      background-color: #fbf7f2;
+      border-left: 3px solid #8b5e3c;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
       }
+      body {
+        background-color: #fff;
+        padding: 0;
+      }
+      .recipe-container {
+        border: 1px solid #8b5e3c;
+        box-shadow: none;
+        padding: 20px;
+        max-width: 100%;
+      }
+      .inner-border {
+        padding: 18px;
+      }
+    }
 
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .recipe-container {
+        padding: 15px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
       h1 {
-        font-size: 1.6rem;
-      }
-
-      .main-ingredient {
-        font-size: 1.1rem;
+        font-size: 22px;
       }
     }
   </style>
@@ -144,33 +136,34 @@
     <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
   </div>
 
-  <main class="recipe-card">
-    <header>
-      <div class="ornament">❦</div>
+  <div class="recipe-container">
+    <div class="inner-border">
       <h1>Papryka konserwowa</h1>
-      <div class="ornament">― ❧ ―</div>
-    </header>
+      <div class="ornament">❦</div>
 
-    <div class="content-section">
-      <div class="main-ingredient">
-        2,5 kg papryki
+      <h2>Składniki i przyprawy (do słoika)</h2>
+      <ul>
+        <li>Pokrojona papryka</li>
+        <li>Zalewa</li>
+        <li>1 listek laurowy</li>
+        <li>2 goździki</li>
+        <li>1–2 ziela angielskie</li>
+        <li>2–3 ziarnka pieprzu</li>
+        <li>10 ziaren gorczycy</li>
+        <li>0,5 łyżeczki oliwy</li>
+      </ul>
+
+      <h2>Przygotowanie</h2>
+      <div class="instructions">
+        <p>1. Zalewę zagotować i wystudzić.</p>
+        <p>2. Pokrojoną paprykę ułożyć w słoikach, wsypać przyprawy, zalać zalewą. Na wierzch dodać 0,5 łyżeczki oliwy.</p>
       </div>
 
-      <h2>Zalewa:</h2>
-      <ul>
-        <li>1 szklanka octu</li>
-        <li>5 szklanek wody</li>
-        <li>0,5 szkl cukru</li>
-        <li>0,5 szkl. miodu</li>
-        <li>1 łyżka soli</li>
-      </ul>
-
-      <h2>Przyprawy na każdy słoik:</h2>
-      <ul>
-        <li>1 ząbek czosnku</li>
-      </ul>
+      <div class="footer-note">
+        <strong>Pasteryzacja:</strong> Pasteryzować 20 min.
+      </div>
     </div>
-  </main>
+  </div>
 
 </body>
 </html>
