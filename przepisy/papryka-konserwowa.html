@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papryka konserwowa</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c !important;
+        box-shadow: none !important;
+        padding: 20mm !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: "Georgia", "Baskerville", "Palatino Linotype", serif;
+      background-color: #f7f3ed;
+      color: #2b231d;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .recipe-card {
+      width: 100%;
+      max-width: 650px;
+      background-color: #fffefb;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #8b5e3c;
+      outline-offset: -6px;
+      padding: 40px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #d4beab;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #5c3a21;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      word-wrap: break-word;
+    }
+
+    .ornament {
+      font-size: 1.2rem;
+      color: #8b5e3c;
+      margin: 5px 0;
+    }
+
+    .content-section {
+      margin-bottom: 25px;
+    }
+
+    .main-ingredient {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #3e2717;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #d4beab;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      color: #704729;
+      margin: 20px 0 10px 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 20px 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: #8b5e3c;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 480px) {
+      .recipe-card {
+        padding: 25px 18px;
+        outline-offset: -4px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .main-ingredient {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header>
+      <div class="ornament">❦</div>
+      <h1>Papryka konserwowa</h1>
+      <div class="ornament">― ❧ ―</div>
+    </header>
+
+    <div class="content-section">
+      <div class="main-ingredient">
+        2,5 kg papryki
+      </div>
+
+      <h2>Zalewa:</h2>
+      <ul>
+        <li>1 szklanka octu</li>
+        <li>5 szklanek wody</li>
+        <li>0,5 szkl cukru</li>
+        <li>0,5 szkl. miodu</li>
+        <li>1 łyżka soli</li>
+      </ul>
+
+      <h2>Przyprawy na każdy słoik:</h2>
+      <ul>
+        <li>1 ząbek czosnku</li>
+      </ul>
+    </div>
+  </main>
+
+</body>
+</html>
