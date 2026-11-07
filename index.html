@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moja Biblioteka Przepisów</title>
+    <title>Moja Książka Kucharska</title>
     <style>
         * {
             box-sizing: border-box;
@@ -30,7 +30,9 @@
             align-items: center;
             border-bottom: 2px solid #8b5e3c;
             padding-bottom: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         h1 {
@@ -54,6 +56,29 @@
 
         .admin-btn:hover {
             background-color: #704a2e;
+        }
+
+        /* Pasek wyszukiwania */
+        .search-box {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 16px;
+            font-family: system-ui, -apple-system, sans-serif;
+            border: 1px solid #d0c2b4;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #8b5e3c;
         }
 
         .recipes-grid {
@@ -127,9 +152,13 @@
 
 <div class="container">
     <header>
-        <h1>Moja Biblioteka Przepisów</h1>
+        <h1>Moja Książka Kucharska</h1>
         <a href="admin.html" class="admin-btn">+ Dodaj przepis</a>
     </header>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Szukaj przepisu po tytule lub składniku...">
+    </div>
 
     <div class="recipes-grid" id="recipesList">
         <div class="empty-info">Wczytywanie przepisów...</div>
@@ -137,34 +166,25 @@
 </div>
 
 <script>
+let allRecipes = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
     const listEl = document.getElementById("recipesList");
+    const searchInput = document.getElementById("searchInput");
 
     try {
-        // Pobierz aktualną bazę danych recipes.json (z ominięciem pamięci podręcznej)
         const response = await fetch("./recipes.json?t=" + new Date().getTime());
         if (!response.ok) throw new Error("Brak pliku bazy danych.");
 
-        const recipes = await response.json();
+        allRecipes = await response.json();
+        renderRecipes(allRecipes);
 
-        if (!recipes || recipes.length === 0) {
-            listEl.innerHTML = `
-                <div class="empty-info">
-                    <p style="margin: 0 0 10px 0; font-size: 16px;">Brak zapisanych przepisów.</p>
-                    <a href="admin.html" style="color: #8b5e3c; font-weight: bold;">Kliknij tutaj, aby dodać pierwszy przepis!</a>
-                </div>`;
-            return;
-        }
-
-        listEl.innerHTML = recipes.map(r => `
-            <div class="recipe-card">
-                <div>
-                    <div class="recipe-date">${r.date || ''}</div>
-                    <h2 class="recipe-title">${r.title}</h2>
-                </div>
-                <a href="${r.file}" class="view-btn" target="_blank">Otwórz przepis (A4 / PDF) →</a>
-            </div>
-        `).join('');
+        // Obsługa wyszukiwania na żywo
+        searchInput.addEventListener("input", (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const filtered = allRecipes.filter(r => r.title.toLowerCase().includes(query));
+            renderRecipes(filtered);
+        });
 
     } catch (err) {
         listEl.innerHTML = `
@@ -174,6 +194,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>`;
     }
 });
+
+function renderRecipes(recipes) {
+    const listEl = document.getElementById("recipesList");
+
+    if (!recipes || recipes.length === 0) {
+        listEl.innerHTML = `
+            <div class="empty-info">
+                <p style="margin: 0 0 10px 0; font-size: 16px;">Brak pasujących przepisów.</p>
+            </div>`;
+        return;
+    }
+
+    listEl.innerHTML = recipes.map(r => `
+        <div class="recipe-card">
+            <div>
+                <div class="recipe-date">${r.date || ''}</div>
+                <h2 class="recipe-title">${r.title}</h2>
+            </div>
+            <a href="${r.file}" class="view-btn" target="_blank">Otwórz stronę / Zapisz PDF →</a>
+        </div>
+    `).join('');
+}
 </script>
 
 </body>
