@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sok wiśniowy</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        box-shadow: none !important;
+        border: 1px solid #4a3b32 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 20mm !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2c2523;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-container {
+      width: 100%;
+      max-width: 680px;
+      background-color: #fffdfa;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #c9b09a;
+      outline-offset: -6px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #d4c5b9;
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: normal;
+      color: #6d2c2c;
+      margin: 0 0 10px 0;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+    }
+
+    .ornament {
+      font-size: 1.2rem;
+      color: #8b5e3c;
+      letter-spacing: 4px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      color: #4a3b32;
+      border-bottom: 1px dashed #bfa590;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .ingredients-list li {
+      padding: 8px 0;
+      border-bottom: 1px dotted #e6ded8;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .ingredients-list li:last-child {
+      border-bottom: none;
+    }
+
+    .item-name {
+      font-weight: 500;
+    }
+
+    .item-weight {
+      color: #6b5c52;
+      font-style: italic;
+    }
+
+    @media (max-width: 480px) {
+      .recipe-container {
+        padding: 25px 15px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .ingredients-list li {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-container">
+    <header>
+      <div class="ornament">❦ ❦ ❦</div>
+      <h1>Sok wiśniowy</h1>
+    </header>
+
+    <section>
+      <h2 class="section-title">Składniki</h2>
+      <ul class="ingredients-list">
+        <li>
+          <span class="item-name">100 wiśni</span>
+          <span class="item-weight">- 660 gram</span>
+        </li>
+        <li>
+          <span class="item-name">100 liści</span>
+          <span class="item-weight">- 65 gram</span>
+        </li>
+        <li>
+          <span class="item-name">4 szklanki wody</span>
+        </li>
+        <li>
+          <span class="item-name">1 kg cukru</span>
+        </li>
+        <li>
+          <span class="item-name">łyżeczkę kwasku</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+</body>
+</html>
