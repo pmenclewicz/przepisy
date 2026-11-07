@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zalewa octowa do ogórków</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none;
+        border: 1px solid #777;
+        margin: 0;
+        padding: 20mm 15mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #fbf9f5;
+      color: #2b231d;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      max-width: 700px;
+      margin: 20px auto;
+      background: #ffffff;
+      padding: 40px;
+      border: 1px solid #d4c5b9;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px dashed #b8a08d;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: normal;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #4a3525;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: normal;
+      color: #654321;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #e0d5cb;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 25px;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 17px;
+      color: #3d322a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="inner-border">
+      <h1>Zalewa octowa do ogórków</h1>
+
+      <h2>Składniki</h2>
+      <ul>
+        <li>4 szklanki wody</li>
+        <li>1 szklanka octu</li>
+        <li>0,5 szklanki cukru</li>
+        <li>1 łyżka soli</li>
+        <li>liść laurowy</li>
+        <li>ziele angielskie</li>
+        <li>gorczyca</li>
+        <li>pieprz</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
