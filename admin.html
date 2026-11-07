@@ -91,12 +91,39 @@
             display: block;
         }
 
-        /* Styl dla natywnego pola wyboru pliku, który wygląda estetycznie */
-        input[type="file"] {
-            background: #fdfbf7;
-            padding: 10px;
-            border: 1px dashed #bfa89b;
+        .photo-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .photo-btn {
+            flex: 1;
+            background: #f4ede4;
+            color: #5c3a21;
+            border: 1px solid #d0c2b4;
+            padding: 14px 10px;
+            border-radius: 6px;
+            font-weight: 600;
             cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .photo-btn:hover {
+            background: #ebdcd0;
+            border-color: #8b5e3c;
+        }
+
+        #fileInfo {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #444;
+            background: #f9f6f0;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px dashed #d0c2b4;
         }
 
         button.submit-btn {
@@ -154,9 +181,19 @@
         </div>
 
         <div id="tab-image" class="tab-content">
-            <label for="recipeImage">Wybierz zdjęcie przepisu (zrobisz zdjęcie lub wskażesz plik):</label>
-            <!-- Standardowy, w 100% niezawodny input, który na telefonie pyta: Aparat czy Pliki -->
-            <input type="file" id="recipeImage" accept="image/*">
+            <label>Wybierz metodę dodania przepisu:</label>
+            <div class="photo-options">
+                <!-- Przycisk dedykowany wyłącznie do aparatu -->
+                <button type="button" class="photo-btn" onclick="document.getElementById('cameraInput').click()">📸 Zrób zdjęcie</button>
+                <!-- Przycisk dedykowany do galerii / plików -->
+                <button type="button" class="photo-btn" onclick="document.getElementById('galleryInput').click()">📁 Wybierz plik</button>
+            </div>
+
+            <!-- Ukryte pola wyboru (inputy) obsługujące urządzenia -->
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none" onchange="handleFileSelected(this)">
+            <input type="file" id="galleryInput" accept="image/*" style="display:none" onchange="handleFileSelected(this)">
+
+            <div id="fileInfo">Status: Nie wybrano żadnego zdjęcia.</div>
         </div>
 
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
@@ -170,6 +207,7 @@
 <script>
 const REPO = "pmenclewicz/przepisy";
 let currentMode = 'url';
+let selectedFileObject = null;
 
 function switchTab(mode) {
     currentMode = mode;
@@ -182,6 +220,20 @@ function switchTab(mode) {
     } else {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-image').classList.add('active');
+    }
+}
+
+function handleFileSelected(input) {
+    if (input.files && input.files[0]) {
+        selectedFileObject = input.files[0];
+        document.getElementById('fileInfo').innerHTML = `✅ <b>Wybrano zdjęcie:</b> ${selectedFileObject.name}`;
+        
+        // Resetujemy drugi input, żeby nie kolidowały
+        if (input.id === 'cameraInput') {
+            document.getElementById('galleryInput').value = '';
+        } else {
+            document.getElementById('cameraInput').value = '';
+        }
     }
 }
 
@@ -199,7 +251,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     btn.disabled = true;
     status.style.display = "block";
     status.className = "info";
-    status.innerHTML = "Optymalizacja zdjęcia i wysyłanie zlecenia...";
+    status.innerHTML = "Trwa optymalizacja zdjęcia i wysyłanie zlecenia...";
 
     let inputData = "";
     let inputType = currentMode;
@@ -213,14 +265,14 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
             return;
         }
     } else {
-        const fileInput = document.getElementById("recipeImage");
-        if (fileInput.files.length === 0) {
-            alert("Wybierz lub zrób zdjęcie przepisu!");
+        if (!selectedFileObject) {
+            alert("Najpierw zrób zdjęcie aparatem lub wybierz plik z galerii!");
             btn.disabled = false;
             status.style.display = "none";
             return;
         }
-        inputData = await resizeAndCompressImage(fileInput.files[0]);
+        // Kompresja obrazu zapobiegająca błędowi 422
+        inputData = await resizeAndCompressImage(selectedFileObject);
     }
 
     try {
@@ -243,13 +295,16 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         });
 
         if (!res.ok) {
-            throw new Error(`Błąd HTTP ${res.status}: Zbyt duży plik lub brak uprawnień tokena.`);
+            throw new Error(`Błąd HTTP ${res.status}: Nieprawidłowy token lub za duże dane.`);
         }
 
         status.className = "success";
         status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis. Za około 1–2 minuty odśwież stronę główną.";
         document.getElementById("recipeUrl").value = "";
-        document.getElementById("recipeImage").value = "";
+        selectedFileObject = null;
+        document.getElementById('cameraInput').value = '';
+        document.getElementById('galleryInput').value = '';
+        document.getElementById('fileInfo').innerHTML = "Status: Nie wybrano żadnego zdjęcia.";
 
     } catch (err) {
         status.className = "error";
@@ -259,6 +314,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     }
 });
 
+// Funkcja pomniejszająca i kompresująca zdjęcie przed wysyłką (eliminuje błąd 422)
 function resizeAndCompressImage(file) {
     return new Promise((resolve) => {
         const reader = new FileReader();
@@ -289,6 +345,8 @@ function resizeAndCompressImage(file) {
                 canvas.height = height;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
+                
+                // Zwraca skompresowany base64 gotowy do wysyłki
                 resolve(canvas.toDataURL('image/jpeg', 0.75));
             };
         };
