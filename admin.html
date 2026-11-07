@@ -183,7 +183,8 @@
                 <button type="button" class="photo-btn" onclick="document.getElementById('fileInput').click()">📁 Wybierz z galerii</button>
             </div>
 
-            <input type="file" id="cameraInput" accept="image/*" style="display:none" onchange="handleFileSelected(this)">
+            <!-- cameraInput ma teraz wymuszony atrybut capture="environment" -->
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none" onchange="handleFileSelected(this)">
             <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFileSelected(this)">
 
             <div id="fileInfo">Nie wybrano żadnego zdjęcia.</div>
@@ -257,7 +258,6 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
             status.style.display = "none";
             return;
         }
-        // Kompresujemy i zmniejszamy zdjęcie, aby zmieściło się w limicie GitHub API
         inputData = await resizeAndCompressImage(selectedFileObject);
     }
 
@@ -298,7 +298,6 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     }
 });
 
-// Funkcja pomniejszająca i kompresująca zdjęcie przed wysyłką
 function resizeAndCompressImage(file) {
     return new Promise((resolve) => {
         const reader = new FileReader();
@@ -329,8 +328,6 @@ function resizeAndCompressImage(file) {
                 canvas.height = height;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
-                
-                // Zwraca skompresowany base64 (JPEG, jakość 0.75)
                 resolve(canvas.toDataURL('image/jpeg', 0.75));
             };
         };
