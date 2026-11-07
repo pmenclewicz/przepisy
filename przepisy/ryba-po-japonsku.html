@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryba po japońsku</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c !important;
+        box-shadow: none !important;
+        padding: 18mm 15mm !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #fbf9f5;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2c2523;
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 800px;
+      padding: 35px 30px;
+      border: 2px solid #8b5e3c;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 1px solid #d4c5b9;
+      pointer-events: none;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #5c3a21;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+    }
+
+    .recipe-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 650px) {
+      .recipe-content {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 30px;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #734827;
+      border-bottom: 1px solid #d4c5b9;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 3px 0;
+      position: relative;
+      padding-left: 15px;
+      font-size: 14.5px;
+      border-bottom: 1px dotted #ede6df;
+      word-wrap: break-word;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .instructions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step {
+      font-size: 14.5px;
+      text-align: justify;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .step-number {
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>Ryba po japońsku</h1>
+
+    <div class="recipe-content">
+      <div class="ingredients-column">
+        <h2>Składniki</h2>
+        <ul>
+          <li>1 kg filetów</li>
+          <li>1,5 szklanki mąki</li>
+          <li>2 jajka</li>
+          <li>0,5 litra wody</li>
+          <li>2 szklanki wody</li>
+          <li>4 łyżki ketchupu</li>
+          <li>1/3 szkl. octu</li>
+          <li>1 przecier pomidorowy</li>
+          <li>2 łyżki cukru</li>
+          <li>sól</li>
+          <li>pieprz</li>
+          <li>vegeta</li>
+          <li>4 duże cebule</li>
+          <li>słoik papryki konserwowej</li>
+          <li>słoik ogórków konserwowych</li>
+        </ul>
+      </div>
+
+      <div class="instructions-column">
+        <h2>Sposób przygotowania</h2>
+        <div class="instructions-list">
+          <div class="step">
+            <span class="step-number">1.</span>
+            Rybę podzielić na kawałki, posypać vegetą i odstawić na 15 min.
+          </div>
+          <div class="step">
+            <span class="step-number">2.</span>
+            Z mąki, wody i jajek ubić ciasto naleśnikowe, kawałki ryby maczać w cieście i usmażyć.
+          </div>
+          <div class="step">
+            <span class="step-number">3.</span>
+            Z dwóch szklanek wody, ketchupu, koncentratu, octu, cukru, soli i pieprzu przygotować zalewę.
+          </div>
+          <div class="step">
+            <span class="step-number">4.</span>
+            Cebulę, paprykę i ogórki pokroić w kostkę.
+          </div>
+          <div class="step">
+            <span class="step-number">5.</span>
+            Do naczynia układać warstwami ryba warzywa ryba warzywa i zalać gorącą zalewą.
+          </div>
+          <div class="step">
+            <span class="step-number">6.</span>
+            Odstawić aby się przegryzło.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
