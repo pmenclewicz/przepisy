@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ogórki w zalewie curry</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 2px solid #8b5e3c;
+        box-shadow: none;
+        padding: 15mm;
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #fbf9f5;
+      color: #332a24;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      max-width: 750px;
+      margin: 20px auto;
+      background: #ffffff;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4bda8;
+      outline-offset: -6px;
+      padding: 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-radius: 2px;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #e8dfd5;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #5c3b1e;
+      margin: 0 0 8px 0;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+      color: #8b5e3c;
+      font-size: 1.2rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      background: #8b5e3c;
+      width: 40px;
+      margin: 0 10px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: #6b4423;
+      border-bottom: 1px solid #e8dfd5;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .ingredients-section,
+    .instructions-section {
+      margin-bottom: 25px;
+    }
+
+    ul.ingredients-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    ul.ingredients-list li {
+      padding: 6px 0;
+      border-bottom: 1px dashed #efe9e1;
+      display: flex;
+      align-items: baseline;
+      word-break: break-word;
+    }
+
+    ul.ingredients-list li::before {
+      content: "•";
+      color: #8b5e3c;
+      font-size: 1.2rem;
+      margin-right: 12px;
+      line-height: 1;
+    }
+
+    .instructions-content {
+      font-size: 1.05rem;
+      color: #3d322a;
+      text-align: justify;
+      line-height: 1.8;
+      background: #fdfaf6;
+      border-left: 3px solid #8b5e3c;
+      padding: 12px 18px;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header class="header">
+      <h1>Ogórki w zalewie curry</h1>
+      <div class="divider">❦</div>
+    </header>
+
+    <section class="ingredients-section">
+      <h2>Składniki</h2>
+      <ul class="ingredients-list">
+        <li>ok. 2,5 kg ogórków</li>
+        <li>4 szklanki wody</li>
+        <li>1 szklanka octu</li>
+        <li>2 łyżki soli</li>
+        <li>3 łyżeczki gorczycy</li>
+        <li>3 cebule</li>
+        <li>2 szklanki cukru</li>
+        <li>3 łyżeczki przyprawy curry</li>
+      </ul>
+    </section>
+
+    <section class="instructions-section">
+      <h2>Przygotowanie</h2>
+      <div class="instructions-content">
+        Zagotować zalewę. Ogórki obrać, pokroić wzdłuż. Pasteryzować 10-15 minut.
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
