@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jagodowy - Przepis</title>
+  <style>
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        padding: 15px !important;
+      }
+      .content-grid {
+        display: grid !important;
+        grid-template-columns: 0.9fr 1.1fr !important;
+        gap: 15px !important;
+      }
+      .recipe-image {
+        max-height: 220px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #fbf9f5;
+      color: #2c2c2c;
+      line-height: 1.5;
+      padding: 20px 10px;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #8b5e3c;
+      outline-offset: -6px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #e0d6c8;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #c0392b;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #1a1a1a;
+      font-weight: normal;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .meta-info {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #555;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .meta-info span {
+      margin: 0 5px;
+      color: #c0392b;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 25px;
+      }
+    }
+
+    .image-container {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .recipe-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid #e0d6c8;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      color: #c0392b;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 1px dotted #c0392b;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding-left: 0;
+      font-size: 0.95rem;
+    }
+
+    .ingredients-list li {
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 8px;
+      word-wrap: break-word;
+    }
+
+    .ingredients-list li::before {
+      content: "•";
+      color: #c0392b;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .instructions-list {
+      list-style-type: none;
+      counter-reset: step-counter;
+      padding-left: 0;
+      font-size: 0.92rem;
+    }
+
+    .instructions-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      word-wrap: break-word;
+      line-height: 1.45;
+    }
+
+    .instructions-list li::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      background-color: #c0392b;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="header">
+      <span class="badge">szybkie ciasto</span>
+      <h1>Jagodowy</h1>
+      <div class="meta-info">
+        CZAS: 30 MINUT <span>|</span> PORCJE: 10-12 <span>|</span> ŁATWE
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="left-column">
+        <div class="image-container">
+          <img class="recipe-image" src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80" alt="Sernik Jagodowy">
+        </div>
+
+        <h2 class="section-title">Składniki</h2>
+        <ul class="ingredients-list">
+          <li>250 g dowolnych herbatników</li>
+          <li>4 łyżki śmietany Mleczna Dolina</li>
+          <li>2 szklanki jagód lub borówek amerykańskich</li>
+          <li>650 g serka homogenizowanego o smaku waniliowym</li>
+          <li>4 łyżeczki żelatyny</li>
+          <li>cukier puder</li>
+          <li>ulubione zioła (np. mięta do dekoracji)</li>
+        </ul>
+      </div>
+
+      <div class="right-column">
+        <h2 class="section-title">Jak to zrobić?</h2>
+        <ol class="instructions-list">
+          <li>Żelatynę rozpuść w kilku (2-3) łyżkach gorącej wody.</li>
+          <li>Dokładnie zmiksuj owoce. Dodaj do nich serki waniliowe, śmietanę i dokładnie rozpuszczoną żelatynę. Wymieszaj masę, tak by składniki się połączyły. Wrzuć do niej także kilka całych owoców.</li>
+          <li>Spróbuj, jak smakuje, i ewentualnie dosłodź cukrem pudrem. Wstaw na 20 minut do lodówki.</li>
+          <li>Przygotuj tortownicę o średnicy 24 cm. Jej dno wyłóż herbatnikami; możesz je łamać, tak by powstał jednolity spód. Przełóż masę serowo-jagodową i wyrównaj łyżką.</li>
+          <li>Wstaw formę z sernikiem jagodowym do lodówki na minimum 4 godziny, aby masa dobrze stężała.</li>
+          <li>Przed podaniem udekoruj sernik całymi borówkami lub jagodami i ulubionymi ziołami.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
