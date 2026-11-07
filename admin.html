@@ -91,6 +91,36 @@
             display: block;
         }
 
+        .photo-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .photo-btn {
+            flex: 1;
+            background: #f4ede4;
+            color: #5c3a21;
+            border: 1px solid #d0c2b4;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .photo-btn:hover {
+            background: #ebdcd0;
+        }
+
+        #fileInfo {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+        }
+
         button.submit-btn {
             background: #8b5e3c;
             color: white;
@@ -136,7 +166,7 @@
     
     <div class="tab-buttons">
         <button type="button" class="tab-btn active" onclick="switchTab('url')">Z Linku WWW</button>
-        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęcia / Aparatu</button>
+        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęcia</button>
     </div>
 
     <form id="adminForm">
@@ -146,9 +176,19 @@
         </div>
 
         <div id="tab-image" class="tab-content">
-            <label for="recipeImage">Zrób zdjęcie przepisu lub wybierz z galerii:</label>
-            <!-- capture="environment" otwiera tylny aparat w telefonie -->
-            <input type="file" id="recipeImage" accept="image/*" capture="environment">
+            <label>Wybierz źródło przepisu:</label>
+            <div class="photo-options">
+                <!-- Otwiera bezpośrednio aparat -->
+                <button type="button" class="photo-btn" onclick="document.getElementById('cameraInput').click()">📸 Zrób zdjęcie</button>
+                <!-- Otwiera galerię / pliki -->
+                <button type="button" class="photo-btn" onclick="document.getElementById('galleryInput').click()">📁 Wybierz plik</button>
+            </div>
+
+            <!-- Ukryte inputy obsługujące urządzenie -->
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none" onchange="handleFileSelected(this)">
+            <input type="file" id="galleryInput" accept="image/*" style="display:none" onchange="handleFileSelected(this)">
+
+            <div id="fileInfo">Nie wybrano żadnego zdjęcia.</div>
         </div>
 
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
@@ -162,6 +202,7 @@
 <script>
 const REPO = "pmenclewicz/przepisy";
 let currentMode = 'url';
+let selectedFileObject = null;
 
 function switchTab(mode) {
     currentMode = mode;
@@ -174,6 +215,13 @@ function switchTab(mode) {
     } else {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('tab-image').classList.add('active');
+    }
+}
+
+function handleFileSelected(input) {
+    if (input.files && input.files[0]) {
+        selectedFileObject = input.files[0];
+        document.getElementById('fileInfo').innerHTML = `<b>Wybrano:</b> ${selectedFileObject.name}`;
     }
 }
 
@@ -205,14 +253,13 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
             return;
         }
     } else {
-        const fileInput = document.getElementById("recipeImage");
-        if (fileInput.files.length === 0) {
-            alert("Zrób zdjęcie lub wybierz plik!");
+        if (!selectedFileObject) {
+            alert("Zrób zdjęcie lub wybierz plik z galerii!");
             btn.disabled = false;
             status.style.display = "none";
             return;
         }
-        inputData = await toBase64(fileInput.files[0]);
+        inputData = await toBase64(selectedFileObject);
     }
 
     try {
@@ -239,9 +286,10 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         }
 
         status.className = "success";
-        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis ze zdjęcia. Za około 1–2 minuty odśwież stronę główną.";
+        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis. Za około 1–2 minuty odśwież stronę główną.";
         document.getElementById("recipeUrl").value = "";
-        document.getElementById("recipeImage").value = "";
+        selectedFileObject = null;
+        document.getElementById('fileInfo').innerHTML = "Nie wybrano żadnego zdjęcia.";
 
     } catch (err) {
         status.className = "error";
