@@ -5,11 +5,12 @@ import base64
 import requests
 from datetime import datetime
 
-MODEL_NAME = "gemini-3.5-flash"
+MODEL_NAME = "gemini-2.5-flash"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 INPUT_TYPE = os.environ.get("INPUT_TYPE", "url")
 RECIPE_INPUT = os.environ.get("RECIPE_INPUT")
+CUSTOM_TITLE = os.environ.get("CUSTOM_TITLE", "").strip()
 
 if not GEMINI_API_KEY or not RECIPE_INPUT:
     raise ValueError("Brak wymaganych zmiennych środowiskowych GEMINI_API_KEY lub RECIPE_INPUT!")
@@ -29,7 +30,7 @@ def slugify(text):
 prompt_base = """Przeanalizuj dostarczone materiały (link lub zdjęcie przepisu) i wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML dla strony książki kucharskiej.
 Wymagania:
 1. **Responsywność mobilna i A4**: Strona musi wyglądać świetnie na telefonach (pełna responsywność, płynne skalowanie) oraz idealnie mieścić się na **jednej stronie A4** po wydrukowaniu. Użyj stylów CSS: `@page { size: A4 portrait; margin: 10mm; }`.
-2. **Bezpieczne szerokości**: Używaj elastycznych kontenerów (`max-width: 100%`, `box-sizing: border-box`), obrazków z `max-width: 100%; height: auto;` oraz unikaj sztywnych szerokości w pikselach typu `width: 800px` (zamiast tego stosuj `max-width: 800px; width: 100%;`). Teksty i listy składników muszą się zawijać i nigdy nie wychodzić poza ekran telefonu.
+2. **Bezpieczne szerokości**: Używaj elastycznych kontenerów (`max-width: 100%`, `box-sizing: border-box`), obrazków z `max-width: 100%; height: auto;` oraz unikaj sztywnych szerokości w pikselach. Teksty i listy składników muszą się zawijać i nigdy nie wychodzić poza ekran telefonu.
 3. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
 4. Dołącz ładne zdjęcie potrawy (jeśli pochodzi z linku lub ze zdjęcia, wykorzystaj pasujący link graficzny lub zdekodowane zdjęcie).
 5. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
@@ -41,6 +42,10 @@ Wymagania:
      </div>
 6. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
 7. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
+
+# Jeśli użytkownik podał własną nazwę, instruujemy Gemini, aby użyło jej jako głównego nagłówka H1
+if CUSTOM_TITLE:
+    prompt_base += f"\n8. **WAŻNE**: Główne nagłówek H1 na tej stronie HTML MUSI brzmieć dokładnie: '{CUSTOM_TITLE}'."
 
 contents_payload = []
 
@@ -79,8 +84,12 @@ html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
 html_code = re.sub(r'^```html\s*', '', html_code, flags=re.I)
 html_code = re.sub(r'```\s*$', '', html_code).strip()
 
-title_match = re.search(r'<h1[^>]*>(.*?)</h1>', html_code, re.I | re.S)
-recipe_title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip() if title_match else "Nowy Przepis"
+# Ustalanie ostatecznego tytułu do pliku recipes.json
+if CUSTOM_TITLE:
+    recipe_title = CUSTOM_TITLE
+else:
+    title_match = re.search(r'<h1[^>]*>(.*?)</h1>', html_code, re.I | re.S)
+    recipe_title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip() if title_match else "Nowy Przepis"
 
 file_slug = slugify(recipe_title) or f"przepis-{int(datetime.now().timestamp())}"
 os.makedirs("przepisy", exist_ok=True)
