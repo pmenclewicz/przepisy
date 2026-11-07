@@ -5,7 +5,7 @@ import base64
 import requests
 from datetime import datetime
 
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3.6-flash"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 INPUT_TYPE = os.environ.get("INPUT_TYPE", "url")
@@ -28,10 +28,10 @@ def slugify(text):
 
 prompt_base = """Przeanalizuj dostarczone materiały (link lub zdjęcie przepisu) i wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML dla strony książki kucharskiej.
 Wymagania:
-1. Strona ma być zaprojektowana tak, aby idealnie mieściła się na **jednej stronie A4** po wydrukowaniu (użyj dedykowanych stylów CSS: @page { size: A4 portrait; margin: 10mm; }).
+1. Strona ma być zaprojektowana tak, aby idealnie mieściła się na **jednej stronie A4** po wydrukowaniu (użyj dedykovanych stylów CSS: @page { size: A4 portrait; margin: 10mm; }).
 2. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
 3. Dołącz ładne zdjęcie potrawy (jeśli pochodzi z linku lub ze zdjęcia, wykorzystaj pasujący link graficzny lub zdekodowane zdjęcie).
-4. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w<body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
+4. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
    - W sekcji <style> dodaj: `@media print { .no-print { display: none; } }`
    - W sekcji <body> (jako pierwszy element) dodaj pływający panel:
      <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
@@ -111,4 +111,4 @@ recipes.insert(0, new_entry)
 with open(recipes_file, "w", encoding="utf-8") as f:
     json.dump(recipes, f, ensure_ascii=False, indent=2)
 
-print(f"Pomyślnie wygenerowano przepis: '{recipe_title}' w pliku {html_file_path}")
+print(f"Pomyślnie wygenerowano przepis: '{recipe_title}' in {html_file_path}")
