@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sernik z czekoladą</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        @media print { 
+            .no-print { 
+                display: none !important; 
+            }
+            body {
+                background: #fff !important;
+                padding: 0 !important;
+            }
+            .recipe-card {
+                box-shadow: none !important;
+                border: 2px solid #8b5e3c !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 10mm !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        @page { 
+            size: A4 portrait; 
+            margin: 10mm; 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            background-color: #f7f3ed;
+            color: #332c27;
+            line-height: 1.5;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .recipe-card {
+            background: #fffdfa;
+            width: 100%;
+            max-width: 800px;
+            border: 2px solid #8b5e3c;
+            outline: 1px solid #8b5e3c;
+            outline-offset: -6px;
+            padding: 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Nagłówek */
+        .header {
+            text-align: center;
+            border-bottom: 2px double #8b5e3c;
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #5c3a21;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .meta-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: #735238;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-item:not(:last-child)::after {
+            content: "|";
+            margin-left: 12px;
+            color: #c18c5d;
+        }
+
+        /* Układ dwukolumnowy */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 680px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .meta-item:not(:last-child)::after {
+                display: none;
+            }
+            .meta-bar {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        /* Zdjęcie potrawy */
+        .recipe-image-container {
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #d4a373;
+            padding: 4px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+
+        .recipe-image {
+            width: 100%;
+            max-width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 2px;
+            display: block;
+        }
+
+        /* Sekcje */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: #8b5e3c;
+            border-bottom: 1px solid #d4a373;
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Składniki */
+        .ingredients-section {
+            background-color: #faf4ed;
+            padding: 12px 15px;
+            border-radius: 4px;
+            border-left: 3px solid #8b5e3c;
+        }
+
+        .ingredients-list {
+            list-style-type: none;
+        }
+
+        .ingredients-list li {
+            padding: 3px 0;
+            border-bottom: 1px dashed #e6d7c3;
+            font-size: 0.88rem;
+            word-wrap: break-word;
+        }
+
+        .ingredients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .section-subtitle {
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            color: #5c3a21;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        /* Instrukcja przygotowania */
+        .steps-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 42px;
+            margin-bottom: 14px;
+            font-size: 0.89rem;
+            line-height: 1.45;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: #8b5e3c;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-size: 1.05rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Widget drukowania i powrotu -->
+    <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+      <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+      <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+    </div>
+
+    <main class="recipe-card">
+        <header class="header">
+            <h1>Sernik z czekoladą</h1>
+            <div class="meta-bar">
+                <span class="meta-item">⏱️ Czas: 30 min (+ 1h pieczenia)</span>
+                <span class="meta-item">🍰 Porcje: 16</span>
+                <span class="meta-item">👨‍🍳 Średnio trudne</span>
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <!-- Kolumna lewa: Zdjęcie i Składniki -->
+            <section class="left-column">
+                <div class="recipe-image-container">
+                    <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80" alt="Sernik z czekoladą" class="recipe-image">
+                </div>
+
+                <div class="ingredients-section">
+                    <h2>Składniki</h2>
+                    <ul class="ingredients-list">
+                        <li>1 kg zmielonego białego sera</li>
+                        <li>6 jajek (np. Ale Jaja M)</li>
+                        <li>2,5 szklanki cukru</li>
+                        <li>130 g masła (np. Ekstra Mleczna Dolina)</li>
+                        <li>2 łyżki mąki pszennej</li>
+                        <li>2 łyżki mąki ziemniaczanej</li>
+                        <li>1 opakowanie cukru wanilinowego</li>
+                        <li>garść rodzynków</li>
+                    </ul>
+
+                    <div class="section-subtitle">Dodatkowo (dekoracja i forma):</div>
+                    <ul class="ingredients-list">
+                        <li>100 g wiórków kokosowych</li>
+                        <li>1 tabliczka białej czekolady</li>
+                        <li>1 tabliczka gorzkiej czekolady</li>
+                        <li>odrobina masła i bułka tarta do tortownicy</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Kolumna prawa: Krok po kroku -->
+            <section class="right-column">
+                <h2>Jak to zrobić?</h2>
+                <ol class="steps-list">
+                    <li class="step-item">
+                        Ubij żółtka z cukrem, tak by powstała puszysta masa. Dodaj mąkę pszenną i ziemniaczaną oraz cukier wanilinowy. Biały ser trzykrotnie zmiel w maszynce. Białka ubij na sztywną pianę.
+                    </li>
+                    <li class="step-item">
+                        Dodaj do masy jajecznej zmielony biały ser i wymieszaj. Masło rozpuść, przestudź, wlej (po trochu) do masy serowej i wymieszaj. Rodzynki zalej ciepłą wodą, poczekaj, aż napęcznieją, odsącz i dodaj do masy serowej.
+                    </li>
+                    <li class="step-item">
+                        Dodaj pianę z białek i delikatnie wymieszaj. Tortownicę wysmaruj masłem i posyp bułką tartą. Przełóż do niej masę serową i piecz około godziny w temperaturze 180°C. Rozpuść białą czekoladę i polej nią ostudzony sernik. Boki posyp wiórkami kokosowymi, a wierzch startą gorzką czekoladą.
+                    </li>
+                </ol>
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,5 +1,11 @@
 [
   {
+    "id": "sernik-z-czekolada",
+    "title": "Sernik z czekoladą",
+    "file": "przepisy/sernik-z-czekolada.html",
+    "date": "2026-11-07"
+  },
+  {
     "id": "focaccia",
     "title": "Focaccia",
     "file": "przepisy/focaccia.html",
