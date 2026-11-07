@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szybka babka pomarańczowa na oleju</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #c9b99a !important;
+        padding: 18mm 15mm !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      .steps ol li {
+        break-inside: avoid;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f5f1eb;
+      font-family: 'Montserrat', sans-serif;
+      color: #3b322a;
+      line-height: 1.5;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .recipe-card {
+      background-color: #fffefb;
+      width: 100%;
+      max-width: 820px;
+      padding: 30px;
+      border: 1px solid #decbb7;
+      box-shadow: 0 4px 15px rgba(90, 70, 50, 0.08);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border: 1px solid #ede1d1;
+      pointer-events: none;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #b87a4b;
+      position: relative;
+    }
+
+    .category {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b87a4b;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.1rem;
+      color: #4a321f;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .meta-details {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.85rem;
+      color: #7d6b5c;
+      font-style: italic;
+    }
+
+    .meta-details span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .recipe-card {
+        padding: 20px 15px;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+
+    .image-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid #e0d1c1;
+      margin-bottom: 18px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #633a1e;
+      border-bottom: 1px dashed #d1bca7;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ingredients ul {
+      list-style-type: none;
+    }
+
+    .ingredients li {
+      padding: 6px 0;
+      border-bottom: 1px dotted #e8ded2;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.9rem;
+    }
+
+    .ingredients li span.ingredient-name {
+      font-weight: 500;
+      color: #3f3630;
+      padding-right: 10px;
+    }
+
+    .ingredients li span.ingredient-qty {
+      font-weight: 600;
+      color: #a05a2c;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .steps ol {
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: #423b35;
+    }
+
+    .steps li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+      padding-left: 4px;
+    }
+
+    .steps li::marker {
+      color: #b87a4b;
+      font-weight: bold;
+    }
+
+    .recipe-footer {
+      border-top: 1px solid #ebd9c8;
+      padding-top: 10px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #9c897a;
+    }
+
+    .recipe-tip {
+      background-color: #faf4ed;
+      border-left: 3px solid #d49a6a;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: #665241;
+      margin-top: 12px;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header>
+      <div class="category">Przepis Domowy • Desery</div>
+      <h1>Szybka babka pomarańczowa na oleju</h1>
+      <div class="meta-details">
+        <span>⏱️ <strong>Czas:</strong> &gt; 60 min (pieczenie 50 min)</span>
+        <span>👥 <strong>Porcje:</strong> 5–6 osób</span>
+        <span>🍞 <strong>Forma:</strong> keksówka 25 cm</span>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <div class="column-left">
+        <div class="image-container">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Szybka babka pomarańczowa na oleju" loading="lazy">
+        </div>
+
+        <section class="ingredients">
+          <h2 class="section-title">Składniki</h2>
+          <ul>
+            <li>
+              <span class="ingredient-name">Mąka pszenna</span>
+              <span class="ingredient-qty">2 szklanki</span>
+            </li>
+            <li>
+              <span class="ingredient-name">Jajka</span>
+              <span class="ingredient-qty">3 sztuki</span>
+            </li>
+            <li>
+              <span class="ingredient-name">Cukier</span>
+              <span class="ingredient-qty">¾ szklanki</span>
+            </li>
+            <li>
+              <span class="ingredient-name">Olej rzepakowy</span>
+              <span class="ingredient-qty">½ szklanki</span>
+            </li>
+            <li>
+              <span class="ingredient-name">Sok wyciśnięty z pomarańczy</span>
+              <span class="ingredient-qty">½ szklanki</span>
+            </li>
+            <li>
+              <span class="ingredient-name">Skórka otarta</span>
+              <span class="ingredient-qty">z 1 pomarańczy</span>
+            </li>
+            <li>
+              <span class="ingredient-name">Proszek do pieczenia</span>
+              <span class="ingredient-qty">1 łyżeczka z górką</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="column-right">
+        <section class="steps">
+          <h2 class="section-title">Sposób przygotowania</h2>
+          <ol>
+            <li>Cukier wsypujemy do misy robota, dodajemy 3 całe jajka i ubijamy na puszystą masę do całkowitego rozpuszczenia cukru.</li>
+            <li>Do ubitych jajek dodajemy świeżo wyciśnięty sok z pomarańczy, otartą skórkę oraz olej rzepakowy. Całość krótko łączymy na małych obrotach robota kuchennego.</li>
+            <li>Mąkę przesiewamy z proszkiem do pieczenia. Włączamy robot i wsypujemy ją stopniowo, partiami, do masy jajeczno-olejowej.</li>
+            <li>Wszystkie składniki dokładnie łączymy trzepaczką na gładkie, jednolite ciasto.</li>
+            <li>Keksówkę o długości 25 cm wykładamy papierem do pieczenia i wylewamy do niej przygotowaną masę.</li>
+            <li>Wstawiamy do piekarnika nagrzanego do temperatury 180°C i pieczemy przez około 50 minut (do tzw. suchego patyczka).</li>
+          </ol>
+        </section>
+
+        <div class="recipe-tip">
+          💡 <strong>Wskazówka podania:</strong> Po ostudzeniu babkę można tradycyjnie oprószyć obficie cukrem pudrem lub udekorować lukrem utartym z cukru pudru i soku z pomarańczy.
+        </div>
+      </div>
+    </div>
+
+    <footer class="recipe-footer">
+      <span>Autor przepisu: <strong>Helena-01</strong></span>
+      <span>Domowy Notatnik Kulinarny</span>
+    </footer>
+  </main>
+
+</body>
+</html>
