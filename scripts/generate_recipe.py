@@ -1,16 +1,18 @@
 import os
 import re
 import json
+import base64
 import requests
 from datetime import datetime
 
-MODEL_NAME = "gemini-3.5-flash-lite"
+MODEL_NAME = "gemini-2.5-flash"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-RECIPE_URL = os.environ.get("RECIPE_URL")
+INPUT_TYPE = os.environ.get("INPUT_TYPE", "url")
+RECIPE_INPUT = os.environ.get("RECIPE_INPUT")
 
-if not GEMINI_API_KEY or not RECIPE_URL:
-    raise ValueError("Brak wymaganego GEMINI_API_KEY lub RECIPE_URL w zmiennych środowiskowych!")
+if not GEMINI_API_KEY or not RECIPE_INPUT:
+    raise ValueError("Brak wymaganych zmiennych środowiskowych GEMINI_API_KEY lub RECIPE_INPUT!")
 
 def slugify(text):
     text = text.lower().strip()
@@ -22,29 +24,54 @@ def slugify(text):
         text = text.replace(k, v)
     text = re.sub(r'\s+', '-', text)
     text = re.sub(r'[^\w\-]+', '', text)
-    return re.sub(r'\-\-+', '-', text)
+    return re.sub(r'\-+', '-', text)
 
-prompt_text = f"""Pobierz i przeanalizuj przepis ze strony: {RECIPE_URL}.
-Wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML.
+prompt_base = """Przeanalizuj dostarczone materiały (link lub zdjęcie przepisu) i wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML dla strony książki kucharskiej.
 Wymagania:
-1. Kieruj się promptem użytkownika: "Przygotuj mi przepis do wydrukowania na jednej kartce a4, dodaj zdjęcie aby kartka wyglądała jak z książki kucharskiej, przygotuj pdf".
-2. Strona musi zawierać dedykowane style CSS do druku (@page {{ size: A4 portrait; margin: 10mm; }}), tak aby po otwarciu i wybraniu Druku (Ctrl+P / Zapisz jako PDF) cały przepis mieścił się idealnie na JEDNEJ stronie A4.
-3. Styl ma przypominać elegancką stronę z tradycyjnej książki kucharskiej (ładne nagłówki, estetyczne marginesy, czytelne składniki, krok po kroku).
-4. Dołącz ładne zdjęcie potrawy (znajdź pasujący link lub z oryginalnej strony).
-5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez zbędnych komentarzy czy znaczników typu ```html na początku/końcu. Kod powinieneś zacząć od <!DOCTYPE html>.
-6. Pierwszy znacznik <h1> powinien zawierać pełny tytuł przepisu."""
+1. Strona ma być zaprojektowana tak, aby idealnie mieściła się na **jednej stronie A4** po wydrukowaniu (użyj dedykowanych stylów CSS: @page { size: A4 portrait; margin: 10mm; }).
+2. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
+3. Dołącz ładne zdjęcie potrawy (jeśli pochodzi z linku lub ze zdjęcia, wykorzystaj pasujący link graficzny lub zdekodowane zdjęcie).
+4. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w<body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
+   - W sekcji <style> dodaj: `@media print { .no-print { display: none; } }`
+   - W sekcji <body> (jako pierwszy element) dodaj pływający panel:
+     <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+       <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+       <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+     </div>
+5. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
+6. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
+
+contents_payload = []
+
+if INPUT_TYPE == "image":
+    header, encoded = RECIPE_INPUT.split(",", 1)
+    mime_type = header.split(";")[0].replace("data:", "")
+    
+    contents_payload = [
+        {"text": prompt_base},
+        {
+            "inline_data": {
+                "mime_type": mime_type,
+                "data": encoded
+            }
+        }
+    ]
+else:
+    prompt_text = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
+    contents_payload = [{"text": prompt_text}]
 
 domain = "generativelanguage.googleapis.com"
 endpoint = f"/v1beta/models/{MODEL_NAME}:generateContent"
 url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY}"
 
 payload = {
-    "contents": [{"parts": [{"text": prompt_text}]}],
-    "tools": [{"google_search": {}}]
+    "contents": [{"parts": contents_payload}],
+    "tools": [{"google_search": {}}] if INPUT_TYPE == "url" else []
 }
 
 response = requests.post(url, json=payload)
-response.raise_for_status()
+if not response.ok:
+    raise RuntimeError(f"Błąd API Gemini ({response.status_code}): {response.text}")
 
 res_data = response.json()
 html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
@@ -69,7 +96,7 @@ if os.path.exists(recipes_file):
         with open(recipes_file, "r", encoding="utf-8") as f:
             recipes = json.load(f)
     except Exception:
-        pass
+        recipes = []
 
 new_entry = {
     "id": file_slug,
@@ -78,6 +105,7 @@ new_entry = {
     "date": datetime.now().strftime("%Y-%m-%d")
 }
 
+recipes = [r for r in recipes if r["id"] != file_slug]
 recipes.insert(0, new_entry)
 
 with open(recipes_file, "w", encoding="utf-8") as f:
