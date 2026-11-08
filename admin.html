@@ -199,10 +199,11 @@
         <label for="customTitle">Własna nazwa przepisu (opcjonalnie):</label>
         <input type="text" id="customTitle" placeholder="Zostaw puste, aby AI samo wykryło nazwę">
 
-        <label for="apiKeyType">Wybór klucza AI (Gemini):</label>
+        <label for="apiKeyType">Wybór modelu / klucza AI:</label>
         <select id="apiKeyType">
-            <option value="paid" selected>Płatny</option>
-            <option value="free">Darmowy</option>
+            <option value="paid">Płatny Gemini</option>
+            <option value="free" selected>Darmowy Gemini</option>
+            <option value="groq">Darmowy Groq</option>
         </select>
 
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
