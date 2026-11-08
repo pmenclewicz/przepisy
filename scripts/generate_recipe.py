@@ -7,12 +7,10 @@ from datetime import datetime
 
 MODEL_NAME = "gemini-3.8-flash"
 
-# Pobieramy oba klucze oraz wybór użytkownika
 PAID_KEY = os.environ.get("GEMINI_API_KEY")
 FREE_KEY = os.environ.get("GEMINI_API_KEY_DARMOWY")
 API_KEY_TYPE = os.environ.get("API_KEY_TYPE", "paid")
 
-# Wybieramy odpowiedni klucz bazując na wyborze w panelu
 if API_KEY_TYPE == "free":
     GEMINI_API_KEY = FREE_KEY
     print("Używam darmowego klucza API (GEMINI_API_KEY_DARMOWY)")
@@ -25,7 +23,7 @@ RECIPE_INPUT = os.environ.get("RECIPE_INPUT")
 CUSTOM_TITLE = os.environ.get("CUSTOM_TITLE", "").strip()
 
 if not GEMINI_API_KEY or not RECIPE_INPUT:
-    raise ValueError(f"Brak wybranego klucza API (typ: {API_KEY_TYPE}) lub danych wejściowych przepisów!")
+    raise ValueError(f"Brak wybranego klucza API (typ: {API_KEY_TYPE}) lub danych wejściowych!")
 
 def slugify(text):
     text = text.lower().strip()
