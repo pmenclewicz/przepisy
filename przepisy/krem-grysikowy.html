@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krem grysikowy</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 40px 15px;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #d4c5b9;
+      border-radius: 4px;
+      padding: 40px 45px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px solid #e8ded4;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #5c3a21;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #d4c5b9;
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 19px;
+      color: #7a4b28;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      border-bottom: 1px dashed #dcd3ca;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 25px;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    p {
+      text-align: justify;
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+  <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+  <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+</div>
+
+<div class="recipe-card">
+  <h1>Krem grysikowy</h1>
+
+  <h2>Składniki na krem grysikowy:</h2>
+  <ul>
+    <li>500 ml mleka</li>
+    <li>4 łyżki kaszy manny (błyskawicznej)</li>
+    <li>200 g masła</li>
+    <li>130 g cukru pudru</li>
+  </ul>
+
+  <h2>Wykonanie kremu:</h2>
+  <p>
+    W rondelku mocno podgrzewamy mleko, następnie dodajemy kaszę manną i gotujemy przez około 3 min. Ściągamy z gazu i odstawiamy do całkowitego wystudzenia. W misce ucieramy masło lub margarynę na puszystą masę. Dodajemy cukier puder i dalej ucieramy do połączenia się składników. Następnie dodajemy wystudzoną kaszę manną i miksujemy wszystko, by powstał gładki karem. Krem dzielimy na dwie równe części.
+  </p>
+</div>
+
+</body>
+</html>
