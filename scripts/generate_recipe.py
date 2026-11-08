@@ -7,13 +7,25 @@ from datetime import datetime
 
 MODEL_NAME = "gemini-3.8-flash"
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+# Pobieramy oba klucze oraz wybór użytkownika
+PAID_KEY = os.environ.get("GEMINI_API_KEY")
+FREE_KEY = os.environ.get("GEMINI_API_KEY_DARMOWY")
+API_KEY_TYPE = os.environ.get("API_KEY_TYPE", "paid")
+
+# Wybieramy odpowiedni klucz bazując na wyborze w panelu
+if API_KEY_TYPE == "free":
+    GEMINI_API_KEY = FREE_KEY
+    print("Używam darmowego klucza API (GEMINI_API_KEY_DARMOWY)")
+else:
+    GEMINI_API_KEY = PAID_KEY
+    print("Używam płatnego klucza API (GEMINI_API_KEY)")
+
 INPUT_TYPE = os.environ.get("INPUT_TYPE", "url")
 RECIPE_INPUT = os.environ.get("RECIPE_INPUT")
 CUSTOM_TITLE = os.environ.get("CUSTOM_TITLE", "").strip()
 
 if not GEMINI_API_KEY or not RECIPE_INPUT:
-    raise ValueError("Brak wymaganych zmiennych środowiskowych GEMINI_API_KEY lub RECIPE_INPUT!")
+    raise ValueError(f"Brak wybranego klucza API (typ: {API_KEY_TYPE}) lub danych wejściowych przepisów!")
 
 def slugify(text):
     text = text.lower().strip()
@@ -51,7 +63,6 @@ if CUSTOM_TITLE:
 contents_payload = [{"text": prompt_base}]
 
 if INPUT_TYPE == "image":
-    # Rozdzielamy obrazy po separatorze |||
     image_parts = RECIPE_INPUT.split("|||")
     for img_data in image_parts:
         if not img_data.strip():
@@ -103,15 +114,10 @@ recipes = []
 
 if os.path.exists(recipes_file):
     try:
-        with open(recipes_file, "r", encoding="utf-8`"):
+        with open(recipes_file, "r", encoding="utf-8") as f:
             recipes = json.load(f)
     except Exception:
-        # Awaryjny odczyt, gdyby wcięło encję pliku
-        try:
-            with open(recipes_file, "r", encoding="utf-8") as f:
-                recipes = json.load(f)
-        except Exception:
-            recipes = []
+        recipes = []
 
 new_entry = {
     "id": file_slug,
