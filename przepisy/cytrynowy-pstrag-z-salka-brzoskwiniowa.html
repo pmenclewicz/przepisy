@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cytrynowy pstrąg z sałką brzoskwiniową</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10mm;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .recipe-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #f4f1ea;
+            color: #333;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .recipe-container {
+            background-color: #fff;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            border: 1px solid #dcdcdc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8b5e3c;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ingredients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .ingredient-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 15px;
+            word-wrap: break-word;
+        }
+
+        li::before {
+            content: "•";
+            color: #d4af37;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-style: italic;
+            color: #555;
+            text-align: justify;
+        }
+
+        .description p {
+            margin-bottom: 10px;
+        }
+
+        .description strong {
+            font-style: normal;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .recipe-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .ingredients-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+        <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+        <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+    </div>
+
+    <div class="recipe-container">
+        <h1>Cytrynowy pstrąg z sałką brzoskwiniową</h1>
+
+        <div class="ingredients-grid">
+            <div class="ingredient-group">
+                <div class="section-title">Ryba:</div>
+                <ul>
+                    <li>2 średnie pstrągi</li>
+                    <li>gałązka kopru</li>
+                    <li>cytryna</li>
+                    <li>łyżka mąki</li>
+                    <li>łyżka masła</li>
+                    <li>olej do smażenia</li>
+                </ul>
+            </div>
+            <div class="ingredient-group">
+                <div class="section-title">Sałatka:</div>
+                <ul>
+                    <li>4 pątki brzoskwini</li>
+                    <li>2 suski</li>
+                    <li>1/2 czerwonej cebuli</li>
+                    <li>1/2 pomidora</li>
+                    <li>łyżka pestek dyni</li>
+                    <li>kolendry (lub rzełki, pietruszki)</li>
+                </ul>
+            </div>
+            <div class="ingredient-group">
+                <div class="section-title">Sos:</div>
+                <ul>
+                    <li>łyżka miodu</li>
+                    <li>sok z 1/2 cytryny</li>
+                    <li>odrobina soli i pieprzu</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="description">
+            <p>
+                Pstrąga delikatnie posmaruj solą, sokiem cytrynowym i posyp mąką. Włóż do ryby gałązkę kopru i cytrynę. Smaż na maśle z mąką z każdej strony.
+            </p>
+            <p>
+                <strong>Sałatka:</strong> Brzoskwinie pokrój w 0,5 cm kostkę, dodaj do nich cebulę – pokrojoną w wąziutkie kostkę – oraz kolendrę lub rzełkę pietruszkę. Do sałatki dodajemy pomidora pokrojonego w kostkę, sól i sok z cytryny, a następnie doprawiamy odrobiną soli i pieprzu.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
