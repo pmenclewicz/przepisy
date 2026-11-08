@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papryki faszerowane chili con carne</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-container {
+        border: 1px solid #c4b5a5 !important;
+        box-shadow: none !important;
+        padding: 20px !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2c2523;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.5;
+    }
+
+    .recipe-container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fffdfa;
+      border: 2px solid #8b5e3c;
+      outline: 4px double #8b5e3c;
+      outline-offset: -8px;
+      padding: 35px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #d4c4b5;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #6a241e;
+      margin: 0 0 8px 0;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .recipe-author {
+      font-style: italic;
+      color: #7d6b5c;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .recipe-content {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #decbbd;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .ingredients ul {
+      list-style-type: square;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .ingredients li {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      word-wrap: break-word;
+    }
+
+    .instructions ol {
+      padding-left: 22px;
+      margin: 0;
+    }
+
+    .instructions li {
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+      text-align: justify;
+      line-height: 1.45;
+    }
+
+    .serving-note {
+      margin-top: 18px;
+      padding: 10px 14px;
+      background: #fdf6f0;
+      border-left: 3px solid #8b5e3c;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-container {
+        padding: 24px 16px;
+        outline-offset: -5px;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+
+      .recipe-content {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-container">
+    <header>
+      <h1>PAPRYKI FASZEROWANE CHILI CON CARNE</h1>
+      <p class="recipe-author">Przepis specjalnie dla Klientów Biedronki przygotowała Agata Jędraszczak</p>
+    </header>
+
+    <div class="recipe-content">
+      <section class="ingredients">
+        <h2>Składniki</h2>
+        <ul>
+          <li>opakowanie mięsa mielonego Kraina Mięsa</li>
+          <li>cebula</li>
+          <li>2 ząbki czosnku</li>
+          <li>4 duże czerwone papryki</li>
+          <li>puszka czerwonej fasoli Nasza Spiżarnia</li>
+          <li>½ puszki kukurydzy Nasza Spiżarnia</li>
+          <li>ostra papryka</li>
+          <li>sól, pieprz</li>
+          <li>oliwa z oliwek Casa de Azeite</li>
+          <li>do podania: ryż</li>
+        </ul>
+      </section>
+
+      <section class="instructions">
+        <h2>Sposób przygotowania</h2>
+        <ol>
+          <li>Na oliwie zeszklij drobno pokrojoną cebulę i czosnek. Dodaj mięso, usmaż. Dopraw do smaku.</li>
+          <li>Do mięsa dodaj odsączoną z zalewy fasolę i kukurydzę oraz pomidory. Wymieszaj, dodaj ostrą paprykę.</li>
+          <li>Z papryk odkrój górną część, a następnie napełnij mięsnym farszem. Piecz w 180°C przez ok. 40 min., aż papryka stanie się miękka. Podawaj z ryżem.</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>
