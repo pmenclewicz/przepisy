@@ -82,7 +82,7 @@ if API_KEY_TYPE == "groq":
         "Content-Type": "application/json"
     }
     
-    groq_url = "[https://api.groq.com](https://api.groq.com)" + "/openai/v1/chat/completions"
+    groq_url = "https://" + "api.groq.com" + "/openai/v1/chat/completions"
     response = requests.post(groq_url, json=payload, headers=headers)
     if not response.ok:
         raise RuntimeError(f"Błąd API Groq ({response.status_code}): {response.text}")
@@ -121,7 +121,7 @@ else:
         contents_payload[0]["text"] = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
 
     MODEL_NAME = "gemini-3.8-flash"
-    gemini_url = "[https://generativelanguage.googleapis.com](https://generativelanguage.googleapis.com)" + f"/v1beta/models/{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
+    gemini_url = "https://" + "generativelanguage.googleapis.com" + f"/v1beta/models/{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
 
     payload = {"contents": [{"parts": contents_payload}]}
     response = requests.post(gemini_url, json=payload)
