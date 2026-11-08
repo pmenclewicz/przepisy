@@ -337,7 +337,7 @@ function startStatusPolling(token) {
     let checksCount = 0;
     statusCheckInterval = setInterval(async () => {
         checksCount++;
-        if (checksCount > 80) { // Zwiększyłem czas oczekiwania do ok. 6-7 minut max
+        if (checksCount > 60) {
             clearInterval(statusCheckInterval);
             document.getElementById("btn").disabled = false;
             return;
@@ -352,8 +352,8 @@ function startStatusPolling(token) {
             const data = await res.json();
             if (data.workflow_runs && data.workflow_runs.length > 0) {
                 const latestRun = data.workflow_runs[0];
-                const runStatus = latestRun.status; // 'queued', 'in_progress', 'completed'
-                const conclusion = latestRun.conclusion; // 'success', 'failure', etc.
+                const runStatus = latestRun.status;
+                const conclusion = latestRun.conclusion;
                 const statusDiv = document.getElementById("status");
 
                 if (runStatus === 'queued') {
@@ -371,16 +371,15 @@ function startStatusPolling(token) {
                         statusDiv.innerHTML = "✅ <b>Sukces!</b> Przepis został pomyślnie wygenerowany i dodany do książki kucharskiej.";
                     } else {
                         statusDiv.className = "status-box status-failure";
-                        statusDiv.innerHTML = "❌ <b>Błąd generowania!</b> Sprawdź logi w zakładce Actions na GitHubie.";
+                        statusDiv.innerHTML = "❌ <b>Błąd generowania!</b> Coś poszło nie tak. Sprawdź logi w zakładce Actions.";
                     }
                 }
             }
         } catch (e) {
             console.error("Błąd podczas pobierania statusu:", e);
         }
-    }, 5000); // Sprawdzaj co 5 sekund
+    }, 4000);
 }
-
     
 function resizeAndCompressImage(file) {
     return new Promise((resolve) => {
