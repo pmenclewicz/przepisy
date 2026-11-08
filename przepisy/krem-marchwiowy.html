@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KREM marchwiowy</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-container {
+        border: 1px solid #7c2222;
+        box-shadow: none;
+        padding: 20mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 15px;
+      background-color: #fcfbf9;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #2b2b2b;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-container {
+      width: 100%;
+      max-width: 800px;
+      background-color: #ffffff;
+      border: 2px solid #a83232;
+      border-radius: 4px;
+      padding: 35px 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .recipe-header {
+      text-align: center;
+      border-bottom: 2px solid #eee5dc;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 0 0 8px 0;
+      letter-spacing: 1px;
+      font-weight: normal;
+      color: #222;
+      text-transform: uppercase;
+    }
+
+    h1 span.highlight {
+      color: #c92a2a;
+      font-weight: bold;
+    }
+
+    .author-badge {
+      font-size: 15px;
+      color: #7a3e3e;
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .content-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .ingredients-column {
+      flex: 1 1 260px;
+      background-color: #faf7f2;
+      border: 1px solid #ede3d5;
+      border-radius: 4px;
+      padding: 20px 25px;
+    }
+
+    .instructions-column {
+      flex: 1 1 340px;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #a83232;
+      margin-top: 0;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #d9c8b4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul.ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.ingredients-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      word-wrap: break-word;
+    }
+
+    ul.ingredients-list li::before {
+      content: "■";
+      position: absolute;
+      left: 0;
+      color: #c92a2a;
+      font-size: 10px;
+      top: 3px;
+    }
+
+    ol.instructions-list {
+      list-style-type: none;
+      counter-reset: step-counter;
+      padding: 0;
+      margin: 0;
+    }
+
+    ol.instructions-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 36px;
+      margin-bottom: 18px;
+      font-size: 15px;
+      text-align: justify;
+    }
+
+    ol.instructions-list li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: bold;
+      color: #c92a2a;
+      font-size: 17px;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-container {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .content-grid {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      ol.instructions-list li {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-container">
+    <header class="recipe-header">
+      <h1><span class="highlight">KREM</span> marchwiowy</h1>
+      <div class="author-badge">Arletta Bonk, Chorzów</div>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-column">
+        <h2>Składniki</h2>
+        <ul class="ingredients-list">
+          <li>5 marchwi</li>
+          <li>1 czerwona cebula</li>
+          <li>300 ml bulionu warzywnego</li>
+          <li>1 ząbek czosnku</li>
+          <li>ewentualnie groszek ptysiowy lub grzanki</li>
+          <li>szczypta papryki chili</li>
+          <li>sól</li>
+          <li>pieprz cytrynowy</li>
+        </ul>
+      </section>
+
+      <section class="instructions-column">
+        <h2>Przygotowanie</h2>
+        <ol class="instructions-list">
+          <li>Marchew obierz, pokrój i ugotuj w bulionie.</li>
+          <li>Cebulę drobno posiekaj i zeszklij na patelni z solą ziołową.</li>
+          <li>Gdy marchewka będzie miękka, dodaj czosnek i przyprawy oraz podsmażoną cebulę. Gotuj jeszcze 5 minut.</li>
+          <li>Zblenduj krem i dopraw chili, solą i pieprzem. Podawaj z grzankami lub groszkiem ptysiowym.</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>
