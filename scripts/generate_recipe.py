@@ -54,7 +54,7 @@ if API_KEY_TYPE == "groq":
     if not GROQ_API_KEY:
         raise ValueError("Brak klucza GROQ_API_KEY w secretach repozytorium!")
     
-    print("Używam darmowego API Groq (llama-3.2-11b-vision-preview)")
+    print("Używam darmowego API Groq (qwen/qwen3.8-27b)")
     
     messages_content = []
     
@@ -72,7 +72,7 @@ if API_KEY_TYPE == "groq":
         messages_content.append({"type": "text", "text": full_text})
 
     payload = {
-        "model": "llama-3.2-11b-vision-preview",
+        "model": "qwen/qwen3.8-27b",
         "messages": [{"role": "user", "content": messages_content}],
         "temperature": 0.2
     }
