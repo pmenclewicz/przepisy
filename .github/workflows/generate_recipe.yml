@@ -37,6 +37,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_DARMOWY: ${{ secrets.GEMINI_API_KEY_DARMOWY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           API_KEY_TYPE: ${{ github.event.client_payload.api_key_type || 'paid' }}
           INPUT_TYPE: ${{ github.event.client_payload.input_type || 'url' }}
           RECIPE_INPUT: ${{ github.event.client_payload.recipe_input || github.event.inputs.recipe_url }}
@@ -48,7 +49,6 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           
-          # Pobieramy najnowsze zmiany przed dodaniem (żeby nie nadpisać recipes.json z poprzednich zadań w kolejce)
           git pull --rebase origin main || true
           
           git add przepisy/ recipes.json
