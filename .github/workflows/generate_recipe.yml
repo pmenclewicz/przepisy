@@ -48,6 +48,9 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           
+          # Pobieramy najnowsze zmiany przed dodaniem (żeby nie nadpisać recipes.json z poprzednich zadań w kolejce)
+          git pull --rebase origin main || true
+          
           git add przepisy/ recipes.json
           git status
           
