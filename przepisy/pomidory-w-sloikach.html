@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomidory w słoikach</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #c2b29d !important;
+        box-shadow: none !important;
+        padding: 18mm 15mm !important;
+        margin: 0 !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      background-color: #f4efe8;
+      color: #2c2520;
+      line-height: 1.5;
+      padding: 20px 10px;
+    }
+
+    .recipe-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fffcf8;
+      border: 2px solid #8b5e3c;
+      border-radius: 4px;
+      padding: 30px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #d4c2b2;
+      padding: 25px;
+      border-radius: 2px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px double #8b5e3c;
+    }
+
+    h1 {
+      font-size: 26pt;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #5c341b;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #7a6354;
+      font-size: 11pt;
+    }
+
+    .section-title {
+      font-size: 13pt;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #8b5e3c;
+      margin-bottom: 10px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #e0d5c7;
+      font-weight: bold;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .recipe-card {
+        padding: 15px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 20pt;
+      }
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      font-size: 10.5pt;
+    }
+
+    li {
+      margin-bottom: 6px;
+      word-wrap: break-word;
+    }
+
+    ol li {
+      margin-bottom: 5px;
+    }
+
+    .highlight-box {
+      background-color: #faf3ea;
+      border-left: 4px solid #8b5e3c;
+      padding: 10px 15px;
+      margin-top: 15px;
+      font-size: 11pt;
+      font-weight: bold;
+      color: #5c341b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .jars-info {
+      font-size: 10pt;
+      font-style: italic;
+      color: #695244;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <div class="inner-border">
+      <header>
+        <h1>Pomidory w słoikach</h1>
+        <div class="subtitle">Tradycyjny przepis do słoików</div>
+      </header>
+
+      <div class="content-grid">
+        <section>
+          <h2 class="section-title">Składniki</h2>
+          <ul>
+            <li>1 kg pomidorów – pokroić w ćwiartki</li>
+            <li>3 cebule – pokroić w plasterki</li>
+            <li>5 ząbków czosnku</li>
+            <li>2 pęczki pietruszki</li>
+            <li>kilka ziaren pieprzu</li>
+            <li>sól</li>
+            <li>cukier</li>
+            <li>ocet</li>
+            <li>woda</li>
+          </ul>
+          <div class="jars-info">
+            Pojemność: 3 słoiki 0,7 l
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Układanie w słoiku</h2>
+          <ol>
+            <li>Na dno słoika:
+              <ul style="list-style-type: disc; margin-top: 3px; margin-bottom: 3px;">
+                <li>czosnek</li>
+                <li>kilka ziaren pieprzu</li>
+                <li>pietruszka</li>
+              </ul>
+            </li>
+            <li>Do połowy włożyć pomidory</li>
+            <li>Cebula</li>
+            <li>Pietruszka</li>
+            <li>Łyżeczka płaska soli</li>
+            <li>Łyżeczka płaska cukru</li>
+            <li>Łyżka octu</li>
+            <li>Pomidory</li>
+            <li>Cebula</li>
+            <li>Pietruszka</li>
+            <li>Zalać wodą</li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="highlight-box">
+        Pasteryzacja ! 30 min
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
