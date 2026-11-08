@@ -14,141 +14,176 @@
     margin: 0;
     padding: 0;
     background: #f4efe6;
-    color: #2b241c;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #2b2118;
+    font-family: Georgia, "Times New Roman", "Palatino Linotype", serif;
     line-height: 1.45;
+    -webkit-text-size-adjust: 100%;
   }
 
   .page {
     max-width: 100%;
     margin: 0 auto;
-    padding: 18px 16px 28px;
+    padding: 16px 14px 24px;
   }
 
-  .frame {
+  .book {
     max-width: 100%;
     background: #fffdf8;
     border: 2px solid #8b5e3c;
-    outline: 1px solid #c9a87c;
+    outline: 1px solid #c9a878;
     outline-offset: 4px;
     padding: 22px 20px 26px;
     border-radius: 3px;
   }
 
-  .corner {
+  .kicker {
     text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
     color: #8b5e3c;
-    letter-spacing: 6px;
-    font-size: 14px;
-    margin-bottom: 6px;
+    margin: 0 0 6px;
   }
 
   h1 {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 30px;
+    font-family: "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 1.9rem;
     line-height: 1.1;
     text-align: center;
-    margin: 4px 0 2px;
-    color: #5a3a22;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    margin: 0 0 4px;
+    color: #3a2a1c;
+    font-weight: 700;
   }
 
   .subtitle {
     text-align: center;
     font-style: italic;
-    color: #7a6a55;
-    font-size: 14px;
-    margin: 0 0 10px;
+    font-size: 0.95rem;
+    color: #6b5644;
+    margin: 0 0 14px;
   }
 
-  .divider {
-    text-align: center;
-    color: #8b5e3c;
-    font-size: 16px;
-    letter-spacing: 8px;
-    margin: 6px 0 14px;
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .rule::before,
+  .rule::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a878, transparent);
+  }
+  .rule span {
+    color: #b08a5e;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
   }
 
   .meta {
-    text-align: center;
-    font-size: 13px;
-    color: #5a4a38;
-    margin: 0 0 16px;
-    line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+    font-size: 0.82rem;
+    color: #5a4636;
+    margin: 0 0 4px;
   }
-  .meta span { white-space: nowrap; }
-  .meta .sep { color: #b89b78; margin: 0 6px; }
+  .meta b { color: #8b5e3c; font-weight: 700; }
 
   h2 {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 17px;
+    font-family: "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    letter-spacing: 2px;
     color: #8b5e3c;
     border-bottom: 1px solid #d8c3a3;
     padding-bottom: 4px;
-    margin: 18px 0 10px;
+    margin: 20px 0 10px;
   }
 
-  ul.ingredients {
+  .ingredients {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  ul.ingredients li {
-    padding: 3px 0 3px 20px;
+  .ingredients li {
     position: relative;
-    font-size: 14px;
+    padding: 3px 0 3px 20px;
+    font-size: 0.95rem;
     overflow-wrap: break-word;
-    word-wrap: break-word;
+    word-break: break-word;
   }
-  ul.ingredients li::before {
+  .ingredients li::before {
     content: "•";
     position: absolute;
     left: 4px;
-    color: #8b5e3c;
-    font-weight: bold;
+    color: #b08a5e;
+  }
+  .ingredients li .amt {
+    font-weight: 700;
+    color: #3a2a1c;
+    white-space: normal;
   }
 
-  ol.steps {
+  .steps {
+    counter-reset: step;
+    list-style: none;
     margin: 0;
-    padding-left: 22px;
+    padding: 0;
   }
-  ol.steps li {
-    margin-bottom: 8px;
-    font-size: 14px;
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 6px 0 6px 34px;
+    font-size: 0.95rem;
     overflow-wrap: break-word;
-    word-wrap: break-word;
+    word-break: break-word;
   }
-  ol.steps li::marker {
-    color: #8b5e3c;
-    font-weight: bold;
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #8b5e3c;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
   }
 
   .note {
-    margin-top: 16px;
+    margin-top: 18px;
     padding: 10px 14px;
-    background: #f6efe2;
-    border-left: 3px solid #8b5e3c;
-    font-size: 13px;
+    background: #f7f0e4;
+    border-left: 3px solid #b08a5e;
+    font-size: 0.85rem;
     font-style: italic;
-    color: #5a4a38;
+    color: #5a4636;
     overflow-wrap: break-word;
   }
+  .note b { font-style: normal; color: #8b5e3c; }
 
   .footer {
     text-align: center;
+    font-size: 0.72rem;
+    color: #9a8468;
     margin-top: 18px;
-    font-size: 12px;
-    color: #9a8a72;
-    font-style: italic;
+    letter-spacing: 0.05em;
   }
 
   @media (max-width: 480px) {
-    h1 { font-size: 24px; }
-    .frame { padding: 16px 14px 20px; }
-    ul.ingredients li, ol.steps li { font-size: 13.5px; }
+    .book { padding: 16px 12px 20px; }
+    h1 { font-size: 1.55rem; }
+    .ingredients li, .steps li { font-size: 0.9rem; }
   }
 </style>
 </head>
@@ -159,34 +194,22 @@
   </div>
 
   <div class="page">
-    <div class="frame">
-      <div class="corner">✦ ✦ ✦</div>
+    <div class="book">
+      <p class="kicker">Kuchnia francuska</p>
       <h1>Crème brûlée</h1>
       <p class="subtitle">Krem z karmelizowaną skórką</p>
-      <div class="divider">❦</div>
 
-      <p class="meta">
-        <span>👥 4 porcje</span><span class="sep">•</span>
-        <span>⏱️ 40 minut</span><span class="sep">•</span>
-        <span>🔥 160°C</span>
-      </p>
+      <div class="rule"><span>❦</span></div>
+
+      <div class="meta">
+        <span><b>Porcje:</b> 4</span>
+        <span><b>Czas przygotowania:</b> 30 min</span>
+        <span><b>Czas pieczenia:</b> 45 min</span>
+      </div>
 
       <h2>Składniki</h2>
       <ul class="ingredients">
-        <li>4 żółtka</li>
-        <li>1 szklanka śmietanki 30%</li>
-        <li>1 szklanka mleka</li>
-        <li>1/2 szklanki cukru</li>
-        <li>1 łyżeczka ekstraktu z wanilii</li>
-        <li>1/4 łyżeczki soli</li>
-        <li>cukier do karmelizowania</li>
-      </ul>
-
-      <h2>Przygotowanie</h2>
-      <ol class="steps">
-        <li>Rozgrzej piekarnik do 160°C. W garnku wymieszaj śmietankę, mleko, cukier, wanilię i sól. Podgrzewaj na średnim ogniu, aż zacznie lekko parować, ale nie zagotuje się.</li>
-        <li>W misce roztrzep żółtka. Stopniowo, cały czas mieszając, wlewaj do nich ciepłą mieszankę mleczną.</li>
-        <li>Przelej krem przez sitko do czystej miski, aby usunąć ewentualne białe kawałki.</li>
-        <li>Rozlej krem do 4 żaroodpornych miseczek. Umieść je w naczyniu żaroodpornym wypełnionym gorącą wodą do połowy wysokości miseczek.</li>
-        <li>Piecz w kąpieli wodnej przez około 30–40 minut, aż krem będzie ścięty po brzegach, ale nadal lekko drgał w środku.</li>
-        <li>Wyjmij miseczki i ostudź. Wstaw do lodówki na minimum 4 godziny, a najlepiej na całą noc.</
+        <li><span class="amt">500 ml</span> śmietanki 30%</li>
+        <li><span class="amt">100 ml</span> mleka</li>
+        <li><span class="amt">5</span> żółtek</li>
+        <li><span class="amt">100 g</span>
