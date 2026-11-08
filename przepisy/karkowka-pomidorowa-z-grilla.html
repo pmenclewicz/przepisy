@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karkówka pomidorowa z grilla</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #fff !important;
+        padding: 0 !important;
+      }
+      .page-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2b221b;
+      line-height: 1.5;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fffefb;
+      border: 1px solid #d9cbbe;
+      border-radius: 4px;
+      padding: 30px 35px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .recipe-header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #8b5e3c;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      word-wrap: break-word;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px 25px;
+      font-size: 14px;
+      color: #5c4a3e;
+      font-style: italic;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .page-container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 23px;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e0d4c8;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients-section {
+      background: #faf6f0;
+      padding: 16px 20px;
+      border-radius: 4px;
+      border-left: 3px solid #8b5e3c;
+    }
+
+    .ingredient-group {
+      margin-bottom: 12px;
+    }
+
+    .ingredient-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .group-title {
+      font-weight: bold;
+      color: #4a382c;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    ul.ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+
+    ul.ingredients-list li {
+      padding: 3px 0;
+      position: relative;
+      padding-left: 14px;
+      font-size: 14.5px;
+    }
+
+    ul.ingredients-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+      font-size: 16px;
+    }
+
+    ol.instructions-list {
+      padding-left: 0;
+      margin: 0;
+      list-style: none;
+      counter-reset: step-counter;
+    }
+
+    ol.instructions-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 36px;
+      margin-bottom: 16px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    ol.instructions-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    ol.instructions-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: #8b5e3c;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <header class="recipe-header">
+      <h1>Karkówka pomidorowa z grilla</h1>
+      <div class="meta-bar">
+        <span class="meta-item">⏱ Czas: 40 min + 2 godz. marynowanie</span>
+        <span class="meta-item">★ Poziom: łatwe</span>
+        <span class="meta-item">👥 Porcje: 4</span>
+        <span class="meta-item">💰 Koszt: 20 zł</span>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-section">
+        <h2>Składniki</h2>
+        
+        <div class="ingredient-group">
+          <ul class="ingredients-list">
+            <li>800 g karkówki</li>
+          </ul>
+        </div>
+
+        <div class="ingredient-group">
+          <span class="group-title">Marynata:</span>
+          <ul class="ingredients-list">
+            <li>1 słoik przecieru pomidorowego</li>
+            <li>2 łyżki miodu</li>
+            <li>1/2 szklanki oleju</li>
+            <li>3 łyżki sosu sojowego</li>
+            <li>4 ząbki czosnku</li>
+            <li>pieprz</li>
+            <li>słodka papryka</li>
+            <li>odrobina gorczycy</li>
+            <li>garść listków bazylii</li>
+          </ul>
+        </div>
+
+        <div class="ingredient-group">
+          <span class="group-title">Dodatkowo:</span>
+          <ul class="ingredients-list">
+            <li>500 g pomidorków koktajlowych</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="instructions-section">
+        <h2>Sposób przygotowania</h2>
+        <ol class="instructions-list">
+          <li>Karkówkę umyj, osusz i pokrój w plastry grubości 1,5 cm. Każdy plaster delikatnie rozbij.</li>
+          <li>Składniki marynaty wymieszaj dokładnie i posmaruj nią plastry mięsa.</li>
+          <li>Ułóż karkówkę w salaterce, zalej resztą marynaty i wstaw na dwie godziny do lodówki.</li>
+          <li>Grilluj na dobrze rozgrzanym palenisku około 20 minut, często odwracając. Resztą marynaty posmaruj umyte pomidorki i ułóż je na grillu na 10 minut przed końcem smażenia mięsa.</li>
+        </ol>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
