@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schab rolowany z szynką szwarcwaldzką i żółtym serem</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #c2b59b !important;
+        box-shadow: none !important;
+        padding: 18mm 15mm !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ed;
+      font-family: 'Georgia', 'Garamond', 'Palatino', serif;
+      color: #2b2520;
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      width: 100%;
+      max-width: 800px;
+      background-color: #ffffff;
+      border: 2px solid #b89f80;
+      border-radius: 4px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #e0d4c1;
+      padding: 25px;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #61391d;
+      margin: 0 0 10px 0;
+      line-height: 1.25;
+    }
+
+    .author-note {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #6d6259;
+      margin: 0;
+    }
+
+    .recipe-content {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 25px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+      .recipe-card {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8b5e3c;
+      border-bottom: 1px solid #d4c4b0;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .ingredients ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .ingredients li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 7px;
+      font-size: 0.95rem;
+      line-height: 1.35;
+      word-wrap: break-word;
+    }
+
+    .ingredients li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .instructions li {
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+      line-height: 1.45;
+      text-align: justify;
+      word-wrap: break-word;
+    }
+
+    .instructions li::marker {
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <div class="inner-border">
+      <header>
+        <h1>SCHAB ROLOWANY Z SZYNKĄ SZWARCWALDZKĄ I ŻÓŁTYM SEREM</h1>
+        <p class="author-note">Przepis specjalnie dla Klientów Biedronki przygotował Jan Kuroń</p>
+      </header>
+
+      <div class="recipe-content">
+        <section class="ingredients">
+          <h2>Składniki</h2>
+          <ul>
+            <li>opakowanie schabu bez kości Kraina Mięsa</li>
+            <li>100 g szynki szwarcwaldzkiej Kraina Wędlin</li>
+            <li>80 g tartego żółtego sera (gouda Światowid)</li>
+            <li>3 ząbki czosnku</li>
+            <li>2 łyżki musztardy Rolnik</li>
+            <li>2 jaja Ale Smak klasa L</li>
+            <li>100 g bułki tartej Piekarnia Domowa</li>
+            <li>100 g mąki Tortowa</li>
+            <li>łyżeczka oregano</li>
+            <li>100 ml oleju rzepakowego Wyborny</li>
+            <li>sól, pieprz</li>
+          </ul>
+        </section>
+
+        <section class="instructions">
+          <h2>Sposób przygotowania</h2>
+          <ol>
+            <li>Kotlety ze schabu rozbić tłuczkiem, najlepiej przez folię spożywczą, żeby nie rozerwać mięsa. Mięso oprószyć solą oraz pieprzem. Czosnek posiekać, wymieszać z musztardą i oregano.</li>
+            <li>Każdy płat mięsa posmarować przygotowaną pastą. Położyć plaster szynki, porcję sera i zawinąć całość w zgrabną roladkę.</li>
+            <li>Roladki panierować najpierw w mące, potem w roztrzepanym jajku, a na końcu w bułce tartej. Następnie smażyć na złoto ze wszystkich stron na rozgrzanym oleju. Roladki podawać z ziemniakami i warzywami.</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </article>
+
+</body>
+</html>
