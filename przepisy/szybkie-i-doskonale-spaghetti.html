@@ -15,13 +15,14 @@
         display: none !important;
       }
       body {
-        background: #fff !important;
-        padding: 0 !important;
+        background: #fff;
+        padding: 0;
       }
-      .page-container {
-        box-shadow: none !important;
-        border: 2px solid #8b5e3c !important;
-        height: 270mm !important;
+      .recipe-container {
+        box-shadow: none;
+        border: 1px solid #c2b59b;
+        max-width: 100%;
+        padding: 18mm 15mm;
       }
     }
 
@@ -32,296 +33,207 @@
     }
 
     body {
-      background-color: #f4efe6;
-      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
-      color: #2c241e;
+      background-color: #f7f5f0;
+      font-family: 'Georgia', 'Baskerville', 'Palatino', serif;
+      color: #2b2620;
+      line-height: 1.45;
+      padding: 20px 10px;
       display: flex;
       justify-content: center;
-      padding: 20px 0;
     }
 
-    .page-container {
-      width: 190mm;
-      height: 272mm;
-      background: #fdfbf7;
-      border: 3px double #8b5e3c;
-      padding: 15mm;
+    .recipe-container {
+      background: #ffffff;
+      max-width: 800px;
+      width: 100%;
+      border: 1px solid #dcd3c1;
+      padding: 30px 35px;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
 
-    /* Ozdobny narożnik książkowy */
-    .page-container::before {
-      content: '';
-      position: absolute;
-      top: 5px; left: 5px; right: 5px; bottom: 5px;
-      border: 1px solid #d4c3b3;
-      pointer-events: none;
+    .recipe-border {
+      border: 1px solid #e5ded0;
+      padding: 25px;
     }
 
     header {
       text-align: center;
       border-bottom: 2px solid #8b5e3c;
-      padding-bottom: 10px;
-      margin-bottom: 12px;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
     }
 
-    .header-ornament {
-      font-size: 14px;
-      letter-spacing: 4px;
+    .subtitle {
+      font-style: italic;
       color: #8b5e3c;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    h1 {
-      font-size: 26px;
-      font-weight: normal;
-      color: #4a2c11;
-      letter-spacing: 0.5px;
       margin-bottom: 6px;
     }
 
-    .meta-bar {
+    h1 {
+      font-size: 2rem;
+      font-weight: normal;
+      color: #2c1d11;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    .meta-info {
       display: flex;
       justify-content: center;
       gap: 20px;
-      font-size: 12px;
-      color: #6b523e;
-      font-style: italic;
+      font-size: 0.9rem;
+      color: #6e655c;
+      margin-top: 5px;
+      flex-wrap: wrap;
     }
 
     .meta-item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 4px;
     }
 
-    .content-grid {
+    .meta-item strong {
+      color: #4a3e35;
+      margin-right: 4px;
+    }
+
+    .recipe-body {
       display: grid;
-      grid-template-columns: 38% 59%;
-      gap: 3%;
-      flex-grow: 1;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 25px;
     }
 
-    /* Lewa kolumna: zdjęcie i składniki */
-    .left-column {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .recipe-image-container {
-      width: 100%;
-      height: 160px;
-      border: 2px solid #8b5e3c;
-      padding: 3px;
-      background: #fff;
-    }
-
-    .recipe-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .box {
-      background: #f7f2ea;
-      border: 1px solid #d9cbbe;
-      padding: 12px;
-      border-radius: 2px;
-    }
-
-    .box-title {
-      font-size: 15px;
+    h2 {
+      font-size: 1.15rem;
       color: #8b5e3c;
       text-transform: uppercase;
       letter-spacing: 1px;
-      border-bottom: 1px solid #8b5e3c;
-      padding-bottom: 4px;
-      margin-bottom: 8px;
-      font-weight: bold;
-      text-align: center;
+      border-bottom: 1px solid #dcd3c1;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
     }
 
-    ul.ingredients-list {
-      list-style: none;
-      font-size: 11.5px;
-      line-height: 1.55;
+    ul.ingredients {
+      list-style-type: none;
+      font-size: 0.92rem;
     }
 
-    ul.ingredients-list li {
-      padding: 2px 0;
-      border-bottom: 1px stroke #e8ded3;
+    ul.ingredients li {
+      padding: 5px 0;
+      border-bottom: 1px dotted #e5ded0;
       display: flex;
-      align-items: flex-start;
+      justify-content: space-between;
+      word-break: break-word;
     }
 
-    ul.ingredients-list li::before {
-      content: "•";
-      color: #8b5e3c;
-      font-weight: bold;
-      display: inline-block;
-      width: 12px;
-      margin-right: 2px;
+    ul.ingredients li:last-child {
+      border-bottom: none;
     }
 
-    /* Prawa kolumna: Przygotowanie */
-    .right-column {
-      display: flex;
-      flex-direction: column;
+    .instructions {
+      font-size: 0.92rem;
     }
 
-    .steps-list {
-      list-style: none;
-      font-size: 11.5px;
-      line-height: 1.5;
+    .instructions ol {
+      padding-left: 20px;
     }
 
-    .step-item {
+    .instructions li {
       margin-bottom: 10px;
-      display: flex;
-      gap: 8px;
-    }
-
-    .step-number {
-      background: #8b5e3c;
-      color: #fff;
-      font-weight: bold;
-      font-size: 11px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .step-text {
+      padding-left: 4px;
       text-align: justify;
     }
 
-    .step-title {
+    .instructions li::marker {
+      color: #8b5e3c;
       font-weight: bold;
-      color: #4a2c11;
     }
 
-    footer {
-      border-top: 1px solid #d4c3b3;
-      padding-top: 6px;
-      text-align: center;
-      font-size: 10px;
-      color: #8b5e3c;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .tip-box {
+      margin-top: 15px;
+      background-color: #faf7f2;
+      border-left: 3px solid #8b5e3c;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #554a40;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-container {
+        padding: 15px 12px;
+      }
+      .recipe-border {
+        padding: 15px 12px;
+      }
+      .recipe-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Navigation & Print Panel -->
   <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
     <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
     <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
   </div>
 
-  <div class="page-container">
-    <header>
-      <div class="header-ornament">❖ Tradicyna Kuchnia Włoska ❖</div>
-      <h1>Szybkie i doskonałe spaghetti</h1>
-      <div class="meta-bar">
-        <span class="meta-item">⏱ Czas przygotowania: 15 min</span>
-        <span class="meta-item">🔥 Czas gotowania: 25 min</span>
-        <span class="meta-item">🍽 Porcje: 4</span>
-        <span class="meta-item">📊 Poziom: Łatwy</span>
-      </div>
-    </header>
-
-    <div class="content-grid">
-      <!-- Left Column: Image & Ingredients -->
-      <div class="left-column">
-        <div class="recipe-image-container">
-          <img src="https://cdn.aniagotuje.com/pictures/articles/2024/05/61816588-v-1500x1500.jpg" alt="Szybkie i doskonałe spaghetti" class="recipe-image">
+  <div class="recipe-container">
+    <div class="recipe-border">
+      <header>
+        <div class="subtitle">Klasyka kuchni włoskiej</div>
+        <h1>Szybkie i doskonałe spaghetti</h1>
+        <div class="meta-info">
+          <div class="meta-item"><strong>Porcje:</strong> 4</div>
+          <div class="meta-item"><strong>Czas przygotowania:</strong> ok. 20 minut</div>
+          <div class="meta-item"><strong>Trudność:</strong> łatwe</div>
         </div>
+      </header>
 
-        <div class="box">
-          <div class="box-title">Składniki</div>
-          <ul class="ingredients-list">
-            <li><b>Makaron:</b> 400 g spaghetti</li>
-            <li><b>Mięso:</b> 500 g wołowiny lub mięsa mielonego wołowo-wieprzowego</li>
-            <li><b>Warzywa:</b> 1 duża cebula, 3 ząbki czosnku, 1 średnia marchewka</li>
-            <li><b>Pomidory:</b> 1 puszka (400 g) pomidorów krojonych</li>
-            <li><b>Koncentrat:</b> 3 łyżki koncentratu pomidorowego</li>
-            <li><b>Tłuszcz:</b> 2 łyżki oliwy z oliwek</li>
-            <li><b>Zioła:</b> 1 łyżeczka oregano, 1 łyżeczka bazylii</li>
-            <li><b>Przyprawy:</b> sól, świeżo mielony pieprz, 1/2 łyżeczki słodkiej papryki</li>
-            <li><b>Do podania:</b> ser Parmezan lub Grana Padano, świeża bazylia</li>
+      <div class="recipe-body">
+        <aside class="ingredients-section">
+          <h2>Składniki</h2>
+          <ul class="ingredients">
+            <li><span>Makaron spaghetti</span> <strong>400–500 g</strong></li>
+            <li><span>Dojrzałe pomidory (lub krojone z puszki)</span> <strong>800 g / 2 puszki</strong></li>
+            <li><span>Czosnek</span> <strong>2 ząbki</strong></li>
+            <li><span>Cebula (średnia)</span> <strong>1 szt.</strong></li>
+            <li><span>Świeża bazylia</span> <strong>1 duży pęczek</strong></li>
+            <li><span>Oliwa z oliwek najwyższej jakości</span> <strong>do smażenia i skropienia</strong></li>
+            <li><span>Ocet z czerwonego wina</span> <strong>1 łyżka</strong></li>
+            <li><span>Parmezan</span> <strong>do posypania</strong></li>
+            <li><span>Sól morska i czarny pieprz</span> <strong>do smaku</strong></li>
           </ul>
-        </div>
-      </div>
+        </aside>
 
-      <!-- Right Column: Preparation Steps -->
-      <div class="right-column">
-        <div class="box" style="height: 100%; background: transparent; border: none; padding: 0;">
-          <div class="box-title">Sposób Przygotowania</div>
-          <div class="steps-list">
-            
-            <div class="step-item">
-              <div class="step-number">1</div>
-              <div class="step-text">
-                <span class="step-title">Przygotowanie bazy:</span> Cebulę oraz czosnek obierz i drobno posiekaj. Marchewkę obierz i zetrzyj na drobnych oczkach tarki. Na dużej patelni lub w rondlu rozgrzej 2 łyżki oliwy z oliwek.
-              </div>
+        <section class="instructions-section">
+          <h2>Sposób przygotowania</h2>
+          <div class="instructions">
+            <ol>
+              <li>Obierz cebulę oraz czosnek i drobno je posiekaj. Oberwij listki bazylii i odłóż na bok, a łodyżki posiekaj drobno. Jeśli używasz świeżych pomidorów, sparz je, zdejmij skórkę i pokrój.</li>
+              <li>W dużym rondlu lub głębokiej patelni rozgrzej 2 łyżki oliwy. Wrzuć posiekaną cebulę, czosnek i łodyżki bazylii. Smaż na małym ogniu przez około 7–10 minut, aż cebula zmięknie, nie dopuszczając do przypalenia czosnku.</li>
+              <li>Dodaj pomidory oraz ocet winny. Dopraw solą i świeżo mielonym pieprzem. Gotuj na wolnym ogniu przez ok. 15–20 minut, co jakiś czas mieszając i rozgniatając pomidory łyżką, aż sos zgęstnieje.</li>
+              <li>W tym czasie w dużym garnku zagotuj obficie osoloną wodę. Wrzuć makaron i ugotuj al dente zgodnie z instrukcją na opakowaniu. Odcedź, zachowując pół filiżanki wody z gotowania.</li>
+              <li>Przełóż makaron bezpośrednio do sosu, dodaj porwane listki bazylii, chlust oliwy i odrobinę wody z makaronu, aby sos dokładnie oblepił nitki. Wymieszaj i podawaj z obficie startym parmezanem.</li>
+            </ol>
+
+            <div class="tip-box">
+              <strong>Wskazówka:</strong> Kluczem do uzyskania kremowego i lśniącego sosu jest dodanie odrobiny skrobiowej wody z gotowania makaronu oraz energiczne wymieszanie spaghetti z sosem na patelni przed podaniem.
             </div>
-
-            <div class="step-item">
-              <div class="step-number">2</div>
-              <div class="step-text">
-                <span class="step-title">Zeszklenie warzyw:</span> Wrzuć posiekaną cebulę, czosnek i startą marchewkę. Podsmażaj na średnim ogniu przez około 4-5 minut, aż warzywa zmiękną i uwolnią swój aromat.
-              </div>
-            </div>
-
-            <div class="step-item">
-              <div class="step-number">3</div>
-              <div class="step-text">
-                <span class="step-title">Smażenie mięsa:</span> Dodaj mięso mielone. Smaż przez około 8-10 minut, rozdrabniając je dokładnie drewnianą łopatką, aż zmieni kolor i lekko się zrumieni.
-              </div>
-            </div>
-
-            <div class="step-item">
-              <div class="step-number">4</div>
-              <div class="step-text">
-                <span class="step-title">Duszenie sosu:</span> Do podsmażonego mięsa dodaj pomidory z puszki, koncentrat pomidorowy oraz przyprawy (oregano, bazylia, słodka papryka, sól i pieprz). Wymieszaj, przykryj i duś na małym ogniu przez 15-20 minut.
-              </div>
-            </div>
-
-            <div class="step-item">
-              <div class="step-number">5</div>
-              <div class="step-text">
-                <span class="step-title">Gotowanie makaronu:</span> W międzyczasie ugotuj makaron spaghetti w dużym garnku z osoloną wodą al dente (ok. 8 minut). Odcedź, zachowując 3-4 łyżki wody z gotowania.
-              </div>
-            </div>
-
-            <div class="step-item">
-              <div class="step-number">6</div>
-              <div class="step-text">
-                <span class="step-title">Łączenie i podanie:</span> Wlej zachowaną wodę z makaronu do sosu, wymieszaj, a następnie dodaj ugotowany makaron bezpośrednio do patelni z sosem. Podawaj na gorąco posypane serem i bazylią.
-              </div>
-            </div>
-
           </div>
-        </div>
+        </section>
       </div>
     </div>
-
-    <footer>
-      ❖ Domowa Książka Kucharska • Przepis z AniaGotuje.pl ❖
-    </footer>
   </div>
 
 </body>
