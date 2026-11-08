@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schab na zimno</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        box-shadow: none !important;
+        border: 2px solid #5a3e2b !important;
+        padding: 18mm 15mm !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2b221b;
+      line-height: 1.6;
+    }
+
+    .recipe-container {
+      max-width: 750px;
+      margin: 0 auto;
+      background: #fffdfa;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4bda8;
+      outline-offset: -6px;
+      padding: 35px 30px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 8px 0;
+      color: #4a2f1d;
+      font-weight: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .decorative-icon {
+      font-size: 1.1rem;
+      color: #8b5e3c;
+      margin-top: 5px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width: 600px) {
+      .content-grid {
+        grid-template-columns: 1fr 1.3fr;
+        gap: 30px;
+      }
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: #5a3e2b;
+      border-bottom: 1px solid #d4bda8;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients-section ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 15px 0;
+    }
+
+    .ingredients-section li {
+      padding: 4px 0;
+      border-bottom: 1px dotted #e6dacb;
+      font-size: 0.98rem;
+    }
+
+    .ingredients-section li:last-child {
+      border-bottom: none;
+    }
+
+    .subheading {
+      font-weight: bold;
+      color: #724c31;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .instructions-section ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .instructions-section li {
+      margin-bottom: 10px;
+      padding-left: 4px;
+      font-size: 0.98rem;
+    }
+
+    .note {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px dashed #c4ab94;
+      text-align: center;
+      font-style: italic;
+      color: #6e4b33;
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="header">
+      <h1>Schab na zimno</h1>
+      <div class="decorative-icon">❧ ❦ ❧</div>
+    </div>
+
+    <div class="content-grid">
+      <div class="ingredients-section">
+        <h2>Składniki</h2>
+        <ul>
+          <li><strong>1,5 kg</strong> schabu</li>
+        </ul>
+
+        <div class="subheading">Zalewa:</div>
+        <ul>
+          <li><strong>2 l</strong> wody</li>
+          <li><strong>1/3 szkl.</strong> soli</li>
+          <li><strong>3/4 szkl.</strong> cukru</li>
+          <li><strong>8-10 ząbków</strong> czosnku</li>
+          <li><strong>3 łyżki</strong> majeranku</li>
+          <li><strong>3 łyżki</strong> pieprzu</li>
+          <li>ziele angielskie</li>
+          <li>liść laurowy</li>
+          <li>oregano</li>
+        </ul>
+      </div>
+
+      <div class="instructions-section">
+        <h2>Sposób przygotowania</h2>
+        <ol>
+          <li>Zagotować zalewę, włożyć schab i gotować 6 min.</li>
+          <li>Wystudzić i wyjąć schab.</li>
+          <li>Zalewę prawie zagotować, włożyć schab i gotować 3 min.</li>
+          <li>Zostawić do wystygnięcia.</li>
+          <li>Wyjąć schab.</li>
+        </ol>
+
+        <div class="note">
+          Dobry na chlebek :)
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
