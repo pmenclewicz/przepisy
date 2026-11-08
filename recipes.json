@@ -1,5 +1,11 @@
 [
   {
+    "id": "karkowka",
+    "title": "Karkówka",
+    "file": "przepisy/karkowka.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "piernik-pierniki-staropolskie",
     "title": "Piernik / pierniki staropolskie",
     "file": "przepisy/piernik-pierniki-staropolskie.html",
