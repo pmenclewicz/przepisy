@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fasolka po bretońsku</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #c9b097 !important;
+        padding: 18mm 15mm !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2b231c;
+      line-height: 1.6;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background-color: #fffdfa;
+      width: 100%;
+      max-width: 780px;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4bda8;
+      outline-offset: -6px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .recipe-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #d4bda8;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #5c351b;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .decorative-line {
+      display: block;
+      width: 80px;
+      height: 2px;
+      background-color: #8b5e3c;
+      margin: 8px auto 0;
+    }
+
+    .section-title {
+      font-size: 19px;
+      font-weight: bold;
+      color: #6e4325;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #d8c2ad;
+      padding-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .ingredients-section {
+      background-color: #faf5ed;
+      border: 1px solid #ebd9c8;
+      border-radius: 4px;
+      padding: 16px 20px;
+    }
+
+    ul.ingredients-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul.ingredients-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 7px;
+      font-size: 15px;
+    }
+
+    ul.ingredients-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: #8b5e3c;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .instructions-section {
+      padding: 0 4px;
+    }
+
+    .instruction-step {
+      font-size: 15px;
+      text-align: justify;
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
+
+    .instruction-step:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 600px) {
+      .recipe-card {
+        padding: 40px 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <header class="recipe-header">
+      <h1>Fasolka po bretońsku</h1>
+      <span class="decorative-line"></span>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-section">
+        <h2 class="section-title">Składniki</h2>
+        <ul class="ingredients-list">
+          <li>400 g białej fasoli typu „Piękny Jaś”</li>
+          <li>300 g kiełbasy (użyłam kiełbasy drobiowej)</li>
+          <li>3 średniej wielkości cebule</li>
+          <li>4 łyżeczki suszonej, słodkiej papryki</li>
+          <li>3 liście laurowe</li>
+          <li>120 g koncentratu pomidorowego</li>
+          <li>sól i pieprz do smaku</li>
+          <li>olej do smażenia</li>
+        </ul>
+      </section>
+
+      <section class="instructions-section">
+        <h2 class="section-title">Sposób przygotowania</h2>
+        <p class="instruction-step">
+          Fasolę przesypać do dużego garnka (ok. 4 l) i zalać wodą tak aby sięgała ona ok. 10 cm powyżej poziomu fasoli i zostawić na co najmniej 12 godzin do namoczenia. Po tym czasie gotować pod przykryciem, na małym ogniu przez ok. 2,5 godziny (aż fasola wyraźnie zmięknie).
+        </p>
+        <p class="instruction-step">
+          Na rozgrzanym na patelni oleju podsmażyć drobno posiekaną cebulę i kiełbasę. Do garnka z fasolą dodać sól, pieprz, liście laurowe, suszoną paprykę, koncentrat pomidorowy oraz podsmażoną cebulę z kiełbasą. Gotować jeszcze przez ok. godzinę pod przykryciem, na małym ogniu. Spróbować i w razie potrzeby doprawić solą i pieprzem.
+        </p>
+      </section>
+    </div>
+  </article>
+
+</body>
+</html>
