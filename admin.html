@@ -171,7 +171,7 @@
     
     <div class="tab-buttons">
         <button type="button" class="tab-btn active" onclick="switchTab('url')">Z Linku WWW</button>
-        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęcia / Aparatu</button>
+        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęć (1 lub 2 strony)</button>
     </div>
 
     <form id="adminForm">
@@ -181,19 +181,17 @@
         </div>
 
         <div id="tab-image" class="tab-content">
-            <label>Wybierz metodę dodania przepisu:</label>
+            <label>Wybierz zdjęcia przepisu (możesz zaznaczyć 1 lub 2 pliki naraz):</label>
             <div class="photo-options">
-                <button type="button" class="photo-btn" onclick="document.getElementById('cameraInput').click()">📸 Zrób zdjęcie</button>
-                <button type="button" class="photo-btn" onclick="document.getElementById('galleryInput').click()">📁 Wybierz plik</button>
+                <button type="button" class="photo-btn" onclick="document.getElementById('galleryInput').click()">📁 Wybierz zdjęcia (1-2)</button>
             </div>
 
-            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none" onchange="handleFileSelected(this)">
-            <input type="file" id="galleryInput" accept="image/*" style="display:none" onchange="handleFileSelected(this)">
+            <!-- added multiple attribute -->
+            <input type="file" id="galleryInput" accept="image/*" multiple style="display:none" onchange="handleFilesSelected(this)">
 
-            <div id="fileInfo">Status: Nie wybrano żadnego zdjęcia.</div>
+            <div id="fileInfo">Status: Nie wybrano żadnych zdjęć.</div>
         </div>
 
-        <!-- Nowe pole na własną nazwę przepisu -->
         <label for="customTitle">Własna nazwa przepisu (opcjonalnie):</label>
         <input type="text" id="customTitle" placeholder="Zostaw puste, aby AI samo wykryło nazwę">
 
@@ -208,7 +206,7 @@
 <script>
 const REPO = "pmenclewicz/przepisy";
 let currentMode = 'url';
-let selectedFileObject = null;
+let selectedFilesArray = [];
 
 function switchTab(mode) {
     currentMode = mode;
@@ -224,16 +222,12 @@ function switchTab(mode) {
     }
 }
 
-function handleFileSelected(input) {
-    if (input.files && input.files[0]) {
-        selectedFileObject = input.files[0];
-        document.getElementById('fileInfo').innerHTML = `✅ <b>Wybrano zdjęcie:</b> ${selectedFileObject.name}`;
-        
-        if (input.id === 'cameraInput') {
-            document.getElementById('galleryInput').value = '';
-        } else {
-            document.getElementById('cameraInput').value = '';
-        }
+function handleFilesSelected(input) {
+    if (input.files && input.files.length > 0) {
+        // Ograniczamy do max 2 plików
+        selectedFilesArray = Array.from(input.files).slice(0, 2);
+        let names = selectedFilesArray.map(f => f.name).join(", ");
+        document.getElementById('fileInfo').innerHTML = `✅ <b>Wybrano plików (${selectedFilesArray.length}):</b> ${names}`;
     }
 }
 
@@ -251,7 +245,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     btn.disabled = true;
     status.style.display = "block";
     status.className = "info";
-    status.innerHTML = "Trwa optymalizacja zdjęcia i wysyłanie zlecenia...";
+    status.innerHTML = "Trwa optymalizacja zdjęć i wysyłanie zlecenia...";
 
     let inputData = "";
     let inputType = currentMode;
@@ -266,13 +260,20 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
             return;
         }
     } else {
-        if (!selectedFileObject) {
-            alert("Najpierw zrób zdjęcie aparatem lub wybierz plik z galerii!");
+        if (selectedFilesArray.length === 0) {
+            alert("Najpierw wybierz co najmniej jedno zdjęcie!");
             btn.disabled = false;
             status.style.display = "none";
             return;
         }
-        inputData = await resizeAndCompressImage(selectedFileObject);
+        
+        // Kompresujemy każde wybrane zdjęcie i łączymy je separatorem w jeden ciąg tekstowy
+        let compressedImages = [];
+        for (let file of selectedFilesArray) {
+            let compressed = await resizeAndCompressImage(file);
+            compressedImages.push(compressed);
+        }
+        inputData = compressedImages.join("|||"); //separator rozdzielający obrazy
     }
 
     try {
@@ -300,13 +301,12 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         }
 
         status.className = "success";
-        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis. Za około 1–2 minuty odśwież stronę główną.";
+        status.innerHTML = "<b>Zlecenie zostało wysłane!</b><br>GitHub Actions generuje przepis z przesłanych stron. Za około 1–2 minuty odśwież stronę główną.";
         document.getElementById("recipeUrl").value = "";
         document.getElementById("customTitle").value = "";
-        selectedFileObject = null;
-        document.getElementById('cameraInput').value = '';
+        selectedFilesArray = [];
         document.getElementById('galleryInput').value = '';
-        document.getElementById('fileInfo').innerHTML = "Status: Nie wybrano żadnego zdjęcia.";
+        document.getElementById('fileInfo').innerHTML = "Status: Nie wybrano żadnych zdjęć.";
 
     } catch (err) {
         status.className = "error";
