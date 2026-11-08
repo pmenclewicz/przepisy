@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parówki w cieście drożdżowym</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #777 !important;
+        padding: 20px 25px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2b2b2b;
+      line-height: 1.55;
+      padding: 20px 10px;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fffefb;
+      border: 1px solid #dcd4c5;
+      border-radius: 4px;
+      padding: 30px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border: 1px solid #eee7db;
+      pointer-events: none;
+    }
+
+    .header-section {
+      text-align: center;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+      border-bottom: 2px solid #8b5e3c;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: normal;
+      color: #4a2e1b;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width: 650px) {
+      .content-grid {
+        grid-template-columns: 240px 1fr;
+        align-items: start;
+        gap: 30px;
+      }
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: bold;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e2d9cc;
+      padding-bottom: 4px;
+    }
+
+    .ingredients-section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .ingredients-section li {
+      padding: 4px 0;
+      border-bottom: 1px dotted #e8e2d8;
+      font-size: 14.5px;
+      color: #3d352e;
+    }
+
+    .ingredients-section li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions-section p {
+      font-size: 15px;
+      text-align: justify;
+      color: #332d28;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header class="header-section">
+      <h1>Parówki w cieście drożdżowym</h1>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-section">
+        <h2 class="section-title">Składniki</h2>
+        <ul>
+          <li>8 dobrej jakości parówek</li>
+          <li>2 szklanki mąki</li>
+          <li>20 g świeżych drożdży</li>
+          <li>2/3 szklanki mleka</li>
+          <li>1 łyżeczka cukru</li>
+          <li>1 płaska łyżeczka soli</li>
+          <li>0,5 szkl ketchupu</li>
+          <li>2 ząbki czosnku</li>
+          <li>Oregano</li>
+          <li>1 jajko</li>
+          <li>Sól gruboziarnista</li>
+        </ul>
+      </section>
+
+      <section class="instructions-section">
+        <h2 class="section-title">Przygotowanie</h2>
+        <p>Parówki obrać z folii i przekroić na pół. Do ketchupu dodajemy przeciśnięty przez praskę czosnek i oregano, mieszamy. Do ciepłego mleka dodać drożdże i cukier, wymieszać i pozostawić aż drożdże zaczną pracować. Mąkę przesiać dodać sól , następnie połączyć z drożdżami i wyrobić ciasto które powinno odchodzić od rąk. Wyrobione ciasto odstawić na około 30 minut w ciepłe miejsce. Po tym czasie wyłożyć ciasto na posypana mąka stolnice i rozwałkować. Podzielić na 16 części każdą z nich posmarować przygotowanym ketchupem i razem z parówką zawinąć w rulonik. Tak przygotowane parówki smarujemy roztrzepanym jajkiem posypujemy gruboziarnista solą i kminkiem. Wstawiamy do piekarnika na około 25 minut i pieczemy w temperaturze 180 stopni.</p>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>
