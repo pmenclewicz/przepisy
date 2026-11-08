@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karkówka po meksykańsku</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .page-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      color: #2b2521;
+      line-height: 1.5;
+    }
+
+    .page-container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fffdfa;
+      padding: 35px 45px;
+      border: 1px solid #d9cdbd;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .decorative-border {
+      border: 1px solid #b8a690;
+      padding: 28px 32px;
+      position: relative;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: normal;
+      font-style: italic;
+      color: #221c17;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #8b5e3c;
+      font-size: 14px;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      height: 1px;
+      width: 70px;
+      background-color: #c4b5a2;
+    }
+
+    .section {
+      margin-bottom: 22px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-style: italic;
+      color: #3b2f27;
+      margin: 0 0 10px 0;
+      border-bottom: 1px solid #e2d9cd;
+      padding-bottom: 4px;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style-type: square;
+      margin: 0;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 15px;
+      color: #332b25;
+      text-align: justify;
+    }
+
+    li::marker {
+      color: #8b5e3c;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 5px;
+      }
+      .page-container {
+        padding: 12px;
+      }
+      .decorative-border {
+        padding: 16px 12px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      li {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <div class="decorative-border">
+      
+      <div class="header-section">
+        <h1>Karkówka po meksykańsku</h1>
+        <div class="ornament">❦</div>
+      </div>
+
+      <div class="section">
+        <h2>Założenia do projektu</h2>
+        <ul>
+          <li>średniej grubości plastry karkówki</li>
+          <li>2 – 3 duże cebule – pokroić w plastry</li>
+          <li>1 słoik sosu meksykańskiego firmy „Łowicz” (gotowy!)</li>
+          <li>przyprawa „Warzywko”</li>
+          <li>naczynie żaroodporne</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Projekt realizacji</h2>
+        <ul>
+          <li>dno naczynia żaroodpornego posypać przyprawą „Warzywko”,</li>
+          <li>położyć kilka plastrów cebuli,</li>
+          <li>na to ułożyć jedną warstwę plastrów karkówki,</li>
+          <li>tak ułożoną warstwę posypać przyprawą „Warzywko”,</li>
+          <li>znowu położyć plastry cebuli i karkówkę,</li>
+          <li>powtarzać do wyczerpania plastrów karkówki,</li>
+          <li>tak przygotowane mięso zostawić na 12 godzin.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Wykonanie zadania</h2>
+        <ul>
+          <li>po 12 godzinach wyrzucić cebulę,</li>
+          <li>karkówkę przełożyć świeżymi plastrami cebuli,</li>
+          <li>na wierzch tak przygotowanej karkówki wlać sos meksykański,</li>
+          <li>włożyć do piekarnika na 120 minut (temp. 180 stopni Celsjusza).</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
