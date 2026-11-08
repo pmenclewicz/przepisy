@@ -1,5 +1,11 @@
 [
   {
+    "id": "przepis-na-chleb-bez-maki",
+    "title": "Przepis na Chleb Bez Mąki",
+    "file": "przepisy/przepis-na-chleb-bez-maki.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "ogorki-w-chili-cukinia",
     "title": "Ogórki w chili / cukinia",
     "file": "przepisy/ogorki-w-chili-cukinia.html",

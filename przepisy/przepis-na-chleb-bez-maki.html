@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Przepis na Chleb Bez Mąki</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #ccc;
+        box-shadow: none;
+        padding: 15mm 20mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f5f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .recipe-card {
+      background: #ffffff;
+      border: 2px solid #8b5e3c;
+      padding: 35px 40px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      border: 1px solid #d4c2b2;
+      pointer-events: none;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #4a2c11;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      height: 2px;
+      background: #8b5e3c;
+      width: 80px;
+      margin: 12px auto 25px auto;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #633f23;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #eeddd0;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul.ingredients {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 20px 0;
+    }
+
+    ul.ingredients li {
+      padding: 5px 0;
+      border-bottom: 1px dotted #e2dcd5;
+      font-size: 15px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    ul.ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    ol.instructions {
+      padding-left: 22px;
+      margin: 0 0 10px 0;
+    }
+
+    ol.instructions li {
+      padding: 6px 0;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .recipe-card {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      ul.ingredients li {
+        font-size: 14px;
+      }
+      ol.instructions li {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="container">
+    <div class="recipe-card">
+      <h1>Przepis na Chleb Bez Mąki</h1>
+      <div class="divider"></div>
+
+      <div class="section-title">Składniki</div>
+      <ul class="ingredients">
+        <li>1 kubek / 140 g nasion słonecznika</li>
+        <li>½ kubka / 90 g siemienia lnianego</li>
+        <li>½ kubka / 70 g orzechów laskowych lub migdałów</li>
+        <li>1 kubka / 150 g płatków owsianych (mogą być bezglutenowe)</li>
+        <li>2 łyżki nasion chia</li>
+        <li>4 łyżki / 32 g nasion babki płesznik</li>
+        <li>1 łyżeczka drobnoziarnistej soli morskiej</li>
+        <li>1 łyżka syropu klonowego (jeśli nie spożywasz cukru, zastąp go szczyptą stewii)</li>
+        <li>3 łyżki oleju kokosowego lub stopionego masła klarowanego</li>
+        <li>1½ kubka / 375 ml wody</li>
+      </ul>
+
+      <div class="section-title">Instrukcje</div>
+      <ol class="instructions">
+        <li>Wymieszaj wszystkie suche składniki.</li>
+        <li>Dodaj syrop klonowy, olej i wodę, wymieszaj.</li>
+        <li>Przełóż do formy i odstaw na co najmniej 3 godziny lub na noc.</li>
+        <li>Piecz w 180°C na środkowej kratce przez 20 min, następnie odwróć i piecz kolejne 30-40 min.</li>
+      </ol>
+    </div>
+  </div>
+
+</body>
+</html>
