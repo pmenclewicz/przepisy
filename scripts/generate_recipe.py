@@ -48,18 +48,22 @@ if CUSTOM_TITLE:
 
 html_code = ""
 
-# LOGIKA DLA MODELU GROQ
+# LOGIKA DLA MODELU GROQ (ZOPTYMALIZOWANA)
 if API_KEY_TYPE == "groq":
     GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
     if not GROQ_API_KEY:
         raise ValueError("Brak klucza GROQ_API_KEY w secretach repozytorium!")
     
-    print("Używam darmowego API Groq (qwen/qwen3.8-27b)")
+    print("Używam darmowego API Groq (qwen/qwen3.8-27b z zaostrzonymi regułami)")
     
     messages_content = []
     
+    # Dodatkowa instrukcja wzmacniająca dla Groq na starcie wiadomości
+    strict_groq_prefix = "Jesteś precyzyjnym parserem OCR i programistą HTML. Twoim jedynym zadaniem jest bezwzględne wykonanie poniższych instrukcji bez żadnego gadania wstępnego.\n\n"
+    full_prompt = strict_groq_prefix + prompt_base
+
     if INPUT_TYPE == "image":
-        messages_content.append({"type": "text", "text": prompt_base})
+        messages_content.append({"type": "text", "text": full_prompt})
         image_parts = RECIPE_INPUT.split("|||")
         for img_data in image_parts:
             if img_data.strip():
@@ -68,13 +72,14 @@ if API_KEY_TYPE == "groq":
                     "image_url": {"url": img_data}
                 })
     else:
-        full_text = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
-        messages_content.append({"type": "text", "text": full_text})
+        text_payload = f"{full_prompt}\n\nLink do przepisu: {RECIPE_INPUT}"
+        messages_content.append({"type": "text", "text": text_payload})
 
     payload = {
         "model": "qwen/qwen3.8-27b",
         "messages": [{"role": "user", "content": messages_content}],
-        "temperature": 0.2
+        "temperature": 0.05,  # Jeszcze niższa temperatura, żeby model trzymał się faktów i kodu
+        "max_tokens": 4096    # Zapewnia, że nie uciągnie kodu w połowie strony
     }
     
     headers = {
@@ -89,6 +94,7 @@ if API_KEY_TYPE == "groq":
     
     res_data = response.json()
     html_code = res_data["choices"][0]["message"]["content"]
+
 
 # LOGIKA DLA MODELI GEMINI (PAID / FREE)
 else:
