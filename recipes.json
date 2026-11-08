@@ -1,5 +1,11 @@
 [
   {
+    "id": "ciasto-jajko",
+    "title": "Ciasto jajko",
+    "file": "przepisy/ciasto-jajko.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "filet-z-kurczaka-z-piekarnika-soczysty-delikatny-i-aromatyczny",
     "title": "Filet z kurczaka z piekarnika. Soczysty, delikatny i aromatyczny",
     "file": "przepisy/filet-z-kurczaka-z-piekarnika-soczysty-delikatny-i-aromatyczny.html",

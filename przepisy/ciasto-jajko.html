@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciasto jajko</title>
+  <style>
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ef;
+      color: #2b2b2b;
+      line-height: 1.45;
+    }
+
+    .recipe-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #d4c5b9;
+      border-radius: 4px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      font-size: 26px;
+      text-align: center;
+      color: #5c3a21;
+      margin: 0 0 15px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #8b5e3c;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 17px;
+      color: #6e472a;
+      margin: 14px 0 6px 0;
+      padding-bottom: 3px;
+      border-bottom: 1px dashed #c2b1a3;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      color: #3b2414;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+
+    ul {
+      margin: 6px 0 10px 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    p {
+      margin: 0 0 8px 0;
+      text-align: justify;
+    }
+
+    .steps p {
+      margin-bottom: 6px;
+    }
+
+    .grid-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 650px) {
+      .grid-two-col {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .recipe-card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>Ciasto jajko</h1>
+
+    <div class="grid-two-col">
+      <div>
+        <h2>Składniki</h2>
+        <div class="section-title">Ciasto:</div>
+        <ul>
+          <li>2 paczki świeżego szpinaku około 250 g zblendować + 2 łyżki wody</li>
+          <li>4 jajka</li>
+          <li>120 ml oleju</li>
+          <li>160 g cukru</li>
+          <li>280 g mąki pszennej</li>
+          <li>1 łyżeczka proszku do pieczenia</li>
+        </ul>
+
+        <h2>Masa serowa:</h2>
+        <ul>
+          <li>1 kg sera w wiaderku bez cukru</li>
+          <li>2 galaretki cytrynowe rozpuszczone w 400 ml wrzątku</li>
+          <li>½ szkl cukru pudru</li>
+          <li>300 ml śmietanki kremówki</li>
+        </ul>
+
+        <h2>Na wierzch:</h2>
+        <ul>
+          <li>Puszka moreli (lepsze morele są mniejsze) w syropie zalane krystaliczną galaretką tężejącą (3 sztuki) - 1125 ml wody.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Przygotowanie</h2>
+        <div class="steps">
+          <div class="section-title">Ciasto:</div>
+          <p>Blendujemy szpinak (+ 2 łyżki wody).</p>
+          <p>Jajka miksujemy z cukrem na wysokich obrotach przez około 5-6 minut. Powinna powstać jasna, puszysta masa jajeczna.</p>
+          <p>Wlewamy małym strumieniem olej rzepakowy (120ml). Miksujemy na małych obrotach parę sekund.</p>
+          <p>Dodajemy zblendowany szpinak i mieszamy rózgą. Wysypujemy mąkę z proszkiem, do połączenia składników. Ciasto przelewamy do foremki pieczemy 45-50 minut 175 stopni bez termoobiegu lub 160 z termoobiegiem. Duża okrągła blacha lub standardowa prostokątna.</p>
+
+          <div class="section-title">Masa serowa:</div>
+          <p>Ser zmiksować z cukrem pudrem oraz śmietaną, następnie dodać tężejącą (zimną galaretkę).</p>
+
+          <div class="section-title">Wykończenie:</div>
+          <p>Morele w syropie zalać krystaliczną galaretką tężejącą (rozpuszczone 3 galaretki w 1125 ml wody).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
