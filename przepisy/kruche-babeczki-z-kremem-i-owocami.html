@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kruche babeczki z kremem i owocami</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .columns {
+        gap: 15px !important;
+      }
+      h1 {
+        font-size: 20pt !important;
+        margin-bottom: 4px !important;
+      }
+      h2 {
+        font-size: 11pt !important;
+        margin-top: 6px !important;
+        margin-bottom: 4px !important;
+      }
+      h3 {
+        font-size: 9.5pt !important;
+        margin-top: 4px !important;
+        margin-bottom: 2px !important;
+      }
+      p, li {
+        font-size: 8.2pt !important;
+        line-height: 1.25 !important;
+      }
+      ul {
+        margin-bottom: 6px !important;
+        padding-left: 14px !important;
+      }
+      li {
+        margin-bottom: 2px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2b2520;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      width: 100%;
+      max-width: 820px;
+      background: #ffffff;
+      border: 1px solid #d9ccb9;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      padding: 30px;
+      position: relative;
+    }
+
+    .header-section {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #5c3a21;
+      margin: 0 0 6px 0;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .columns {
+      display: flex;
+      flex-direction: row;
+      gap: 25px;
+      align-items: flex-start;
+    }
+
+    .ingredients-col {
+      flex: 0 0 38%;
+      background-color: #faf7f2;
+      padding: 14px 16px;
+      border: 1px solid #eee4d5;
+      border-radius: 4px;
+    }
+
+    .instructions-col {
+      flex: 1 1 62%;
+    }
+
+    h2 {
+      font-size: 14px;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 8px 0;
+      border-bottom: 1px solid #dcc8b1;
+      padding-bottom: 3px;
+    }
+
+    h3 {
+      font-size: 12px;
+      color: #6d472b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 8px 0 4px 0;
+    }
+
+    ul {
+      margin: 0 0 10px 0;
+      padding-left: 18px;
+    }
+
+    li {
+      font-size: 12.5px;
+      line-height: 1.4;
+      margin-bottom: 4px;
+      color: #332d29;
+    }
+
+    .instructions-col ul {
+      list-style-type: square;
+    }
+
+    .instructions-col li {
+      margin-bottom: 7px;
+      text-align: justify;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 10px;
+      }
+      .recipe-card {
+        padding: 16px;
+      }
+      .columns {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .ingredients-col {
+        flex: 1 1 100%;
+        width: 100%;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      .instructions-col li {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="header-section">
+      <h1>Kruche babeczki z kremem i owocami</h1>
+    </div>
+
+    <div class="columns">
+      <div class="ingredients-col">
+        <h2>Składniki – ok. 20 - 30 sztuk</h2>
+
+        <h3>Ciasto:</h3>
+        <ul>
+          <li>175 g masła, zimnego</li>
+          <li>50 g żółtek (ok 3 sztuk)</li>
+          <li>1 łyżeczka wanilii</li>
+          <li>60 g cukru pudru</li>
+          <li>mała szczypta soli</li>
+          <li>1/2 łyżeczki pasty waniliowej lub ziarenka z 1/2 laski wanilii</li>
+          <li>skórka z 1/2 pomarańczy i skórka z 1/2 cytryny</li>
+          <li>270 g mąki pszennej</li>
+        </ul>
+
+        <h3>Krem:</h3>
+        <ul>
+          <li>375 g mleka 3,2%</li>
+          <li>125 g śmietanki kremówki 30%</li>
+          <li>175 g cukru</li>
+          <li>120 g żółtek (około 6 sztuk)</li>
+          <li>35 g mąki pszennej</li>
+          <li>1 laska wanilii (lub 2 łyżeczki pasty waniliowej)</li>
+          <li>Owoce: maliny, borówki, truskawki, czereśnie, mięta i cukier puder</li>
+        </ul>
+      </div>
+
+      <div class="instructions-col">
+        <h2>Przygotowanie</h2>
+
+        <h3>Ciasto:</h3>
+        <ul>
+          <li>Do misy miksera włożyć pokrojone na kawałki masło oraz resztę składników oprócz mąki. Zmiksować do uzyskania jednolitej masy, następnie dodać mąkę i zmiksować do połączenia się składników, połączyć w jednolitą kulę, zawinąć w folię i wstawić do lodówki na 1 godzinę.</li>
+          <li>Metalowe karbowane foremki lub foremki do mini tart posmarować miękkim masłem. Piekarnik nagrzać do <strong>180 st. C</strong>. Schłodzone ciasto rozwałkować na 4 mm placek na stolnicy posypanej mąką, wykrawać krążki z ciasta i wylepiać nimi foremki, spód podziurkować widelcem. Wstawić do nagrzanego piekarnika i piec przez <strong>około 14 minut</strong> na złoty kolor. Wyjąć z piekarnika, po przestudzeniu wyjąć kruche babeczki z foremek i całkowicie je <strong>ostudzić</strong>.</li>
+        </ul>
+
+        <h3>Krem:</h3>
+        <ul>
+          <li>W garnku umieścić mleko i śmietankę. Podgrzewać na średnim ogniu prawie do zagotowania (nie zagotowywać, mieszanka ma być bardzo ciepła - gorąca, ale nie wrząca, gdy na powierzchni zacznie tworzyć się cienka błonka - to znak, że temp. jest odpowiednia).</li>
+          <li>W czystej misce wymieszać żółtka z cukrem, następnie dodać mąkę i znów wymieszać. Na koniec wymieszać z ziarenkami wyłuskanymi z przepołowionej wzdłuż laski wanilii.</li>
+          <li>Do miski z żółtkami wlewać stopniowo gorące mleko ze śmietanką mieszając trzepaczką lub rózgą, ewentualnie miksując na małych obrotach miksera. Masę przelać z powrotem do garnka i podgrzewać na średnim ogniu co chwilę mieszając do czasu aż masa zgęstnieje i zacznie się gotować (proces ten trwa około 15 minut). Po zagotowaniu podgrzewać jeszcze masę przez około 30 sekund na małym ogniu.</li>
+          <li>Gotowy gęsty krem przelać do miski i szybko ostudzić (np. wstawić do garnka z zimną wodą z dodatkiem lodu, co chwilę zamieszać aby nie zrobił się kożuch na powierzchni). Po ostudzeniu najlepiej wstawić krem do lodówki.</li>
+          <li><strong>Całkowicie ostudzone babeczki wypełniać ostudzonym kremem. Ułożyć owoce, udekorować miętą a przed podaniem posypać cukrem pudrem.</strong> Przechowywać w lodówce.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
