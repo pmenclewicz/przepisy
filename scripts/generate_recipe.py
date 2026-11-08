@@ -48,22 +48,18 @@ if CUSTOM_TITLE:
 
 html_code = ""
 
-# LOGIKA DLA MODELU GROQ (ZOPTYMALIZOWANA)
+# LOGIKA DLA MODELU GROQ
 if API_KEY_TYPE == "groq":
     GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
     if not GROQ_API_KEY:
         raise ValueError("Brak klucza GROQ_API_KEY w secretach repozytorium!")
     
-    print("Używam darmowego API Groq (qwen/qwen3.8-27b z zaostrzonymi regułami)")
+    print("Używam darmowego API Groq (qwen/qwen3.8-27b)")
     
     messages_content = []
     
-    # Dodatkowa instrukcja wzmacniająca dla Groq na starcie wiadomości
-    strict_groq_prefix = "Jesteś precyzyjnym parserem OCR i programistą HTML. Twoim jedynym zadaniem jest bezwzględne wykonanie poniższych instrukcji bez żadnego gadania wstępnego.\n\n"
-    full_prompt = strict_groq_prefix + prompt_base
-
     if INPUT_TYPE == "image":
-        messages_content.append({"type": "text", "text": full_prompt})
+        messages_content.append({"type": "text", "text": prompt_base})
         image_parts = RECIPE_INPUT.split("|||")
         for img_data in image_parts:
             if img_data.strip():
@@ -72,14 +68,13 @@ if API_KEY_TYPE == "groq":
                     "image_url": {"url": img_data}
                 })
     else:
-        text_payload = f"{full_prompt}\n\nLink do przepisu: {RECIPE_INPUT}"
-        messages_content.append({"type": "text", "text": text_payload})
+        full_text = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
+        messages_content.append({"type": "text", "text": full_text})
 
     payload = {
         "model": "qwen/qwen3.8-27b",
         "messages": [{"role": "user", "content": messages_content}],
-        "temperature": 0.05,  # Jeszcze niższa temperatura, żeby model trzymał się faktów i kodu
-        "max_tokens": 4096    # Zapewnia, że nie uciągnie kodu w połowie strony
+        "temperature": 0.2
     }
     
     headers = {
@@ -94,7 +89,6 @@ if API_KEY_TYPE == "groq":
     
     res_data = response.json()
     html_code = res_data["choices"][0]["message"]["content"]
-
 
 # LOGIKA DLA MODELI GEMINI (PAID / FREE)
 else:
@@ -136,7 +130,12 @@ else:
         raise RuntimeError(f"Błąd API Gemini ({response.status_code}): {response.text}")
 
     res_data = response.json()
-    html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
+    
+    # BEZPIECZNE POBIERANIE TREŚCI Z GEMINI (OBSŁUGA FILTRÓW BEZPIECZEŃSTWA / BŁĘDÓW)
+    try:
+        html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
+    except (KeyError, IndexError) as e:
+        raise RuntimeError(f"Gemini nie zwróciło poprawnej treści (prawdopodobnie blokada bezpieczeństwa lub pusta odpowiedź). Pełny komunikat API: {json.dumps(res_data, ensure_ascii=False)}")
 
 # CZYSZCZENIE OTRZYMANEGO HTML
 html_code = re.sub(r'^```html\s*', '', html_code, flags=re.I)
