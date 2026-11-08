@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gofry od Madzi</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none;
+        border: 2px solid #5a3d28;
+        padding: 20mm 15mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2b231d;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fffdfa;
+      border: 3px double #7c5835;
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #7c5835;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      color: #4a2e18;
+      font-weight: normal;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #7c5835;
+      font-size: 1.2rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      width: 50px;
+      background-color: #7c5835;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #613b1f;
+      border-bottom: 1px solid #d9ccb9;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ingredients-section {
+      background: #faf6f0;
+      border: 1px solid #e8dec8;
+      padding: 20px 25px;
+      border-radius: 4px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ingredients-list li {
+      padding: 6px 0;
+      border-bottom: 1px dotted #c9bcac;
+      font-size: 1.05rem;
+    }
+
+    .ingredients-list li:last-child {
+      border-bottom: none;
+    }
+
+    .ingredients-list li::before {
+      content: "•";
+      color: #8b5e3c;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -0.2em;
+    }
+
+    .preparation-section {
+      padding: 0 5px;
+    }
+
+    .preparation-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .preparation-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+
+    .preparation-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #4a2e18;
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <header class="header">
+      <h1>Gofry od Madzi</h1>
+      <div class="divider">❦</div>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-section">
+        <h2>Składniki</h2>
+        <ul class="ingredients-list">
+          <li>1 i 1/2 szklanki mąki pszennej</li>
+          <li>1 i 1/2 łyżeczki proszku do pieczenia</li>
+          <li>szczypta soli</li>
+          <li>2 łyżeczki cukru pudru lub kryształu</li>
+          <li>1 łyżka cukru wanilinowego</li>
+          <li>2 jaja</li>
+          <li>1/2 szklanki oleju roślinnego (np. słonecznikowego) lub roztopionego masła</li>
+          <li>1 i 1/3 szklanki mleka</li>
+        </ul>
+      </section>
+
+      <section class="preparation-section">
+        <h2>Przygotowanie</h2>
+        <ul class="preparation-list">
+          <li>Mąkę wsypać do miski, dodać proszek do pieczenia, sól, cukier, cukier wanilinowy. Wszystko wymieszać a następnie dodać jajka, olej roślinny oraz mleko. Zmiksować mikserem na gładką masę, tylko do połączenia się składników. Ciasto można odstawić aby odpoczęło (na około 15 minut), ale nie jest to konieczne.</li>
+          <li>Rozgrzać gofrownicę. Gofry piec przez około 3 - 3,5 minuty lub przez czas podany w instrukcji gofrownicy. Nakładamy ciasto chochlą i wypukłą stroną łyżki rozprowadzamy ciasto dokładnie po całej powierzchni.</li>
+        </ul>
+      </section>
+    </div>
+  </article>
+
+</body>
+</html>
