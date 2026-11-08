@@ -1,5 +1,11 @@
 [
   {
+    "id": "chlodnik",
+    "title": "Chłodnik",
+    "file": "przepisy/chlodnik.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "krem-marchwiowy",
     "title": "KREM marchwiowy",
     "file": "przepisy/krem-marchwiowy.html",

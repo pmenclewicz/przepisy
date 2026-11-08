@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chłodnik</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none;
+        border: 1px solid #c4b5a5;
+        padding: 20mm;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ef;
+      color: #2c241e;
+      margin: 0;
+      padding: 40px 15px;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background-color: #fffdfa;
+      max-width: 780px;
+      width: 100%;
+      padding: 45px 50px;
+      border: 1px solid #dcd4c8;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      border: 1px solid #ece4d8;
+      pointer-events: none;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 35px;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Georgia', 'Garamond', serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #5c3a21;
+      margin: 0 0 10px 0;
+      font-weight: normal;
+      border-bottom: 2px solid #8b5e3c;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      color: #7a4f2e;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      border-bottom: 1px dashed #d5c8b8;
+      padding-bottom: 5px;
+      font-weight: 600;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 20px 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .ingredients-list li {
+      list-style-type: square;
+    }
+
+    .instructions-list {
+      list-style-type: decimal;
+    }
+
+    .instructions-list li {
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-card {
+        padding: 25px 20px;
+      }
+      .recipe-card::before {
+        display: none;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .section-title {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <header>
+      <h1>Chłodnik</h1>
+    </header>
+
+    <section>
+      <h2 class="section-title">Składniki</h2>
+      <ul class="ingredients-list">
+        <li>Słoik buraków drobno tartych</li>
+        <li>Duży ogórek zielony (zetrzeć na tarce z wąskimi dziurkami)</li>
+        <li>1-2 cebule czerwone (pokroić drobno)</li>
+        <li>Duży jogurt naturalny</li>
+        <li>Maślanka 0,5l</li>
+        <li>Śmietana kremówka 100ml (może być ale nie musi)</li>
+        <li>Pęczek koperku</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Przygotowanie</h2>
+      <ol class="instructions-list">
+        <li>Wszystko mieszamy w misce lub garnku.</li>
+        <li>Doprawiamy cukrem pudrem (1 duża czubata łyżka), pieprzem oraz octem winnym (3-4 łyżki).</li>
+      </ol>
+    </section>
+  </article>
+
+</body>
+</html>
