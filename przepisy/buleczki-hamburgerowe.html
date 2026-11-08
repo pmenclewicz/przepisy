@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bułeczki hamburgerowe</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f4ee;
+      color: #2b2622;
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.45;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #fff;
+      }
+      .recipe-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    .recipe-container {
+      max-width: 820px;
+      margin: 20px auto;
+      background: #fff;
+      border: 1px solid #dcd3c8;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px 35px;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0 0 10px 0;
+      color: #5a3825;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+    }
+
+    .intro {
+      font-style: italic;
+      color: #555;
+      font-size: 14px;
+      margin: 0 auto;
+      max-width: 650px;
+      line-height: 1.4;
+    }
+
+    .content-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .ingredients-col {
+      flex: 1 1 240px;
+      background: #faf7f2;
+      padding: 16px;
+      border-radius: 4px;
+      border: 1px solid #ede4da;
+    }
+
+    .instructions-col {
+      flex: 2 1 340px;
+    }
+
+    h2 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e2d7cc;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .sub-heading {
+      margin-top: 16px;
+    }
+
+    ul {
+      margin: 0 0 12px 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 5px;
+      font-size: 13.5px;
+    }
+
+    p {
+      margin: 0 0 12px 0;
+      font-size: 13.5px;
+      text-align: justify;
+    }
+
+    .baking-temp {
+      font-weight: bold;
+      color: #5a3825;
+      margin-top: 8px;
+      margin-bottom: 14px;
+    }
+
+    .machine-method {
+      border-top: 1px dashed #dcd3c8;
+      padding-top: 12px;
+      margin-top: 14px;
+    }
+
+    .machine-method h3 {
+      font-size: 14.5px;
+      color: #5a3825;
+      margin: 0 0 6px 0;
+    }
+
+    .closing {
+      font-style: italic;
+      font-weight: bold;
+      color: #8b5e3c;
+      margin-top: 10px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <header>
+      <h1>Bułeczki hamburgerowe</h1>
+      <p class="intro">Są wspaniałe, miękkie, białe, maślane, ciężkie. Dobre zarówno do domowych hamburgerów, jak i na śniadanie. Bardzo nam smakowały.</p>
+    </header>
+
+    <div class="content-grid">
+      <div class="ingredients-col">
+        <h2>Składniki</h2>
+        <div style="font-weight: bold; font-size: 13px; margin-bottom: 6px; color: #5a3825;">Na 8 dużych bułek:</div>
+        <ul>
+          <li>250 ml mleka, letniego</li>
+          <li>30 g masła, roztopionego i przestudzonego</li>
+          <li>1,5 łyżki cukru</li>
+          <li>3/4 łyżeczki soli</li>
+          <li>1 łyżeczka drożdży suchych (4 g) lub 8 g drożdży świeżych</li>
+          <li>1 jajko</li>
+          <li>2,5 szklanki (375 g) mąki pszennej</li>
+        </ul>
+
+        <h2 class="sub-heading">Ponadto:</h2>
+        <ul>
+          <li>1 żółtko</li>
+          <li>1 łyżka mleka</li>
+          <li>sezam do posypania</li>
+        </ul>
+      </div>
+
+      <div class="instructions-col">
+        <h2>Przygotowanie</h2>
+        <p>Mąkę pszenną wymieszać z suchymi drożdżami (ze świeżymi najpierw zrobić rozczyn). Dodać resztę składników i wyrobić, pod koniec dodając roztopiony tłuszcz. Wyrobić ciasto, odpowiednio długo, by było miękkie i elastyczne. Uformować z niego kulę, włożyć do oprószonej mąką miski, odstawić w ciepłe miejsce, przykryte ręczniczkiem kuchennym, do podwojenia objętości (zajmie to około 1,5 godziny).</p>
+
+        <p>Po tym czasie uformować 8 bułeczek, które po uformowaniu w kulkę należy mocno spłaszczyć dłonią. Bułeczki ułożyć na blaszce wyłożonej papierem do pieczenia, przykryć lnianym ręczniczkiem i pozostawić do podwojenia objętości na 35 - 45 minut. Wyrośnięte bułeczki posmarować żółtkiem wymieszanym z mlekiem, posypać sezamem.</p>
+
+        <p class="baking-temp">Piec w temperaturze 200°C przez 12 – 15 minut.</p>
+
+        <div class="machine-method">
+          <h3>Metoda dla maszynistów:</h3>
+          <p>Wszystkie składniki umieścić w maszynie do pieczenia według kolejności: płynne, sypkie, na końcu suche drożdże. Nastawić program do wyrabiania i wyrastania ciasta „dough”. Po tym czasie ciasto wyjąć, uformować bułeczki i dalej postępować według powyższego przepisu.</p>
+        </div>
+
+        <p class="closing">Smacznego :-)</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,5 +1,11 @@
 [
   {
+    "id": "buleczki-hamburgerowe",
+    "title": "Bułeczki hamburgerowe",
+    "file": "przepisy/buleczki-hamburgerowe.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "placki-na-sodzie",
     "title": "Placki na sodzie",
     "file": "przepisy/placki-na-sodzie.html",
