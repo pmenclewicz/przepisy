@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulpeciki meksykańskie z czerwoną fasolą</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #c4b5a5 !important;
+        box-shadow: none !important;
+        padding: 18px 24px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: #2b2b2b;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d2b48c;
+      outline-offset: -6px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 26px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #6a3e1b;
+      font-weight: normal;
+    }
+
+    .author-note {
+      font-size: 13px;
+      font-style: italic;
+      color: #666;
+      margin: 0;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .recipe-card {
+        padding: 20px 15px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    h2 {
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e0d5c1;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    ul.ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    ul.ingredients-list li {
+      padding: 5px 0 5px 16px;
+      position: relative;
+      border-bottom: 1px dotted #e8e2d8;
+      word-wrap: break-word;
+    }
+
+    ul.ingredients-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+      font-size: 16px;
+      line-height: 1;
+      top: 5px;
+    }
+
+    ol.steps-list {
+      padding-left: 20px;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    ol.steps-list li {
+      margin-bottom: 14px;
+      text-align: justify;
+      word-wrap: break-word;
+      padding-left: 4px;
+    }
+
+    ol.steps-list li strong {
+      color: #6a3e1b;
+    }
+
+    .footer-decor {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #8b5e3c;
+      letter-spacing: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <header>
+      <h1>PULPECIKI MEKSYKAŃSKIE Z CZERWONĄ FASOLĄ</h1>
+      <p class="author-note">Przepis specjalnie dla Klientów Biedronki przygotował Jakub Kuroń</p>
+    </header>
+
+    <div class="recipe-grid">
+      <section class="ingredients-section">
+        <h2>SKŁADNIKI:</h2>
+        <ul class="ingredients-list">
+          <li>opakowanie mięsa mielonego Kraina Mięs</li>
+          <li>pół pokrojonej w kostkę czerwonej papryki</li>
+          <li>100 g czerwonej fasoli z puszki Nasza Spiżarnia przekrojonej na pół</li>
+          <li>posiekana cebula</li>
+          <li>2 posiekane ząbki czosnku</li>
+          <li>100 g tartego żółtego sera gouda Światowid</li>
+          <li>białko</li>
+          <li>pęczek posiekanej natki pietruszki</li>
+          <li>2 łyżki bułki tartej Piekarnia Domowa</li>
+          <li>puszka pomidorów Nasza Spiżarnia</li>
+          <li>łyżeczka bazylii</li>
+          <li>4 łyżki oleju rzepakowego Wyborny</li>
+          <li>sól, pieprz</li>
+        </ul>
+      </section>
+
+      <section class="instructions-section">
+        <h2>SPOSÓB PRZYGOTOWANIA:</h2>
+        <ol class="steps-list">
+          <li>
+            <strong>Przygotuj sos:</strong> na patelni rozgrzej łyżkę oleju i zeszklij na nim ząbek czosnku. Następnie dodaj pomidory i duś całość ok. <strong>30 min</strong>. Na koniec dopraw bazylią oraz solą i pieprzem.
+          </li>
+          <li>
+            Mięso mielone połącz z cebulą, papryką, fasolą, czosnkiem, białkiem, żółtym serem i natką pietruszki. Całość dopraw solą oraz pieprzem i wymieszaj bardzo dokładnie na jednolitą masę, dodając porcjami bułkę tartą.
+          </li>
+          <li>
+            Z masy formuj pulpeciki i smaż na rumiano z wszystkich stron na pozostałym oleju. Po usmażeniu pulpeciki przełóż do sosu pomidorowego i duś razem ok. <strong>10 min</strong>.
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <div class="footer-decor">❦ ❦ ❦</div>
+  </div>
+
+</body>
+</html>
