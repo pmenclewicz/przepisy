@@ -27,10 +27,10 @@ def slugify(text):
     text = re.sub(r'[^\w\-]+', '', text)
     return re.sub(r'\-+', '-', text)
 
-prompt_base = """Przeanalizuj dostarczone materiały (link lub zdjęcie przepisu) i wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML dla strony książki kucharskiej.
+prompt_base = """Przeanalizuj dostarczone materiały (link lub jedno/dwa zdjęcia kolejnych stron przepisu) i wygeneruj KOMPLETNY, SAMOWYSTARCZALNY kod pliku HTML dla strony książki kucharskiej.
 
 Najważniejsze zasady:
-1. **Wierne odwzorowanie**: Nie zmieniaj, nie modyfikuj ani nie ulepszaj przepisu. Przepis (składniki, proporcje, kroki przygotowania) ma być **wierną kopią** tego, co znajduje się w dostarczonych materiałach.
+1. **Wierne odwzorowanie**: Nie zmieniaj, nie modyfikuj ani nie ulepszaj przepisu. Przepis (składniki, proporcje, kroki przygotowania) ma być **wierną kopią** tego, co znajduje się w dostarczonych materiałach. Jeśli przepis rozpisany jest na dwóch stronach/zdjęciach, połącz je w jedną spójną całość.
 2. **Brak zdjęć**: Nie dodawaj żadnych zdjęć ani grafik potrawy. Strona ma zawierać **wyłącznie czysty tekst**, sformatowany w czytelny sposób.
 3. **Responsywność mobilna i A4**: Strona musi wyglądać świetnie na telefonach oraz idealnie mieścić się na **jednej stronie A4** po wydrukowaniu. Użyj stylów CSS: `@page { size: A4 portrait; margin: 10mm; }`.
 4. **Bezpieczne szerokości**: Używaj elastycznych kontenerów (`max-width: 100%`, `box-sizing: border-box`). Teksty i listy składników muszą się zawijać i nigdy nie wychodzić poza ekran telefonu.
@@ -48,30 +48,29 @@ Najważniejsze zasady:
 if CUSTOM_TITLE:
     prompt_base += f"\n9. **WAŻNE**: Główne nagłówek H1 na tej stronie HTML MUSI brzmieć dokładnie: '{CUSTOM_TITLE}'."
 
-contents_payload = []
+contents_payload = [{"text": prompt_base}]
 
 if INPUT_TYPE == "image":
-    header, encoded = RECIPE_INPUT.split(",", 1)
-    mime_type = header.split(";")[0].replace("data:", "")
-    
-    contents_payload = [
-        {"text": prompt_base},
-        {
+    # Rozdzielamy obrazy po separatorze |||
+    image_parts = RECIPE_INPUT.split("|||")
+    for img_data in image_parts:
+        if not img_data.strip():
+            continue
+        header, encoded = img_data.split(",", 1)
+        mime_type = header.split(";")[0].replace("data:", "")
+        contents_payload.append({
             "inline_data": {
                 "mime_type": mime_type,
                 "data": encoded
             }
-        }
-    ]
+        })
 else:
-    prompt_text = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
-    contents_payload = [{"text": prompt_text}]
+    contents_payload[0]["text"] = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
 
 domain = "generativelanguage.googleapis.com"
 endpoint = f"/v1beta/models/{MODEL_NAME}:generateContent"
 url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY}"
 
-# Bez wyszukiwania zewnętrznego, ponieważ rezygnujemy ze zdjęć
 payload = {
     "contents": [{"parts": contents_payload}],
     "tools": []
@@ -104,10 +103,15 @@ recipes = []
 
 if os.path.exists(recipes_file):
     try:
-        with open(recipes_file, "r", encoding="utf-8") as f:
+        with open(recipes_file, "r", encoding="utf-8`"):
             recipes = json.load(f)
     except Exception:
-        recipes = []
+        # Awaryjny odczyt, gdyby wcięło encję pliku
+        try:
+            with open(recipes_file, "r", encoding="utf-8") as f:
+                recipes = json.load(f)
+        except Exception:
+            recipes = []
 
 new_entry = {
     "id": file_slug,
