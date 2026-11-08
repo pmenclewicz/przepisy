@@ -5,25 +5,13 @@ import base64
 import requests
 from datetime import datetime
 
-MODEL_NAME = "gemini-3.8-flash"
-
-PAID_KEY = os.environ.get("GEMINI_API_KEY")
-FREE_KEY = os.environ.get("GEMINI_API_KEY_DARMOWY")
 API_KEY_TYPE = os.environ.get("API_KEY_TYPE", "paid")
-
-if API_KEY_TYPE == "free":
-    GEMINI_API_KEY = FREE_KEY
-    print("Używam darmowego klucza API (GEMINI_API_KEY_DARMOWY)")
-else:
-    GEMINI_API_KEY = PAID_KEY
-    print("Używam płatnego klucza API (GEMINI_API_KEY)")
-
 INPUT_TYPE = os.environ.get("INPUT_TYPE", "url")
 RECIPE_INPUT = os.environ.get("RECIPE_INPUT")
 CUSTOM_TITLE = os.environ.get("CUSTOM_TITLE", "").strip()
 
-if not GEMINI_API_KEY or not RECIPE_INPUT:
-    raise ValueError(f"Brak wybranego klucza API (typ: {API_KEY_TYPE}) lub danych wejściowych!")
+if not RECIPE_INPUT:
+    raise ValueError("Brak danych wejściowych z przepisem!")
 
 def slugify(text):
     text = text.lower().strip()
@@ -58,39 +46,92 @@ Najważniejsze zasady:
 if CUSTOM_TITLE:
     prompt_base += f"\n9. **WAŻNE**: Główne nagłówek H1 na tej stronie HTML MUSI brzmieć dokładnie: '{CUSTOM_TITLE}'."
 
-contents_payload = [{"text": prompt_base}]
+html_code = ""
 
-if INPUT_TYPE == "image":
-    image_parts = RECIPE_INPUT.split("|||")
-    for img_data in image_parts:
-        if not img_data.strip():
-            continue
-        header, encoded = img_data.split(",", 1)
-        mime_type = header.split(";")[0].replace("data:", "")
-        contents_payload.append({
-            "inline_data": {
-                "mime_type": mime_type,
-                "data": encoded
-            }
-        })
+# LOGIKA DLA MODELU GROQ
+if API_KEY_TYPE == "groq":
+    GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+    if not GROQ_API_KEY:
+        raise ValueError("Brak klucza GROQ_API_KEY w secretach repozytorium!")
+    
+    print("Używam darmowego API Groq (llama-3.2-11b-vision-preview)")
+    
+    messages_content = []
+    
+    if INPUT_TYPE == "image":
+        messages_content.append({"type": "text", "text": prompt_base})
+        image_parts = RECIPE_INPUT.split("|||")
+        for img_data in image_parts:
+            if img_data.strip():
+                messages_content.append({
+                    "type": "image_url",
+                    "image_url": {"url": img_data}
+                })
+    else:
+        full_text = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
+        messages_content.append({"type": "text", "text": full_text})
+
+    payload = {
+        "model": "llama-3.2-11b-vision-preview",
+        "messages": [{"role": "user", "content": messages_content}],
+        "temperature": 0.2
+    }
+    
+    headers = {
+        "Authorization": f"Bearer {GROQ_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    response = requests.post("[https://api.groq.com/openai/v1/chat/completions](https://api.groq.com/openai/v1/chat/completions)", json=payload, headers=headers)
+    if not response.ok:
+        raise RuntimeError(f"Błąd API Groq ({response.status_code}): {response.text}")
+    
+    res_data = response.json()
+    html_code = res_data["choices"][0]["message"]["content"]
+
+# LOGIKA DLA MODELI GEMINI (PAID / FREE)
 else:
-    contents_payload[0]["text"] = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
+    if API_KEY_TYPE == "free":
+        GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY_DARMOWY")
+        print("Używam darmowego klucza API (GEMINI_API_KEY_DARMOWY)")
+    else:
+        GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+        print("Używam płatnego klucza API (GEMINI_API_KEY)")
 
-domain = "generativelanguage.googleapis.com"
-endpoint = f"/v1beta/models/{MODEL_NAME}:generateContent"
-url = f"https://{domain}{endpoint}?key={GEMINI_API_KEY}"
+    if not GEMINI_API_KEY:
+        raise ValueError(f"Brak klucza API dla wybranego typu Gemini ({API_KEY_TYPE})!")
 
-payload = {
-    "contents": [{"parts": contents_payload}],
-    "tools": []
-}
+    contents_payload = [{"text": prompt_base}]
 
-response = requests.post(url, json=payload)
-if not response.ok:
-    raise RuntimeError(f"Błąd API Gemini ({response.status_code}): {response.text}")
+    if INPUT_TYPE == "image":
+        image_parts = RECIPE_INPUT.split("|||")
+        for img_data in image_parts:
+            if not img_data.strip():
+                continue
+            header, encoded = img_data.split(",", 1)
+            mime_type = header.split(";")[0].replace("data:", "")
+            contents_payload.append({
+                "inline_data": {
+                    "mime_type": mime_type,
+                    "data": encoded
+                }
+            })
+    else:
+        contents_payload[0]["text"] = f"{prompt_base}\n\nLink do przepisu: {RECIPE_INPUT}"
 
-res_data = response.json()
-html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
+    MODEL_NAME = "gemini-3.5-flash"
+    url = f"[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/){MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
+
+    payload = {"contents": [{"parts": contents_payload}]}
+    response = requests.post(url, json=payload)
+    
+    if not response.ok:
+        raise RuntimeError(f"Błąd API Gemini ({response.status_code}): {response.text}")
+
+    res_data = response.json()
+    html_code = res_data["candidates"][0]["content"]["parts"][0]["text"]
+
+# CZYSZCZENIE OTRZYMANEGO HTML
 html_code = re.sub(r'^```html\s*', '', html_code, flags=re.I)
 html_code = re.sub(r'```\s*$', '', html_code).strip()
 
@@ -107,6 +148,7 @@ html_file_path = f"przepisy/{file_slug}.html"
 with open(html_file_path, "w", encoding="utf-8") as f:
     f.write(html_code)
 
+# AKTUALIZACJA RECIPES.JSON
 recipes_file = "recipes.json"
 recipes = []
 
