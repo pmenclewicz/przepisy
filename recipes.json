@@ -1,5 +1,11 @@
 [
   {
+    "id": "burrito",
+    "title": "BURRITO",
+    "file": "przepisy/burrito.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "placuszki-z-cukinii",
     "title": "Placuszki z cukinii",
     "file": "przepisy/placuszki-z-cukinii.html",
