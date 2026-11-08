@@ -1,5 +1,11 @@
 [
   {
+    "id": "vegeta",
+    "title": "VEGETA",
+    "file": "przepisy/vegeta.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "przepis-na-chleb-bez-maki",
     "title": "Przepis na Chleb Bez Mąki",
     "file": "przepisy/przepis-na-chleb-bez-maki.html",

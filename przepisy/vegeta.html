@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VEGETA</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-container {
+        border: 1px solid #c2b29d !important;
+        box-shadow: none !important;
+        padding: 20px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #fbf9f5;
+      color: #2c2523;
+      margin: 0;
+      padding: 20px 15px;
+      display: flex;
+      justify-content: center;
+      line-height: 1.6;
+    }
+
+    .recipe-container {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 700px;
+      padding: 35px 30px;
+      border: 2px solid #8b5e3c;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #d4c5b9;
+      padding: 25px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #5c381e;
+      margin-top: 0;
+      margin-bottom: 25px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #8b5e3c;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #c2b29d;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 25px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .instruction-box {
+      background: #faf6f0;
+      border-left: 4px solid #8b5e3c;
+      padding: 15px 20px;
+      margin-top: 15px;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="inner-border">
+      <h1>VEGETA</h1>
+
+      <div class="section-title">Składniki</div>
+      <ul>
+        <li>marchew</li>
+        <li>pietruszka - nać</li>
+        <li>seler</li>
+        <li>por</li>
+        <li>lubczyk</li>
+        <li>kurkuma</li>
+        <li>pełno liścia zielony</li>
+        <li>+ sól</li>
+      </ul>
+
+      <div class="section-title">Przygotowanie</div>
+      <div class="instruction-box">
+        Suszymy, blendujemy.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
