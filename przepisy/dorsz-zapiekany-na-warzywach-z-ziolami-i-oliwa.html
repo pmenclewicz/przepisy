@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dorsz zapiekany na warzywach z ziołami i oliwą</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c !important;
+        box-shadow: none !important;
+        padding: 18mm 15mm !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 15px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Garamond', 'Palatino Linotype', serif;
+      color: #2c2523;
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 750px;
+      border: 2px solid #8b5e3c;
+      padding: 35px 40px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #c9b4a4;
+      padding: 25px 30px;
+    }
+
+    .header-area {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      color: #513019;
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .author-note {
+      font-size: 13px;
+      font-style: italic;
+      color: #7a6352;
+      margin: 0;
+    }
+
+    .recipe-content {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+      .recipe-card {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    h2 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e2d7ce;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .ingredients ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ingredients li {
+      padding: 5px 0;
+      border-bottom: 1px dotted #e6ded7;
+      font-size: 14px;
+    }
+
+    .ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    .steps ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .steps li {
+      font-size: 14px;
+      margin-bottom: 12px;
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    .steps li:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer-area {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid #c9b4a4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #6b584a;
+    }
+
+    .closing {
+      font-size: 18px;
+      font-style: italic;
+      color: #8b5e3c;
+      font-weight: bold;
+    }
+
+    .cost-info {
+      font-size: 12px;
+      color: #887260;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="inner-border">
+      
+      <header class="header-area">
+        <h1>DORSZ ZAPIEKANY NA WARZYWACH Z ZIOŁAMI I OLIWĄ</h1>
+        <p class="author-note">Przepis specjalnie dla Klientów Biedronki przygotował Jakub Kuroń</p>
+      </header>
+
+      <div class="recipe-content">
+        <section class="ingredients">
+          <h2>Składniki</h2>
+          <ul>
+            <li>475 g filetów z dorsza Złota Rybka</li>
+            <li>250 g pomidorów śliwkowych</li>
+            <li>250 g ogórka</li>
+            <li>4 marchewki Prosto z Ogrodu</li>
+            <li>pietruszka</li>
+            <li>1 łyżeczka ziół prowansalskich</li>
+            <li>sok i skórka otarta z 1 cytryny</li>
+            <li>pęczek natki pietruszki</li>
+            <li>4 łyżeczki masła osełkowego Mleczna Dolina</li>
+            <li>100 ml oliwy z oliwek Casa de Azeite</li>
+            <li>sól, pieprz</li>
+          </ul>
+        </section>
+
+        <section class="steps">
+          <h2>Przygotowanie</h2>
+          <ol>
+            <li>Filety przypraw solą, pieprzem oraz sokiem z cytryny i odstaw na godz. w chłodne miejsce.</li>
+            <li>Pomidory pokrój na połówki. Obierz ogórka, oczyść marchewkę oraz pietruszkę i pokrój je w paski. Wszystkie warzywa wymieszaj razem z oliwą, skórką otartą z cytryny i ziołami prowansalskimi.</li>
+            <li>Przygotuj 4 płaty folii aluminiowej, na każdym płacie ułóż porcję warzyw, następnie filet, a na nim łyżeczkę masła. Folię zawiń w zgrabny pakunek i wstaw na 20-25 min do nagrzanego do 180°C piekarnika. Rybę podawaj z ulubionymi dodatkami, posypaną natką pietruszki.</li>
+          </ol>
+        </section>
+      </div>
+
+      <footer class="footer-area">
+        <span class="cost-info">Koszt potrawy dla 1 osoby: ok. 5,88 zł</span>
+        <span class="closing">Smacznego!</span>
+      </footer>
+
+    </div>
+  </div>
+
+</body>
+</html>
