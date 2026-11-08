@@ -10,11 +10,9 @@ on:
         required: false
         type: string
 
-# === DODANA SEKCJA KOLEJKOWANIA ===
 concurrency:
   group: recipe-generation-queue
   cancel-in-progress: false
-# =================================
 
 jobs:
   build:
@@ -48,10 +46,15 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           
-          git fetch origin main
-          git rebase origin/main || true
-          
           git add przepisy/ recipes.json
           git status
+          
+          # Jeśli nic się nie zmieniło, kończymy
           git diff-index --quiet HEAD || git commit -m "Automatycznie dodano nowy przepis"
-          git push origin main
+          
+          # Pętla próbująca wykonać push, a w razie konfliktu robiąca rebase i ponawiająca próbę
+          for i in {1..5}; do
+            git pull --rebase origin main && git push origin main && break
+            echo "Konflikt przy pushu, ponawiam synchronizację ($i/5)..."
+            sleep 3
+          done
