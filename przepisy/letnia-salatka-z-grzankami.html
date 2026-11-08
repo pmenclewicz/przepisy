@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letnia sałatka z grzankami</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #c4b5a5 !important;
+        max-width: 100% !important;
+        padding: 20px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2b2b2b;
+      line-height: 1.6;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .recipe-card {
+      background-color: #ffffff;
+      max-width: 800px;
+      width: 100%;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4c2b2;
+      outline-offset: -6px;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #e2d7cb;
+      padding-bottom: 16px;
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #5c3a21;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      text-transform: none;
+    }
+
+    .meta-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 14px;
+      color: #6e6459;
+      font-style: italic;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #f4ede4;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-style: normal;
+      font-weight: 600;
+      color: #704a2d;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .recipe-card {
+        padding: 20px 15px;
+        outline-offset: -4px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #704a2d;
+      border-bottom: 1px solid #decbbd;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients-group {
+      margin-bottom: 18px;
+    }
+
+    .ingredients-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .sub-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #8b5e3c;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 14.5px;
+      color: #383430;
+      word-wrap: break-word;
+    }
+
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #b3543d;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .instructions-text {
+      font-size: 14.5px;
+      color: #383430;
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.7;
+    }
+
+    .instructions-text p {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <header>
+      <h1>Letnia sałatka z grzankami</h1>
+      <div class="meta-bar">
+        <span class="badge">⏱️ 20 min</span>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-column">
+        <h2 class="section-title">Składniki:</h2>
+        <div class="ingredients-group">
+          <ul>
+            <li>1 ogórek</li>
+            <li>1 główka dowolnej sałaty</li>
+            <li>oliwki</li>
+            <li>4 cebule dymki</li>
+            <li>250 g pomidorów</li>
+            <li>pęczek posiekanej natki pietruszki</li>
+            <li>3 kromki lekko czerstwego chleba</li>
+          </ul>
+        </div>
+
+        <div class="ingredients-group">
+          <h3 class="sub-title">Sos:</h3>
+          <ul>
+            <li>4 łyżki oliwy z oliwek</li>
+            <li>sok i skórka otarta z jednej cytryny</li>
+            <li>łyżka miodu</li>
+            <li>sól i pieprz</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="instructions-column">
+        <h2 class="section-title">Przygotowanie:</h2>
+        <div class="instructions-text">
+          <p>Warzywa dokładnie myjemy i osuszamy. Sałatę kroimy w 2,5-centymetrowe paski, pomidorki przekrawamy na pół, a rzodkiewki na ćwiartki. Ogórek obieramy, wydrążamy pestki, a miąższ kroimy w kostkę. Cebulę kroimy w piórka. Warzywa wkładamy do miski. Następnie dodajemy posiekaną natkę. Z kromek chleba odkrawamy skórkę i smażymy na chrupko na niewielkiej ilości oliwy. Studzimy i wsypujemy do miski z warzywami. Składniki sosu energicznie mieszamy, by dobrze się połączyły, i delikatnie mieszamy z sałatką.</p>
+        </div>
+      </section>
+    </div>
+  </article>
+
+</body>
+</html>
