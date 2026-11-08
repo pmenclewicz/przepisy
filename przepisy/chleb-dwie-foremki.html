@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chleb (dwie foremki)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c;
+        box-shadow: none;
+        padding: 20mm 15mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #fbf9f5;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 2px solid #8b5e3c;
+      outline: 4px double #d4b996;
+      outline-offset: -8px;
+      padding: 35px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #d4b996;
+    }
+
+    h1 {
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #4a2c11;
+      margin: 0 0 8px 0;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+
+    .divider {
+      font-size: 18px;
+      color: #8b5e3c;
+      margin-top: 4px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      color: #5c3a21;
+      border-bottom: 1px dashed #c4a482;
+      padding-bottom: 4px;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      font-variant: small-caps;
+      letter-spacing: 0.5px;
+    }
+
+    ul.ingredients-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 20px 0;
+    }
+
+    ul.ingredients-list li {
+      padding: 5px 0;
+      border-bottom: 1px dotted #e8dec8;
+      position: relative;
+      padding-left: 18px;
+      font-size: 15.5px;
+    }
+
+    ul.ingredients-list li::before {
+      content: "•";
+      color: #8b5e3c;
+      position: absolute;
+      left: 2px;
+      font-size: 16px;
+    }
+
+    .instructions-section {
+      margin-top: 15px;
+    }
+
+    .instruction-step {
+      margin-bottom: 14px;
+      font-size: 15.5px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .instruction-step:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-card {
+        padding: 25px 18px;
+        outline-offset: -5px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      ul.ingredients-list li, .instruction-step {
+        font-size: 14.5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header class="header-section">
+      <h1>Chleb (dwie foremki)</h1>
+      <div class="divider">❦ ❦ ❦</div>
+    </header>
+
+    <section class="ingredients-section">
+      <h2 class="section-title">Składniki</h2>
+      <ul class="ingredients-list">
+        <li>1 litr ciepłej wody</li>
+        <li>10 dag drożdży świeżych</li>
+        <li>1 kg mąki krupczatki lub orkiszowej itp.</li>
+        <li>1 szklanka otręb lub płatków owsianych</li>
+        <li>1 płaska łyżka soli</li>
+        <li>Można dodać wg uznania siemię lniane pestki dyni słonecznika rodzynki</li>
+      </ul>
+    </section>
+
+    <section class="instructions-section">
+      <h2 class="section-title">Wykonanie</h2>
+      <p class="instruction-step">Rozpuścić drożdże w litrze wody wsypać mąkę oraz pozostałe składniki wymieszać wszystko odstawić na ok. 5 min formy / korytka/ posmarować masłem ciasto przełożyć do foremek i na chwilę zostawić ok. 2-3 min.</p>
+      <p class="instruction-step">Wstawić do zimnego piekarnika piec 1 godz. w temperaturze 200 °C</p>
+      <p class="instruction-step">Po upieczeniu wyjąć z foremek</p>
+    </section>
+  </main>
+</body>
+</html>
