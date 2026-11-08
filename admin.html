@@ -150,17 +150,19 @@
             cursor: not-allowed;
         }
 
-        #status {
+        .status-box {
             margin-top: 20px;
             padding: 15px;
             border-radius: 6px;
             display: none;
             font-size: 14px;
+            text-align: center;
+            font-weight: 500;
         }
-
-        .info { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
-        .success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
-        .error { background: #ffebee; color: #b71c1c; border: 1px solid #ffcdd2; }
+        .status-queued { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
+        .status-in-progress { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
+        .status-success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+        .status-failure { background: #ffebee; color: #b71c1c; border: 1px solid #ffcdd2; }
     </style>
 </head>
 <body>
@@ -197,11 +199,10 @@
         <label for="customTitle">Własna nazwa przepisu (opcjonalnie):</label>
         <input type="text" id="customTitle" placeholder="Zostaw puste, aby AI samo wykryło nazwę">
 
-        <!-- Wybór klucza API -->
         <label for="apiKeyType">Wybór klucza AI (Gemini):</label>
         <select id="apiKeyType">
-            <option value="paid" selected>Płatny</option>
-            <option value="free">Darmowy</option>
+            <option value="paid">Płatny</option>
+            <option value="free" selected>Darmowy</option>
         </select>
 
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
@@ -209,13 +210,14 @@
 
         <button type="submit" id="btn" class="submit-btn">Uruchom generowanie przepisu</button>
     </form>
-    <div id="status"></div>
+    <div id="status" class="status-box"></div>
 </div>
 
 <script>
 const REPO = "pmenclewicz/przepisy";
 let currentMode = 'url';
 let selectedFilesArray = [];
+let statusCheckInterval = null;
 
 function switchTab(mode) {
     currentMode = mode;
@@ -253,7 +255,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
     localStorage.setItem("ghToken", token);
     btn.disabled = true;
     status.style.display = "block";
-    status.className = "info";
+    status.className = "status-box status-queued";
     status.innerHTML = "⏳ Wysyłanie zlecenia do kolejki GitHub...";
 
     let inputData = "";
@@ -300,7 +302,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
                     input_type: inputType,
                     recipe_input: inputData,
                     custom_title: customTitle,
-                    api_key_type: apiKeyType  // Przesyłamy informację o wybranym kluczu
+                    api_key_type: apiKeyType
                 }
             })
         });
@@ -309,12 +311,8 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
             throw new Error(`Błąd HTTP ${res.status}: Nieprawidłowy token lub za duże dane.`);
         }
 
-        status.className = "success";
-        status.innerHTML = `
-            ✅ <b>Zlecenie pomyślnie dodane do kolejki!</b><br>
-            GitHub Actions przetwarza przepis. Możesz bezpiecznie wrzucić kolejne zdjęcia.<br><br>
-            <a href="https://github.com/${REPO}/actions" target="_blank" style="display: inline-block; background: #8b5e3c; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none; margin-top: 5px;">🔍 Sprawdź status w zakładce Actions →</a>
-        `;
+        status.className = "status-box status-in-progress";
+        status.innerHTML = "🔄 Zlecenie przyjęte! Oczekiwanie na start generowania...";
         
         document.getElementById("recipeUrl").value = "";
         document.getElementById("customTitle").value = "";
@@ -323,13 +321,63 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         document.getElementById('galleryInput').value = '';
         document.getElementById('fileInfo').innerHTML = "Status: Nie wybrano żadnych zdjęć.";
 
+        startStatusPolling(token);
+
     } catch (err) {
-        status.className = "error";
+        status.className = "status-box status-failure";
         status.innerHTML = "❌ Błąd wysyłania: " + err.message;
-    } finally {
         btn.disabled = false;
     }
 });
+
+function startStatusPolling(token) {
+    if (statusCheckInterval) clearInterval(statusCheckInterval);
+    
+    let checksCount = 0;
+    statusCheckInterval = setInterval(async () => {
+        checksCount++;
+        if (checksCount > 60) {
+            clearInterval(statusCheckInterval);
+            return;
+        }
+
+        try {
+            const res = await fetch(`https://api.github.com/repos/${REPO}/actions/runs?per_page=1`, {
+                headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+            });
+            if (!res.ok) return;
+            
+            const data = await res.json();
+            if (data.workflow_runs && data.workflow_runs.length > 0) {
+                const latestRun = data.workflow_runs[0];
+                const runStatus = latestRun.status;
+                const conclusion = latestRun.conclusion;
+                const statusDiv = document.getElementById("status");
+
+                if (runStatus === 'queued') {
+                    statusDiv.className = "status-box status-queued";
+                    statusDiv.innerHTML = "⏳ Przepis jest w kolejce i czeka na swoją kolej...";
+                } else if (runStatus === 'in_progress') {
+                    statusDiv.className = "status-box status-in-progress";
+                    statusDiv.innerHTML = "⚙️ Trwa generowanie przepisu przez sztuczną inteligencję...";
+                } else if (runStatus === 'completed') {
+                    clearInterval(statusCheckInterval);
+                    document.getElementById("btn").disabled = false;
+                    
+                    if (conclusion === 'success') {
+                        statusDiv.className = "status-box status-success";
+                        statusDiv.innerHTML = "✅ <b>Sukces!</b> Przepis został pomyślnie wygenerowany i dodany do książki kucharskiej.";
+                    } else {
+                        statusDiv.className = "status-box status-failure";
+                        statusDiv.innerHTML = "❌ <b>Błąd generowania!</b> Coś poszło nie tak. Sprawdź logi w zakładce Actions.";
+                    }
+                }
+            }
+        } catch (e) {
+            console.error("Błąd podczas pobierania statusu:", e);
+        }
+    }, 5000);
+}
 
 function resizeAndCompressImage(file) {
     return new Promise((resolve) => {
