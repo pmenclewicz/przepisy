@@ -82,7 +82,6 @@ if API_KEY_TYPE == "groq":
         "Content-Type": "application/json"
     }
     
-    # POPRAWIONY ADRES URL BEZ ZNACZNIKÓW MARKDOWN
     response = requests.post("[https://api.groq.com/openai/v1/chat/completions](https://api.groq.com/openai/v1/chat/completions)", json=payload, headers=headers)
     if not response.ok:
         raise RuntimeError(f"Błąd API Groq ({response.status_code}): {response.text}")
