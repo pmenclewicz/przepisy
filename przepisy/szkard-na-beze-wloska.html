@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szkard na bezę włoską</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10mm;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #333;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #5a3d2b;
+            border-bottom: 2px solid #5a3d2b;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #5a3d2b;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #5a3d2b;
+        }
+
+        p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .recipe-section {
+            margin-bottom: 20px;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .container {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+        <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+        <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+    </div>
+
+    <div class="container">
+        <h1>Szkard na bezę włoską</h1>
+
+        <div class="recipe-section">
+            <h2>Składniki</h2>
+            <ul>
+                <li>4 białka, w temperaturze pokojowej</li>
+                <li>300 g drobnego cukru do wypieków (około 1,5 szklanki)</li>
+                <li>60 ml wody</li>
+            </ul>
+        </div>
+
+        <div class="recipe-section">
+            <h2>Przygotowanie</h2>
+            <p>W małym garnuszku umieść 260 g cukru i 60 ml wody. Wymieszaj, zagotuj. W międzyczasie ubijaj białka na sztywno, stopniowo dodając pozostałe 40 g cukru.</p>
+            <p>Gdy syrop zacznie się gotować, zmniejsz ogień i gotuj na średniej mocy palnika, aż temperatura osiągnie 118°C (245°F).</p>
+            <p>Włącz mikser na najwyższe obroty i powoli, cienką strużką wlewaj gorący syrop do ubijanych białek. Ubijaj na wysokich obrotach, aż beza ostygnie i będzie gęsta, lśniąca i sztywna.</p>
+            <p>Gotową bezę przełóż do miseczki. Beza powinna być bardzo sztywna, gęsta, lśniąca (robiona bez termometru, woda z cukrem się rozpuściła).</p>
+        </div>
+    </div>
+
+</body>
+</html>
