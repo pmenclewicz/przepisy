@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sos cygański - Przepis</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none;
+        border: 1px solid #777;
+        margin: 0;
+        max-width: 100%;
+        padding: 25px 35px;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ed;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fffdfa;
+      border: 2px solid #8b5e3c;
+      padding: 35px 45px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border: 1px solid #d4bda8;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #5c341b;
+      margin-top: 5px;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #8b5e3c;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #704222;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e0d5c1;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 24px;
+      margin: 0 0 20px 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    .instructions {
+      font-size: 1.05rem;
+      color: #333;
+      text-align: justify;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>SOS CYGAŃSKI</h1>
+
+    <h2>Składniki</h2>
+    <ul>
+      <li>1 ½ kg pomidorów (obrać ze skóry rozgotować i przecedzić przez sito)</li>
+      <li>1 łyżeczka soli</li>
+      <li>1 łyżeczka jarzynki</li>
+      <li>1 kostka rosołowa (może być warzywna wg uznania)</li>
+      <li>1 łyżeczka oregano</li>
+      <li>½ łyżeczki pieprzu</li>
+      <li>2 łyżki octu</li>
+      <li>2 łyżki cukru</li>
+      <li>3 łyżki oleju</li>
+      <li>3 ząbki czosnku (pokroić )</li>
+      <li>1 duża cebula</li>
+      <li>1 – 2 papryki czerwone</li>
+    </ul>
+
+    <h2>WYKONANIE</h2>
+    <p class="instructions">
+      Wszystko wymieszać i gotować 15 min. Wlać do słoików i pasteryzować 15 min
+    </p>
+  </div>
+
+</body>
+</html>

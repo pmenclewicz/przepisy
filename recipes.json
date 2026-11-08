@@ -1,5 +1,11 @@
 [
   {
+    "id": "sos-cyganski",
+    "title": "SOS CYGAŃSKI",
+    "file": "przepisy/sos-cyganski.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "chlodnik",
     "title": "Chłodnik",
     "file": "przepisy/chlodnik.html",
