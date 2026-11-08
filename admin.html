@@ -171,7 +171,7 @@
     
     <div class="tab-buttons">
         <button type="button" class="tab-btn active" onclick="switchTab('url')">Z Linku WWW</button>
-        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęć (1 lub 2 strony)</button>
+        <button type="button" class="tab-btn" onclick="switchTab('image')">Ze Zdjęć (Aparat / Galeria)</button>
     </div>
 
     <form id="adminForm">
@@ -181,12 +181,16 @@
         </div>
 
         <div id="tab-image" class="tab-content">
-            <label>Wybierz zdjęcia przepisu (możesz zaznaczyć 1 lub 2 pliki naraz):</label>
+            <label>Dodaj zdjęcia przepisu:</label>
             <div class="photo-options">
-                <button type="button" class="photo-btn" onclick="document.getElementById('galleryInput').click()">📁 Wybierz zdjęcia (1-2)</button>
+                <!-- Przycisk bezpośrednio z aparatu -->
+                <button type="button" class="photo-btn" onclick="document.getElementById('cameraInput').click()">📸 Zrób zdjęcie</button>
+                <!-- Przycisk z galerii (umożliwia wybranie 1 lub 2 plików) -->
+                <button type="button" class="photo-btn" onclick="document.getElementById('galleryInput').click()">📁 Wybierz z galerii (1-2)</button>
             </div>
 
-            <!-- added multiple attribute -->
+            <!-- Ukryte inputy dla aparatu i galerii -->
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none" onchange="handleFilesSelected(this)">
             <input type="file" id="galleryInput" accept="image/*" multiple style="display:none" onchange="handleFilesSelected(this)">
 
             <div id="fileInfo">Status: Nie wybrano żadnych zdjęć.</div>
@@ -224,7 +228,6 @@ function switchTab(mode) {
 
 function handleFilesSelected(input) {
     if (input.files && input.files.length > 0) {
-        // Ograniczamy do max 2 plików
         selectedFilesArray = Array.from(input.files).slice(0, 2);
         let names = selectedFilesArray.map(f => f.name).join(", ");
         document.getElementById('fileInfo').innerHTML = `✅ <b>Wybrano plików (${selectedFilesArray.length}):</b> ${names}`;
@@ -261,19 +264,18 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         }
     } else {
         if (selectedFilesArray.length === 0) {
-            alert("Najpierw wybierz co najmniej jedno zdjęcie!");
+            alert("Najpierw zrób zdjęcie lub wybierz je z galerii!");
             btn.disabled = false;
             status.style.display = "none";
             return;
         }
         
-        // Kompresujemy każde wybrane zdjęcie i łączymy je separatorem w jeden ciąg tekstowy
         let compressedImages = [];
         for (let file of selectedFilesArray) {
             let compressed = await resizeAndCompressImage(file);
             compressedImages.push(compressed);
         }
-        inputData = compressedImages.join("|||"); //separator rozdzielający obrazy
+        inputData = compressedImages.join("|||");
     }
 
     try {
@@ -305,6 +307,7 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
         document.getElementById("recipeUrl").value = "";
         document.getElementById("customTitle").value = "";
         selectedFilesArray = [];
+        document.getElementById('cameraInput').value = '';
         document.getElementById('galleryInput').value = '';
         document.getElementById('fileInfo').innerHTML = "Status: Nie wybrano żadnych zdjęć.";
 
