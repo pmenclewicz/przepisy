@@ -1,5 +1,11 @@
 [
   {
+    "id": "grube-ciasto-na-pizze",
+    "title": "Grube ciasto na pizzę",
+    "file": "przepisy/grube-ciasto-na-pizze.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "chleb-dwie-foremki",
     "title": "Chleb (dwie foremki)",
     "file": "przepisy/chleb-dwie-foremki.html",

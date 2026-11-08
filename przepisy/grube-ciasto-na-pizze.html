@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grube ciasto na pizzę</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-container {
+        border: 2px solid #5a3d28;
+        box-shadow: none;
+        padding: 25px 30px;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f3ee;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #2c2523;
+      line-height: 1.6;
+    }
+
+    .recipe-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 35px 40px;
+      border: 2px solid #8b5e3c;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #d4c5b9;
+      padding: 25px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a3d28;
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      color: #704214;
+      font-size: 1.25rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed #c2b2a3;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul.ingredients {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 20px 0;
+    }
+
+    ul.ingredients li {
+      padding: 4px 0;
+      position: relative;
+      padding-left: 20px;
+      font-size: 1.05rem;
+    }
+
+    ul.ingredients li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+    }
+
+    .instructions {
+      font-size: 1.05rem;
+      text-align: justify;
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .recipe-container {
+        padding: 15px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1.15rem;
+      }
+      .instructions {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="inner-border">
+      <h1>Grube ciasto na pizzę</h1>
+
+      <h2>Składniki:</h2>
+      <ul class="ingredients">
+        <li>0,5 kg mąki pszennej</li>
+        <li>1/3 kostki drożdży</li>
+        <li>2 łyżki stołowe płaskie cukru</li>
+        <li>1 łyżka stołowa płaska soli</li>
+        <li>2 łyżki oliwy</li>
+        <li>ok. 1/2 szklanki letniej wody</li>
+      </ul>
+
+      <h2>Sposób przyrządzania:</h2>
+      <div class="instructions">
+        Mąkę przesiać przez drobne sito na stolnicę. Drożdże z cukrem rozprowadzić z letnią wodą, dodać sól. Wlewać do mąki i zarobić ciasto dolewając wody na gładką masę. Dobrze zarobione ciasto ma po przecięciu nożem pęcherze powietrza w środku. Jak jest zarobione dodajemy oliwę i zarabiamy aż ciasto wchłonie całą oliwę. Gotowe ciasto formujemy w kulę, wkładamy do miski i przykrywamy ściereczką. Odstawiamy w ciepłe miejsce do wyrośnięcia na minimum 2 godziny. Po wyrośnięciu wałkujemy i układamy na blasze wysmarowanej oliwą.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
