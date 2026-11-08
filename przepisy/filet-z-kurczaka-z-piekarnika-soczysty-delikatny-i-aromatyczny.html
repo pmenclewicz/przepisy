@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filet z kurczaka z piekarnika. Soczysty, delikatny i aromatyczny</title>
+  <style>
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: #f7f4ef;
+      color: #2b2520;
+      line-height: 1.5;
+      padding: 20px 10px;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #d8cfc4;
+      border-radius: 4px;
+      padding: 30px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-section {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2b2520;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .meta-info {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 0.95rem;
+      color: #6a5848;
+      font-style: italic;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .recipe-card {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e0d7cd;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients ul {
+      list-style: none;
+    }
+
+    .ingredients li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .ingredients li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+      font-weight: bold;
+    }
+
+    .instructions ol {
+      list-style: none;
+      counter-reset: step-counter;
+    }
+
+    .instructions li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      text-align: justify;
+    }
+
+    .instructions li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header class="header-section">
+      <h1>Filet z kurczaka z piekarnika. Soczysty, delikatny i aromatyczny</h1>
+      <div class="meta-info">
+        <span class="meta-item">🕒 Czas przygotowania: 40 min</span>
+        <span class="meta-item">🍴 Porcje: 2</span>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients">
+        <h2>Składniki</h2>
+        <ul>
+          <li>2 pojedyncze filety z piersi kurczaka</li>
+          <li>6 sztuk suszonych pomidorów w oleju</li>
+          <li>6 plastrów sera mozzarella</li>
+          <li>garść świeżych liści szpinaku</li>
+          <li>2 łyżki oliwy z oliwek</li>
+          <li>sól, pieprz, suszona papryka słodka lub ostra do smaku</li>
+        </ul>
+      </section>
+
+      <section class="instructions">
+        <h2>Przygotowanie</h2>
+        <ol>
+          <li>Każdy filet z kurczaka umyć, osuszyć, a następnie naciąć wzdłuż, tworząc kieszonkę nie przecinać do końca. Do środka włożyć suszone pomidory, plasterki mozzarelli oraz liście świeżego szpinaku.</li>
+          <li>Z wierzchu mięso doprawić solą, pieprzem i suszoną papryką, a następnie skropić oliwą z oliwek. Ułożyć filety w naczyniu żaroodpornym.</li>
+          <li>Piekarnik nagrzać do 180°C z termoobiegiem. Piec filety przez około 35-40 minut, aż będą soczyste w środku i lekko zarumienione z wierzchu.</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
