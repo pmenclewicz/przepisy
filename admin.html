@@ -46,16 +46,17 @@
             margin-bottom: 5px;
         }
 
-        input {
+        input, select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
             font-size: 14px;
+            background: white;
         }
 
-        input:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: #8b5e3c;
         }
@@ -196,6 +197,13 @@
         <label for="customTitle">Własna nazwa przepisu (opcjonalnie):</label>
         <input type="text" id="customTitle" placeholder="Zostaw puste, aby AI samo wykryło nazwę">
 
+        <!-- Wybór klucza API -->
+        <label for="apiKeyType">Wybór klucza AI (Gemini):</label>
+        <select id="apiKeyType">
+            <option value="paid" selected>Płatny (GEMINI_API_KEY)</option>
+            <option value="free">Darmowy (GEMINI_API_KEY_DARMOWY)</option>
+        </select>
+
         <label for="ghToken">Hasło dostępu (GitHub Token PAT):</label>
         <input type="password" id="ghToken" placeholder="github_pat_xxxxxxxx" required>
 
@@ -238,6 +246,7 @@ if (localStorage.getItem("ghToken")) {
 document.getElementById("adminForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const token = document.getElementById("ghToken").value.trim();
+    const apiKeyType = document.getElementById("apiKeyType").value;
     const status = document.getElementById("status");
     const btn = document.getElementById("btn");
 
@@ -290,7 +299,8 @@ document.getElementById("adminForm").addEventListener("submit", async (e) => {
                 client_payload: {
                     input_type: inputType,
                     recipe_input: inputData,
-                    custom_title: customTitle
+                    custom_title: customTitle,
+                    api_key_type: apiKeyType  // Przesyłamy informację o wybranym kluczu
                 }
             })
         });
