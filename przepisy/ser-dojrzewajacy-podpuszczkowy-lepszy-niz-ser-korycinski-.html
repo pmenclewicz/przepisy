@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ser dojrzewający podpuszczkowy - lepszy niż ser koryciński :)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .instructions-content {
+        column-count: 2 !important;
+        column-gap: 20px !important;
+      }
+      .step-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Times New Roman", Garamond, serif;
+      background-color: #f7f5f0;
+      color: #2b2623;
+      line-height: 1.35;
+      padding: 20px 10px;
+      font-size: 9.5pt;
+    }
+
+    .recipe-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 24px 28px;
+      border: 1px solid #d4c8be;
+      border-radius: 4px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 19pt;
+      font-weight: normal;
+      color: #5c3a21;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid #e0d6cc;
+      padding-bottom: 4px;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+
+    .ingredients-box {
+      background: #faf7f2;
+      border-left: 3px solid #8b5e3c;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .ingredients-list {
+      list-style-type: square;
+      padding-left: 18px;
+      font-size: 9pt;
+    }
+
+    .ingredients-list li {
+      margin-bottom: 3px;
+    }
+
+    .sub-list {
+      list-style-type: circle;
+      padding-left: 18px;
+      margin-top: 2px;
+    }
+
+    .instructions-content {
+      font-size: 8.8pt;
+      text-align: justify;
+    }
+
+    .step-item {
+      margin-bottom: 7px;
+      line-height: 1.32;
+    }
+
+    @media screen and (min-width: 680px) and (max-width: 900px) {
+      .instructions-content {
+        column-count: 2;
+        column-gap: 20px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding: 8px 5px;
+        font-size: 10pt;
+      }
+      .recipe-container {
+        padding: 14px;
+      }
+      h1 {
+        font-size: 15pt;
+      }
+      .instructions-content {
+        font-size: 9.5pt;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-container">
+    <header>
+      <h1>Ser dojrzewający podpuszczkowy - lepszy niż ser koryciński :)</h1>
+    </header>
+
+    <section class="ingredients-box">
+      <h2 class="section-title" style="margin-top: 0;">Składniki</h2>
+      <ul class="ingredients-list">
+        <li>10 litrów niepasteryzowanego mleka</li>
+        <li>200 ml kefiru z żywymi kulturami bakterii</li>
+        <li>podpuszczka (w ilości przewidzianej przez producenta, jeśli używasz tej podpuszczki, dodaj 80 kropel)</li>
+        <li>chlorek wapnia (w ilości przewidzianej przez producenta, jeśli używasz tego, dodaj 20 kropli)</li>
+        <li>
+          solanka:
+          <ul class="sub-list">
+            <li>3 czubate łyżki soli kamiennej na 1 litr przegotowanej wody</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Przygotowanie</h2>
+      <div class="instructions-content">
+        <p class="step-item">Kefir bardzo dokładnie wymieszaj, energicznie potrząsając opakowaniem przez kilkanaście sekund. Otwórz, postaw na kilka godzin w temperaturze pokojowej na 2-3 godziny lub na całą noc.</p>
+        <p class="step-item">Chlorek wapnia (bez względu na to, czy jest w postaci płynnej czy stałej) wymieszaj ze 100 ml przegotowanej wody w temperaturze pokojowej. Podpuszczkę wymieszaj w 100 ml wody.</p>
+        <p class="step-item">Mleko przelej do dużego garnka, dodaj chlorek i bardzo dokładnie mieszaj minutę. Odstaw na 20 minut.</p>
+        <p class="step-item">Mleko podgrzewaj na średnim ogniu, cały czas mieszając.</p>
+        <p class="step-item">Kiedy mleko osiągnie temperaturę 36-38 stopni, wyłącz ogień i mieszaj kilkanaście sekund. Cały czas mieszając, cienkim strumieniem wlej podpuszczkę, a następnie kefir. Całość mieszaj minutę. Zwróć uwagę, aby mleko z dna wymieszało się z tym z góry.</p>
+        <p class="step-item">Garnek przykryj i odstaw na 30 minut.</p>
+        <p class="step-item">Po tym czasie mleko zamieni się w galaretkę, czyli skrzep. Cienkim i długim nożem pokrój go na kawałki o boku nie większym niż 1 cm. Przy pierwszych cięciach w kratkę nóż trzymaj pionowo, a następnie potnij skrzep ukośnie, tak aby powstały kawałki, a nie słupki.</p>
+        <p class="step-item">Przykryj i odstaw na 30 minut. W tym czasie skrzep oddzieli się od serwatki.</p>
+        <p class="step-item">Po tym czasie za pomocą łyżki cedzakowej przenieś skrzep, odsączając serwatkę, do formy (może to być zwykły durszlak) wyłożonej chustą serowarską (możesz użyć lnianej ściereczki lub tetrowej pieluchy). Staraj się, aby jak najmniej serwatki dostało się do formy. Zajmie Ci to kilka minut.</p>
+        <p class="step-item">Jeśli chcesz przygotować ser podpuszczkowy z przyprawami, to teraz jest właściwy moment na ich dodanie. Każdą porcję skrzepu posyp wybraną przez siebie przyprawą. Do jednego sera możesz użyć kilku różnych przypraw. Nie dodawaj mieszanek zawierających sól.</p>
+        <p class="step-item">Do formy włóż więcej skrzepu, niż się zmieści, pomagając sobie zawiniętą do góry chustą. Ser podpuszczkowy po odcieknięciu znacznie zmniejszy swoją objętość.</p>
+        <p class="step-item">Formy ze skrzepem odstaw do odcieknięcia na 3-4 godziny. Duże formy możesz umieścić na garnkach lub miskach, mniejsze ustaw na kratce do pieczenia ułożonej na dużej blasze - ten system świetnie się sprawdza.</p>
+        <p class="step-item">Po tym czasie zawiń chustę i delikatnie odwróć ser w formie. Odstaw na następne 2 godziny do odcieknięcia.</p>
+        <p class="step-item">Następnie delikatnie wyjmij ser z formy i usuń chustę. Ser podpuszczkowy ponownie włóż do formy. Ser podpuszczkowy przełóż jeszcze 2-3 razy w formie (już bez chusty). Zostaw na noc w formie.</p>
+        <p class="step-item">Na drugi dzień przygotuj solankę. W każdym litrze (na ser podpuszczkowy z 10 litrów mleka, w zależności od ich wielkości, będziesz potrzebować około 1-1,5 litra solanki) rozpuść 3 łyżki soli kamiennej.</p>
+        <p class="step-item">Do solanki włóż ser. Duży ser podpuszczkowy w jednym kawałku z 10 litrów mleka wymaga około 3-4 godzin leżakowania w solance. Małe sery podpuszczkowe z 3-5 litrów mocz nie dłużej niż 2 godziny. Po pierwszym razie będziesz wiedzieć, jak długo moczyć, aby otrzymać ser tak słony, jak lubisz. Ja osobiście wolę mniej słony.</p>
+        <p class="step-item">Wyjmij ser podpuszczkowy z solanki i pozostaw w temperaturze pokojowej (najlepiej na kratce) do odcieknięcia na 4-5 godzin.</p>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
