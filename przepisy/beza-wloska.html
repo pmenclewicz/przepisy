@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beza włoska</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: none;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #c4b5a5 !important;
+        padding: 18mm 15mm !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: #fbf9f5;
+      color: #2b2520;
+      line-height: 1.55;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 35px 40px;
+      border: 1px solid #dfd7cc;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      border: 1px solid #ece4da;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: normal;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #5c3a21;
+      margin: 0 0 10px 0;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e2d9cd;
+    }
+
+    h2 {
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #7a4f2e;
+      margin: 20px 0 10px 0;
+      font-weight: bold;
+    }
+
+    .ingredients-section {
+      background: #faf7f2;
+      border: 1px solid #eee7dd;
+      border-radius: 3px;
+      padding: 15px 20px;
+      margin-bottom: 22px;
+    }
+
+    .ingredients-list {
+      list-style-type: disc;
+      padding-left: 22px;
+      margin: 8px 0 0 0;
+    }
+
+    .ingredients-list li {
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .preparation-section {
+      margin-top: 15px;
+    }
+
+    .step-item {
+      margin-bottom: 14px;
+      font-size: 15px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .note {
+      font-style: italic;
+      color: #5d544c;
+      font-size: 14px;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed #d8cebf;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-card {
+        padding: 22px 18px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 15px;
+      }
+      .ingredients-list li,
+      .step-item {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <h1>Beza włoska</h1>
+
+    <section class="ingredients-section">
+      <h2>Składniki na bezę włoską</h2>
+      <ul class="ingredients-list">
+        <li>4 białka, w temperaturze pokojowej</li>
+        <li>300 g drobnego cukru do wypieków (260 g + 40 g)</li>
+        <li>60 ml wody</li>
+      </ul>
+    </section>
+
+    <section class="preparation-section">
+      <h2>Przygotowanie</h2>
+      
+      <p class="step-item">
+        W misie miksera umieścić białka (misa powinna być sucha, bez śladów tłuszczu, białka idealnie oddzielone od żółtek). Obok w małym kubeczku przygotować 40 g cukru.
+      </p>
+
+      <p class="step-item">
+        W małym garnuszku umieścić 260 g cukru i 60 ml wody. Wymieszać, zagotować. W garnuszku umieścić termometr cukierniczy i gotować na średniej mocy palnika (ważne: nie mieszając ani razu!) do osiągnięcia na nim temperatury 118°C (245°F).
+      </p>
+
+      <p class="step-item">
+        W międzyczasie, gdy syrop dochodzi do temperatury 100°C (210°F) zacząć ubijać białka. Białka ubijać jak na bezy – do sztywności, pod koniec miksowania dosypując cukier, łyżeczka po łyżeczce, cały czas miksując. Gdy syrop osiągnie wymaganą temperaturę natychmiast ściągnąć go z palnika, zmniejszyć obroty miksera i wlewać syrop cukrowy do ubijanych białek (kierując ich strumień na środek) nie zaprzestając miksowania. Zwiększyć obroty na maksymalne i miksowanie kontynuować przez 5 – 8 minut. Beza powinna być bardzo sztywna, gęsta, lśniąca i powinna się wystudzić.
+      </p>
+
+      <p class="note">
+        (robiłam bez termometru, woda z cukrem się pomalutku gotowała aż cukier się rozpuści i zrobi się syrop)
+      </p>
+    </section>
+  </article>
+
+</body>
+</html>
