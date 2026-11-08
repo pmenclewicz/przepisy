@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crème brûlée</title>
+<style>
+  @page { size: A4 portrait; margin: 10mm; }
+  @media print { .no-print { display: none; } }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #f4efe6;
+    color: #2b241c;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    line-height: 1.45;
+  }
+
+  .page {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 18px 16px 28px;
+  }
+
+  .frame {
+    max-width: 100%;
+    background: #fffdf8;
+    border: 2px solid #8b5e3c;
+    outline: 1px solid #c9a87c;
+    outline-offset: 4px;
+    padding: 22px 20px 26px;
+    border-radius: 3px;
+  }
+
+  .corner {
+    text-align: center;
+    color: #8b5e3c;
+    letter-spacing: 6px;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 30px;
+    line-height: 1.1;
+    text-align: center;
+    margin: 4px 0 2px;
+    color: #5a3a22;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-style: italic;
+    color: #7a6a55;
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
+
+  .divider {
+    text-align: center;
+    color: #8b5e3c;
+    font-size: 16px;
+    letter-spacing: 8px;
+    margin: 6px 0 14px;
+  }
+
+  .meta {
+    text-align: center;
+    font-size: 13px;
+    color: #5a4a38;
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+  .meta span { white-space: nowrap; }
+  .meta .sep { color: #b89b78; margin: 0 6px; }
+
+  h2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8b5e3c;
+    border-bottom: 1px solid #d8c3a3;
+    padding-bottom: 4px;
+    margin: 18px 0 10px;
+  }
+
+  ul.ingredients {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.ingredients li {
+    padding: 3px 0 3px 20px;
+    position: relative;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  ul.ingredients li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: #8b5e3c;
+    font-weight: bold;
+  }
+
+  ol.steps {
+    margin: 0;
+    padding-left: 22px;
+  }
+  ol.steps li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  ol.steps li::marker {
+    color: #8b5e3c;
+    font-weight: bold;
+  }
+
+  .note {
+    margin-top: 16px;
+    padding: 10px 14px;
+    background: #f6efe2;
+    border-left: 3px solid #8b5e3c;
+    font-size: 13px;
+    font-style: italic;
+    color: #5a4a38;
+    overflow-wrap: break-word;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 12px;
+    color: #9a8a72;
+    font-style: italic;
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 24px; }
+    .frame { padding: 16px 14px 20px; }
+    ul.ingredients li, ol.steps li { font-size: 13.5px; }
+  }
+</style>
+</head>
+<body>
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page">
+    <div class="frame">
+      <div class="corner">✦ ✦ ✦</div>
+      <h1>Crème brûlée</h1>
+      <p class="subtitle">Krem z karmelizowaną skórką</p>
+      <div class="divider">❦</div>
+
+      <p class="meta">
+        <span>👥 4 porcje</span><span class="sep">•</span>
+        <span>⏱️ 40 minut</span><span class="sep">•</span>
+        <span>🔥 160°C</span>
+      </p>
+
+      <h2>Składniki</h2>
+      <ul class="ingredients">
+        <li>4 żółtka</li>
+        <li>1 szklanka śmietanki 30%</li>
+        <li>1 szklanka mleka</li>
+        <li>1/2 szklanki cukru</li>
+        <li>1 łyżeczka ekstraktu z wanilii</li>
+        <li>1/4 łyżeczki soli</li>
+        <li>cukier do karmelizowania</li>
+      </ul>
+
+      <h2>Przygotowanie</h2>
+      <ol class="steps">
+        <li>Rozgrzej piekarnik do 160°C. W garnku wymieszaj śmietankę, mleko, cukier, wanilię i sól. Podgrzewaj na średnim ogniu, aż zacznie lekko parować, ale nie zagotuje się.</li>
+        <li>W misce roztrzep żółtka. Stopniowo, cały czas mieszając, wlewaj do nich ciepłą mieszankę mleczną.</li>
+        <li>Przelej krem przez sitko do czystej miski, aby usunąć ewentualne białe kawałki.</li>
+        <li>Rozlej krem do 4 żaroodpornych miseczek. Umieść je w naczyniu żaroodpornym wypełnionym gorącą wodą do połowy wysokości miseczek.</li>
+        <li>Piecz w kąpieli wodnej przez około 30–40 minut, aż krem będzie ścięty po brzegach, ale nadal lekko drgał w środku.</li>
+        <li>Wyjmij miseczki i ostudź. Wstaw do lodówki na minimum 4 godziny, a najlepiej na całą noc.</

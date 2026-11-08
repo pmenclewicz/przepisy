@@ -1,5 +1,11 @@
 [
   {
+    "id": "crème-brûlée",
+    "title": "Crème brûlée",
+    "file": "przepisy/crème-brûlée.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "schab-na-zimno",
     "title": "Schab na zimno",
     "file": "przepisy/schab-na-zimno.html",
