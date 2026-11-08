@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piernik / pierniki staropolskie</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #c4b5a5 !important;
+        box-shadow: none !important;
+        padding: 15mm 12mm !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #2b2523;
+      line-height: 1.45;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fffefb;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #dfd7cc;
+      outline-offset: -6px;
+      padding: 30px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #5a3825;
+      margin: 0 0 6px 0;
+      font-weight: normal;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 700px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    h2 {
+      font-size: 17px;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-bottom: 1px solid #e0d7cd;
+      padding-bottom: 5px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    ul.ingredients-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+    }
+
+    ul.ingredients-list li {
+      padding: 4px 0;
+      border-bottom: 1px dashed #eee6dc;
+      font-size: 14px;
+    }
+
+    .temp-note {
+      font-style: italic;
+      font-size: 13.5px;
+      color: #665c54;
+      background: #fbf8f3;
+      border-left: 3px solid #8b5e3c;
+      padding: 6px 10px;
+      margin-top: 10px;
+    }
+
+    .steps-section p {
+      font-size: 14px;
+      margin: 0 0 10px 0;
+      text-align: justify;
+      line-height: 1.45;
+    }
+
+    .steps-section p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="header">
+      <h1>Piernik / pierniki staropolskie</h1>
+    </div>
+
+    <div class="content-grid">
+      <div class="ingredients-section">
+        <h2>Składniki</h2>
+        <ul class="ingredients-list">
+          <li>500g miodu</li>
+          <li>250g masła</li>
+          <li>1 szklanka cukru (można dać mniej)</li>
+          <li>125 ml mleka</li>
+          <li>½ łyżeczki soli</li>
+          <li>3 łyżeczki sody oczyszczonej</li>
+          <li>80g przyprawy piernikowej</li>
+          <li>3 jajka</li>
+          <li>1 kg mąki typ 500</li>
+        </ul>
+        <div class="temp-note">
+          Składniki w temp pokojowej.
+        </div>
+      </div>
+
+      <div class="steps-section">
+        <h2>Przygotowanie</h2>
+        <p>Do mleka dodajemy sodę i sól.</p>
+        <p>W garnku rozpuszczamy na małym ogniu miód, masło, cukier. Po przestudzeniu dodajemy całe jajka i mieszamy. Dodajemy mleko z sodą i solą i mieszamy do połączenie składników. Całą masę przelewamy do miski z mąką i mieszamy łyżką lub mikserem do połączenie składników.</p>
+        <p>Przekładamy do miski lub pojemnika, nakrywamy folią lub pokrywką i do lodówki na minimum dwa tyg., ale im dłużej tym lepiej ;) ja trzymam około 6 tyg.</p>
+        <p>Z podanych składników wychodzą trzy blaty dużej formy piekarnikowej. Wyjdą wtedy trzy pierniki przełożone powidłami... Wierzch polewamy rozpuszczoną czekoladą najlepiej gorzką z odrobiną śmietanki. Można udekorować bakaliami.</p>
+        <p>Powidła można podkręcić sokiem i skórką z pomarańczy, w razie potrzeby troszkę zredukować na małym ogniu jak będą za rzadkie.</p>
+        <p>Piernik po przełożeniu jeszcze bez polewy zawinąć w folię spożywczą i trzymać w chłodnym miejscu lub nawet w lodówce. Można obciążyć książką lub deską...</p>
+        <p>Rozwałkowujemy na grubość około 5 mm.</p>
+        <p>Blaty czy pierniki pieczemy w 175 stopniach 15-18 min.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
