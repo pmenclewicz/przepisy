@@ -1,5 +1,11 @@
 [
   {
+    "id": "placuszki-z-cukinii",
+    "title": "Placuszki z cukinii",
+    "file": "przepisy/placuszki-z-cukinii.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "placki-twarogowe-z-jablkiem",
     "title": "Placki twarogowe z jabłkiem",
     "file": "przepisy/placki-twarogowe-z-jablkiem.html",
@@ -279,12 +285,6 @@
     "id": "ciasto-jablkowo-orzechowe",
     "title": "Ciasto jabłkowo-orzechowe",
     "file": "przepisy/ciasto-jablkowo-orzechowe.html",
-    "date": "2026-11-07"
-  },
-  {
-    "id": "placuszki-z-cukinii",
-    "title": "Placuszki z cukinii",
-    "file": "przepisy/placuszki-z-cukinii.html",
     "date": "2026-11-07"
   },
   {

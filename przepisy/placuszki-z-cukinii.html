@@ -1,254 +1,212 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placuszki z cukinii - Przepis</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placuszki z cukinii</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
 
-        @media print {
-            .no-print { 
-                display: none !important; 
-            }
-            body {
-                background: #fff !important;
-                padding: 0 !important;
-            }
-            .recipe-card {
-                border: 2px solid #8b5e3c !important;
-                box-shadow: none !important;
-                padding: 15px !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-            }
-            @page {
-                size: A4 portrait;
-                margin: 10mm;
-            }
-        }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+        font-size: 12.5pt !important;
+      }
+      .recipe-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Lora', Georgia, serif;
-            color: #2c241e;
-            background-color: #f7f3ec;
-            line-height: 1.5;
-            padding: 20px 10px;
-        }
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #fcfbf9;
+      font-family: 'Georgia', 'Baskerville', 'Times New Roman', serif;
+      color: #2c2523;
+      line-height: 1.45;
+    }
 
-        .recipe-card {
-            max-width: 850px;
-            width: 100%;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border: 2px solid #8b5e3c;
-            outline: 1px solid #8b5e3c;
-            outline-offset: -6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-        }
+    .recipe-container {
+      max-width: 780px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #dcd3c9;
+      padding: 30px 36px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border-radius: 2px;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #d4c3b3;
-            padding-bottom: 15px;
-        }
+    .recipe-header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
 
-        h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            color: #8b5e3c;
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+      color: #3b281c;
+      text-transform: uppercase;
+    }
 
-        .subtitle {
-            font-style: italic;
-            color: #776b5d;
-            font-size: 0.95rem;
-        }
+    .recipe-meta {
+      font-size: 13px;
+      color: #7a685b;
+      font-style: italic;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-        .content-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-        }
+    .recipe-content {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+    }
 
-        .left-column {
-            flex: 1 1 260px;
-            max-width: 100%;
-        }
+    .ingredients-col {
+      flex: 0 0 35%;
+      border-right: 1px dashed #dcd3c9;
+      padding-right: 20px;
+    }
 
-        .right-column {
-            flex: 2 1 340px;
-            max-width: 100%;
-        }
+    .instructions-col {
+      flex: 1;
+    }
 
-        .image-container {
-            width: 100%;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid #d4c3b3;
-            background-color: #f7f3ec;
-        }
+    h2 {
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b5e3c;
+      margin-top: 0;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #eee5dd;
+    }
 
-        .recipe-image {
-            width: 100%;
-            height: auto;
-            max-height: 230px;
-            object-fit: cover;
-            display: block;
-        }
+    ul.ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        .section-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            color: #8b5e3c;
-            font-size: 1.2rem;
-            border-bottom: 2px solid #8b5e3c;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    ul.ingredients-list li {
+      padding: 4px 0;
+      font-size: 14px;
+      border-bottom: 1px dotted #ede6df;
+      word-break: break-word;
+    }
 
-        .ingredients-list {
-            list-style: none;
-            padding: 0;
-        }
+    ol.instructions-list {
+      margin: 0;
+      padding-left: 20px;
+    }
 
-        .ingredients-list li {
-            padding: 5px 0;
-            border-bottom: 1px dashed #e6dec9;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-        }
+    ol.instructions-list li {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.45;
+      text-align: justify;
+    }
 
-        .ingredients-list li::before {
-            content: "•";
-            color: #8b5e3c;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-right: 5px;
-        }
+    .serving-tip {
+      margin-top: 18px;
+      padding: 10px 14px;
+      background-color: #faf6f2;
+      border-left: 3px solid #8b5e3c;
+      font-size: 13px;
+      font-style: italic;
+      color: #554439;
+    }
 
-        .steps-list {
-            list-style: none;
-            counter-reset: step-counter;
-            padding: 0;
-        }
-
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 32px;
-            margin-bottom: 12px;
-            font-size: 0.93rem;
-            text-align: justify;
-            line-height: 1.45;
-        }
-
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 2px;
-            background-color: #8b5e3c;
-            color: #fff;
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            font-size: 0.8rem;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tip-box {
-            margin-top: 15px;
-            padding: 10px 12px;
-            background-color: #faf6f0;
-            border-left: 3px solid #8b5e3c;
-            font-style: italic;
-            font-size: 0.88rem;
-            color: #5c4a3e;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.75rem;
-            }
-            .recipe-card {
-                padding: 15px;
-            }
-            .steps-list li {
-                text-align: left;
-            }
-        }
-    </style>
+    @media (max-width: 650px) {
+      .recipe-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .ingredients-col {
+        flex: 1 1 100%;
+        border-right: none;
+        border-bottom: 1px dashed #dcd3c9;
+        padding-right: 0;
+        padding-bottom: 18px;
+      }
+      .recipe-container {
+        padding: 20px 16px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
-      <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
-      <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="recipe-header">
+      <h1>Placuszki z cukinii</h1>
+      <div class="recipe-meta">
+        <span>Czas przygotowania: ok. 25 minut</span>
+        <span>Porcje: ok. 10–12 placuszków</span>
+      </div>
     </div>
 
-    <div class="recipe-card">
-        <header>
-            <h1>Placuszki z cukinii</h1>
-            <p class="subtitle">Chrupiące, pyszne i proste w przygotowaniu warzywne placuszki</p>
-        </header>
+    <div class="recipe-content">
+      <div class="ingredients-col">
+        <h2>Składniki</h2>
+        <ul class="ingredients-list">
+          <li>1 średnia cukinia (ok. 350&nbsp;g)</li>
+          <li>1 jajko</li>
+          <li>3–4 łyżki mąki pszennej</li>
+          <li>1 ząbek czosnku</li>
+          <li>2 łyżki posiekanego koperku lub szczypiorku</li>
+          <li>1/2 łyżeczki soli</li>
+          <li>świeżo mielony pieprz</li>
+          <li>olej do smażenia</li>
+        </ul>
+      </div>
 
-        <div class="content-grid">
-            <div class="left-column">
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80" alt="Placuszki z cukinii" class="recipe-image">
-                </div>
+      <div class="instructions-col">
+        <h2>Sposób przygotowania</h2>
+        <ol class="instructions-list">
+          <li>Cukinię umyj, odetnij końce i zetrzyj na tarce o grubych oczkach. Przełóż do miski, posyp solą, wymieszaj i odstaw na około 10–15 minut, aby puściła soki.</li>
+          <li>Po upływie tego czasu starannie odciśnij cukinię z nadmiaru wody (w dłoniach, przez gazę lub na gęstym sicie).</li>
+          <li>Do odciśniętej cukinii dodaj jajko, mąkę pszenną, drobno posiekany lub przeciśnięty przez praskę czosnek oraz zieleninę. Dopraw świeżo mielonym pieprzem (oraz ewentualnie szczyptą soli). Całość dokładnie wymieszaj widelcem na jednolitą masę.</li>
+          <li>Na patelni rozgrzej cienką warstwę oleju. Nakładaj łyżką niewielkie porcje ciasta, delikatnie je spłaszczając.</li>
+          <li>Smaż na umiarkowanym ogniu przez około 3–4 minuty z każdej strony, aż placuszki staną się rumiane i chrupiące.</li>
+          <li>Po usmażeniu odsącz placuszki na talerzu wyłożonym ręcznikiem papierowym.</li>
+        </ol>
 
-                <h2 class="section-title">SKŁADNIKI</h2>
-                <ul class="ingredients-list">
-                    <li>1 średnia cukinia</li>
-                    <li>1 marchewka</li>
-                    <li>1 cebula</li>
-                    <li>1 ząbek czosnku</li>
-                    <li>1 jajko</li>
-                    <li>4 łyżki mąki</li>
-                    <li>sól</li>
-                    <li>pieprz</li>
-                    <li>szczypta chili</li>
-                    <li>olej (do smażenia)</li>
-                </ul>
-            </div>
-
-            <div class="right-column">
-                <h2 class="section-title">JAK TO ZROBIĆ?</h2>
-                <ol class="steps-list">
-                    <li>Cukinię dokładnie umyj i zetrzyj razem ze skórką na tarce o dużych oczkach.</li>
-                    <li>Obierz cebulę i zetrzyj ją na tarce do miski z cukinią. Posól warzywa i odstaw na 10 minut, aby puściły sok. Następnie dokładnie odciśnij nadmiar soku.</li>
-                    <li>Marchew umyj, obierz, zetrzyj na tarce i dodaj do warzyw razem z przeciśniętym przez praskę ząbkiem czosnku.</li>
-                    <li>Wbij jajko, dodaj mąkę i wszystko dokładnie wymieszaj. Powstałą masę dopraw solą, chili oraz pieprzem.</li>
-                    <li>Rozgrzej na patelni olej i łyżką nakładaj małe porcje ciasta. Smaż placuszki z cukinii na złoty kolor z obu stron.</li>
-                    <li>Usmażone placuszki układaj na papierowym ręczniku, by odsączyć je z nadmiaru tłuszczu. Możesz je ozdobić kleksem kwaśnej śmietany.</li>
-                </ol>
-
-                <div class="tip-box">
-                    <strong>Wskazówka:</strong> Dobrze odciśnięty sok z cukinii to klucz do tego, aby placuszki były chrupiące i nie rozpadały się podczas smażenia.
-                </div>
-            </div>
+        <div class="serving-tip">
+          <strong>Wskazówka podania:</strong> Podawaj na ciepło z kleksem kwaśnej śmietany, gęstego jogurtu greckiego lub z sosem czosnkowym.
         </div>
+      </div>
     </div>
+  </div>
 
 </body>
 </html>
