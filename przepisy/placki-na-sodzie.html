@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placki na sodzie</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f9f7f2;
+      color: #2c241b;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      line-height: 1.45;
+    }
+
+    .recipe-container {
+      max-width: 750px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #dcd5c9;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px 35px;
+    }
+
+    header {
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+      color: #1a1410;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #7a6857;
+      margin-top: 6px;
+    }
+
+    .meta-bar strong {
+      color: #8b5e3c;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e5ded4;
+      padding-bottom: 4px;
+      margin: 20px 0 12px 0;
+    }
+
+    .ingredients-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 6px 25px;
+      font-size: 14.5px;
+    }
+
+    .ingredients-list li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted #dcd5c9;
+      padding-bottom: 2px;
+    }
+
+    .ingredients-list .ingredient-name {
+      padding-right: 10px;
+    }
+
+    .ingredients-list .ingredient-qty {
+      font-weight: 600;
+      color: #4a3b32;
+      white-space: nowrap;
+    }
+
+    .steps-subtitle {
+      font-size: 13px;
+      font-style: italic;
+      color: #6d5d52;
+      margin-bottom: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    .step-label {
+      font-weight: bold;
+      color: #8b5e3c;
+      white-space: nowrap;
+      min-width: 65px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .step-text {
+      flex: 1;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-container {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .step-item {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .step-label {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-container">
+    <header>
+      <h1>Placki na sodzie</h1>
+      <div class="meta-bar">
+        <span>Autor: <strong>SAMMAKKO</strong></span>
+        <span>Czas przygotowania: <strong>15 MIN</strong></span>
+        <span>Ilość porcji: <strong>5+</strong></span>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">SKŁADNIKI</h2>
+      <ul class="ingredients-list">
+        <li>
+          <span class="ingredient-name">mąka pszenna</span>
+          <span class="ingredient-qty">500 gram</span>
+        </li>
+        <li>
+          <span class="ingredient-name">śmietana 18 proc</span>
+          <span class="ingredient-qty">300 ml</span>
+        </li>
+        <li>
+          <span class="ingredient-name">Soda oczyszczona Prymat</span>
+          <span class="ingredient-qty">1 łyżeczka</span>
+        </li>
+        <li>
+          <span class="ingredient-name">jajko</span>
+          <span class="ingredient-qty">1 sztuka</span>
+        </li>
+        <li>
+          <span class="ingredient-name">żółtko jajek</span>
+          <span class="ingredient-qty">1 sztuka</span>
+        </li>
+        <li>
+          <span class="ingredient-name">cukier</span>
+          <span class="ingredient-qty">1-2 łyżki</span>
+        </li>
+        <li>
+          <span class="ingredient-name">sól</span>
+          <span class="ingredient-qty">1/3 łyżeczki</span>
+        </li>
+        <li>
+          <span class="ingredient-name">olej do smażenia</span>
+          <span class="ingredient-qty"></span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">SPOSÓB PRZYGOTOWANIA</h2>
+      <div class="steps-subtitle">Kroki postępowania</div>
+
+      <div class="step-item">
+        <span class="step-label">KROK 1</span>
+        <p class="step-text">Przygotowanie takich placków jest bardzo proste. Mąkę przesypujemy na stolnicę. Robimy w niej małe wgłębienie, do którego wsypujemy cukier, sól, dodajemy jajko, żółtko oraz śmietanę. Sodę rozpuszczamy w łyżeczce ciepłej wody. Dodajemy do pozostałych składników.</p>
+      </div>
+
+      <div class="step-item">
+        <span class="step-label">KROK 2</span>
+        <p class="step-text">Zagniatamy ciasto, powinno być zwarte i nie kleić się do rąk. W razie potrzeby podsypujemy je mąką. Formujemy wałek, nie za cienki.</p>
+      </div>
+
+      <div class="step-item">
+        <span class="step-label">KROK 3</span>
+        <p class="step-text">Nożem odkrawamy kromki i grubości około 2 cm. Każdą rozgniatamy palcami aby miała owalny kształt i nie była za gruba. Placki podczas smażenia rosną.</p>
+      </div>
+
+      <div class="step-item">
+        <span class="step-label">KROK 4</span>
+        <p class="step-text">Na patelnie wlewamy olej lub smalec na wysokość 1 cm. Średnio rozgrzewamy aby placki nie były surowe w środku. Smażymy na złoty kolor. Musimy uważać aby ich nie przypalić, tłuszcz coraz bardziej będzie się nagrzewał a placki smażyły szybciej. Podajemy ostudzone z wybranymi dodatkami.</p>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

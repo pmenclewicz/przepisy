@@ -1,5 +1,11 @@
 [
   {
+    "id": "placki-na-sodzie",
+    "title": "Placki na sodzie",
+    "file": "przepisy/placki-na-sodzie.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "ogorki-krokodylki",
     "title": "Ogórki krokodylki",
     "file": "przepisy/ogorki-krokodylki.html",
