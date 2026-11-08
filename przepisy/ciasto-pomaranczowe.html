@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciasto Pomarańczowe</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: none;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c;
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+        max-width: 100%;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #fcf9f2;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #2b2b2b;
+      display: flex;
+      justify-content: center;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      background: #fffdfa;
+      width: 100%;
+      max-width: 780px;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #c9a87c;
+      outline-offset: -6px;
+      padding: 35px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #5c3a21;
+      margin-top: 0;
+      margin-bottom: 25px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #c9a87c;
+    }
+
+    h2 {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b5e3c;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #d8c2a7;
+      padding-bottom: 5px;
+    }
+
+    .recipe-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      list-style-type: square;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .instructions p {
+      margin: 0 0 12px 0;
+      font-size: 15px;
+      text-align: justify;
+    }
+
+    .baking-info {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #f7efe6;
+      border-left: 4px solid #8b5e3c;
+      font-size: 16px;
+      font-weight: bold;
+      color: #5c3a21;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>CIASTO POMARAŃCZOWE</h1>
+
+    <div class="recipe-layout">
+      <div class="ingredients">
+        <h2>Składniki</h2>
+        <ul>
+          <li>2 pomarańcze got. w całości przez 2 godz.</li>
+          <li>6 jaj</li>
+          <li>250 g cukru pudru</li>
+          <li>1 łyżeczka olejku pomarańczowego</li>
+          <li>300 g zmielonych migdałów</li>
+          <li>1 łyżeczka proszku do pieczenia</li>
+        </ul>
+      </div>
+
+      <div class="instructions">
+        <h2>Sposób przygotowania</h2>
+        <p>Zmiksować ostudzone ugotowane pomarańcze.</p>
+        <p>Żółtka ubić z cukrem pudrem i olejkiem pomarańczowym.</p>
+        <p>Połączyć z owocami, dodać migdały i proszek do pieczenia.</p>
+        <p>Białka ubić na sztywną pianę i dodać do masy.</p>
+      </div>
+    </div>
+
+    <div class="baking-info">
+      160° - 180°C / 1 h
+    </div>
+  </div>
+
+</body>
+</html>

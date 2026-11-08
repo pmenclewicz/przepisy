@@ -1,5 +1,11 @@
 [
   {
+    "id": "ciasto-pomaranczowe",
+    "title": "CIASTO POMARAŃCZOWE",
+    "file": "przepisy/ciasto-pomaranczowe.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "crème-brûlée",
     "title": "Crème brûlée",
     "file": "przepisy/crème-brûlée.html",
