@@ -1,5 +1,11 @@
 [
   {
+    "id": "keczup-domowy",
+    "title": "Keczup domowy",
+    "file": "przepisy/keczup-domowy.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "lazania",
     "title": "Lazania",
     "file": "przepisy/lazania.html",

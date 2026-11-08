@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keczup domowy</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        box-shadow: none !important;
+        border: 1px solid #444 !important;
+        padding: 15px 20px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.45;
+    }
+
+    .recipe-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fffdf9;
+      border: 2px solid #8b5e3c;
+      border-radius: 4px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .header-border {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 0 0 5px 0;
+      color: #5c2c16;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #666;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+
+    h2 {
+      font-size: 17px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #d4c5b9;
+      padding-bottom: 4px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul.ingredients {
+      list-style-type: disc;
+      padding-left: 18px;
+      margin: 0;
+      font-size: 13.5px;
+    }
+
+    ul.ingredients li {
+      margin-bottom: 7px;
+      line-height: 1.35;
+    }
+
+    .steps {
+      font-size: 13.5px;
+    }
+
+    .steps p {
+      margin: 0 0 10px 0;
+      text-align: justify;
+      line-height: 1.4;
+    }
+
+    .steps p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="header-border">
+      <h1>Keczup domowy</h1>
+      <p class="subtitle">Tradycyjna receptura na domowy keczup z warzywami i jabłkami</p>
+    </div>
+
+    <div class="content-grid">
+      <div>
+        <h2>Składniki</h2>
+        <ul class="ingredients">
+          <li>2 kg pomidorów</li>
+          <li>0,5 kg jabłek</li>
+          <li>0,5 kg jarzyn (przewaga marchwi, pietruszka, seler, por - tego malutki kawałek, bo specyficzny zapach i smak)</li>
+          <li>0,25 kg cebuli</li>
+          <li>0,25 kg czerwonej papryki</li>
+          <li>0,25 kg cukru - ja zawsze daję dużo mniej, ale to już moje osobiste upodobanie do niewielkich ilości słodkości w przetworach wytrawnych</li>
+          <li>0,5 szkl. octu 10%</li>
+          <li>1 dag pieprzu (to pół torebki) - tu należy uważać i sypać umiarkowanie wg własnych upodobań</li>
+          <li>2 liście laurowe</li>
+          <li>3 goździki</li>
+          <li>2 łyżki soli</li>
+          <li>3 łyżki musztardy</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Przepis</h2>
+        <div class="steps">
+          <p>Pomidory sparzyć, obrać (nie jest to konieczne, ale w trakcie gotowania skórki zwijają się w kłujące w przełyk wałeczki). Paprykę oczyścić, pokroić w kawałki, jabłka obrać, pozbawić gniazd nasiennych, warzywa oczyścić pokroić w kawałki.</p>
+          <p>Ugotować wszystko - do miękkości najtwardszych warzyw.</p>
+          <p>Wszystkie składniki zmiksować lub przepuścić przez maszynkę do mięsa, lub przetrzeć przez sito. Dodać pozostałe składniki, gotować na małym ogniu do uzyskania odpowiedniej gęstości, od czasu do czasu mieszając, aby się nie przypaliło. Zajmuje to trochę czasu - należy liczyć w godzinach - wszystko zależy od wodnistości pomidorów.</p>
+          <p>Gorące nakładać do słoików. Zakręcić. Ustawić do góry nogami po wystygnięciu sprawdzić czy wszystkie słoiki się zapasteryzowały (przy niektórych nakrętkach takie ustawienie nie wystarcza) i ewentualnie zapasteryzować w garnku z wodą (20 minut gotowania) lub w piekarniku (30 minut w temp. 100 stopni).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
