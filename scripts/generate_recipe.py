@@ -81,8 +81,7 @@ if API_KEY_TYPE == "groq":
         "Authorization": f"Bearer {GROQ_API_KEY}",
         "Content-Type": "application/json"
     }
-    
-    response = requests.post("[https://api.groq.com/openai/v1/chat/completions](https://api.groq.com/openai/v1/chat/completions)", json=payload, headers=headers)
+    response = requests.post("https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers)
     if not response.ok:
         raise RuntimeError(f"Błąd API Groq ({response.status_code}): {response.text}")
     
