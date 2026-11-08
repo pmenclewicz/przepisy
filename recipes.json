@@ -1,5 +1,11 @@
 [
   {
+    "id": "placki-twarogowe-z-jablkiem",
+    "title": "Placki twarogowe z jabłkiem",
+    "file": "przepisy/placki-twarogowe-z-jablkiem.html",
+    "date": "2026-11-08"
+  },
+  {
     "id": "wigilijny-sos-grzybowy",
     "title": "Wigilijny sos grzybowy",
     "file": "przepisy/wigilijny-sos-grzybowy.html",
@@ -297,12 +303,6 @@
     "id": "szybka-babka-pomaranczowa-na-oleju",
     "title": "Szybka babka pomarańczowa na oleju",
     "file": "przepisy/szybka-babka-pomaranczowa-na-oleju.html",
-    "date": "2026-11-07"
-  },
-  {
-    "id": "placki-twarogowe-z-jablkiem",
-    "title": "PLACKI TWAROGOWE Z JABŁKIEM",
-    "file": "przepisy/placki-twarogowe-z-jablkiem.html",
     "date": "2026-11-07"
   },
   {

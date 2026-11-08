@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Placki twarogowe z jabłkiem - Przepis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Placki twarogowe z jabłkiem</title>
   <style>
     @page {
       size: A4 portrait;
@@ -21,12 +18,12 @@
         background: #fff !important;
         padding: 0 !important;
       }
-      .recipe-sheet {
+      .recipe-card {
+        border: 1px solid #705335 !important;
         box-shadow: none !important;
-        border: 1.5px solid #6b4d36 !important;
-        height: 277mm !important; /* dopasowanie do marginesu 10mm na A4 */
-        max-height: 277mm !important;
-        box-sizing: border-box;
+        padding: 15mm 12mm !important;
+        max-width: 100% !important;
+        margin: 0 !important;
       }
     }
 
@@ -37,348 +34,154 @@
     }
 
     body {
-      background: #f4efe9;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      color: #2b231d;
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2c2520;
+      line-height: 1.5;
+      padding: 20px 10px;
       display: flex;
       justify-content: center;
-      padding: 20px;
+      align-items: flex-start;
+      min-height: 100vh;
     }
 
-    .recipe-sheet {
-      width: 190mm;
-      height: 277mm;
-      background: #fffdf9;
-      padding: 16mm 14mm;
+    .recipe-card {
+      background: #fffdfa;
+      width: 100%;
+      max-width: 780px;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #c8ab8d;
+      outline-offset: -5px;
+      padding: 35px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       position: relative;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      border: 1px solid #d9cbbd;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-    }
-
-    /* Ozdobna podwójna ramka */
-    .recipe-sheet::after {
-      content: "";
-      position: absolute;
-      top: 6mm;
-      left: 6mm;
-      right: 6mm;
-      bottom: 6mm;
-      border: 1px solid #c8b7a6;
-      pointer-events: none;
     }
 
     .header {
       text-align: center;
-      margin-bottom: 12px;
-      position: relative;
-    }
-
-    .header-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 8.5pt;
-      font-weight: 600;
-      letter-spacing: 2.5px;
-      color: #8b5e3c;
-      text-transform: uppercase;
-      margin-bottom: 4px;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 21pt;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: #382417;
+      font-size: 26px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #5c381e;
       text-transform: uppercase;
       margin-bottom: 6px;
-      line-height: 1.2;
     }
 
-    .divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 6px 0;
-    }
-
-    .divider-line {
-      height: 1px;
-      width: 70px;
-      background: #c8b7a6;
-    }
-
-    .divider-icon {
-      color: #8b5e3c;
-      font-size: 11pt;
-    }
-
-    .meta-bar {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 8pt;
-      letter-spacing: 1px;
-      color: #635043;
-      text-transform: uppercase;
-      margin-top: 4px;
+    .subtitle {
+      font-style: italic;
+      color: #7d6b5c;
+      font-size: 14px;
     }
 
     .content-grid {
       display: grid;
-      grid-template-columns: 68mm 1fr;
-      gap: 16px;
-      flex-grow: 1;
-      margin-top: 6px;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 25px;
     }
 
-    /* Lewa kolumna: zdjęcie i składniki */
-    .left-column {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .recipe-card {
+        padding: 25px 18px;
+      }
     }
 
-    .dish-img-container {
-      width: 100%;
-      height: 60mm;
-      border-radius: 4px;
-      overflow: hidden;
-      border: 1px solid #e2d7cc;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-    }
-
-    .dish-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .ingredients-card {
-      background: #faf6f0;
-      border: 1px solid #ebe0d3;
-      padding: 12px 14px;
-      border-radius: 4px;
-      flex-grow: 1;
-    }
-
-    .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: 11.5pt;
-      font-weight: 700;
-      color: #382417;
-      letter-spacing: 1px;
-      border-bottom: 1.5px solid #8b5e3c;
-      padding-bottom: 4px;
-      margin-bottom: 10px;
+    h2 {
+      font-size: 17px;
+      color: #6d4527;
       text-transform: uppercase;
-    }
-
-    .servings-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 7.5pt;
-      color: #8b5e3c;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      display: block;
-    }
-
-    .ingredients-list {
-      list-style: none;
-      font-size: 9.5pt;
-      line-height: 1.5;
-    }
-
-    .ingredients-list li {
-      position: relative;
-      padding-left: 14px;
-      margin-bottom: 5px;
-      color: #332720;
-    }
-
-    .ingredients-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #8b5e3c;
-      font-size: 12pt;
-      line-height: 1;
-      top: 1px;
-    }
-
-    /* Prawa kolumna: Przygotowanie */
-    .instructions-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    .steps-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .step-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      font-size: 9.7pt;
-      line-height: 1.45;
-      text-align: justify;
-    }
-
-    .step-number {
-      font-family: 'Cinzel', serif;
-      font-size: 11pt;
-      font-weight: 700;
-      color: #8b5e3c;
-      border: 1px solid #d4beaa;
-      background: #faf5ee;
-      min-width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .step-text {
-      color: #2b231d;
-    }
-
-    .recipe-footer {
-      border-top: 1px solid #e0d4c8;
-      padding-top: 8px;
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 7.5pt;
-      color: #8c7b6f;
       letter-spacing: 0.5px;
+      border-bottom: 1px solid #d4c2b0;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
     }
 
-    .tip-box {
-      margin-top: 10px;
-      background: #fdfaf6;
-      border-left: 3px solid #8b5e3c;
-      padding: 7px 10px;
-      font-size: 8.8pt;
+    ul {
+      list-style-type: square;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 7px;
+      font-size: 14.5px;
+      word-wrap: break-word;
+    }
+
+    ol {
+      padding-left: 20px;
+    }
+
+    ol li {
+      margin-bottom: 10px;
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px dashed #d1bda9;
+      font-size: 13.5px;
       font-style: italic;
-      color: #554439;
+      color: #635447;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <!-- Pływający widget nawigacji i drukowania -->
   <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
     <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
     <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
   </div>
 
-  <div class="recipe-sheet">
-    <header class="header">
-      <div class="header-tag">Księga Domowych Wypieków & Słodkości</div>
-      <h1>PLACKI TWAROGOWE Z JABŁKIEM</h1>
-      <div class="divider">
-        <div class="divider-line"></div>
-        <span class="divider-icon">❧ ❦ ❧</span>
-        <div class="divider-line"></div>
+  <div class="recipe-card">
+    <div class="header">
+      <h1>Placki twarogowe z jabłkiem</h1>
+      <div class="subtitle">Delikatne, puszyste i naturalnie słodkie placuszki śniadaniowe</div>
+    </div>
+
+    <div class="content-grid">
+      <div class="ingredients-section">
+        <h2>Składniki</h2>
+        <ul>
+          <li>250 g twarogu (półtłustego)</li>
+          <li>1 duże jabłko (lub 2 mniejsze)</li>
+          <li>2 jajka</li>
+          <li>2–3 łyżki mąki pszennej (lub orkiszowej)</li>
+          <li>1 łyżka cukru lub miodu (opcjonalnie)</li>
+          <li>1/2 łyżeczki cynamonu</li>
+          <li>1/2 łyżeczki proszku do pieczenia (opcjonalnie)</li>
+          <li>Szczypta soli</li>
+          <li>Masło klarowane lub olej do smażenia</li>
+        </ul>
       </div>
-      <div class="meta-bar">
-        <span>⏱ Czas: ok. 25 min</span>
-        <span>•</span>
-        <span>🍳 Poziom: Łatwy</span>
-        <span>•</span>
-        <span>🍽 Porcje: 7 sztuk</span>
-      </div>
-    </header>
 
-    <main class="content-grid">
-      <!-- Lewa strona: Zdjęcie + Składniki -->
-      <section class="left-column">
-        <div class="dish-img-container">
-          <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=700&q=80" alt="Złociste placki twarogowe z jabłkiem">
-        </div>
-
-        <div class="ingredients-card">
-          <h2 class="section-title">Składniki</h2>
-          <span class="servings-tag">Ilość: 7 porcji</span>
-          <ul class="ingredients-list">
-            <li><strong>250 g</strong> twarogu</li>
-            <li><strong>3</strong> jajka (żółtka i białka osobno)</li>
-            <li><strong>1 łyżka</strong> cukru wanilinowego</li>
-            <li><strong>1 jabłko</strong> (najlepiej odmiana reneta)</li>
-            <li><strong>2 łyżki</strong> cukru pudru (+ do posypania)</li>
-            <li><strong>4 czubate łyżki</strong> mąki pszennej</li>
-            <li><strong>1/2 łyżeczki</strong> cynamonu</li>
-            <li><em>opcjonalnie:</em> syrop klonowy do polania</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Prawa strona: Przygotowanie -->
-      <section class="instructions-card">
-        <h2 class="section-title">Sposób przygotowania</h2>
-        
-        <ol class="steps-list">
-          <li class="step-item">
-            <span class="step-number">1</span>
-            <div class="step-text">
-              Do miski włożyć twaróg, dodać żółtka (białka zachować do ubicia) oraz cukier wanilinowy, następnie dokładnie rozgnieść praską do ziemniaków lub widelcem na jednolitą masę.
-            </div>
-          </li>
-          <li class="step-item">
-            <span class="step-number">2</span>
-            <div class="step-text">
-              Jabłko obrać i zetrzeć na tarce o większych oczkach. Dodać do miski z twarogiem i delikatnie wymieszać. Następnie wsypać mąkę i ponownie dokładnie połączyć składniki.
-            </div>
-          </li>
-          <li class="step-item">
-            <span class="step-number">3</span>
-            <div class="step-text">
-              W oddzielnym naczyniu ubić białka na sztywną pianę z dodatkiem 2 łyżek cukru pudru. Dodać pianę do masy twarogowej i bardzo ostrożnie połączyć całość, mieszając powolnymi ruchami łyżką, aby placki były puszyste.
-            </div>
-          </li>
-          <li class="step-item">
-            <span class="step-number">4</span>
-            <div class="step-text">
-              Nakładać porcje ciasta (po ok. 2 łyżki na placka) na dobrze rozgrzaną patelnię (np. teflonową lub naleśnikową). Rozprowadzić ciasto po powierzchni, formując zgrabne placuszki. Smażyć na suchej patelni lub z odrobiną oleju.
-            </div>
-          </li>
-          <li class="step-item">
-            <span class="step-number">5</span>
-            <div class="step-text">
-              Zmniejszyć ogień i smażyć przez ok. 2–3 minuty do momentu, aż spód zrumieni się na piękny złoty kolor. Przewrócić na drugą stronę i dopiekać przez kolejne 2 minuty. Przed podaniem oprószyć cukrem pudrem wymieszanym z cynamonem; opcjonalnie skropić syropem klonowym.
-            </div>
-          </li>
+      <div class="instructions-section">
+        <h2>Sposób przygotowania</h2>
+        <ol>
+          <li>Jabłko obierz i zetrzyj na tarce o grubych oczkach. Jeśli puści dużo soku, delikatnie odciśnij go w dłoniach.</li>
+          <li>W misce rozgnieć twaróg widelcem. Dodaj jajka, cukier (lub miód) oraz szczyptę soli, a następnie dokładnie wymieszaj na jednolitą masę.</li>
+          <li>Do masy twarogowej dodaj mąkę, proszek do pieczenia, cynamon oraz starte jabłko. Wymieszaj całość łyżką. Ciasto powinno być gęste.</li>
+          <li>Na patelni rozgrzej niewielką ilość tłuszczu. Zmniejsz ogień na średni/mały.</li>
+          <li>Nakładaj porcje ciasta łyżką, lekko je spłaszczając na kształt placuszków.</li>
+          <li>Smaż pod przykryciem przez około 3–4 minuty z każdej strony, aż placki ładnie wyrosną i zyskają złocistobrązowy kolor.</li>
         </ol>
+      </div>
+    </div>
 
-        <div class="tip-box">
-          <strong>Wskazówka:</strong> Kwaśna reneta doskonale komponuje się z delikatną słodyczą twarogu. Smaż placki na umiarkowanym ogniu pod lekkim przykryciem, by równomiernie urosły i doszły w środku.
-        </div>
-      </section>
-    </main>
-
-    <footer class="recipe-footer">
-      <span>Tradycyjne Przepisy Domowe</span>
-      <span>Smacznego!</span>
-      <span>Strona 1 z 1</span>
-    </footer>
+    <div class="note">
+      Wskazówka: Placki doskonale smakują oprószone cukrem pudrem, podane z kleksem jogurtu naturalnego lub polane odrobiną miodu.
+    </div>
   </div>
 
 </body>
