@@ -36,6 +36,8 @@ jobs:
       - name: Run Generator Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_DARMOWY: ${{ secrets.GEMINI_API_KEY_DARMOWY }}
+          API_KEY_TYPE: ${{ github.event.client_payload.api_key_type || 'paid' }}
           INPUT_TYPE: ${{ github.event.client_payload.input_type || 'url' }}
           RECIPE_INPUT: ${{ github.event.client_payload.recipe_input || github.event.inputs.recipe_url }}
           CUSTOM_TITLE: ${{ github.event.client_payload.custom_title }}
@@ -49,10 +51,8 @@ jobs:
           git add przepisy/ recipes.json
           git status
           
-          # Jeśli nic się nie zmieniło, kończymy
           git diff-index --quiet HEAD || git commit -m "Automatycznie dodano nowy przepis"
           
-          # Pętla próbująca wykonać push, a w razie konfliktu robiąca rebase i ponawiająca próbę
           for i in {1..5}; do
             git pull --rebase origin main && git push origin main && break
             echo "Konflikt przy pushu, ponawiam synchronizację ($i/5)..."
