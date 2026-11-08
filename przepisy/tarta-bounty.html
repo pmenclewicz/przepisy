@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarta Bounty</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #c9b097 !important;
+        box-shadow: none !important;
+        padding: 15px 20px !important;
+        margin: 0 !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ef;
+      color: #2b231d;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.35;
+      font-size: 13.5px;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fffefb;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4b89b;
+      outline-offset: -5px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 26px;
+      margin: 0 0 8px 0;
+      color: #523118;
+      font-weight: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #d4b89b;
+      padding-bottom: 8px;
+    }
+
+    .intro {
+      font-style: italic;
+      text-align: justify;
+      color: #554438;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+    }
+
+    .section {
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      color: #8b5e3c;
+      font-size: 14.5px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .recipe-part {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 15px;
+      margin-bottom: 10px;
+      align-items: start;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-part {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      list-style-type: square;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    p {
+      margin: 0 0 6px 0;
+      text-align: justify;
+    }
+
+    .footer {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed #d4b89b;
+      text-align: center;
+      font-size: 11px;
+      color: #7d6c5f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>Tarta Bounty</h1>
+    
+    <div class="intro">
+      Tarta o smaku batonika Bounty. Ona nie smakuje podobnie. Smakuje dokładnie tak samo ;-). Kruchy i sypki spód ciasteczkowy (tak, będzie się kruszył podczas krojenia), pyszne nadzienie kokosowe, najlepsza glazura z mlecznej czekolady i dekoracja w postaci domowych pralinek bounty. Deser bez pieczenia – dla fanów słynnych batoników :-).
+    </div>
+
+    <!-- SPÓD -->
+    <div class="section">
+      <div class="section-title">Składniki na spód:</div>
+      <div class="recipe-part">
+        <ul>
+          <li>300 g ciastek czekoladowych z nadzieniem czekoladowym (tzw. markizy czekoladowe)</li>
+          <li>50 g mlecznej czekolady, połamanej i roztopionej</li>
+          <li>50 g masła, roztopionego</li>
+        </ul>
+        <div>
+          <p>Wszystkie składniki włożyć do malaksera i zmiksować do powstania masy ciasteczkowej.</p>
+          <p>Przygotować formę do tarty <strong>z wyjmowanym dnem</strong> o średnicy 25 cm i wysmarować masłem. Wysypać do niej ciasteczkową masę, wcisnąć w dno i boki formy, uklepać i wyrównać. Schłodzić do momentu przygotowania nadzienia.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NADZIENIE KOKOSOWE -->
+    <div class="section">
+      <div class="section-title">Nadzienie kokosowe:</div>
+      <div class="recipe-part">
+        <ul>
+          <li>100 g białej czekolady, posiekanej</li>
+          <li>200 ml śmietany kremówki 30% lub 36%</li>
+          <li>50 g masła</li>
+          <li>150 g wiórków kokosowych</li>
+          <li>30 g cukru pudru</li>
+          <li>1 łyżka rumu</li>
+        </ul>
+        <div>
+          <p>W średniej wielkości garnuszku podgrzać śmietanę kremówkę i masło, niemal do wrzenia. Zdjąć z palnika, dodać posiekaną białą czekoladę, odstawić na 2 minuty, bez mieszania. Po tym czasie wymieszać do roztopienia się czekolady i powstania gładkiego sosu czekoladowego (w razie konieczności przetrzeć przez sitko).</p>
+          <p>Dodać wiórki kokosowe, cukier puder, rum i wymieszać. Odłożyć do lodówki na kilka godzin; część śmietanki wsiąknie w wiórki i masa zgęstnieje. Gęste (lecz wciąż smarowne!) nadzienie wyłożyć na schłodzony spód tarty, wyrównać.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- POLEWA -->
+    <div class="section">
+      <div class="section-title">Polewa z mlecznej czekolady:</div>
+      <div class="recipe-part">
+        <ul>
+          <li>175 g mlecznej czekolady, posiekanej</li>
+          <li>110 ml śmietany kremówki 36%</li>
+          <li>20 g masła</li>
+        </ul>
+        <div>
+          <p>W garnuszku umieścić śmietanę kremówkę i masło. Podgrzać, prawie do momentu wrzenia, zdjąć z palnika. Dodać posiekaną czekoladę, odstawić na 2 minuty, bez mieszania. Po tym czasie wymieszać do powstania gładkiego sosu czekoladowego (w razie konieczności przetrzeć przez sitko).</p>
+          <p>Gęstniejącą polewę czekoladową przelać na nadzienie kokosowe. Odstawić do lodówki do stężenia. Na gęstniejącej można poukładać domowe pralinki z nadzieniem kokosowym (link do przepisu poniżej).</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 8px;"><strong>Przechowywać w lodówce.</strong></p>
+    <p>Smacznego :-)</p>
+
+    <div class="footer">
+      Przepis na domowe rajskie pralinki<br>
+      © Moje Wypieki 2006-2020 | www.mojewypieki.com
+    </div>
+  </div>
+
+</body>
+</html>
