@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syrop z buraka i Syrop z sosny</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .page-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2c2520;
+      line-height: 1.5;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-container {
+      background-color: #fffdfa;
+      width: 100%;
+      max-width: 750px;
+      padding: 30px 35px;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4be9f;
+      outline-offset: -6px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #d4be9f;
+    }
+
+    .category {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8b5e3c;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      color: #4a2c11;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .ornament {
+      color: #8b5e3c;
+      font-size: 1rem;
+    }
+
+    .recipes-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .recipe-card {
+      background: #faf7f2;
+      border: 1px solid #e2d7c7;
+      border-left: 4px solid #8b5e3c;
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
+    .recipe-title {
+      font-size: 1.35rem;
+      color: #5c3a21;
+      margin-bottom: 12px;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed #d9cbba;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .recipe-title::before {
+      content: "❧";
+      color: #8b5e3c;
+      font-size: 1.1rem;
+    }
+
+    .recipe-content {
+      font-size: 1rem;
+      color: #332b24;
+      text-align: justify;
+    }
+
+    .recipe-content p {
+      margin-bottom: 10px;
+    }
+
+    .recipe-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-style: italic;
+      color: #634b35;
+      font-size: 0.95rem;
+      background: #f1ebd9;
+      padding: 6px 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    footer {
+      margin-top: 25px;
+      padding-top: 10px;
+      border-top: 1px solid #d4be9f;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #8b5e3c;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <header>
+      <div class="category">Domowa Apteczka &bull; Przetwory</div>
+      <h1>Syrop z buraka i Syrop z sosny</h1>
+      <div class="ornament">❖ ❖ ❖</div>
+    </header>
+
+    <main class="recipes-wrapper">
+      <!-- Przepis 1 -->
+      <section class="recipe-card">
+        <h2 class="recipe-title">Syrop z buraka.</h2>
+        <div class="recipe-content">
+          <p>Buraki pokroić i zasypać cukrem, zostawić na 24 h w lodówce. Następnie zlać syrop do ciemnych buteleczek i przechowywać w lodówce.</p>
+        </div>
+      </section>
+
+      <!-- Przepis 2 -->
+      <section class="recipe-card">
+        <h2 class="recipe-title">Syrop z sosny</h2>
+        <div class="recipe-content">
+          <p>Młode pędy sosny zasypywać warstwowo cukrem w słoikach, zamykamy i odstawiamy na 2–3 tyg.</p>
+          <p>Po tym czasie zlewamy syrop.</p>
+          <p>Pędy można odcisnąć przez pieluchę lub zalać spirytusem, odstawić na kolejne 2 tyg.</p>
+          <div class="note">[Pędy – przeciw kaszel [maj]]</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Przepisy z tradycyjnego zeszytu</span>
+    </footer>
+  </div>
+
+</body>
+</html>
