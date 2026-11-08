@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazania</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        border: 1px solid #777 !important;
+        box-shadow: none !important;
+        padding: 12px 18px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2b2520;
+      line-height: 1.35;
+    }
+
+    .recipe-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fffdf9;
+      border: 2px solid #8b5e3c;
+      padding: 20px 25px;
+      border-radius: 4px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a2e12;
+      font-size: 1.75rem;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 6px;
+    }
+
+    h2 {
+      color: #6e3e1d;
+      font-size: 1.1rem;
+      margin: 10px 0 6px 0;
+      border-bottom: 1px solid #d8c3b0;
+      padding-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h3 {
+      color: #5a2e12;
+      font-size: 1rem;
+      margin: 8px 0 4px 0;
+    }
+
+    p {
+      margin: 0 0 6px 0;
+      font-size: 0.88rem;
+      text-align: justify;
+    }
+
+    ul {
+      margin: 4px 0 8px 18px;
+      padding: 0;
+      font-size: 0.88rem;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 650px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    .sauces-section {
+      border-top: 1px dashed #bba38f;
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+
+    .sauce-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 650px) {
+      .sauce-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .box {
+      background-color: #faf6f0;
+      border: 1px solid #e2d2be;
+      padding: 8px 12px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <h1>Lazania</h1>
+
+    <div class="main-grid">
+      <div>
+        <h2>Składniki:</h2>
+        <ul>
+          <li>500 g mięsa mielonego</li>
+          <li>2 cebule</li>
+          <li>2 ząbki czosnku</li>
+          <li>puszka pomidorów z puszki</li>
+          <li>sos beszamelowy</li>
+          <li>makaron lazania</li>
+          <li>ser żółty</li>
+          <li>przyprawy: sól, pieprz, zioła</li>
+          <li>natka pietruszki</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Przygotowanie:</h2>
+        <p>W garnku na na oliwie podsmażamy czosnek, dodajemy mięso mielone i cebulę. Jak mięso się obsmaży dodajemy natkę pietruszki – najlepiej świeża oraz opcjonalnie inne zioła (bazylia, oregano). Mięso łączymy z koncentratem pomidorowym lub pomidorami z puszki. Całość mieszamy i przyprawiamy finalnie solą i pieprzem, aby farsz był wyrazisty w smaku.</p>
+        <p>Na dno żaroodpornego naczynia wykładamy sos beszamelowy a na nim układamy warstwę makaronu. Na makaronie kładziemy warstwę mięsa. Smarujemy sosem beszamelowym. Kończymy warstwą sera aby poszczególne warstwy były ze sobą sklejone. Układamy drugą i trzecią warstwę. Ostatnia warstwa makaronu musi być przykryta sosem i serem.</p>
+        <p>Całość zapiekamy w piekarniku rozgrzanym do 180 st. C przez 20 – 30 minut. Po upieczeniu warto zostawić ją w spokoju przynajmniej przez 30 minut (ale to bardzo trudne oprzeć się gorącej lazanii) aby sosy się bardziej zwarły. Smacznego !</p>
+      </div>
+    </div>
+
+    <div class="sauces-section">
+      <div class="sauce-grid">
+        <div class="box">
+          <h2>Sos beszamelowy</h2>
+          <p>W garnuszku rozpuścić masło (ok. 100g) i dodać mąkę (ok. 3 łyżki), energicznie mieszając zalać: szklanka bulionu / na samym mleku (500 ml) i mieszać energicznie aby nie powstały grudki.</p>
+          <p>Przyprawić solą, pieprzem, gałką muszkatołową i sokiem z cytryny, dodać świeży tymianek, oregano. Na koniec dodać starty żółty ser (ok 50 dkg) i zagęścić.</p>
+        </div>
+
+        <div class="box">
+          <h2>Sos II</h2>
+          <h3>Składniki:</h3>
+          <ul>
+            <li>1/2 kostki masła</li>
+            <li>1 marchew</li>
+            <li>1 kubek śmietany 18%</li>
+            <li>1 kubek mleka</li>
+            <li>1 szklanka bulionu</li>
+            <li>sól</li>
+            <li>pieprz</li>
+            <li>4 łyżki mąki</li>
+          </ul>
+          <h3>Przygotowanie:</h3>
+          <p>Na maśle usmażyć marchew startą na tarce, dodać mąkę i wymieszać. Dodać pozostałe składniki. Jak będzie za gęste dodać trochę wody.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
