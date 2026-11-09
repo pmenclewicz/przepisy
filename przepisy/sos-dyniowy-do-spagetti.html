@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sos Dyniowy do Spagetti</title>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 1px solid #c4b5a5 !important;
+        box-shadow: none !important;
+        padding: 20px 24px !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 15px;
+      background-color: #f7f4ef;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: #332a24;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fffdfa;
+      border: 2px solid #8b5e3c;
+      border-radius: 6px;
+      padding: 30px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+      position: relative;
+    }
+
+    .decorative-border {
+      border: 1px dashed #c8b69b;
+      padding: 24px 28px;
+      border-radius: 4px;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #e8dfd5;
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #8b4513;
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+      word-wrap: break-word;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #7d6b5c;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 680px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .recipe-card {
+        padding: 16px;
+      }
+      .decorative-border {
+        padding: 16px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    h2 {
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #5c3e26;
+      border-bottom: 1px solid #d9cbbe;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    ul.ingredients {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.ingredients li {
+      padding: 4px 0;
+      border-bottom: 1px dotted #e3dacd;
+      font-size: 14.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      word-wrap: break-word;
+    }
+
+    ul.ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions p {
+      font-size: 14.5px;
+      text-align: justify;
+      margin-top: 0;
+      margin-bottom: 12px;
+      line-height: 1.6;
+      text-indent: 1.2em;
+    }
+
+    .instructions p:first-of-type {
+      text-indent: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <div class="decorative-border">
+      <header>
+        <h1>SOS DYNIOWY DO SPAGETTI</h1>
+        <p class="subtitle">Tradycyjny przepis domowy</p>
+      </header>
+
+      <div class="content-grid">
+        <section class="ingredients-section">
+          <h2>Składniki</h2>
+          <ul class="ingredients">
+            <li>1,5 kg dyni</li>
+            <li>0,5 kg cebuli</li>
+            <li>0,5 kg papryki czerwonej</li>
+            <li>2 łyżki przecieru pomidorowego</li>
+            <li>1,5 łyżki suszonego oregano</li>
+            <li>1 łyżeczka czerwonej papryki mielonej</li>
+            <li>1 łyżeczka pieprzu mielonego</li>
+            <li>3/4 łyżeczki curry</li>
+            <li>1 szklanka cukru</li>
+            <li>1/2 szklanki octu</li>
+            <li>2 łyżki soli</li>
+          </ul>
+        </section>
+
+        <section class="instructions">
+          <h2>Przygotowanie</h2>
+          <p>
+            Obraną dynię pokroić i posypać łyżką soli. Odstawić na 1 godzinę.
+          </p>
+          <p>
+            Pokrojoną cebulę i paprykę posolić 1 łyżką soli, podlać szklanką wody i dusić do miękkości około 15 minut.
+          </p>
+          <p>
+            Dodać przyprawy i cukier, dołożyć dynię i dusić do około 20 minut, zagotować, dodać ocet. Zblendować.
+          </p>
+          <p>
+            Gorący sos w słoiki i obrócić do góry dnem lub chwilę zapasteryzować.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
