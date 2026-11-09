@@ -1,11 +1,5 @@
 [
   {
-    "id": "3-bit-ciasto-bez-pieczenia-bryskka",
-    "title": "3-bit ciasto bez pieczenia (bryskka)",
-    "file": "przepisy/3-bit-ciasto-bez-pieczenia-bryskka.html",
-    "date": "2026-11-09"
-  },
-  {
     "id": "ciasto-shrek",
     "title": "Ciasto Shrek",
     "file": "przepisy/ciasto-shrek.html",
@@ -141,12 +135,6 @@
     "id": "ciasto-drozdzowe",
     "title": "Ciasto drożdżowe",
     "file": "przepisy/ciasto-drozdzowe.html",
-    "date": "2026-11-09"
-  },
-  {
-    "id": "rogale-z-bialym-makiem-cz-2",
-    "title": "Rogale z białym makiem cz. 2",
-    "file": "przepisy/rogale-z-bialym-makiem-cz-2.html",
     "date": "2026-11-09"
   },
   {
