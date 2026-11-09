@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciasto drożdżowe</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        box-shadow: none !important;
+        border: 1px solid #777 !important;
+        padding: 15mm !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ed;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.6;
+    }
+
+    .recipe-container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fffdf9;
+      padding: 35px 40px;
+      border: 1px solid #d4c5b9;
+      border-radius: 3px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .recipe-header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: normal;
+      font-style: italic;
+      color: #3e2723;
+      margin: 0 0 8px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .decorative-line {
+      width: 80px;
+      height: 2px;
+      background-color: #8b5e3c;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #6d4c41;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #d4c5b9;
+      padding-bottom: 4px;
+    }
+
+    .recipe-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .ingredients-section ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ingredients-section li {
+      padding: 5px 0;
+      border-bottom: 1px dotted #e6ded8;
+      font-size: 1.02rem;
+    }
+
+    .ingredients-section li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions-section ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .instructions-section li {
+      margin-bottom: 12px;
+      padding-left: 5px;
+      text-align: justify;
+      font-size: 1.02rem;
+    }
+
+    .instructions-section li::marker {
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+
+    @media (min-width: 650px) {
+      .recipe-content {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 35px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="recipe-header">
+      <h1>Ciasto drożdżowe</h1>
+      <div class="decorative-line"></div>
+    </div>
+
+    <div class="recipe-content">
+      <div class="ingredients-section">
+        <h2 class="section-title">Składniki</h2>
+        <ul>
+          <li>30 g drożdży</li>
+          <li>120 g cukru</li>
+          <li>100 g żółtka</li>
+          <li>700 g mąki pszennej typ 450</li>
+          <li>450 g mleka</li>
+          <li>150 g masła</li>
+          <li>szczypta soli</li>
+        </ul>
+      </div>
+
+      <div class="instructions-section">
+        <h2 class="section-title">Przygotowanie</h2>
+        <ol>
+          <li>Drożdże pokrusz w szklance i wymieszaj z 1 łyżeczką cukru. Zostaw na 5 min by się rozpuściły. Ponownie wymieszaj. Dodaj do zaczynu 1 łyżeczkę mąki oraz 200 g letniego mleka. Odstaw do wyrośnięcia.</li>
+          <li>Podgrzej mleko i w nim rozpuść masło. Odstaw na bok do lekkiego przestudzenia.</li>
+          <li>Żółtka zmiksuj z cukrem na jasną i puszystą masę. Ciągle miksując wlej mieszankę mleka z masłem. Zmiksuj tylko do połączenia składników.</li>
+          <li>Zmień mieszadło miksera z trzepaczki na hak. Wsyp do masy mąkę, sól oraz zaczyn. Wyrób ciasto przez około 3–5 minut (aż będzie sprężyste i jednolite).</li>
+          <li>Odstaw ciasto zakryte folią spożywczą do wyrośnięcia w temperaturze pokojowej (20 stopni) na 1 godzinę.</li>
+          <li>Wyrośnięte ciasto uderz by je „odgazować” a następnie przez chwilę ponownie wyrabiaj podsypując stolnicę delikatnie mąką. Podziel na wymagane porcje i odstaw do wyrośnięcia przed włożeniem do pieca.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
