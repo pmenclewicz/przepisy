@@ -1,5 +1,11 @@
 [
   {
+    "id": "pierniki-przepis-mamy",
+    "title": "Pierniki przepis Mamy",
+    "file": "przepisy/pierniki-przepis-mamy.html",
+    "date": "2026-11-09"
+  },
+  {
     "id": "masa-czekoladowa-do-andrutu",
     "title": "Masa czekoladowa do andrutu",
     "file": "przepisy/masa-czekoladowa-do-andrutu.html",
