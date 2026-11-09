@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarta z jabłkami i bezą</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #4a3728 !important;
+        padding: 15mm 12mm !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2b2118;
+      line-height: 1.5;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background: #fffdfa;
+      width: 100%;
+      max-width: 780px;
+      padding: 30px 35px;
+      border: 2px solid #8b5e3c;
+      border-radius: 3px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #d4c2b2;
+      padding: 24px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 22px;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #4a2f1b;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .recipe-section {
+      margin-bottom: 18px;
+      border-bottom: 1px dashed #d9ccbe;
+      padding-bottom: 16px;
+    }
+
+    .recipe-section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: bold;
+      color: #6d4023;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .grid-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .col-ingredients {
+      flex: 1 1 200px;
+    }
+
+    .col-preparation {
+      flex: 2 1 300px;
+    }
+
+    h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #8b5e3c;
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 18px;
+      font-size: 14px;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    p {
+      font-size: 14px;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .final-step {
+      margin-top: 18px;
+      padding: 12px 16px;
+      background-color: #fcf8f2;
+      border-left: 3px solid #8b5e3c;
+      font-style: italic;
+      font-size: 14.5px;
+      text-align: center;
+    }
+
+    .final-step strong {
+      font-style: normal;
+      color: #4a2f1b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <div class="inner-border">
+      
+      <header class="header">
+        <h1>Tarta z jabłkami i bezą</h1>
+      </header>
+
+      <!-- Ciasto -->
+      <section class="recipe-section">
+        <h2 class="section-title">Ciasto</h2>
+        <div class="grid-row">
+          <div class="col-ingredients">
+            <h3>Składniki</h3>
+            <ul>
+              <li>szczypta soli</li>
+              <li>120 g masła</li>
+              <li>160 g mąki</li>
+              <li>40 g cukru</li>
+              <li>1 jajko</li>
+            </ul>
+          </div>
+          <div class="col-preparation">
+            <h3>Przygotowanie</h3>
+            <p>Wszystkie składniki szybko zagnieść, schłodzić na 30 min do lodówki. Ciasto rozwałkować, przełożyć do formy, obciążyć grochem lub fasolą i piec 10 min w 180°C. Wyjąć groch i kolejne 10 min.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Farsz -->
+      <section class="recipe-section">
+        <h2 class="section-title">Farsz</h2>
+        <div class="grid-row">
+          <div class="col-ingredients">
+            <h3>Składniki</h3>
+            <ul>
+              <li>1 łyżka soku z cytryny</li>
+              <li>1 łyżka cukru waniliowego</li>
+              <li>1 łyżeczka cynamonu</li>
+              <li>1 łyżka masła</li>
+              <li>6 jabłek</li>
+            </ul>
+          </div>
+          <div class="col-preparation">
+            <h3>Przygotowanie</h3>
+            <p>Jabłka obrać, pokroić w kostkę, wrzucić na patelnię z pozostałymi składnikami farszu, smażyć około 10 min.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beza -->
+      <section class="recipe-section">
+        <h2 class="section-title">Beza</h2>
+        <div class="grid-row">
+          <div class="col-ingredients">
+            <h3>Składniki</h3>
+            <ul>
+              <li>100 g cukru</li>
+              <li>3 białka</li>
+            </ul>
+          </div>
+          <div class="col-preparation">
+            <h3>Przygotowanie</h3>
+            <p>Białka ubić z cukrem na sztywno.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Finał -->
+      <div class="final-step">
+        Na ciasto wyłożyć jabłka, polać bezą i piec 25 - 30 min w 180°C.
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
