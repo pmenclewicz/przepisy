@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Murzynek</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: 2px solid #5a3e28 !important;
+        box-shadow: none !important;
+        padding: 20mm 15mm !important;
+        margin: 0 !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      background-color: #f7f4ed;
+      color: #2b2017;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      background-color: #fffdf9;
+      width: 100%;
+      max-width: 680px;
+      padding: 35px 30px;
+      border: 2px solid #8b6b4e;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 1px solid #d4c2b2;
+      pointer-events: none;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      margin: 0 0 10px 0;
+      color: #4a2f1b;
+      text-transform: uppercase;
+      font-weight: normal;
+      border-bottom: 2px solid #4a2f1b;
+      padding-bottom: 12px;
+    }
+
+    .ornament {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #8b6b4e;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #5a3e28;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 20px 0 10px 0;
+      border-bottom: 1px dashed #c0a892;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 25px;
+      margin: 0 0 15px 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+      font-size: 1.02rem;
+    }
+
+    .step-text {
+      font-size: 1.02rem;
+      margin: 8px 0 16px 0;
+      text-align: justify;
+      text-indent: 15px;
+    }
+
+    .baking-info {
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #f5ede4;
+      border-left: 4px solid #8b5e3c;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #4a2f1b;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <article class="recipe-card">
+    <h1>Murzynek</h1>
+    <div class="ornament">❦</div>
+
+    <div class="section-title">Masa kakaowa (baza i polewa)</div>
+    <ul>
+      <li>1/2 szklanki mleka lub wody</li>
+      <li>kostka margaryny</li>
+      <li>1 szklanka cukru</li>
+      <li>4-5 łyżek kakao</li>
+    </ul>
+
+    <p class="step-text">
+      Zagotować. Ostudzić. Odlać pół szklanki na polewę.
+    </p>
+
+    <div class="section-title">Pozostałe składniki ciasta</div>
+    <ul>
+      <li>4 jajka</li>
+      <li>2 łyżeczki proszku</li>
+      <li>2 szklanki mąki</li>
+    </ul>
+
+    <div class="section-title">Przygotowanie ciasta</div>
+    <p class="step-text">
+      Do ostudzonej „polewy” wbić żółtka, wsypać mąkę, proszek i wymieszać. Ubić pianę z białek i połączyć z masą.
+    </p>
+
+    <div class="baking-info">
+      Piec 30 min w 180°C
+    </div>
+  </article>
+
+</body>
+</html>
