@@ -43,7 +43,7 @@
       max-width: 210mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 28px 32px;
+      padding: 28px 32px 20px 32px;
       border: 1px solid #d8cfc4;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
@@ -116,23 +116,27 @@
       margin-bottom: 14px;
     }
 
-    .smacznego {
+    /* Style dla sekcji pod przepisami */
+    .recipe-footer {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px dashed #d8cfc4;
       text-align: center;
+    }
+
+    .smacznego {
+      font-size: 14pt;
       font-weight: bold;
       font-style: italic;
       color: #8b5e3c;
-      font-size: 12pt;
-      margin: 15px 0 5px 0;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
     }
 
     .footer-note {
-      text-align: center;
       font-size: 8.5pt;
       color: #6d5b52;
       font-style: italic;
-      border-top: 1px solid #e0d7cd;
-      padding-top: 8px;
-      margin-top: 10px;
     }
 
     @media (max-width: 768px) {
@@ -231,7 +235,7 @@
           <div class="section-subtitle">Nadzienie</div>
           <p>Mak opłukać na sitku i przełożyć do miski, dodać orzechy włoskie, zalać wrzątkiem i parzyć przez godzinę. Sparzony mak z orzechami odsączyć na sitku, a następnie jeszcze odcisnąć z nadmiaru wody.</p>
           <p>Mak z orzechami i migdały przepuścić dwa razy przez maszynkę do mielenia. Ja na koniec, z kilkoma łyżkami masy makowej, mielę również marcepan.</p>
-          <p>Do miski przełożyć masę makową z orzechami, migdałami, marcepanem, dodać cukier puder, skórkę pomarańczową, rodzynki, pokruszone biszkopty, śmietanę i wymieszać na jednolitą masę.</p>
+          <p>Do miski przełożyć masę makową z orzechami, migdałami, marcepanem, dodać cukier puder, skórkę pomarańczową, rodzynki, pokruszone biszkopty, śmietany i wymieszać na jednolitą masę.</p>
         </div>
 
         <div class="section-block">
@@ -248,11 +252,10 @@
       </div>
     </div>
 
-    <!-- Przeniesione na zewnątrz gridu, aby ładnie domykało przepis -->
-    <div class="smacznego">Smacznego!</div>
-
-    <div class="footer-note">
-      *Szklanka użyta w moich przepisach do odmierzania składników ma zawsze pojemność 250 ml 🙂
+    <!-- Stopka przemieszczona pod siatkę dwukolumnową -->
+    <div class="recipe-footer">
+      <div class="smacznego">Smacznego!</div>
+      <div class="footer-note">*Szklanka użyta w moich przepisach do odmierzania składników ma zawsze pojemność 250 ml 🙂</div>
     </div>
 
   </div>
