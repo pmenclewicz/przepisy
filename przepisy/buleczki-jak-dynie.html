@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bułeczki jak dynie</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .page-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      color: #2c2523;
+      background-color: #f7f5f0;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.6;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 35px 40px;
+      border: 1px solid #dcd4c7;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: normal;
+      font-style: italic;
+      color: #3b281c;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .rating {
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: #8b5e3c;
+    }
+
+    .recipe-body {
+      display: flex;
+      flex-direction: row;
+      gap: 35px;
+    }
+
+    .sidebar {
+      flex: 1 1 30%;
+      border-right: 1px solid #e5ded4;
+      padding-right: 25px;
+    }
+
+    .main-content {
+      flex: 2 1 65%;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #5a3e2b;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #e5ded4;
+      padding-bottom: 6px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ingredients-list li {
+      padding: 6px 0;
+      border-bottom: 1px dotted #e8e2d8;
+      font-size: 0.98rem;
+    }
+
+    .intro-note {
+      font-style: italic;
+      color: #665b55;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .instructions-list {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .instructions-list li {
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+      text-align: justify;
+    }
+
+    .footer-credit {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #e5ded4;
+      font-size: 0.85rem;
+      color: #7d726b;
+      text-align: right;
+      font-style: italic;
+    }
+
+    @media screen and (max-width: 650px) {
+      .recipe-body {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e5ded4;
+        padding-right: 0;
+        padding-bottom: 20px;
+      }
+      .page-container {
+        padding: 20px 18px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <header class="header">
+      <h1>Bułeczki jak dynie</h1>
+      <div class="rating">★★★★☆</div>
+    </header>
+
+    <div class="recipe-body">
+      <aside class="sidebar">
+        <h2>Składniki</h2>
+        <ul class="ingredients-list">
+          <li>1/2 porcji ciasta drożdżowego</li>
+          <li>1 jajko</li>
+          <li>sznurek</li>
+          <li>laski cynamonu</li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <h2>Przygotowanie</h2>
+        <p class="intro-note">Sam proces będzie bardziej instruktażem wykonania niż przepisem.</p>
+        
+        <ol class="instructions-list">
+          <li>Ciasto podziel na kulki o masie 80 gramów.</li>
+          <li>Zwiąż razem 8 sznurków i rozłóż je niczym ramiona ośmiornicy. Na środku połóż kuleczkę z ciasta drożdżowego i zwiąż sznurek naprzemiennie nad bułeczką. Nie za ciasno.</li>
+          <li>Odstaw ciasto do wyrośnięcia na 30 minut i posmaruj je jajkiem.</li>
+          <li>Wstaw do pieca nagrzanego do 190 stopni i piecz przez 25-30 minut.</li>
+          <li>Po upieczeniu rozetnij sznurki i wbij kawałek cynamonu w bułeczkę.</li>
+        </ol>
+      </main>
+    </div>
+
+    <div class="footer-credit">
+      @danielcoceancig
+    </div>
+  </div>
+
+</body>
+</html>
