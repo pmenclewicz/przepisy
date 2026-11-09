@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-bit ciasto bez pieczenia (bryskka)</title>
+<style>
+  @page { size: A4 portrait; margin: 10mm; }
+  @media print { .no-print { display: none; } }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #f4efe6;
+    color: #2b2118;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.4;
+  }
+
+  .page {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  .book {
+    background: #fffdf8;
+    border: 2px solid #8b5e3c;
+    outline: 1px solid #c9a87c;
+    outline-offset: 4px;
+    padding: 22px 24px;
+    max-width: 100%;
+  }
+
+  .ornament {
+    text-align: center;
+    color: #8b5e3c;
+    font-size: 18px;
+    letter-spacing: 6px;
+    margin: 0 0 6px 0;
+  }
+
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+    text-align: center;
+    margin: 4px 0 2px 0;
+    color: #5a3a22;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-style: italic;
+    color: #7a5a3a;
+    font-size: 14px;
+    margin: 0 0 14px 0;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #c9a87c;
+    margin: 12px 0;
+  }
+
+  h2 {
+    font-size: 17px;
+    color: #5a3a22;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #c9a87c;
+    padding-bottom: 4px;
+    margin: 14px 0 8px 0;
+  }
+
+  ul.ingredients {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.ingredients li {
+    padding: 3px 0 3px 18px;
+    position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  ul.ingredients li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: #8b5e3c;
+    font-weight: bold;
+  }
+
+  ol.steps {
+    padding-left: 22px;
+    margin: 0;
+  }
+
+  ol.steps li {
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .note {
+    font-size: 13px;
+    font-style: italic;
+    color: #6a4a2a;
+    margin-top: 10px;
+    border-left: 3px solid #c9a87c;
+    padding-left: 10px;
+  }
+
+  @media (max-width: 480px) {
+    .book { padding: 16px 14px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page">
+    <div class="book">
+      <div class="ornament">❦ ❦ ❦</div>
+      <h1>3-bit ciasto bez pieczenia (bryskka)</h1>
+      <p class="subtitle">Szybki deser na zimno – bez pieczenia</p>
+      <hr class="divider">
+
+      <h2>Składniki</h2>
+      <ul class="ingredients">
+        <li>500 g herbatników</li>
+        <li>250 g masła</li>
+        <li>200 g cukru pudru</li>
+        <li>200 ml śmietanki 30%</li>
+        <li>2 łyżki kakao</li>
+        <li>1 łyżeczka ekstraktu waniliowego</li>
+        <li>szczypta soli</li>
+      </ul>
+
+      <h2>Przygotowanie</h2>
+      <ol class="steps">
+        <li>Herbatniki drobno pokrusz (najlepiej w woreczku foliowym za pomocą wałka) i odłóż na bok.</li>
+        <li>Masło utrzyj z cukrem pudrem na puszystą, jasną masę.</li>
+        <li>Dodaj kakao, ekstrakt waniliowy i szczyptę soli, miksując do połączenia składników.</li>
+        <li>Śmietankę ubij na sztywno i delikatnie wmieszaj do masy maślanej.</li>
+        <li>Do masy dodaj pokruszone herbatniki i wymieszaj do uzyskania jednolitej, zwartej konsystencji.</li>
+        <li>Gotową masę przełóż do formy wyłożonej folią spożywczą, wyrównaj wierzch i wstaw do lodówki na minimum 4 godziny (najlepiej na noc).</li>
+        <li>Przed podaniem wyjmij z lodówki, wyjmij z formy i pokrój na porcje.</li>
+      </ol>
+
+      <p class="note">Deser najlepiej smakuje schłodzony. Podawaj z bitą śmietaną lub owocami.</p>
+
+      <div class="ornament" style="margin-top: 14px;">❦ ❦ ❦</div>
+    </div>
+  </div>
+</body>
+</html>
