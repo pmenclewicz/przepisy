@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deser na zimno</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      color: #2c2523;
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      background: #fffdf9;
+      width: 100%;
+      max-width: 780px;
+      border: 2px solid #8b5e3c;
+      padding: 30px 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .decorative-border {
+      border: 1px solid #d4c5b9;
+      padding: 25px 30px;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #5a3825;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width: 600px) {
+      .content-grid {
+        grid-template-columns: 1fr 1.3fr;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e0d4c8;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ingredients ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .ingredients li {
+      padding: 6px 0;
+      border-bottom: 1px dashed #ede5db;
+      font-size: 15px;
+      word-wrap: break-word;
+    }
+
+    .ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions p {
+      margin: 0 0 12px 0;
+      font-size: 15px;
+      text-align: justify;
+      line-height: 1.6;
+      word-wrap: break-word;
+    }
+
+    .instructions p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="decorative-border">
+      <header>
+        <h1>Deser na zimno</h1>
+      </header>
+
+      <div class="content-grid">
+        <section class="ingredients">
+          <h2>Składniki</h2>
+          <ul>
+            <li>30 dag sucharków</li>
+            <li>50 dag nutelli lub kremu czekoladowego</li>
+            <li>0,5 litra śmietany 30%</li>
+            <li>3 galaretki</li>
+            <li>2 opakowania fix-fix śmietana</li>
+            <li>owoce</li>
+          </ul>
+        </section>
+
+        <section class="instructions">
+          <h2>Przygotowanie</h2>
+          <p>Suchary drobno pokruszyć, krem rozpuścić w garnku, połączyć z sucharami i wyłożyć na blachę.</p>
+          <p>Śmietanę ubić na sztywno z fix-fix i wyłożyć.</p>
+          <p>Na to owoce i galaretka.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
