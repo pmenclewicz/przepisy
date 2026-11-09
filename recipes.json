@@ -1,5 +1,11 @@
 [
   {
+    "id": "piernik",
+    "title": "Piernik",
+    "file": "przepisy/piernik.html",
+    "date": "2026-11-09"
+  },
+  {
     "id": "deser-na-zimno",
     "title": "Deser na zimno",
     "file": "przepisy/deser-na-zimno.html",

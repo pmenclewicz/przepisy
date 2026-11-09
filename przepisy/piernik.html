@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piernik Tradycyjny</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #c7b299 !important;
+        max-width: 100% !important;
+        padding: 15px 20px !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2c241e;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background: #fffdfa;
+      max-width: 800px;
+      width: 100%;
+      border: 2px solid #8b5e3c;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .inner-border {
+      border: 1px solid #d4af87;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 26pt;
+      font-weight: normal;
+      color: #4a2c11;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #7a5c43;
+      font-size: 11pt;
+      margin: 0;
+    }
+
+    .section-title {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #e2cbaf;
+      padding-bottom: 4px;
+      margin-top: 18px;
+      margin-bottom: 12px;
+    }
+
+    .ingredient-group {
+      margin-bottom: 12px;
+    }
+
+    .group-label {
+      font-weight: bold;
+      font-size: 10.5pt;
+      color: #5c3b1e;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      margin: 0 0 10px 0;
+      padding-left: 20px;
+      line-height: 1.45;
+      font-size: 10.5pt;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    .instructions-list {
+      padding-left: 20px;
+      margin: 0;
+      line-height: 1.5;
+      font-size: 10.5pt;
+    }
+
+    .instructions-list li {
+      margin-bottom: 8px;
+    }
+
+    .handwritten-note {
+      font-style: italic;
+      color: #555;
+    }
+
+    .footer-decor {
+      text-align: center;
+      margin-top: 15px;
+      color: #8b5e3c;
+      font-size: 14pt;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="inner-border">
+      <header>
+        <h1>Piernik</h1>
+        <p class="subtitle">Tradycyjny przepis świąteczny</p>
+      </header>
+
+      <div class="section-title">Składniki</div>
+
+      <div class="ingredient-group">
+        <div class="group-label">Masa miodowo-korzenna (poz. 1):</div>
+        <ul>
+          <li>1 ½ kostki palmy</li>
+          <li>15 dkg smalcu</li>
+          <li>0,4 kg miodu naturalnego</li>
+          <li>1 szklanka miodu sztucznego</li>
+          <li>3 przyprawy do pierników</li>
+          <li>2,5 dkg kawy</li>
+          <li>1 paczka cynamonu</li>
+          <li>1 p. goździki – mielone</li>
+          <li>10 dkg kakao</li>
+        </ul>
+      </div>
+
+      <div class="ingredient-group">
+        <div class="group-label">Dodatki spulchniające:</div>
+        <ul>
+          <li>1 łyżeczka sody</li>
+          <li>2 łyżeczki amoniaku</li>
+        </ul>
+      </div>
+
+      <div class="ingredient-group">
+        <div class="group-label">Dodatki płynne:</div>
+        <ul>
+          <li>½ cytryny – sok</li>
+          <li>½ but. śmietany kwaśnej</li>
+        </ul>
+      </div>
+
+      <div class="ingredient-group">
+        <div class="group-label">Składniki sypkie:</div>
+        <ul>
+          <li>2 kg mąki</li>
+          <li>½ paczki proszku do pieczenia</li>
+        </ul>
+      </div>
+
+      <div class="ingredient-group">
+        <div class="group-label">Jaja:</div>
+        <ul>
+          <li>9 jaj</li>
+          <li>1 ½ szklanki cukru</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Przygotowanie</div>
+      <ol class="instructions-list">
+        <li><strong>Baza korzenna (poz. 1):</strong> W garnku połączyć tłuszcze (palmę i smalec), oba miody (naturalny oraz sztuczny), przyprawy do pierników, kawę, cynamon, mielone goździki i kakao; całość podgrzać do rozpuszczenia i połączenia składników.</li>
+        <li><strong>Soda i amoniak:</strong> 1 łyżeczkę sody oraz 2 łyżeczki amoniaku rozprowadzić w ⅓ szklanki (wody/mleka) i dodać do ciepłej masy z poz. 1.</li>
+        <li><strong>Śmietana i sok:</strong> Do masy (poz. 1) dodać sok z ½ cytryny oraz ½ butelki kwaśnej śmietany, dokładnie wymieszać.</li>
+        <li><strong>Mąka z proszkiem:</strong> W dużej misce wymieszać 2 kg mąki z ½ proszku do pieczenia.</li>
+        <li><strong>Jaja:</strong> 9 jaj i 1 ½ szklanki cukru lekko ubić, następnie wlać do przygotowanej masy.</li>
+        <li><strong>Połączenie całości:</strong> Płynne składniki połączyć z mąką wymieszaną z proszkiem w misce i dokładnie wyrobić ciasto.</li>
+      </ol>
+
+      <div class="footer-decor">❦ ❦ ❦</div>
+    </div>
+  </div>
+
+</body>
+</html>
