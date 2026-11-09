@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drożdżowe sypane</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        box-shadow: none !important;
+        border: 1px solid #c9bca8 !important;
+        padding: 20px !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #332a24;
+      line-height: 1.5;
+      padding: 20px 10px;
+    }
+
+    .recipe-container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fffdfa;
+      border: 2px solid #8b5e3c;
+      outline: 1px solid #d4c2b0;
+      outline-offset: -6px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 22px;
+      border-bottom: 2px dashed #d4c2b0;
+      padding-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #5c381e;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .subtitle-ornament {
+      font-size: 16px;
+      color: #8b5e3c;
+    }
+
+    .recipe-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ingredients-section {
+      background: #faf6f0;
+      border-left: 3px solid #8b5e3c;
+      padding: 14px 18px;
+      border-radius: 2px;
+    }
+
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .ingredients-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #704423;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #e0d4c5;
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #704423;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 5px;
+      font-size: 15px;
+      word-wrap: break-word;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .instructions-section {
+      padding: 0 4px;
+    }
+
+    .steps-list {
+      list-style-type: decimal;
+      padding-left: 20px;
+    }
+
+    .steps-list li {
+      font-size: 15px;
+      margin-bottom: 8px;
+      padding-left: 4px;
+      line-height: 1.5;
+    }
+
+    .baking-badge {
+      margin-top: 15px;
+      padding: 10px 14px;
+      background: #fdf2e9;
+      border: 1px solid #ebd3bf;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #7a3e14;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #a89485;
+      border-top: 1px solid #ede3d7;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <header>
+      <h1>Drożdżowe sypane</h1>
+      <div class="subtitle-ornament">❧ Z tradycyjnego przepiśnika ☙</div>
+    </header>
+
+    <div class="recipe-body">
+      <div class="ingredients-section">
+        <h2>Składniki</h2>
+        <div class="ingredients-grid">
+          <div>
+            <h3>Ciasto</h3>
+            <ul>
+              <li>10 dkg drożdży</li>
+              <li>1 szk. cukru</li>
+              <li>1 cukier waniliowy</li>
+              <li>4 jaja roztrzepane</li>
+              <li>1 szk. oleju</li>
+              <li>3/4 szk. mleka</li>
+              <li>4 szk. mąki przesiać</li>
+              <li>szczypta soli</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Kruszonka</h3>
+            <ul>
+              <li>1 szk. mąki</li>
+              <li>1/2 szk. cukru</li>
+              <li>1/2 k. masła</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-section">
+        <h2>Sposób przygotowania</h2>
+        <ol class="steps-list">
+          <li>Wszystkie składniki sypać kolejno do miski.</li>
+          <li>Przykryć, odstawić w ciepłe miejsce na 3 godziny.</li>
+          <li>Potem połączyć chwilę robotem.</li>
+          <li>Wylewamy na blachę, owoce, kruszonka.</li>
+        </ol>
+
+        <div class="baking-badge">
+          Piec 1 godz. w 200°C
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Domowy przepiśnik
+    </footer>
+  </div>
+
+</body>
+</html>
