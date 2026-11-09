@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sernik z rosą</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #c2b29d !important;
+        padding: 15mm 12mm !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #2b2621;
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      width: 100%;
+      max-width: 800px;
+      background-color: #fffdf9;
+      border: 2px solid #b89f80;
+      border-radius: 4px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border: 1px solid #d8caa7;
+      pointer-events: none;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 26px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #5c381e;
+      margin: 0 0 16px 0;
+      padding-bottom: 12px;
+      border-bottom: 2px double #b89f80;
+    }
+
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: bold;
+      color: #6d4223;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #dfd3c3;
+      padding-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      list-style-type: square;
+    }
+
+    li {
+      margin-bottom: 4px;
+      font-size: 15px;
+      word-break: break-word;
+    }
+
+    .instructions {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px dashed #c4b5a0;
+    }
+
+    .instructions p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 10px 0;
+      text-align: justify;
+      word-break: break-word;
+    }
+
+    .note {
+      font-style: italic;
+      color: #554436;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>SERNIK Z ROSĄ</h1>
+
+    <div class="ingredients-grid">
+      <div>
+        <div class="section-title">Ciasto</div>
+        <ul>
+          <li>2 szkl. mąki</li>
+          <li>0,5 szkl. cukru</li>
+          <li>10 dkg margaryny</li>
+          <li>1 łyżka smalcu</li>
+          <li>2 żółtka</li>
+          <li>1 jajko</li>
+          <li>2 łyżeczki proszku do pieczenia</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="section-title">Masa</div>
+        <ul>
+          <li>1 kg sera</li>
+          <li>1 szkl. cukru</li>
+          <li>0,5 szkl. oleju</li>
+          <li>1 budyń waniliowy</li>
+          <li>2 szkl. mleka</li>
+          <li>2 jajka</li>
+          <li>4 żółtka</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <div class="section-title">Przygotowanie</div>
+      <p>Ciasto, na ciasto wylać masę. Piec 50 min. Następnie z białek ubić pianę dodać 1/2 szkl. cukru i kokos i na to ciasto i jeszcze dodatkowo na 15 min do piekarnika.</p>
+      <p class="note">(wiórki kokosowe 20 dkg)</p>
+    </div>
+  </div>
+
+</body>
+</html>
