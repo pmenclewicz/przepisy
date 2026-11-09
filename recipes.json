@@ -1,5 +1,11 @@
 [
   {
+    "id": "ciasto-shrek",
+    "title": "Ciasto Shrek",
+    "file": "przepisy/ciasto-shrek.html",
+    "date": "2026-11-09"
+  },
+  {
     "id": "tarta-z-jablkami-i-beza",
     "title": "Tarta z jabłkami i bezą",
     "file": "przepisy/tarta-z-jablkami-i-beza.html",
