@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kruszonka i Krem do zapiekania</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .page-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f5f0;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.5;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 35px 40px;
+      border: 1px solid #e2dacd;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #d4c7b5;
+      padding: 25px 30px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', 'Georgia', serif;
+      text-align: center;
+      font-size: 26px;
+      letter-spacing: 1px;
+      color: #3e2723;
+      margin: 0 0 25px 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #8b5e3c;
+      text-transform: uppercase;
+    }
+
+    .recipe-block {
+      margin-bottom: 25px;
+    }
+
+    .recipe-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .recipe-title {
+      font-family: 'Brush Script MT', 'Dancing Script', 'Georgia', cursive, serif;
+      font-size: 28px;
+      font-weight: normal;
+      color: #4a3728;
+      margin: 0 0 15px 0;
+      text-align: left;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .page-container {
+        padding: 15px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+    }
+
+    .section-header {
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #6d5b4b;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #ece4db;
+      padding-bottom: 4px;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 14px;
+    }
+
+    li {
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .ingredients-list {
+      list-style-type: disc;
+    }
+
+    .instructions-list {
+      list-style-type: decimal;
+      padding-left: 18px;
+    }
+
+    .instructions-text {
+      font-size: 14px;
+      color: #333;
+      margin: 0;
+      text-align: justify;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5ded4;
+      margin: 22px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <div class="inner-border">
+      <h1>Kruszonka i Krem do zapiekania</h1>
+
+      <!-- Sekcja 1: Kruszonka -->
+      <section class="recipe-block">
+        <h2 class="recipe-title">Kruszonka</h2>
+        <div class="recipe-grid">
+          <div>
+            <div class="section-header">Składniki</div>
+            <ul class="ingredients-list">
+              <li>100 g cukru</li>
+              <li>200 g mąki pszennej</li>
+              <li>100 g masła</li>
+              <li>100 g mąki migdałowej</li>
+              <li>szczypta soli</li>
+            </ul>
+          </div>
+          <div>
+            <div class="section-header">Przygotowanie</div>
+            <ol class="instructions-list">
+              <li>Masło pokrój w kostkę.</li>
+              <li>Wszystkie składniki wrzuć do miksera bądź malaksera i wymieszaj na średniej mocy.</li>
+              <li>Mieszaj do momentu tylko powstania grudkowatej masy. Ciasto nie powinno zbić się w kulkę.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Sekcja 2: Krem do zapiekania -->
+      <section class="recipe-block">
+        <h2 class="recipe-title">Krem do zapiekania</h2>
+        <div class="recipe-grid">
+          <div>
+            <div class="section-header">Składniki</div>
+            <ul class="ingredients-list">
+              <li>50 masła</li>
+              <li>50 g cukru</li>
+              <li>40 g mąki migdałowej</li>
+              <li>1 jajko</li>
+              <li>15 g mąki pszennej</li>
+            </ul>
+          </div>
+          <div>
+            <div class="section-header">Przygotowanie</div>
+            <p class="instructions-text">
+              Masło zmiksuj z cukrem na jasną i puszystą masę. Dodaj mąkę migdałową oraz jajka. Całość zmieszaj tylko do połączenia. Na koniec dodaj mąkę i wymieszaj. Przełóż krem do rękawa cukierniczego.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
