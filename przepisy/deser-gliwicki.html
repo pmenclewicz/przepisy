@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deser Gliwicki</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #777;
+        box-shadow: none;
+        padding: 18mm 15mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2c2520;
+      line-height: 1.5;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background: #fffdf9;
+      max-width: 800px;
+      width: 100%;
+      border: 2px solid #8b5e3c;
+      padding: 30px 35px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .inner-border {
+      border: 1px solid #c9b199;
+      padding: 25px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: #533219;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #8b5e3c;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: bold;
+      color: #724422;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed #c9b199;
+      padding-bottom: 4px;
+    }
+
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .ingredients-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .recipe-card {
+        padding: 15px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .instructions-content {
+      font-size: 15px;
+      text-align: justify;
+    }
+
+    .instructions-content p {
+      margin-bottom: 12px;
+      text-indent: 18px;
+    }
+
+    .initial-step {
+      font-size: 15.5px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #3b2311;
+      padding: 8px 12px;
+      background-color: #f9f5ef;
+      border-left: 3px solid #8b5e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="inner-border">
+      <h1>DESER GLIWICKI</h1>
+
+      <div class="initial-step">
+        1) Upiec cienki biały biszkopt
+      </div>
+
+      <div class="ingredients-grid">
+        <div>
+          <div class="section-title">Składniki masy makowej</div>
+          <ul>
+            <li>1 puszka masy makowej (Bakalland) bo inne są niezbyt smaczne</li>
+            <li>ok 3/4 kostki palmy</li>
+            <li>4-5 jajek</li>
+          </ul>
+
+          <div class="section-title">Dodatkowo</div>
+          <ul>
+            <li>3 paczki herbatników</li>
+            <li>alkohol – wódka</li>
+            <li>polewa czekoladowa</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="section-title">Masa budyniowa</div>
+          <ul>
+            <li>3/4 szkl. mleka</li>
+            <li>1 łyżka mąki</li>
+            <li>1/2 łyżki kartoflanki</li>
+            <li>1/2 szkl. cukru</li>
+            <li>1/2 k. masła</li>
+            <li>wanilia</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">Wykonanie</div>
+      <div class="instructions-content">
+        <p>
+          Pół szkl. mleka zagotować z cukrem i wanilią, w pozostałym mleku rozmieszać mąki i ugotować budyń. Wystudzić i zmiksować z masłem.
+        </p>
+        <p>
+          Masę makową gotować wolniutko z jajkami i palmą. Wystudzoną wyłożyć na biszkopt. Na to masę budyniową i herbatniki moczone w alkoholu. Całość zalać polewą.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
