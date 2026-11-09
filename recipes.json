@@ -1,14 +1,14 @@
 [
   {
-    "id": "cynamonki",
-    "title": "Cynamonki",
-    "file": "przepisy/cynamonki.html",
-    "date": "2026-11-09"
-  },
-  {
     "id": "kruszonka-i-krem-do-zapiekania",
     "title": "Kruszonka i Krem do zapiekania",
     "file": "przepisy/kruszonka-i-krem-do-zapiekania.html",
+    "date": "2026-11-09"
+  },
+  {
+    "id": "cynamonki",
+    "title": "Cynamonki",
+    "file": "przepisy/cynamonki.html",
     "date": "2026-11-09"
   },
   {
