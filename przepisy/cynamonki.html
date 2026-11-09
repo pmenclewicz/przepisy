@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cynamonki</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        box-shadow: none !important;
+        border: 1px solid #c9b097 !important;
+        padding: 20px 25px !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #332a24;
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-container {
+      background-color: #fffefb;
+      width: 100%;
+      max-width: 750px;
+      padding: 35px 40px;
+      border: 1px solid #d8cbbe;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 1px solid #d8cbbe;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+
+    .stars {
+      letter-spacing: 4px;
+      color: #5a4638;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin: 5px 0 15px;
+      font-weight: normal;
+      font-style: italic;
+      color: #3b281c;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 0.95rem;
+      color: #635347;
+      text-transform: lowercase;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+      color: #4a3b32;
+      margin: 20px 0 15px;
+      font-weight: normal;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background-color: #8b5e3c;
+      margin: 6px auto 0;
+    }
+
+    .ingredients-section {
+      background-color: #faf7f2;
+      border: 1px solid #eee5dc;
+      padding: 15px 25px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .ingredients-list li {
+      padding: 4px 0;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .ingredients-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+    }
+
+    .instructions-section {
+      margin-top: 10px;
+    }
+
+    .instructions-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .instructions-list li {
+      margin-bottom: 10px;
+      font-size: 0.93rem;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .step-number {
+      font-weight: bold;
+      color: #8b5e3c;
+      margin-right: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-container {
+        padding: 20px 15px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .meta-info {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="header">
+      <div class="stars">★★★★☆</div>
+      <h1>Cynamonki</h1>
+      <div class="meta-info">
+        <span class="meta-item">🍴 15 porcji</span>
+        <span class="meta-item">⏱ 120 minut</span>
+      </div>
+    </div>
+
+    <div class="ingredients-section">
+      <h2>Składniki</h2>
+      <ul class="ingredients-list">
+        <li>1/2 porcji ciasta drożdżowego</li>
+        <li>200 g masła</li>
+        <li>2 opakowania cynamonu</li>
+        <li>1 szklanka brązowego cukru</li>
+      </ul>
+    </div>
+
+    <div class="instructions-section">
+      <h2>Przygotowanie</h2>
+      <ol class="instructions-list">
+        <li><span class="step-number">1.</span> Ciasto drożdżowe podziel na kulki o wielkości 60 gramów.</li>
+        <li><span class="step-number">2.</span> W rondelku rozpuść masło.</li>
+        <li><span class="step-number">3.</span> Każdą kulkę z ciasta drożdżowego zanurz w letnim, rozpuszczonym maśle.</li>
+        <li><span class="step-number">4.</span> Wymieszaj cukier brązowy oraz cynamon.</li>
+        <li><span class="step-number">5.</span> Kulki ciasta drożdżowego zanurzone w maśle obtocz następnie w mieszance cukrowej.</li>
+        <li><span class="step-number">6.</span> Kulki przełóż do foremki i pod przykryciem odstaw na 30 minut do wyrośnięcia.</li>
+        <li><span class="step-number">7.</span> Piecz w piekarniku nagrzanym do 180 stopni (termoobieg) przez około 40 minut.</li>
+        <li><span class="step-number">8.</span> Po wyciągnięciu z pieca jeszcze gorące ciasto polej z wierzchu pozostałą częścią masła.</li>
+      </ol>
+    </div>
+  </div>
+
+</body>
+</html>
