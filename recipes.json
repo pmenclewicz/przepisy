@@ -1,5 +1,11 @@
 [
   {
+    "id": "snikers",
+    "title": "SNIKERS",
+    "file": "przepisy/snikers.html",
+    "date": "2026-11-09"
+  },
+  {
     "id": "piernik-staropolski",
     "title": "Piernik staropolski",
     "file": "przepisy/piernik-staropolski.html",

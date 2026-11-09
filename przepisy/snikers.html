@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNIKERS</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #fbf9f5;
+      color: #2c2523;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px 36px;
+      border: 1px solid #dcd4c8;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .decorative-border {
+      border: 1px solid #8b5e3c;
+      padding: 24px;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 26pt;
+      font-weight: normal;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #3b281a;
+      margin: 0 0 8px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #8b5e3c;
+    }
+
+    .subtitle-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #8b5e3c;
+      font-size: 14pt;
+    }
+
+    .subtitle-divider::before,
+    .subtitle-divider::after {
+      content: "";
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: #8b5e3c;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+
+    .ingredients-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+      background: #faf6f0;
+      padding: 16px;
+      border-radius: 4px;
+      border: 1px dashed #d6c6b2;
+    }
+
+    .ingredient-group h2 {
+      font-size: 13pt;
+      font-weight: bold;
+      color: #5c3a21;
+      margin: 0 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #d6c6b2;
+    }
+
+    .ingredient-group ul {
+      list-style-type: disc;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .ingredient-group li {
+      font-size: 10.5pt;
+      margin-bottom: 4px;
+    }
+
+    .preparation-section {
+      margin-top: 10px;
+    }
+
+    .preparation-section h2 {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #5c3a21;
+      margin: 0 0 10px 0;
+      border-bottom: 1px solid #8b5e3c;
+      padding-bottom: 4px;
+    }
+
+    .preparation-text {
+      font-size: 11pt;
+      text-align: justify;
+      line-height: 1.6;
+      margin: 0;
+      text-indent: 1.5em;
+    }
+
+    @media (max-width: 650px) {
+      .recipe-card {
+        padding: 15px;
+      }
+      .decorative-border {
+        padding: 15px;
+      }
+      .ingredients-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      h1 {
+        font-size: 20pt;
+      }
+      .preparation-text {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="decorative-border">
+      <h1>SNIKERS</h1>
+      <div class="subtitle-divider">❧ Przepis Tradycyjny ❧</div>
+
+      <div class="ingredients-container">
+        <div class="ingredient-group">
+          <h2>Ciasto:</h2>
+          <ul>
+            <li>500g mąki</li>
+            <li>200 g cukru</li>
+            <li>1 margaryna</li>
+            <li>2 łyżki miodu</li>
+            <li>2 jajka</li>
+            <li>1 łyżeczka sody</li>
+          </ul>
+        </div>
+
+        <div class="ingredient-group">
+          <h2>Polewa orzechowa:</h2>
+          <ul>
+            <li>300 g orzechów włoskich</li>
+            <li>½ szkl cukru</li>
+            <li>3 łyżki mąki pszennej</li>
+            <li>3 łyżki margaryny</li>
+          </ul>
+        </div>
+
+        <div class="ingredient-group">
+          <h2>Masa:</h2>
+          <ul>
+            <li>½ litra mleka</li>
+            <li>½ szkl cukru</li>
+            <li>2 cukry waniliowe</li>
+            <li>2 łyżki mąki pszennej</li>
+            <li>2 łyżki mąki ziemniaczanej</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="preparation-section">
+        <h2>Sposób przyrządzenia:</h2>
+        <p class="preparation-text">
+          Z podanych składników zagnieść ciasto i podzielić na 2 lub 3 części. Orzechy i pozostałe składniki na polewę gotować na wolnym ogniu, aż zgęstnieją. Na koniec dodać jedną łyżkę zimnej wody. Każdą część ciasta rozwałkować, przełożyć do formy, na jedną część wyłożyć masę orzechową. Upiec 180 stopni 20 minut. Pozostawić do ostygnięcia. Przygotować masę; połowę mleka zagotować z cukrem, pozostałą ilość połączyć z mąką pszenną i ziemniaczaną, wlać do gotującego mleka, mieszać aż zgęstnieje. Pozostawić do ostygnięcia. Margarynę utrzeć na puszystą masę, dodawać po łyżce budyniu i ucierać do uzyskania jednolitej konsystencji. Gotową masę wyłożyć na placek bez orzechów przykryć drugim plackiem tak aby orzechy były na wierzchu placka.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
