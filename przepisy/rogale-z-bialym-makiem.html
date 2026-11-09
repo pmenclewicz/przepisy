@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROGALE Z BIAŁYM MAKIEM</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      color: #2b2520;
+      line-height: 1.45;
+    }
+
+    .recipe-container {
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 28px 32px;
+      border: 1px solid #d8cfc4;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .recipe-header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 24pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #3e2723;
+      text-transform: uppercase;
+    }
+
+    .recipe-yield {
+      font-style: italic;
+      font-size: 11pt;
+      color: #6d5b52;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 38% 62%;
+      gap: 24px;
+    }
+
+    .column-title {
+      font-size: 13pt;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e0d7cd;
+      padding-bottom: 4px;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-subtitle {
+      font-weight: bold;
+      font-size: 10.5pt;
+      margin: 10px 0 4px 0;
+      color: #4a3b32;
+      font-style: italic;
+    }
+
+    ul {
+      margin: 0 0 10px 0;
+      padding-left: 18px;
+      font-size: 9.5pt;
+    }
+
+    li {
+      margin-bottom: 3px;
+      line-height: 1.35;
+    }
+
+    .instructions p {
+      font-size: 9.5pt;
+      margin: 0 0 10px 0;
+      text-align: justify;
+      line-height: 1.4;
+    }
+
+    .instructions .section-block {
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      .recipe-container {
+        padding: 16px;
+      }
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      h1 {
+        font-size: 18pt;
+      }
+      ul, .instructions p {
+        font-size: 10.5pt;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="recipe-header">
+      <h1>ROGALE Z BIAŁYM MAKIEM</h1>
+      <div class="recipe-yield">Składniki (na 14 dużych rogali)</div>
+    </div>
+
+    <div class="content-grid">
+      <!-- Kolumna składników -->
+      <div class="ingredients">
+        <h2 class="column-title">Składniki</h2>
+
+        <div class="section-subtitle">Rozczyn</div>
+        <ul>
+          <li>25 g świeżych drożdży</li>
+          <li>1 łyżka cukru</li>
+          <li>1 łyżka mąki pszennej</li>
+          <li>1 szklanka* ciepłego mleka</li>
+        </ul>
+
+        <div class="section-subtitle">Ciasto</div>
+        <ul>
+          <li>3 i 1/2 szklanki mąki pszennej</li>
+          <li>3 łyżki cukru</li>
+          <li>1 jajko wielkości „L”</li>
+          <li>szczypta soli</li>
+          <li>30 g roztopionego masła</li>
+          <li>200 g masła w temp. pokojowej</li>
+        </ul>
+
+        <div class="section-subtitle">Nadzienie</div>
+        <ul>
+          <li>350 g białego maku</li>
+          <li>100 g orzechów włoskich</li>
+          <li>100 g blanszowanych migdałów lub płatków migdałowych</li>
+          <li>100 g marcepanu (masy marcepanowej)</li>
+          <li>2 łyżki kandyzowanej skórki z pomarańczy</li>
+          <li>2 łyżki rodzynek pokrojonych na małe kawałki</li>
+          <li>2 łyżki śmietany 18%</li>
+          <li>3/4 szklanki cukru pudru</li>
+          <li>4 podłużne biszkopty lub kromka czerstwej chałki – drobno pokruszone</li>
+        </ul>
+
+        <div class="section-subtitle">Lukier</div>
+        <ul>
+          <li>1 szklanka cukru pudru</li>
+          <li>2-3 łyżki gorącej wody</li>
+        </ul>
+
+        <div class="section-subtitle">Dodatkowo</div>
+        <ul>
+          <li>jajko do posmarowania rogalików</li>
+          <li>drobno pokrojone orzechy do dekoracji</li>
+        </ul>
+      </div>
+
+      <!-- Kolumna przygotowania -->
+      <div class="instructions">
+        <h2 class="column-title">Przygotowanie</h2>
+
+        <div class="section-block">
+          <div class="section-subtitle">Ciasto</div>
+          <p>Mąkę wsypać do miski, dodać cukier, sól, jajko, roztopione masło (30 g), wyrośnięty rozczyn i wyrobić (ręką lub mikserem z hakiem) gładkie ciasto. Wyrobione ciasto przełożyć do posmarowanej olejem miski, miskę przykryć i wstawić do lodówki na godzinę. Po tym czasie wyjąć ciasto, przełożyć na lekko podsypaną mąką stolnicę (używam stolnicy silikonowej i na początku w ogóle nie podsypywałam mąką) i rozwałkować ciasto na prostokąt. Rozwałkowane ciasto posmarować równo masłem (200 g masła w temp. pokojowej) zostawiając ok. 1 cm wokół, a następnie złożyć je list na 3 części i dokładnie skleić brzegi.</p>
+          <p>Złożone ciasto rozwałkować na prostokąt, ponownie złożyć na 3 części, zawinąć w folię spożywczą i włożyć do lodówki na 30 min. Schłodzone ciasto ponownie rozwałkować na prostokąt, złożyć na 3 części i włożyć do lodówki na 30 min. Czynność powtórzyć jeszcze dwa razy. Po ostatnim wałkowaniu, złożone ciasto zawinąć dokładnie w folię i włożyć do lodówki na kilka (4-5) godzin, a najlepiej na całą noc.</p>
+        </div>
+
+        <div class="section-block">
+          <div class="section-subtitle">Nadzienie</div>
+          <p>Mak opłukać na sitku i przełożyć do miski, dodać orzechy włoskie, zalać wrzątkiem i parzyć przez godzinę. Sparzony mak z orzechami odsączyć na sitku, a następnie jeszcze odcisnąć z nadmiaru wody.</p>
+          <p>Mak z orzechami i migdały przepuścić dwa razy przez maszynkę do mielenia. Ja na koniec, z kilkoma łyżkami masy makowej, mielę również marcepan.</p>
+          <p>Do miski przełożyć masę makową z orzechami, migdałami, marcepanem, dodać cukier puder, skórkę pomarańczową, rodzynki, pokruszone biszkopty, śmietanę i wymieszać na jednolitą masę.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
