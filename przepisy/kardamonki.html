@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kardamonki</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        box-shadow: none !important;
+        border: 1px solid #c8b89e !important;
+        padding: 20px !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2b2b2b;
+      line-height: 1.5;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-container {
+      background-color: #fffdf9;
+      width: 100%;
+      max-width: 780px;
+      border: 2px solid #8b5e3c;
+      padding: 30px 35px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .inner-border {
+      border: 1px solid #d4c2b0;
+      padding: 25px;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #d4c2b0;
+    }
+
+    .rating {
+      color: #555;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Brush Script MT', 'Palatino Linotype', 'Georgia', cursive, serif;
+      font-size: 2.5rem;
+      font-weight: normal;
+      color: #2c2523;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 0.95rem;
+      color: #635348;
+      font-style: italic;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #4a3728;
+      margin-bottom: 14px;
+      text-align: center;
+      position: relative;
+    }
+
+    .ingredients-section {
+      background-color: #faf6f0;
+      border: 1px dashed #cbb69d;
+      border-radius: 4px;
+      padding: 18px 24px;
+      margin-bottom: 25px;
+    }
+
+    .ingredients-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 20px;
+      text-align: center;
+    }
+
+    .ingredients-list li {
+      font-size: 0.98rem;
+      color: #3b322c;
+      padding: 2px 0;
+    }
+
+    .instructions-section {
+      margin-top: 10px;
+    }
+
+    .instructions-list {
+      list-style: none;
+      counter-reset: step-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .instructions-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 32px;
+      font-size: 0.98rem;
+      text-align: justify;
+      color: #2f2a26;
+      line-height: 1.55;
+    }
+
+    .instructions-list li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+
+    @media (max-width: 600px) {
+      .recipe-container {
+        padding: 15px;
+      }
+      .inner-border {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .meta-info {
+        gap: 15px;
+        flex-direction: column;
+        align-items: center;
+      }
+      .ingredients-list {
+        grid-template-columns: 1fr;
+      }
+      .instructions-list li {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-container">
+    <div class="inner-border">
+      
+      <header class="header-section">
+        <div class="rating">★★★★☆</div>
+        <h1>Kardamonki</h1>
+        <div class="meta-info">
+          <div class="meta-item">
+            <span>🍽️ 15 porcji</span>
+          </div>
+          <div class="meta-item">
+            <span>⏱️ 180 minut</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="ingredients-section">
+        <h2 class="section-title">SKŁADNIKI</h2>
+        <ul class="ingredients-list">
+          <li>1 porcja ciasta drożdżowego</li>
+          <li>1 i 1/2 szklanki brązowego cukru</li>
+          <li>2 łyżki kardamonu</li>
+          <li>200 g masła</li>
+          <li>lukier cytrynowy</li>
+        </ul>
+      </section>
+
+      <section class="instructions-section">
+        <h2 class="section-title">PRZYGOTOWANIE</h2>
+        <ol class="instructions-list">
+          <li>Ciasto drożdżowe rozwałkuj na stolnicy na długość około 60 cm i szerokość 45 cm.</li>
+          <li>Rozpuść masło i wymieszaj z cukrem oraz kardamonem.</li>
+          <li>Rozsmaruj 2/3 pomady na 1/2 części ciasta. Nałóż górną część ciasta na tą posmarowaną. Ponownie posmaruj pozostałą częścią pomady ale już tylko połowę ciasta i ponownie nałóż.</li>
+          <li>Ciasto potnij na 15 pasków, które lekko rozciągnij w ręce i poprzeplataj wedle uznania, (możesz porobić dziwne supełki i zwinąć ciasto). Odstaw do wyrośnięcia na 20 minut.</li>
+          <li>Piecz w piekarniku nagrzanym do 190 stopni przez około 25-30 minut w opcji termoobieg.</li>
+          <li>Schłodzone posmaruj lukrem cytrynowym.</li>
+        </ol>
+      </section>
+
+    </div>
+  </div>
+
+</body>
+</html>
