@@ -1,167 +1,247 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3-bit ciasto bez pieczenia (bryskka)</title>
-<style>
-  @page { size: A4 portrait; margin: 10mm; }
-  @media print { .no-print { display: none; } }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIASTO 3 BIT - CIASTO BEZ PIECZENIA</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
 
-  * { box-sizing: border-box; }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #f4efe6;
-    color: #2b2118;
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.4;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  .page {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 16px;
-  }
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      color: #2b2520;
+      line-height: 1.45;
+    }
 
-  .book {
-    background: #fffdf8;
-    border: 2px solid #8b5e3c;
-    outline: 1px solid #c9a87c;
-    outline-offset: 4px;
-    padding: 22px 24px;
-    max-width: 100%;
-  }
+    .recipe-container {
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 28px 32px 20px 32px;
+      border: 1px solid #d8cfc4;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
 
-  .ornament {
-    text-align: center;
-    color: #8b5e3c;
-    font-size: 18px;
-    letter-spacing: 6px;
-    margin: 0 0 6px 0;
-  }
+    .recipe-header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
 
-  h1 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 26px;
-    text-align: center;
-    margin: 4px 0 2px 0;
-    color: #5a3a22;
-    line-height: 1.2;
-  }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 24pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #3e2723;
+      text-transform: uppercase;
+    }
 
-  .subtitle {
-    text-align: center;
-    font-style: italic;
-    color: #7a5a3a;
-    font-size: 14px;
-    margin: 0 0 14px 0;
-  }
+    .recipe-yield {
+      font-style: italic;
+      font-size: 11pt;
+      color: #6d5b52;
+    }
 
-  .divider {
-    border: none;
-    border-top: 1px solid #c9a87c;
-    margin: 12px 0;
-  }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 38% 62%;
+      gap: 24px;
+    }
 
-  h2 {
-    font-size: 17px;
-    color: #5a3a22;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #c9a87c;
-    padding-bottom: 4px;
-    margin: 14px 0 8px 0;
-  }
+    .column-title {
+      font-size: 13pt;
+      color: #8b5e3c;
+      border-bottom: 1px solid #e0d7cd;
+      padding-bottom: 4px;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-  ul.ingredients {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+    .section-subtitle {
+      font-weight: bold;
+      font-size: 10.5pt;
+      margin: 10px 0 4px 0;
+      color: #4a3b32;
+      font-style: italic;
+    }
 
-  ul.ingredients li {
-    padding: 3px 0 3px 18px;
-    position: relative;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
+    ul {
+      margin: 0 0 10px 0;
+      padding-left: 18px;
+      font-size: 9.5pt;
+    }
 
-  ul.ingredients li::before {
-    content: "•";
-    position: absolute;
-    left: 4px;
-    color: #8b5e3c;
-    font-weight: bold;
-  }
+    li {
+      margin-bottom: 3px;
+      line-height: 1.35;
+    }
 
-  ol.steps {
-    padding-left: 22px;
-    margin: 0;
-  }
+    .instructions p {
+      font-size: 9.5pt;
+      margin: 0 0 10px 0;
+      text-align: justify;
+      line-height: 1.4;
+    }
 
-  ol.steps li {
-    margin-bottom: 8px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
+    .instructions .section-block {
+      margin-bottom: 14px;
+    }
 
-  .note {
-    font-size: 13px;
-    font-style: italic;
-    color: #6a4a2a;
-    margin-top: 10px;
-    border-left: 3px solid #c9a87c;
-    padding-left: 10px;
-  }
+    .recipe-footer {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px dashed #d8cfc4;
+      text-align: center;
+    }
 
-  @media (max-width: 480px) {
-    .book { padding: 16px 14px; }
-    h1 { font-size: 22px; }
-    h2 { font-size: 15px; }
-  }
-</style>
+    .smacznego {
+      font-size: 14pt;
+      font-weight: bold;
+      font-style: italic;
+      color: #8b5e3c;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .footer-note {
+      font-size: 8.5pt;
+      color: #6d5b52;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      .recipe-container {
+        padding: 16px;
+      }
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      h1 {
+        font-size: 18pt;
+      }
+      ul, .instructions p {
+        font-size: 10.5pt;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
     <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
     <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
   </div>
 
-  <div class="page">
-    <div class="book">
-      <div class="ornament">❦ ❦ ❦</div>
-      <h1>3-bit ciasto bez pieczenia (bryskka)</h1>
-      <p class="subtitle">Szybki deser na zimno – bez pieczenia</p>
-      <hr class="divider">
-
-      <h2>Składniki</h2>
-      <ul class="ingredients">
-        <li>500 g herbatników</li>
-        <li>250 g masła</li>
-        <li>200 g cukru pudru</li>
-        <li>200 ml śmietanki 30%</li>
-        <li>2 łyżki kakao</li>
-        <li>1 łyżeczka ekstraktu waniliowego</li>
-        <li>szczypta soli</li>
-      </ul>
-
-      <h2>Przygotowanie</h2>
-      <ol class="steps">
-        <li>Herbatniki drobno pokrusz (najlepiej w woreczku foliowym za pomocą wałka) i odłóż na bok.</li>
-        <li>Masło utrzyj z cukrem pudrem na puszystą, jasną masę.</li>
-        <li>Dodaj kakao, ekstrakt waniliowy i szczyptę soli, miksując do połączenia składników.</li>
-        <li>Śmietankę ubij na sztywno i delikatnie wmieszaj do masy maślanej.</li>
-        <li>Do masy dodaj pokruszone herbatniki i wymieszaj do uzyskania jednolitej, zwartej konsystencji.</li>
-        <li>Gotową masę przełóż do formy wyłożonej folią spożywczą, wyrównaj wierzch i wstaw do lodówki na minimum 4 godziny (najlepiej na noc).</li>
-        <li>Przed podaniem wyjmij z lodówki, wyjmij z formy i pokrój na porcje.</li>
-      </ol>
-
-      <p class="note">Deser najlepiej smakuje schłodzony. Podawaj z bitą śmietaną lub owocami.</p>
-
-      <div class="ornament" style="margin-top: 14px;">❦ ❦ ❦</div>
+  <div class="recipe-container">
+    <div class="recipe-header">
+      <h1>CIASTO 3 BIT</h1>
+      <div class="recipe-yield">Składniki (ciasto bez pieczenia)</div>
     </div>
+
+    <div class="content-grid">
+      <!-- Kolumna składników -->
+      <div class="ingredients">
+        <h2 class="column-title">Składniki</h2>
+
+        <div class="section-subtitle">Baza i herbatniki</div>
+        <ul>
+          <li>7-8 paczek herbatników</li>
+          <li>1 puszka mleka skondensowanego słodzonego</li>
+          <li>1 kostka masła</li>
+          <li>4 łyżki cukru pudru (do masła)</li>
+        </ul>
+
+        <div class="section-subtitle">Masa budyniowa</div>
+        <ul>
+          <li>2 budynie waniliowe (w proszku)</li>
+          <li>1/2 litra mleka (do rozpuszczenia i ugotowania budyniu)</li>
+          <li>5 łyżek cukru pudru</li>
+          <li>1 torebka galaretki cytrynowej</li>
+        </ul>
+
+        <div class="section-subtitle">Bita śmietana</div>
+        <ul>
+          <li>3 kubeczki śmietany kremówki (30% lub 36%)</li>
+          <li>5 łyżek cukru pudru</li>
+          <li>2 łyżeczki żelatyny</li>
+          <li>1 kieliszek wrzącej wody (do rozpuszczenia żelatyny)</li>
+        </ul>
+
+        <div class="section-subtitle">Dodatkowo</div>
+        <ul>
+          <li>czekolada starta na drobnych oczkach do posypania wierzchu</li>
+        </ul>
+      </div>
+
+      <!-- Kolumna przygotowania -->
+      <div class="instructions">
+        <h2 class="column-title">Przygotowanie</h2>
+
+        <div class="section-block">
+          <div class="section-subtitle">Krok 1: Karmel i budyń</div>
+          <p>Puszkę mleka skondensowanego wsadź do garnka, zalej wodą, doprowadź do wrzenia i gotuj na wolnym ogniu przez około 3 godziny (mleko ugotuj najlepiej dzień wcześniej). Następnie odstaw puszkę do całkowitego ostygnięcia.</p>
+          <p>W 3/4 szklanki mleka rozpuść budynie. Resztę mleka zagotuj i do gotującego się mleka wlej przygotowaną zawiesinę budyniową. Cały czas mieszając, doprowadź budyń do wrzenia, tak aby powstały tzw. wulkany, po czym odstaw z ognia. Do gorącego budyniu wsyp galaretkę cytrynową, dokładnie wymieszaj i odstaw do ostygnięcia.</p>
+        </div>
+
+        <div class="section-block">
+          <div class="section-subtitle">Krok 2: Masa budyniowa i układanie</div>
+          <p>Masło włóż do miski i rozmiksuj z 4 łyżkami cukru pudru na puszystą masę. Następnie dodawaj po łyżce chłodny budyń, nie przerywając miksowania. Po dodaniu ostatniej łyżki miksuj całość jeszcze przez około 1-2 minuty.</p>
+          <p>Dużą brytfankę wyłóż folią aluminiową, a na jej dnie poukładaj pierwszą warstwę herbatników. Na herbatniki wyłóż przygotowaną masę budyniową, rozprowadź równomiernie i przykryj drugą warstwą herbatników.</p>
+        </div>
+
+        <div class="section-block">
+          <div class="section-subtitle">Krok 3: Masa karmelowa i bita śmietana</div>
+          <p>Przeóż ugotowane wcześniej mleko skondensowane z puszki do miski i miksuj je przez około 2-3 minuty, aż powstanie puszysta karmelowa masa z bąbelkami powietrza. Wyłóż ją na drugą warstwę herbatników, rozprowadź równomiernie i przykryj trzecią warstwą herbatników.</p>
+          <p>Żelatynę rozpuść w kieliszku wrzącej wody i odstaw do ostygnięcia. Śmietanę kremówkę przelej do miski, dodaj 5 łyżek cukru pudru oraz ostudzoną, płynną żelatynę. Wszystko razem ubij na sztywną masę.</p>
+        </div>
+
+        <div class="section-block">
+          <div class="section-subtitle">Krok 4: Wykończenie</div>
+          <p>Wyłóż ubitą śmietanę na ostatnią warstwę herbatników i rozprowadź równomiernie po całej powierzchni. Wierzch ciasta posyp startą na drobnych oczkach czekoladą. Schłodź w lodówce przez kilka godzin przed podaniem.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stopka -->
+    <div class="recipe-footer">
+      <div class="smacznego">Smacznego!</div>
+      <div class="footer-note">*Szklanka użyta w moich przepisach do odmierzania składników ma zawsze pojemność 250 ml 🙂</div>
+    </div>
+
   </div>
+
 </body>
 </html>
