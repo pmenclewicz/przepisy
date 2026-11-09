@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Przepisy z zeszytu</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .page-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f5f2eb;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: #2b2520;
+      line-height: 1.4;
+    }
+
+    .page-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fffdf9;
+      padding: 24px 30px;
+      border: 1px solid #dcd3c5;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      font-size: 1.45rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+      color: #4a2c11;
+      margin: 0 0 4px 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #8b5e3c;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6a4023;
+      margin: 0 0 8px 0;
+      padding-bottom: 3px;
+      border-bottom: 1px dashed #c4b5a0;
+    }
+
+    .recipe-card {
+      margin-bottom: 16px;
+      padding: 12px 14px;
+      background: #faf7f2;
+      border-left: 3px solid #8b5e3c;
+      border-radius: 2px;
+    }
+
+    .recipe-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 0.95rem;
+      color: #7a4822;
+      margin-top: 6px;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      margin: 4px 0 8px 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 2px;
+      font-size: 0.95rem;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+      text-align: justify;
+    }
+
+    .highlight-note {
+      font-style: italic;
+      color: #8b3a2b;
+      font-weight: 600;
+      margin: 4px 0;
+    }
+
+    .bake-info {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 8px;
+      background: #eee5d8;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: #4a2c11;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    
+    <!-- PRZEPIS 1 -->
+    <article class="recipe-card">
+      <h1>Ciemny placek z bakaliami</h1>
+      <p>Ciemny placek biszkopt lub murzynek przekroić na pół.</p>
+      <p>Na spód ciasta położyć masę budyniową, ananasy – pół puszki, wiśnie, rodzynki, orzechy.</p>
+      <p>Pół puszki pokrajać, zalać galaretkę brzoskwiniową! Przykryć drugą połową.</p>
+      <p>Gotując masę budyniową i te same owoce co na spód i wlać drugą galaretkę. Wierzch polać polewą czekoladową.</p>
+    </article>
+
+    <!-- PRZEPIS 2 -->
+    <article class="recipe-card">
+      <h2>Rogaliki kruche</h2>
+      
+      <div class="section-title">Składniki:</div>
+      <ul>
+        <li>1 Kasia</li>
+        <li>2 żółtka</li>
+        <li>1 łyżka cukru</li>
+        <li>0,5 szkl. kwaśnej śmietany 18%</li>
+        <li>2 dkg drożdży</li>
+        <li>50 dkg mąki (2 szkl. i 2 łyżki)</li>
+      </ul>
+
+      <p class="highlight-note">Wyrobione ciasto na noc do lodówki!</p>
+
+      <div class="section-title">Przygotowanie:</div>
+      <p>Żółtka utrzeć z cukrem i Kasią, dodać wymieszane ze śmietaną drożdże i wyrobić z mąką.</p>
+
+      <div class="bake-info">Pieczenie: 180°C bez termoobiegu, 20 minut</div>
+    </article>
+
+    <!-- PRZEPIS 3 -->
+    <article class="recipe-card">
+      <h2>Placek na maślance</h2>
+      
+      <div class="section-title">Składniki:</div>
+      <ul>
+        <li>3 szkl. mąki + 1 mały proszek – wymieszać</li>
+        <li>3 jajka + 1 szkl. cukru – ubić widelcem</li>
+        <li>1 szkl. maślanki</li>
+        <li>3/4 szkl. oleju</li>
+        <li>owoc i kruszonka</li>
+      </ul>
+
+      <div class="section-title">Przygotowanie:</div>
+      <p>Wszystko wymieszać, na to owoc i kruszonka.</p>
+
+      <div class="bake-info">Do zimnego pieca: 160°C termoobieg, 40–45 min</div>
+    </article>
+
+  </div>
+
+</body>
+</html>
