@@ -1,5 +1,11 @@
 [
   {
+    "id": "jagodzianki",
+    "title": "Jagodzianki",
+    "file": "przepisy/jagodzianki.html",
+    "date": "2026-11-09"
+  },
+  {
     "id": "ciasto-drozdzowe",
     "title": "Ciasto drożdżowe",
     "file": "przepisy/ciasto-drozdzowe.html",
