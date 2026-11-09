@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciastka m&m's</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ed;
+      color: #2b2b2b;
+      line-height: 1.6;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background-color: #fffdfa;
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid #d4c5b3;
+      border-radius: 4px;
+      padding: 35px 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .decorative-border {
+      border: 1px solid #e3d7c8;
+      padding: 25px 30px;
+      border-radius: 2px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      color: #4a3425;
+      margin-bottom: 25px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: #6b4423;
+      margin-top: 15px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid #e6ded4;
+      padding-bottom: 4px;
+    }
+
+    .recipe-content {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 680px) {
+      .recipe-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .recipe-card {
+        padding: 20px 15px;
+      }
+      .decorative-border {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    ul.ingredients-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul.ingredients-list li {
+      padding: 6px 0;
+      border-bottom: 1px dotted #e0d5c7;
+      font-size: 1rem;
+    }
+
+    ul.ingredients-list li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions-text {
+      font-size: 1.05rem;
+      text-align: justify;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .instructions-text p {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="decorative-border">
+      <h1>Ciastka m&m's</h1>
+
+      <div class="recipe-content">
+        <section class="ingredients-section">
+          <h2>Składniki</h2>
+          <ul class="ingredients-list">
+            <li>150 g mąka</li>
+            <li>150 g cukru</li>
+            <li>100 g masła</li>
+            <li>1 jajko</li>
+            <li>2 łyżeczki cukru waniliowego</li>
+            <li>½ łyżeczki sody oczyszczonej</li>
+            <li>100 g cukierków</li>
+          </ul>
+        </section>
+
+        <section class="instructions-section">
+          <h2>Przygotowanie</h2>
+          <div class="instructions-text">
+            <p>Mąkę wymieszać z sodą i cukrem waniliowym. Miksuj miękkie masło z cukrem, dodaj jajko a potem stopniowo mąkę. Ciasto schować na 5 min do zamrażalnika. Z ciasta formować małe kulki i układać na blasze, lekko spłaszczyć. Wciśnij kilka cukierków. Piec 15 min / 180°C.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
