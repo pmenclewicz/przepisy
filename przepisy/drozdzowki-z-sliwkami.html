@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drożdżówki z śliwkami</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none;
+        border: 1px solid #c2b4a3;
+        padding: 20px 24px;
+        max-width: 100%;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: #f7f4ee;
+      font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+      color: #2b2622;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fffdfa;
+      border: 1px solid #d9ccbe;
+      border-radius: 4px;
+      padding: 30px 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.1rem;
+      font-weight: normal;
+      font-style: italic;
+      color: #3d2719;
+      letter-spacing: 0.5px;
+    }
+
+    .rating {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: #5a4638;
+    }
+
+    .meta-bar {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+      color: #635043;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    .column-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #4a3628;
+      margin-top: 0;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #e0d5c7;
+      padding-bottom: 6px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .ingredients-list li {
+      padding: 6px 0;
+      border-bottom: 1px dashed #ede5db;
+      word-wrap: break-word;
+    }
+
+    .ingredients-list li:last-child {
+      border-bottom: none;
+    }
+
+    .instructions-list {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.95rem;
+    }
+
+    .instructions-list li {
+      margin-bottom: 10px;
+      line-height: 1.45;
+      text-align: justify;
+    }
+
+    .footer {
+      margin-top: 25px;
+      padding-top: 10px;
+      border-top: 1px solid #ede5db;
+      font-size: 0.85rem;
+      color: #7d6b5e;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <div class="header">
+      <h1>Drożdżówki z śliwkami</h1>
+      <div class="rating" aria-label="Ocena: 4 na 5 gwiazdek">★★★★☆</div>
+    </div>
+
+    <div class="meta-bar">
+      <div class="meta-item">
+        <span>👤</span>
+        <span>12 porcji</span>
+      </div>
+      <div class="meta-item">
+        <span>🕒</span>
+        <span>3 godziny</span>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <section class="ingredients-section">
+        <h2 class="column-title">Składniki</h2>
+        <ul class="ingredients-list">
+          <li>1 porcja ciasta drożdżowego</li>
+          <li>1 kg śliwek</li>
+          <li>1 szklanka brązowego cukru</li>
+          <li>3 łyżeczki przyprawy do piernika</li>
+          <li>1 opakowanie cynamonu</li>
+          <li>1 jajko</li>
+          <li>wasz ulubiony lukier</li>
+        </ul>
+      </section>
+
+      <section class="instructions-section">
+        <h2 class="column-title">Przygotowanie</h2>
+        <ol class="instructions-list">
+          <li>Ciasto drożdżowe podziel na kulki o wadze 80 gramów.</li>
+          <li>Na jednej blaszce ułóż 6 kulek w sporych odstępach i przygnieć je dnem szklanki by stworzyć wgłębienie.</li>
+          <li>Śliwki pokrój na ćwiartki i wymieszaj je z cynamonem, przyprawą korzenną i brązowym cukrem.</li>
+          <li>Wypełnij wgłębienie drożdżowki sporą ilością śliwek.</li>
+          <li>Odstaw drożdżówki do wyrośnięcia pod przykryciem na 30 minut, po tym czasie posmaruj je roztrzepanym jajkiem</li>
+          <li>Piecz w temperaturze 190-200 stopni przez około 30-40 minut (aż będą ciemnozłote). Wystudzone polej lukrem</li>
+        </ol>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <span>📷 @danielcoceancig</span>
+    </footer>
+  </div>
+
+</body>
+</html>
