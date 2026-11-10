@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bułeczki Nocne z Dynią</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #fbf9f5;
+      color: #2b2b2b;
+      line-height: 1.5;
+      padding: 20px 10px;
+    }
+
+    .recipe-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px 40px;
+      border: 1px solid #dcd3c9;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #e8e0d5;
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #3e2723;
+      text-align: center;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .meta-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px 25px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #6d4c41;
+      border-top: 1px solid #e0d7cd;
+      border-bottom: 1px solid #e0d7cd;
+      padding: 8px 0;
+      margin-bottom: 22px;
+    }
+
+    .meta-item span {
+      font-weight: bold;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    h2 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4e342e;
+      border-bottom: 1px solid #8d6e63;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    ul.ingredients {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul.ingredients li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    ul.ingredients li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8d6e63;
+      font-size: 18px;
+      line-height: 1;
+      top: -1px;
+    }
+
+    ul.ingredients li em {
+      color: #555;
+      font-style: italic;
+    }
+
+    ol.instructions {
+      list-style-type: none;
+      counter-reset: step-counter;
+      padding-left: 0;
+    }
+
+    ol.instructions li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #333;
+    }
+
+    ol.instructions li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: bold;
+      color: #5d4037;
+    }
+
+    .optional-note {
+      font-style: italic;
+      color: #555;
+    }
+
+    @media (min-width: 650px) {
+      .recipe-container {
+        padding: 35px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-container">
+    <div class="inner-border">
+      <h1>BUŁECZKI NOCNE Z DYNIĄ</h1>
+
+      <div class="meta-info">
+        <div class="meta-item"><span>CZAS PRZYGOTOWANIA:</span> 5 minut + noc w lodówce</div>
+        <div class="meta-item"><span>CZAS PIECZENIA:</span> 30 minut</div>
+        <div class="meta-item"><span>TRUDNOŚĆ:</span> Łatwe</div>
+      </div>
+
+      <div class="content-grid">
+        <section>
+          <h2>SKŁADNIKI:</h2>
+          <ul class="ingredients">
+            <li>350 ml letniej wody</li>
+            <li>10 g świeżych drożdży</li>
+            <li>1 łyżeczka cukru</li>
+            <li>3 duże łyżki jogurtu</li>
+            <li>3 duże łyżki puree z dyni <em>(dynię po prostu upiecz lub ugotuj i zmiksuj bez wody, przechowuj w lodówce w słoiku)</em></li>
+            <li>2 łyżki mieszanki nasion, np. sezamu, siemienia lnianego, maku i czarnuszki</li>
+            <li>600 g jasnej mąki orkiszowej lub pszennej</li>
+            <li>1 czubata łyżeczka soli</li>
+            <li>oliwa z oliwek</li>
+            <li>dodatkowe ziarna do posypania, opcjonalnie</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>JAK TO ZROBIĆ?</h2>
+          <ol class="instructions">
+            <li>Drożdże rozpuść w wodzie z cukrem.</li>
+            <li>Do dużej miski wsyp mąkę, dodaj jogurt, puree z dyni, mieszankę nasion, chlust oliwy i sól. Wlej wodę z drożdżami.</li>
+            <li>Dokładnie wymieszaj wszystko łyżką. Przykryj miskę, odstaw ciasto na blacie na ok 30 minut a następnie wstaw do lodówki.</li>
+            <li>OPCJONALNIE: Po 10 minutach wyrastania na blacie wilgotną dłonią naciągnij brzegi ciasta z każdej strony do środka, formując coś w rodzaju koperty. Przykryj i zostaw na 20 minut.<br><span class="optional-note">(Ten zabieg wzmacnia trochę ciasto, ale nie jest</span></li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
