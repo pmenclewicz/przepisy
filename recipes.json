@@ -1,5 +1,11 @@
 [
   {
+    "id": "fit-bagietki",
+    "title": "Fit-bagietki",
+    "file": "przepisy/fit-bagietki.html",
+    "date": "2026-11-11"
+  },
+  {
     "id": "wymagane-dostarczenie-tresci-przepisu",
     "title": "Wymagane dostarczenie treści przepisu",
     "file": "przepisy/wymagane-dostarczenie-tresci-przepisu.html",

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fit-bagietki</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #777;
+        box-shadow: none;
+        padding: 18px 24px;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2b2621;
+      margin: 0;
+      padding: 20px 10px;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fffdf9;
+      border: 2px solid #8b5e3c;
+      padding: 28px 36px;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      border: 1px solid #e0d0be;
+      pointer-events: none;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      color: #5a381e;
+      margin: 0 0 8px 0;
+      letter-spacing: 1px;
+      font-weight: normal;
+      text-transform: uppercase;
+      border-bottom: 1px solid #8b5e3c;
+      padding-bottom: 10px;
+    }
+
+    .notice {
+      background-color: #fcf6ea;
+      border-left: 3px solid #8b5e3c;
+      padding: 8px 12px;
+      margin: 14px 0;
+      font-size: 13.5px;
+      font-style: italic;
+      color: #5a381e;
+    }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .ingredients-col {
+      flex: 1 1 260px;
+    }
+
+    .instructions-col {
+      flex: 1.4 1 320px;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #d4c2b0;
+      padding-bottom: 4px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #6d6259;
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed #d4c2b0;
+      font-style: italic;
+      color: #6a4e39;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <h1>Fit-bagietki</h1>
+
+    <div class="notice">
+      ⚠️ Bagietki można zrobić tylko na drożdżach lub drożdże + odrzuty z zakwasu.
+    </div>
+
+    <div class="columns">
+      <div class="ingredients-col">
+        <h2>Składniki</h2>
+        <ul>
+          <li>700 g mąki orkiszowej typ 630</li>
+          <li>100 g mąki orkiszowej typ 1700</li>
+          <li>680 g wody</li>
+          <li>5 g drożdży suchych <strong>LUB</strong> 2 g drożdży suchych + 100 g zakwasu pszennego (odrzutów z zakwasu)</li>
+          <li>20 g soli</li>
+          <li>500 g ziaren (w tym 100 g płatków owsianych lub żytnich – może być gotowa mieszanka)</li>
+        </ul>
+      </div>
+
+      <div class="instructions-col">
+        <h2>Sposób przygotowania</h2>
+        <ol>
+          <li>Wszystkie składniki prócz ziaren mieszamy aż nie będzie widać surowej mąki.</li>
+          <li>Po 30 minutach wykonujemy pierwsze składanie, dodając 1/3 ziaren.</li>
+          <li>Składanie powtarzamy jeszcze 4 razy co 30 minut (łącznie 5 składań).</li>
+          <li>Wkładamy ciasto na noc do lodówki.</li>
+          <li>Rano dzielimy ciasto na 6 części i formujemy podłużne bagietki.</li>
+          <li>Układamy na blaszce i odstawiamy do wyrośnięcia na około 1 godzinę.</li>
+          <li>Piekarnik nagrzewamy do 250 stopni Celsjusza.</li>
+          <li>Pieczemy 10 minut z parą.</li>
+          <li>Następnie dopiekamy przez 25–28 minut bez pary.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="footer">
+      Smacznego! Dajcie znać jak zrobicie.
+    </div>
+  </div>
+
+</body>
+</html>
