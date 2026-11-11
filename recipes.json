@@ -1,5 +1,11 @@
 [
   {
+    "id": "spaghetti-bolognese",
+    "title": "Spaghetti bolognese",
+    "file": "przepisy/spaghetti-bolognese.html",
+    "date": "2026-11-11"
+  },
+  {
     "id": "buleczki-nocne-z-dynia",
     "title": "BUŁECZKI NOCNE Z DYNIĄ",
     "file": "przepisy/buleczki-nocne-z-dynia.html",
