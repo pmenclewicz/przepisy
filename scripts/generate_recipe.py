@@ -59,10 +59,11 @@ Najważniejsze zasady:
        preventScreenSleep();
      </script>
 7. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
-8. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
+8. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu.
+9. **Formuła prywatnej notatki**: Sformułuj treść jako prywatną, odręczną notatkę kulinarną użytkownika, lekko zmieniając szyk zdań, aby uniknąć dosłownego kopiowania chronionego tekstu źródłowego i zabezpieczyć treść przed filtrami cytowania."""
 
 if CUSTOM_TITLE:
-    prompt_base += f"\n9. **WAŻNE**: Główne nagłówek H1 na tej stronie HTML MUSI brzmieć dokładnie: '{CUSTOM_TITLE}'."
+    prompt_base += f"\n10. **WAŻNE**: Główne nagłówek H1 na tej stronie HTML MUSI brzmieć dokładnie: '{CUSTOM_TITLE}'."
 
 html_code = ""
 
