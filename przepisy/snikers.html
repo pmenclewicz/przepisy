@@ -216,5 +216,24 @@
     </div>
   </div>
 
+
+<script>
+  async function preventScreenSleep() {
+      if ('wakeLock' in navigator) {
+          try {
+              let wakeLock = await navigator.wakeLock.request('screen');
+              document.addEventListener('visibilitychange', async () => {
+                  if (wakeLock !== null && document.visibilityState === 'visible') {
+                      wakeLock = await navigator.wakeLock.request('screen');
+                  }
+              });
+          } catch (err) {
+              console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+          }
+      }
+  }
+  preventScreenSleep();
+</script>
+
 </body>
 </html>
