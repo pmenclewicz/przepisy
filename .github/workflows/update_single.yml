@@ -1,0 +1,65 @@
+name: Update Single Recipe (Pancakes)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run update script for pancakes-sniadaniowe.html
+        run: |
+          python - << 'EOF'
+          import os
+
+          wake_lock_script = """
+          <script>
+            async function preventScreenSleep() {
+                if ('wakeLock' in navigator) {
+                    try {
+                        let wakeLock = await navigator.wakeLock.request('screen');
+                        document.addEventListener('visibilitychange', async () => {
+                            if (wakeLock !== null && document.visibilityState === 'visible') {
+                                wakeLock = await navigator.wakeLock.request('screen');
+                            }
+                        });
+                    } catch (err) {
+                        console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+                    }
+                }
+            }
+            preventScreenSleep();
+          </script>
+          """
+
+          file_path = "przepisy/pancakes-sniadaniowe.html"
+
+          if os.path.exists(file_path):
+              with open(file_path, "r", encoding="utf-8") as f:
+                  content = f.read()
+              
+              if "wakeLock" in content:
+                  print("Plik ma już wbudowany Wake Lock.")
+              elif "</body>" in content:
+                  new_content = content.replace("</body>", f"{wake_lock_script}\n</body>")
+                  with open(file_path, "w", encoding="utf-8") as f:
+                      f.write(new_content)
+                  print(f"Pomyślnie zaktualizowano: {file_path}")
+              else:
+                  print("Brak znacznika </body> w pliku!")
+          else:
+              print(f"Błąd: Nie znaleziono pliku {file_path}")
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add przepisy/pancakes-sniadaniowe.html
+          git diff --staged --quiet || git commit -m "Dodano ochronę przed wygaszaniem ekranu do pancakes-sniadaniowe.html"
+          git push
