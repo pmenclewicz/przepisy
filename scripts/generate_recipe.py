@@ -40,6 +40,24 @@ Najważniejsze zasady:
        <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
        <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
      </div>
+   - **W sekcji <script> (na samym dole przed zamknięciem </body>) dodaj kod zapobiegający wygaszaniu ekranu telefonu podczas gotowania:**
+     <script>
+       async function preventScreenSleep() {
+           if ('wakeLock' in navigator) {
+               try {
+                   let wakeLock = await navigator.wakeLock.request('screen');
+                   document.addEventListener('visibilitychange', async () => {
+                       if (wakeLock !== null && document.visibilityState === 'visible') {
+                           wakeLock = await navigator.wakeLock.request('screen');
+                       }
+                   });
+               } catch (err) {
+                   console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+               }
+           }
+       }
+       preventScreenSleep();
+     </script>
 7. ZWRÓĆ WYŁĄCZNIE CZYSTY KOD HTML, bez znaczników ```html na początku ani końcu. Kod musi zaczynać się od <!DOCTYPE html>.
 8. Pierwszy znacznik <h1> musi zawierać pełny, dokładny tytuł przepisu."""
 
