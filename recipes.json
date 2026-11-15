@@ -1,5 +1,11 @@
 [
   {
+    "id": "pancakes-sniadaniowe",
+    "title": "Pancakes śniadaniowe",
+    "file": "przepisy/pancakes-sniadaniowe.html",
+    "date": "2026-11-15"
+  },
+  {
     "id": "fit-bagietki",
     "title": "Fit-bagietki",
     "file": "przepisy/fit-bagietki.html",
