@@ -1,4 +1,4 @@
-name: Update Single Recipe (Pancakes)
+name: Update All Recipes Except Pancakes
 
 on:
   workflow_dispatch:
@@ -12,10 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run update script for pancakes-sniadaniowe.html
+      - name: Run update script for all other recipes
         run: |
           python - << 'EOF'
           import os
+          import glob
 
           wake_lock_script = """
           <script>
@@ -37,29 +38,40 @@ jobs:
           </script>
           """
 
-          file_path = "przepisy/pancakes-sniadaniowe.html"
+          recipes_dir = "przepisy"
+          excluded_file = "pancakes-sniadaniowe.html"
+          count = 0
 
-          if os.path.exists(file_path):
-              with open(file_path, "r", encoding="utf-8") as f:
-                  content = f.read()
+          if os.path.exists(recipes_dir):
+              for file_path in glob.glob(os.path.join(recipes_dir, "*.html")):
+                  # Sprawdź czy to nie jest nasz pominięty plik
+                  if os.path.basename(file_path) == excluded_file:
+                      print(f"Pominięto (wykluczony plik): {file_path}")
+                      continue
+
+                  with open(file_path, "r", encoding="utf-8") as f:
+                      content = f.read()
+                  
+                  if "wakeLock" in content:
+                      print(f"Plik ma już Wake Lock: {file_path}")
+                      continue
+
+                  if "</body>" in content:
+                      new_content = content.replace("</body>", f"{wake_lock_script}\n</body>")
+                      with open(file_path, "w", encoding="utf-8") as f:
+                          f.write(new_content)
+                      print(f"Zaktualizowano: {file_path}")
+                      count += 1
+                  else:
+                      print(f"Brak znacznika </body> w pliku: {file_path}")
               
-              if "wakeLock" in content:
-                  print("Plik ma już wbudowany Wake Lock.")
-              elif "</body>" in content:
-                  new_content = content.replace("</body>", f"{wake_lock_script}\n</body>")
-                  with open(file_path, "w", encoding="utf-8") as f:
-                      f.write(new_content)
-                  print(f"Pomyślnie zaktualizowano: {file_path}")
-              else:
-                  print("Brak znacznika </body> w pliku!")
-          else:
-              print(f"Błąd: Nie znaleziono pliku {file_path}")
+              print(f"\nŁącznie zaktualizowano nowych plików: {count}")
           EOF
 
       - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
-          git add przepisy/pancakes-sniadaniowe.html
-          git diff --staged --quiet || git commit -m "Dodano ochronę przed wygaszaniem ekranu do pancakes-sniadaniowe.html"
+          git add przepisy/
+          git diff --staged --quiet || git commit -m "Masowa aktualizacja: dodanie blokady ekranu do pozostałych przepisów"
           git push
