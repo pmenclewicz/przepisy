@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sernik rosyjski</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #2b2b2b;
+      background-color: #faf7f2;
+      line-height: 1.45;
+      padding: 20px 15px;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #c9b097 !important;
+        box-shadow: none !important;
+        padding: 15px 20px !important;
+      }
+    }
+
+    .recipe-card {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1.5px solid #d4c2b0;
+      border-radius: 4px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 1.95rem;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #4a2e1b;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #7d6756;
+      font-size: 0.92rem;
+    }
+
+    .note-intro {
+      background: #fdfaf6;
+      border-left: 3px solid #8b5e3c;
+      padding: 8px 12px;
+      margin-bottom: 16px;
+      font-size: 0.88rem;
+      color: #554438;
+      font-style: italic;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      color: #613b1f;
+      border-bottom: 1px solid #e2d5c8;
+      padding-bottom: 4px;
+      margin-top: 10px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title-first {
+      margin-top: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      word-wrap: break-word;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #8b5e3c;
+      font-weight: bold;
+    }
+
+    ol {
+      padding-left: 18px;
+      font-size: 0.9rem;
+    }
+
+    ol li {
+      margin-bottom: 8px;
+      padding-left: 4px;
+      word-wrap: break-word;
+    }
+
+    ol li::marker {
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      border-top: 1px dashed #d4c2b0;
+      padding-top: 8px;
+      font-size: 0.84rem;
+      color: #6c5a4d;
+      text-align: center;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <header class="header">
+      <h1>Sernik rosyjski</h1>
+      <p class="subtitle">Prywatne zapiski cukiernicze – wypiek świąteczny</p>
+    </header>
+
+    <div class="note-intro">
+      Notatka: Wariacja na temat klasycznego sernika o wyjątkowo puszystej strukturze, pieczonego na aromatycznym, orzechowym spodzie wzbogaconym nutą gałki muszkatołowej.
+    </div>
+
+    <div class="content-grid">
+      <!-- Kolumna składników -->
+      <section class="ingredients-col">
+        <h2 class="section-title-first">Orzechowy spód</h2>
+        <ul>
+          <li>⅔ szklanki zmielonych orzechów laskowych</li>
+          <li>1 szklanka mąki pszennej tortowej</li>
+          <li>3 łyżki cukru</li>
+          <li>1 łyżeczka proszku do pieczenia</li>
+          <li>100 g miękkiego masła</li>
+          <li>szczypta mielonej gałki muszkatołowej</li>
+        </ul>
+
+        <h2>Masa serowa</h2>
+        <ul>
+          <li>1 kg twarogu (zmielonego trzykrotnie lub z wiaderka dobrej jakości)</li>
+          <li>8 jajek (białka oddzielone od żółtek)</li>
+          <li>1 szklanka drobnego cukru</li>
+          <li>1 opakowanie cukru wanilinowego</li>
+          <li>100 g miękkiego masła</li>
+          <li>2 łyżki mąki ziemniaczanej (lub skrobi)</li>
+          <li>szczypta soli do ubicia piany</li>
+        </ul>
+
+        <h2>Do wykończenia</h2>
+        <ul>
+          <li>cukier puder do oprószenia wierzchu</li>
+        </ul>
+      </section>
+
+      <!-- Kolumna przygotowania -->
+      <section class="directions-col">
+        <h2 class="section-title-first">Sposób przygotowania</h2>
+        <ol>
+          <li><strong>Spód orzechowy:</strong> W misce połączyć mąkę, zmielone orzechy laskowe, cukier, proszek do pieczenia oraz szczyptę gałki muszkatołowej. Dodać miękkie masło i sprawnie zagnieść gładkie ciasto. Formę do pieczenia (ok. 24 × 35 cm) wyłożyć papierem, wykleić dno przygotowanym ciastem i odstawić do schłodzenia.</li>
+          <li><strong>Krem serowy:</strong> Masło utrzeć z cukrem i cukrem wanilinowym na puszystą, jasną masę. Nie przerywając ucierania, wbijać po jednym żółtku. Następnie partiami dodawać zmielony twaróg oraz mąkę ziemniaczaną, miksując na małych obrotach jedynie do połączenia się składników.</li>
+          <li><strong>Piana z białek:</strong> Białka ubić ze szczyptą soli na sztywną, lśniącą pianę. Delikatnie, partiami wmieszać pianę do masy serowej przy użyciu szpatułki, wykonując powolne ruchy od spodu ku górze.</li>
+          <li><strong>Pieczenie:</strong> Masę wyłożyć równą warstwą na schłodzony spód. Piec w temperaturze ok. 160–170°C przez 60–70 minut, aż wierzch ładnie wyrośnie i lekko się zetnie.</li>
+          <li><strong>Studzenie:</strong> Studzić sernik powoli przy lekko uchylonych drzwiczkach piekarnika. Po całkowitym wystudzeniu schłodzić i oprószyć delikatnie cukrem pudrem.</li>
+        </ol>
+      </section>
+    </div>
+
+    <div class="footer-note">
+      Uwaga: Aby sernik pozostał aksamitny i wysoki, składniki powinny mieć temperaturę pokojową, a pianę należy wmieszać jak najdelikatniej.
+    </div>
+  </div>
+
+  <script>
+    async function preventScreenSleep() {
+      if ('wakeLock' in navigator) {
+        try {
+          let wakeLock = await navigator.wakeLock.request('screen');
+          document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+              wakeLock = await navigator.wakeLock.request('screen');
+            }
+          });
+        } catch (err) {
+          console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+        }
+      }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>
