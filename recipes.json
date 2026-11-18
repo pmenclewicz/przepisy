@@ -1,5 +1,11 @@
 [
   {
+    "id": "sernik-nowojorski",
+    "title": "Sernik nowojorski",
+    "file": "przepisy/sernik-nowojorski.html",
+    "date": "2026-11-18"
+  },
+  {
     "id": "rolada-bezowa",
     "title": "Rolada bezowa",
     "file": "przepisy/rolada-bezowa.html",

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sernik nowojorski</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      color: #2b2b2b;
+      background-color: #faf8f5;
+      line-height: 1.45;
+      padding: 20px;
+    }
+
+    .no-print {
+      display: block;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: 1px solid #8b5e3c !important;
+        box-shadow: none !important;
+        padding: 15px !important;
+        max-width: 100% !important;
+      }
+    }
+
+    .recipe-card {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff;
+      border: 2px solid #8b5e3c;
+      padding: 24px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px double #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #5c3a21;
+      margin-bottom: 6px;
+    }
+
+    .note-intro {
+      font-style: italic;
+      font-size: 13.5px;
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .ingredients-col {
+      flex: 1 1 260px;
+      background: #fdfbf7;
+      padding: 14px;
+      border-radius: 4px;
+      border-left: 3px solid #8b5e3c;
+    }
+
+    .instructions-col {
+      flex: 2 1 340px;
+    }
+
+    h2 {
+      font-size: 17px;
+      color: #8b5e3c;
+      border-bottom: 1px solid #d4c2b2;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-section {
+      margin-bottom: 12px;
+    }
+
+    .sub-title {
+      font-weight: bold;
+      font-size: 14px;
+      color: #4a3424;
+      margin-bottom: 4px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 18px;
+      font-size: 13px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    ol {
+      padding-left: 20px;
+      font-size: 13.5px;
+    }
+
+    ol li {
+      margin-bottom: 9px;
+      padding-left: 4px;
+    }
+
+    .tip-box {
+      margin-top: 14px;
+      padding: 8px 12px;
+      background: #f7f3ee;
+      border-left: 2px solid #8b5e3c;
+      font-size: 12.5px;
+      color: #444;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <header>
+      <h1>Sernik nowojorski</h1>
+      <p class="note-intro">Prywatna notatka kulinarna: Niezwykle kremowy, idealnie wilgotny i przełamany odświeżającą nutą cytryny. Jego przygotowanie jest banalnie proste i szybkie – najwięcej cierpliwości wymaga proces pieczenia oraz powolnego chłodzenia, jednak efekt jest tego w stu procentach warty.</p>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-col">
+        <h2>Składniki</h2>
+
+        <div class="sub-section">
+          <div class="sub-title">Spód:</div>
+          <ul>
+            <li>170 g herbatników maślanych</li>
+            <li>70 g roztopionego masła</li>
+          </ul>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title">Masa serowa:</div>
+          <ul>
+            <li>1 kg twarogu mielonego (dobrej jakości z wiaderka lub trzykrotnie mielonego twarogu w kostce)</li>
+            <li>250 g cukru pudru</li>
+            <li>3 łyżki mąki pszennej</li>
+            <li>5 jajek</li>
+            <li>200 ml śmietany kwaśnej 18%</li>
+            <li>2 łyżki świeżego soku z cytryny</li>
+            <li>1 łyżka drobno otartej skórki cytrynowej</li>
+          </ul>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title">Polewa:</div>
+          <ul>
+            <li>300 ml śmietany kwaśnej 18%</li>
+            <li>2 łyżki soku z cytryny</li>
+            <li>2 łyżki cukru</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="instructions-col">
+        <h2>Przygotowanie krok po kroku</h2>
+        <ol>
+          <li><strong>Ciasteczkowy spód:</strong> Maślane herbatniki drobno pokruszyć blenderem (bądź włożyć do woreczka i rozkruszyć wałkiem do ciasta). Wymieszać w misce z rozpuszczonym masłem do uzyskania konsystencji mokrego piasku.</li>
+          <li><strong>Formowanie bazy:</strong> Spód i boki tortownicy o średnicy 24 cm wyłożyć starannie papierem do pieczenia. Wsypać przygotowaną masę ciasteczkową, ugnieść dnem szklanki i wyrównać. Formę wstawić do lodówki na czas przygotowywania sera.</li>
+          <li><strong>Masa serowa:</strong> Zmielony ser przełożyć do pojemnej miski. Dodać cukier puder, jajka, kwaśną śmietanę, mąkę pszenną, sok i startą skórkę z cytryny. Krótko zmiksować na minimalnych obrotach – wyłącznie do dokładnego połączenia się składników, starając się zbytnio nie napowietrzać masy.</li>
+          <li><strong>Napełnienie formy:</strong> Masę serową wylać na schłodzony spód z herbatników i delikatnie wyrównać wierzch łopatką.</li>
+          <li><strong>Pieczenie w kąpieli wodnej:</strong> Piekarnik rozgrzać do 180°C. Na samo dno komory piekarnika wsunąć głęboką blachę wypełnioną wrzącą wodą. Na środkowym poziomie umieścić kratkę i postawić na niej tortownicę z ciastem.</li>
+          <li><strong>Wykończenie:</strong> Składniki na polewę (śmietanę, sok z cytryny i cukier) wymieszać i równomiernie rozprowadzić na upieczonym serniku pod koniec cyklu pieczenia.</li>
+        </ol>
+
+        <div class="tip-box">
+          Wskazówka: Pieczenie z parą wodną zapobiega pękaniu ciasta i gwarantuje aksamitną, kremową strukturę typową dla nowojorskich serników.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    async function preventScreenSleep() {
+      if ('wakeLock' in navigator) {
+        try {
+          let wakeLock = await navigator.wakeLock.request('screen');
+          document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+              wakeLock = await navigator.wakeLock.request('screen');
+            }
+          });
+        } catch (err) {
+          console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+        }
+      }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>
