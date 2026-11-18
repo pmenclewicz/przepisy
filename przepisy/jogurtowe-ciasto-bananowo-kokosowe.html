@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogurtowe ciasto bananowo-kokosowe</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        box-shadow: none;
+        border: 1px solid #444;
+        padding: 15mm;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ee;
+      color: #2c2523;
+      padding: 20px 10px;
+      line-height: 1.6;
+    }
+
+    .recipe-card {
+      max-width: 720px;
+      margin: 40px auto 20px auto;
+      background: #fffdfa;
+      border: 2px solid #8b5e3c;
+      outline: 4px double #8b5e3c;
+      outline-offset: -8px;
+      padding: 30px 25px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: #5c3a21;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-style: italic;
+      color: #7d6b5e;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #d8c8b8;
+      margin: 18px 0;
+    }
+
+    .bake-info {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: #fbf7f2;
+      border: 1px dashed #bda795;
+      padding: 10px 15px;
+      border-radius: 4px;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+    }
+
+    .bake-info span {
+      font-weight: bold;
+      color: #5c3a21;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      color: #5c3a21;
+      border-bottom: 1px solid #8b5e3c;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ingredients-list {
+      list-style-type: square;
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .ingredients-list li {
+      margin-bottom: 6px;
+      font-size: 1.02rem;
+    }
+
+    .steps-list {
+      list-style-type: decimal;
+      padding-left: 24px;
+    }
+
+    .steps-list li {
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+    }
+
+    .note {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #6a574a;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <h1>Jogurtowe ciasto bananowo-kokosowe</h1>
+    <p class="subtitle">Własna notatka – szybki, domowy wypiek</p>
+
+    <div class="bake-info">
+      <div>Temperatura: <span>180°C</span></div>
+      <div>Czas pieczenia: <span>35–40 minut</span></div>
+      <div>Foremka: <span>ok. 15 × 15 cm</span></div>
+    </div>
+
+    <section>
+      <h2 class="section-title">Składniki</h2>
+      <ul class="ingredients-list">
+        <li>1 banan</li>
+        <li>2 jajka</li>
+        <li>150 g jogurtu naturalnego</li>
+        <li>50 g wiórków kokosowych</li>
+        <li>Pokruszona czekolada</li>
+        <li>Garść owoców (maliny i borówki)</li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2 class="section-title">Przygotowanie</h2>
+      <ol class="steps-list">
+        <li>Banana, jajka, jogurt naturalny oraz wiórki kokosowe dokładnie wymieszać ze sobą, aż powstanie gładka, jednolita masa.</li>
+        <li>Przygotowane ciasto wylać do foremki o wymiarach w przybliżeniu 15 × 15 cm.</li>
+        <li>Wierzch ciasta posypać pokruszoną czekoladą oraz świeżymi owocami (malinami i borówkami).</li>
+        <li>Piec w piekarniku rozgrzanym do 180°C przez 35–40 minut.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    async function preventScreenSleep() {
+        if ('wakeLock' in navigator) {
+            try {
+                let wakeLock = await navigator.wakeLock.request('screen');
+                document.addEventListener('visibilitychange', async () => {
+                    if (wakeLock !== null && document.visibilityState === 'visible') {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                    }
+                });
+            } catch (err) {
+                console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+            }
+        }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>
