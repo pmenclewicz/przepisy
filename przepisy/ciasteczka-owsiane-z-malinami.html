@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciasteczka owsiane z malinami</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .recipe-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 10px;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ee;
+      color: #2c221e;
+      line-height: 1.5;
+    }
+
+    .recipe-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fffdf9;
+      border: 1px solid #d9cdb8;
+      border-radius: 4px;
+      padding: 28px 32px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 26px;
+      color: #532d16;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 13px;
+      color: #7a6252;
+      font-style: italic;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 28px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 650px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .recipe-card {
+        padding: 18px 16px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    h2 {
+      font-size: 16px;
+      color: #6b3e1f;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px dashed #d1beaa;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .ingredients-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .ingredients-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px dotted #e8dfd3;
+    }
+
+    .ingredients-list li span.name {
+      padding-right: 8px;
+    }
+
+    .ingredients-list li span.amount {
+      font-weight: bold;
+      color: #532d16;
+      white-space: nowrap;
+    }
+
+    .instructions-list {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 14px;
+    }
+
+    .instructions-list li {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    .instructions-list li::marker {
+      color: #8b5e3c;
+      font-weight: bold;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px solid #ebdccb;
+      font-size: 12px;
+      color: #7b695d;
+      font-style: italic;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <div class="recipe-card">
+    <header class="header">
+      <h1>Ciasteczka owsiane z malinami</h1>
+      <div class="meta-bar">
+        <span class="meta-item">⏱ Czas przygotowania: 15 min</span>
+        <span class="meta-item">🍽 Porcje: 5+</span>
+        <span class="meta-item">🔥 Temperatura: 180°C</span>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <section class="ingredients-section">
+        <h2>Składniki</h2>
+        <ul class="ingredients-list">
+          <li><span class="name">Maliny świeże</span><span class="amount">1 szklanka</span></li>
+          <li><span class="name">Płatki owsiane</span><span class="amount">170 g</span></li>
+          <li><span class="name">Cukier</span><span class="amount">125 g</span></li>
+          <li><span class="name">Masło</span><span class="amount">60 g</span></li>
+          <li><span class="name">Mąka pszenna</span><span class="amount">60 g</span></li>
+          <li><span class="name">Jajko</span><span class="amount">1 szt.</span></li>
+          <li><span class="name">Proszek do pieczenia</span><span class="amount">1 łyżeczka</span></li>
+          <li><span class="name">Sól</span><span class="amount">szczypta</span></li>
+        </ul>
+      </section>
+
+      <section class="instructions-section">
+        <h2>Sposób przygotowania</h2>
+        <ol class="instructions-list">
+          <li>
+            <strong>Przygotowanie masy:</strong> Masło utrzeć z cukrem na puszystą, jednolitą masę. Wbić całe jajko i ucierać dalej. Następnie dodać przesianą mąkę, proszek do pieczenia, szczyptę soli oraz płatki owsiane. Po połączeniu wszystkich składników wrzucić świeże maliny i krótko, delikatnie wymieszać, tak aby owoce lekko się rozpadły i nadały masie ładny, różowy odcień.
+          </li>
+          <li>
+            <strong>Formowanie i pieczenie:</strong> Masę nakładać partiami na blachę wyłożoną papierem do pieczenia, formując zgrabne ciasteczka. Wstawić do piekarnika rozgrzanego do 180°C i piec przez 15–20 minut, aż brzegi ładnie się zrumienią.
+          </li>
+          <li>
+            <strong>Podanie:</strong> Wyjąć i ostudzić na kratce. Pyszne, domowe i chrupiące ciasteczka – wyśmienite na zdrowe śniadanie lub lekki podwieczorek. Smacznego!
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <footer class="footer-note">
+      Notatka z domowego przepiśnika kulinarnego • Piec w 180°C przez ok. 15–20 minut
+    </footer>
+  </div>
+
+  <script>
+    async function preventScreenSleep() {
+        if ('wakeLock' in navigator) {
+            try {
+                let wakeLock = await navigator.wakeLock.request('screen');
+                document.addEventListener('visibilitychange', async () => {
+                    if (wakeLock !== null && document.visibilityState === 'visible') {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                    }
+                });
+            } catch (err) {
+                console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+            }
+        }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>
