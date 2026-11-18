@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolada bezowa</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f7f4ef;
+      color: #2b231d;
+      line-height: 1.38;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+    }
+    .recipe-card {
+      background: #fffcf8;
+      max-width: 820px;
+      width: 100%;
+      border: 1px solid #d8ccb8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 22px 26px;
+      border-radius: 4px;
+    }
+    h1 {
+      font-size: 26px;
+      text-align: center;
+      color: #4a2c11;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      font-weight: normal;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 6px;
+    }
+    .meta-box {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      background-color: #f4eee5;
+      border-radius: 4px;
+      padding: 6px 12px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      font-style: italic;
+      color: #5c3f26;
+    }
+    .meta-item {
+      margin: 2px 8px;
+    }
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+    .col-left {
+      flex: 1 1 260px;
+    }
+    .col-right {
+      flex: 2 1 380px;
+    }
+    h2 {
+      font-size: 15px;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      border-bottom: 1px dashed #d8ccb8;
+      padding-bottom: 2px;
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    ul li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 3px;
+    }
+    ul li::before {
+      content: "•";
+      color: #8b5e3c;
+      position: absolute;
+      left: 2px;
+      font-weight: bold;
+    }
+    .instructions {
+      font-size: 13px;
+      text-align: justify;
+    }
+    .instructions p {
+      margin-bottom: 7px;
+    }
+    .step-title {
+      font-weight: bold;
+      color: #5c3f26;
+    }
+    .note-box {
+      margin-top: 8px;
+      background: #faf6f0;
+      border-left: 3px solid #8b5e3c;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-style: italic;
+      color: #4f3b2c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <h1>Rolada bezowa</h1>
+
+    <div class="meta-box">
+      <span class="meta-item"><strong>Blacha:</strong> 28 × 36 cm (z papierem)</span>
+      <span class="meta-item"><strong>Pieczenie:</strong> 150°C (termoobieg, środkowa półka)</span>
+      <span class="meta-item"><strong>Czas pieczenia:</strong> do 20–25 minut</span>
+    </div>
+
+    <div class="columns">
+      <div class="col-left">
+        <h2>Spód bezowy</h2>
+        <ul>
+          <li>6 białek ze średnich jajek (ok. 180 g)</li>
+          <li>1 pełna szklanka drobnego cukru (250 g = 14 łyżek)</li>
+          <li>1 płaska łyżka skrobi ziemniaczanej (10 g)</li>
+          <li>1 łyżka soku z cytryny lub limonki</li>
+          <li>1 szczypta soli</li>
+        </ul>
+
+        <h2>Krem z mascarpone</h2>
+        <ul>
+          <li>1 pełna szklanka śmietanki 30% (260 g, mocno schłodzona)</li>
+          <li>250 g serka mascarpone (dobrze schłodzony)</li>
+          <li>2 łyżki cukru pudru</li>
+          <li>1 saszetka śmietan-fix</li>
+        </ul>
+
+        <h2>Nadzienie owocowe</h2>
+        <ul>
+          <li>ok. 200 g ulubionego dżemu (np. z czarnej porzeczki)</li>
+          <li>kilka świeżych malin do smaku</li>
+        </ul>
+      </div>
+
+      <div class="col-right instructions">
+        <h2>Sposób przygotowania</h2>
+        
+        <p><span class="step-title">1. Schłodzony krem:</span> Zarówno śmietanka, jak i mascarpone muszą być bardzo zimne. Wszystkie składniki kremu (śmietankę, mascarpone, cukier puder i śmietan-fix) umieszczam w wysokiej misie i wstawiam z końcówkami miksera na ok. 20 minut do zamrażalnika. Po wyjęciu zaczynam ubijać na wolnych obrotach, stopniowo przyspieszając do maksimum. Po ok. 2–3 minutach masa powinna być sztywna i puszysta. Gotowy krem chowam do lodówki.</p>
+
+        <p><span class="step-title">2. Przygotowanie bezy:</span> Piekarnik rozgrzewam do 150°C w trybie termoobiegu. Białka (ok. 180 g) ubijam ze szczyptą soli na sztywną pianę, stopniowo zwiększając obroty robota. Następnie partiami, łyżka po łyżce, dodaję drobny cukier (łącznie 250 g). Każdą porcję miksuję na najwyższych obrotach przez ok. 1 minutę, by kryształki cukru zupełnie się rozpuściły. Piana powinna być gęsta i lśniąca. Na koniec dodaję płaską łyżkę mąki ziemniaczanej oraz 1 łyżkę soku z cytryny; miksuję całość jeszcze przez ok. 10 sekund na wolnych obrotach.</p>
+
+        <p><span class="step-title">3. Pieczenie i składanie:</span> Blachę (28 × 36 cm) wykładam papierem do pieczenia (warto lekko natłuścić go kropelką oleju i przetrzeć ręcznikiem). Bezę rozprowadzam równomiernie i wstawiam do nagrzanego pieca na środkowy poziom na ok. 20–25 minut. Upieczoną bezę studzę, delikatnie odwracam na świeży papier, smaruję cienką warstwą dżemu porzeczkowego, nakładam schłodzony krem mascarpone, posypuję malinami i ostrożnie zwijam wzdłuż dłuższego brzegu w roladę.</p>
+
+        <div class="note-box">
+          <strong>Wskazówka:</strong> Zamiast skrobi ziemniaczanej można dodać łyżkę budyniu waniliowego, śmietankowego lub cytrynowego. Jeżeli cukier ma grubsze kryształki, ubijanie białek warto nieco wydłużyć.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    async function preventScreenSleep() {
+      if ('wakeLock' in navigator) {
+        try {
+          let wakeLock = await navigator.wakeLock.request('screen');
+          document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+              wakeLock = await navigator.wakeLock.request('screen');
+            }
+          });
+        } catch (err) {
+          console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+        }
+      }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>

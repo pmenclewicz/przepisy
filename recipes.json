@@ -1,5 +1,11 @@
 [
   {
+    "id": "rolada-bezowa",
+    "title": "Rolada bezowa",
+    "file": "przepisy/rolada-bezowa.html",
+    "date": "2026-11-18"
+  },
+  {
     "id": "pancakes-sniadaniowe",
     "title": "Pancakes śniadaniowe",
     "file": "przepisy/pancakes-sniadaniowe.html",
