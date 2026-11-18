@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciasto kruche kokosowo-śmietanowe</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .recipe-card {
+        box-shadow: none !important;
+        border: 1px solid #777 !important;
+        padding: 18px !important;
+        max-width: 100% !important;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      background-color: #f7f4ed;
+      color: #2b221c;
+      line-height: 1.45;
+      padding: 15px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .recipe-card {
+      background: #fffdfa;
+      width: 100%;
+      max-width: 780px;
+      border: 2px solid #8b5e3c;
+      padding: 24px 28px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #c9b09a;
+      padding: 18px;
+      border-radius: 2px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 26px;
+      letter-spacing: 0.5px;
+      color: #5c3b24;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .meta-info {
+      font-size: 13px;
+      font-style: italic;
+      color: #6d5b4f;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .columns {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #5c3b24;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px dashed #b58d6d;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 18px;
+      font-size: 13.5px;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    .instructions {
+      margin-top: 10px;
+    }
+
+    ol {
+      padding-left: 20px;
+      font-size: 13.5px;
+    }
+
+    ol li {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+
+    .note-badge {
+      font-size: 11.5px;
+      color: #7d6b5e;
+      text-align: right;
+      margin-top: 8px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+    <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+  </div>
+
+  <main class="recipe-card">
+    <div class="inner-border">
+      <header>
+        <h1>Ciasto kruche kokosowo-śmietanowe</h1>
+        <div class="meta-info">
+          <span>🍰 Forma do pieczenia: 40 × 24 cm</span>
+          <span>🔥 Piekarnik: 220°C (góra-dół)</span>
+          <span>🥣 Szklanka: 250 ml</span>
+        </div>
+      </header>
+
+      <div class="columns">
+        <section>
+          <div class="section-title">Ciasto kruche</div>
+          <ul>
+            <li>5 żółtek</li>
+            <li>250 g margaryny lub masła</li>
+            <li>3 szklanki mąki pszennej</li>
+            <li>3/4 szklanki cukru</li>
+            <li>1,5 łyżeczki proszku do pieczenia</li>
+            <li>szczypta soli</li>
+          </ul>
+        </section>
+
+        <section>
+          <div class="section-title">Masa kokosowa</div>
+          <ul>
+            <li>500 ml śmietany kremówki 30%</li>
+            <li>200 g wiórków kokosowych</li>
+            <li>1 szklanka cukru</li>
+            <li>5 białek</li>
+            <li>szczypta cukru (do ubicia białek)</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="instructions">
+        <div class="section-title">Przygotowanie krok po kroku</div>
+        <ol>
+          <li><strong>Kruche ciasto:</strong> Składniki na ciasto umieścić na stolnicy lub w misce, posiekać wstępnie nożem, po czym szybko zagnieść. Podzielić masę na dwie nierówne części (jedna nieco większa). Obie porcje zawinąć w folię spożywczą – mniejszą odłożyć do zamrażalnika, a większą schłodzić w lodówce przez 1 do 2 godzin.</li>
+          <li><strong>Baza kokosowa:</strong> W większym garnku połączyć śmietankę 30%, wiórki kokosowe oraz szklankę cukru. Całość wymieszać, zagotować na palniku, a następnie zdjąć z ognia i odstawić do całkowitego ostygnięcia.</li>
+          <li><strong>Spód ciasta:</strong> Blaszkę o wymiarach 40 × 24 cm wyłożyć papierem do pieczenia. Wyjąć większą część ciasta z lodówki, rozwałkować i wykleić nią spód przygotowanej formy.</li>
+          <li><strong>Masa śmietanowo-kokosowa:</strong> Białka ubijać na sztywną pianę z dodatkiem szczypty cukru. Po ubiciu pianę ostrożnie i powoli wmieszać w ostudzoną masę kokosową.</li>
+          <li><strong>Wyłożenie i kruszonka:</strong> Puszystą masę równomiernie rozprowadzić na kruchym spodzie. Następnie wyjąć z zamrażarki mniejszy kawałek ciasta i zetrzeć go na grubych oczkach tarki wprost na wierzch kokosowej warstwy.</li>
+          <li><strong>Pieczenie:</strong> Wstawić do piekarnika rozgrzanego do 220°C (grzanie góra-dół). Piec do uzyskania ładnego, złocistego rumieńca. Po upieczeniu wyjąć i pozostawić do wystudzenia.</li>
+        </ol>
+      </section>
+
+      <div class="note-badge">Prywatne zapiski kulinarne • Przepis sprawdzony</div>
+    </div>
+  </main>
+
+  <script>
+    async function preventScreenSleep() {
+        if ('wakeLock' in navigator) {
+            try {
+                let wakeLock = await navigator.wakeLock.request('screen');
+                document.addEventListener('visibilitychange', async () => {
+                    if (wakeLock !== null && document.visibilityState === 'visible') {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                    }
+                });
+            } catch (err) {
+                console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+            }
+        }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>
