@@ -60,8 +60,13 @@
 
         /* Pasek wyszukiwania */
         .search-box {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #faf6f0;
+            padding: 12px 0;
             width: 100%;
-            margin-bottom: 30px;
+            margin-bottom: 18px;
         }
 
         .search-input {
@@ -157,7 +162,7 @@
     </header>
 
     <div class="search-box">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Szukaj przepisu po tytule lub składniku...">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Szukaj przepisu po tytule...">
     </div>
 
     <div class="recipes-grid" id="recipesList">
