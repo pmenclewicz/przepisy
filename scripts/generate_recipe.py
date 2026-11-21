@@ -37,22 +37,24 @@ Najważniejsze zasady:
   - W sekcji <head> dodaj: `<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>`
   - W sekcji <style> dodaj: `body { padding-top: 64px; } .no-print { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-wrap: nowrap; } @media print { body { padding-top: 0; } .no-print { display: none; } }`
   - W sekcji <body> (jako pierwszy element) dodaj pływający panel:
-     <div class="no-print" style="position: fixed; top: 8px; right: 8px; max-width: calc(100vw - 16px); background: #fff; padding: 6px 8px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999; font-size: 12px;">
-       <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 11px; white-space: nowrap;">🖨️ Drukuj / PDF</button>
-       <button id="sharePdfBtn" onclick="shareRecipePdf()" style="background: #5c3a21; color: #fff; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 11px; white-space: nowrap;">📤 Udostępnij</button>
-       <a href="../index.html" style="margin-left: 2px; color: #8b5e3c; text-decoration: none; font-weight: bold; font-size: 11px; white-space: nowrap;">← Powrót</a>
+     <div class="no-print" style="position: fixed; top: 8px; right: 8px; max-width: calc(100vw - 16px); background: #fff; padding: 7.2px 9.6px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999; font-size: 14.4px;">
+       <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 6px 9.6px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13.2px; white-space: nowrap;">🖨️ Drukuj / PDF</button>
+       <button id="sharePdfBtn" onclick="shareRecipePdf()" style="background: #5c3a21; color: #fff; border: none; padding: 6px 9.6px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13.2px; white-space: nowrap;">📤 Udostępnij</button>
+       <a href="../index.html" style="background: #f4ede4; color: #8b5e3c; text-decoration: none; padding: 6px 9.6px; border-radius: 4px; font-weight: bold; font-size: 13.2px; white-space: nowrap; display: inline-block;">← Powrót</a>
      </div>
 - **W sekcji <script> (na samym dole przed zamknięciem </body>) dodaj kod udostępniania PDF na jednej stronie A4 oraz kod zapobiegający wygaszaniu ekranu telefonu podczas gotowania:**
      <script>
        async function shareRecipePdf() {
            const btn = document.getElementById('sharePdfBtn');
            const panels = document.querySelectorAll('.no-print');
+           const targetEl = document.querySelector('.page-container') || document.body;
            const prevPaddingTop = document.body.style.paddingTop;
+           const prevMarginBottom = targetEl.style.marginBottom;
            const titleText = (document.querySelector('h1')?.innerText || 'przepis').trim();
            const safeName = titleText.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/gi, '-').replace(/^-+|-+\$/g, '') || 'przepis';
 
            if (typeof html2pdf === 'undefined') {
-               window.print();
+               alert('Nie udało się załadować generatora PDF.');
                return;
            }
 
@@ -63,41 +65,18 @@ Najważniejsze zasady:
            }
            panels.forEach(el => el.style.display = 'none');
            document.body.style.paddingTop = '0px';
+           targetEl.style.marginBottom = '0px';
 
            try {
-               const marginMm = 10;
-               const pageWidthMm = 210;
-               const pageHeightMm = 297;
-               const printableWidthMm = pageWidthMm - marginMm * 2;
-               const printableHeightMm = pageHeightMm - marginMm * 2;
-
-               const worker = html2pdf().set({
-                   margin: marginMm,
+               const pdfBlob = await html2pdf().set({
+                   margin: [8, 8, 8, 8],
                    filename: `${safeName}.pdf`,
                    image: { type: 'jpeg', quality: 0.98 },
-                   html2canvas: { scale: 2, useCORS: true },
+                   html2canvas: { scale: 1.5, useCORS: true },
+                   pagebreak: { mode: ['avoid-all'] },
                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-               }).from(document.body).toCanvas();
+               }).from(targetEl).outputPdf('blob');
 
-               const canvas = await worker.get('canvas');
-               const imgData = canvas.toDataURL('image/jpeg', 0.98);
-               const imgHeightMm = (canvas.height * printableWidthMm) / canvas.width;
-
-               let renderWidthMm = printableWidthMm;
-               let renderHeightMm = imgHeightMm;
-               if (imgHeightMm > printableHeightMm) {
-                   const scaleRatio = printableHeightMm / imgHeightMm;
-                   renderHeightMm = printableHeightMm;
-                   renderWidthMm = printableWidthMm * scaleRatio;
-               }
-
-               const offsetXMm = marginMm + (printableWidthMm - renderWidthMm) / 2;
-               const pdfDoc = await worker.get('pdf');
-               pdfDoc.deletePage(1);
-               pdfDoc.addPage('a4', 'portrait');
-               pdfDoc.addImage(imgData, 'JPEG', offsetXMm, marginMm, renderWidthMm, renderHeightMm);
-
-               const pdfBlob = pdfDoc.output('blob');
                const pdfFile = new File([pdfBlob], `${safeName}.pdf`, { type: 'application/pdf' });
 
                if (navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
@@ -117,10 +96,11 @@ Najważniejsze zasady:
                }
            } catch (err) {
                if (err && err.name !== 'AbortError') {
-                   console.log(`Błąd udostępniania PDF: ${err.name}, ${err.message}`);
-                   window.print();
+                   console.error('Błąd udostępniania PDF:', err);
+                   alert('Błąd PDF: ' + (err && err.message ? err.message : err));
                }
            } finally {
+               targetEl.style.marginBottom = prevMarginBottom;
                document.body.style.paddingTop = prevPaddingTop;
                panels.forEach(el => el.style.display = '');
                if (btn) {
