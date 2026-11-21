@@ -253,7 +253,9 @@
     async function shareRecipePdf() {
         const btn = document.getElementById('sharePdfBtn');
         const panels = document.querySelectorAll('.no-print');
+        const targetEl = document.querySelector('.page-container') || document.body;
         const prevPaddingTop = document.body.style.paddingTop;
+        const prevMarginBottom = targetEl.style.marginBottom;
         const titleText = (document.querySelector('h1')?.innerText || 'przepis').trim();
         const safeName = titleText.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/gi, '-').replace(/^-+|-+$/g, '') || 'przepis';
 
@@ -269,15 +271,17 @@
         }
         panels.forEach(el => el.style.display = 'none');
         document.body.style.paddingTop = '0px';
+        targetEl.style.marginBottom = '0px';
 
         try {
             const pdfBlob = await html2pdf().set({
-                margin: 10,
+                margin: [8, 8, 8, 8],
                 filename: `${safeName}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
+                html2canvas: { scale: 1.5, useCORS: true },
+                pagebreak: { mode: ['avoid-all'] },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            }).from(document.body).outputPdf('blob');
+            }).from(targetEl).outputPdf('blob');
 
             const pdfFile = new File([pdfBlob], `${safeName}.pdf`, { type: 'application/pdf' });
 
@@ -302,6 +306,7 @@
                 alert('Błąd PDF: ' + (err && err.message ? err.message : err));
             }
         } finally {
+            targetEl.style.marginBottom = prevMarginBottom;
             document.body.style.paddingTop = prevPaddingTop;
             panels.forEach(el => el.style.display = '');
             if (btn) {
