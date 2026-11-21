@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przepis na kurpiowskie fafernuchy</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10mm;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page-container {
+                box-shadow: none;
+                border: 1px solid #7c5c43;
+                padding: 18mm 15mm;
+                max-width: 100%;
+                margin: 0;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+            color: #2b201a;
+            background-color: #f7f4ee;
+            margin: 0;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+            line-height: 1.5;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 780px;
+            background-color: #fffdfa;
+            border: 2px solid #8b5e3c;
+            border-radius: 4px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 15px rgba(60, 40, 20, 0.08);
+            position: relative;
+        }
+
+        .page-inner-border {
+            border: 1px solid #d4c4b5;
+            padding: 24px 28px;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-size: 1.85rem;
+            text-align: center;
+            color: #5c381e;
+            margin: 0 0 8px 0;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            text-transform: capitalize;
+            border-bottom: 2px solid #e8ded4;
+            padding-bottom: 12px;
+        }
+
+        .note-tip {
+            font-style: italic;
+            font-size: 0.92rem;
+            color: #6e5444;
+            background-color: #fcf8f2;
+            border-left: 3px solid #b58d6d;
+            padding: 8px 14px;
+            margin: 14px 0 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .recipe-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .recipe-content {
+                grid-template-columns: 240px 1fr;
+                gap: 28px;
+            }
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #6b3e1f;
+            margin-top: 0;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #d9c8b8;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+        }
+
+        .ingredients-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .ingredients-section li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 7px;
+            font-size: 0.95rem;
+        }
+
+        .ingredients-section li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8b5e3c;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .steps-section ol {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .steps-section li {
+            margin-bottom: 9px;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        .steps-section li::marker {
+            font-weight: bold;
+            color: #8b5e3c;
+        }
+
+        .closing-wishes {
+            text-align: right;
+            font-style: italic;
+            color: #7d5234;
+            margin-top: 14px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
+  <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+  <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
+</div>
+
+<main class="page-container">
+    <div class="page-inner-border">
+        <h1>Przepis na kurpiowskie fafernuchy</h1>
+
+        <div class="note-tip">
+            <strong>Wskazówka:</strong> Marchewkę najlepiej zetrzeć na drobnych oczkach. Jeśli po starciu wydzieli sporą ilość płynu, warto ją lekko odcisnąć, aby masa zachowała odpowiednią gęstość.
+        </div>
+
+        <div class="recipe-content">
+            <section class="ingredients-section">
+                <h2>Składniki</h2>
+                <ul>
+                    <li>2 marchewki</li>
+                    <li>2 szklanki mąki pszennej</li>
+                    <li>4 łyżki miodu</li>
+                    <li>1 jajko</li>
+                    <li>1 łyżeczka cynamonu</li>
+                    <li>1/2 łyżeczki świeżo mielonego pieprzu</li>
+                    <li>1/2 łyżeczki proszku do pieczenia</li>
+                    <li>1 szczypta soli</li>
+                </ul>
+            </section>
+
+            <section class="steps-section">
+                <h2>Sposób przygotowania</h2>
+                <ol>
+                    <li>Marchewki obierz ze skórki i zetrzyj drobno na tarce o małych oczkach.</li>
+                    <li>W razie wydzielenia nadmiaru soku, delikatnie go odciśnij z wiórków marchwi.</li>
+                    <li>Przełóż marchewkę do naczynia, dodaj płynny miód oraz jajko, po czym starannie wymieszaj.</li>
+                    <li>Dosyp mąkę pszenną, aromatyczny cynamon, pieprz, proszek do pieczenia oraz szczyptę soli.</li>
+                    <li>Wyrób ręcznie składniki na gładkie, zwarte i jednolite ciasto.</li>
+                    <li>Piekarnik nastaw na temperaturę 180°C, by zdążył się nagrzać.</li>
+                    <li>Z ciasta odrywaj mniejsze porcje i formuj z nich podłużne, cienkie wałki.</li>
+                    <li>Pokrój uformowane wałeczki na niewielkie kluseczki/kawałki o długości ok. 3 cm.</li>
+                    <li>Przygotowane fafernuchy rozłóż równomiernie na blasze wyłożonej papierem do pieczenia.</li>
+                    <li>Piecz ciastka przez około 15–18 minut do momentu, aż uzyskają ładny, lekko złocisty odcień.</li>
+                    <li>Po upieczeniu pozwól im całkowicie ostygnąć, po czym zamknij w szczelnym pojemniku.</li>
+                </ol>
+                <div class="closing-wishes">Smacznego!</div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script>
+  async function preventScreenSleep() {
+      if ('wakeLock' in navigator) {
+          try {
+              let wakeLock = await navigator.wakeLock.request('screen');
+              document.addEventListener('visibilitychange', async () => {
+                  if (wakeLock !== null && document.visibilityState === 'visible') {
+                      wakeLock = await navigator.wakeLock.request('screen');
+                  }
+              });
+          } catch (err) {
+              console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+          }
+      }
+  }
+  preventScreenSleep();
+</script>
+
+</body>
+</html>
