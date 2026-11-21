@@ -258,7 +258,7 @@
         const safeName = titleText.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/gi, '-').replace(/^-+|-+$/g, '') || 'przepis';
 
         if (typeof html2pdf === 'undefined') {
-            window.print();
+            alert('Nie udało się załadować generatora PDF.');
             return;
         }
 
@@ -324,7 +324,7 @@
         } catch (err) {
             if (err && err.name !== 'AbortError') {
                 console.log(`Błąd udostępniania PDF: ${err.name}, ${err.message}`);
-                window.print();
+                alert('Nie udało się wygenerować lub udostępnić pliku PDF.');
             }
         } finally {
             document.body.style.paddingTop = prevPaddingTop;
