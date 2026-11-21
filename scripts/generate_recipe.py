@@ -33,15 +33,76 @@ Najważniejsze zasady:
 3. **Responsywność mobilna i A4**: Strona musi wyglądać świetnie na telefonach oraz idealnie mieścić się na **jednej stronie A4** po wydrukowaniu. Użyj stylów CSS: `@page { size: A4 portrait; margin: 10mm; }`.
 4. **Bezpieczne szerokości**: Używaj elastycznych kontenerów (`max-width: 100%`, `box-sizing: border-box`). Teksty i listy składników muszą się zawijać i nigdy nie wychodzić poza ekran telefonu.
 5. Styl ma przypominać elegancką, tradycyjną książkę kucharską (estetyczne ramki, klasyczne czcionki serif, wyraźny podział na składniki i przygotowanie krok po kroku).
-6. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania i powrotu:**
-   - W sekcji <style> dodaj: `@media print { .no-print { display: none; } }`
-   - W sekcji <body> (jako pierwszy element) dodaj pływający panel:
+6. **Koniecznie dodaj na samej górze kodu HTML (w sekcji <head> oraz w <body>) następujący styl i widget z przyciskiem drukowania, udostępniania PDF i powrotu:**
+  - W sekcji <head> dodaj: `<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>`
+  - W sekcji <style> dodaj: `@media print { .no-print { display: none; } }`
+  - W sekcji <body> (jako pierwszy element) dodaj pływający panel:
      <div class="no-print" style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999;">
        <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ Drukuj / Zapisz PDF</button>
+       <button id="sharePdfBtn" onclick="shareRecipePdf()" style="margin-left: 6px; background: #5c3a21; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">📤 Udostępnij PDF</button>
        <a href="../index.html" style="margin-left: 10px; color: #8b5e3c; text-decoration: none; font-weight: bold;">← Powrót</a>
      </div>
-   - **W sekcji <script> (na samym dole przed zamknięciem </body>) dodaj kod zapobiegający wygaszaniu ekranu telefonu podczas gotowania:**
+- **W sekcji <script> (na samym dole przed zamknięciem </body>) dodaj kod udostępniania PDF oraz kod zapobiegający wygaszaniu ekranu telefonu podczas gotowania:**
      <script>
+       async function shareRecipePdf() {
+           const btn = document.getElementById('sharePdfBtn');
+           const panels = document.querySelectorAll('.no-print');
+           const titleText = (document.querySelector('h1')?.innerText || 'przepis').trim();
+           const safeName = titleText.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/gi, '-').replace(/^-+|-+\$/g, '') || 'przepis';
+
+           if (typeof html2pdf === 'undefined') {
+               window.print();
+               return;
+           }
+
+           const prevLabel = btn ? btn.innerText : '';
+           if (btn) {
+               btn.disabled = true;
+               btn.innerText = '⏳ Generuję PDF...';
+           }
+           panels.forEach(el => el.style.display = 'none');
+
+           try {
+               const worker = html2pdf().set({
+                   margin: 10,
+                   filename: `${safeName}.pdf`,
+                   image: { type: 'jpeg', quality: 0.98 },
+                   html2canvas: { scale: 2, useCORS: true },
+                   jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+               }).from(document.body);
+
+               const pdfBlob = await worker.outputPdf('blob');
+               const pdfFile = new File([pdfBlob], `${safeName}.pdf`, { type: 'application/pdf' });
+
+               if (navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+                   await navigator.share({
+                       title: titleText,
+                       files: [pdfFile]
+                   });
+               } else {
+                   const url = URL.createObjectURL(pdfBlob);
+                   const a = document.createElement('a');
+                   a.href = url;
+                   a.download = `${safeName}.pdf`;
+                   document.body.appendChild(a);
+                   a.click();
+                   a.remove();
+                   setTimeout(() => URL.revokeObjectURL(url), 1000);
+               }
+           } catch (err) {
+               if (err && err.name !== 'AbortError') {
+                   console.log(`Błąd udostępniania PDF: ${err.name}, ${err.message}`);
+                   window.print();
+               }
+           } finally {
+               panels.forEach(el => el.style.display = '');
+               if (btn) {
+                   btn.disabled = false;
+                   btn.innerText = prevLabel || '📤 Udostępnij PDF';
+               }
+           }
+       }
+
        async function preventScreenSleep() {
            if ('wakeLock' in navigator) {
                try {
