@@ -271,39 +271,14 @@
         document.body.style.paddingTop = '0px';
 
         try {
-            const marginMm = 10;
-            const pageWidthMm = 210;
-            const pageHeightMm = 297;
-            const printableWidthMm = pageWidthMm - marginMm * 2;
-            const printableHeightMm = pageHeightMm - marginMm * 2;
-
-            const worker = html2pdf().set({
-                margin: marginMm,
+            const pdfBlob = await html2pdf().set({
+                margin: 10,
                 filename: `${safeName}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            }).from(document.body).toCanvas();
+            }).from(document.body).outputPdf('blob');
 
-            const canvas = await worker.get('canvas');
-            const imgData = canvas.toDataURL('image/jpeg', 0.98);
-            const imgHeightMm = (canvas.height * printableWidthMm) / canvas.width;
-
-            let renderWidthMm = printableWidthMm;
-            let renderHeightMm = imgHeightMm;
-            if (imgHeightMm > printableHeightMm) {
-                const scaleRatio = printableHeightMm / imgHeightMm;
-                renderHeightMm = printableHeightMm;
-                renderWidthMm = printableWidthMm * scaleRatio;
-            }
-
-            const offsetXMm = marginMm + (printableWidthMm - renderWidthMm) / 2;
-            const pdfDoc = await worker.get('pdf');
-            pdfDoc.deletePage(1);
-            pdfDoc.addPage('a4', 'portrait');
-            pdfDoc.addImage(imgData, 'JPEG', offsetXMm, marginMm, renderWidthMm, renderHeightMm);
-
-            const pdfBlob = pdfDoc.output('blob');
             const pdfFile = new File([pdfBlob], `${safeName}.pdf`, { type: 'application/pdf' });
 
             if (navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
@@ -323,8 +298,8 @@
             }
         } catch (err) {
             if (err && err.name !== 'AbortError') {
-                console.log(`Błąd udostępniania PDF: ${err.name}, ${err.message}`);
-                alert('Nie udało się wygenerować lub udostępnić pliku PDF.');
+                console.error('Błąd udostępniania PDF:', err);
+                alert('Błąd PDF: ' + (err && err.message ? err.message : err));
             }
         } finally {
             document.body.style.paddingTop = prevPaddingTop;
