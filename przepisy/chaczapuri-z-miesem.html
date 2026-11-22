@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaczapuri z mięsem</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      padding-top: 64px;
+      font-family: "Georgia", "Cambria", "Times New Roman", serif;
+      background-color: #faf7f2;
+      color: #2c2523;
+      line-height: 1.45;
+    }
+    .no-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+    @media print {
+      body {
+        padding-top: 0;
+        background-color: #fff;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-container {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: #ffffff;
+      padding: 32px 36px;
+      border: 1px solid #e2d7cb;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    .recipe-card {
+      border: 2px solid #8b5e3c;
+      padding: 24px 28px;
+      position: relative;
+    }
+    .recipe-card::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      border: 1px dashed #d1bba7;
+      pointer-events: none;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #d9c8b4;
+    }
+    .category {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #8b5e3c;
+      margin-bottom: 4px;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: normal;
+      color: #3b2219;
+      letter-spacing: 0.5px;
+      margin: 4px 0 6px;
+    }
+    .meta-info {
+      font-style: italic;
+      font-size: 13px;
+      color: #6d5b52;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 24px;
+      margin-top: 14px;
+    }
+    @media (max-width: 680px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .page-container {
+        padding: 16px;
+      }
+      .recipe-card {
+        padding: 16px 14px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+    h2 {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #5c3a21;
+      border-bottom: 1px solid #ecdacf;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+    .subheading {
+      font-size: 13px;
+      font-weight: bold;
+      color: #4a3429;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .ingredients-col ul {
+      list-style-type: none;
+      font-size: 13.5px;
+    }
+    .ingredients-col li {
+      padding: 3px 0;
+      border-bottom: 1px dotted #ede4db;
+    }
+    .ingredients-col li:last-child {
+      border-bottom: none;
+    }
+    .instructions-col ol {
+      padding-left: 18px;
+      font-size: 13.5px;
+    }
+    .instructions-col li {
+      margin-bottom: 9px;
+      line-height: 1.45;
+      text-align: justify;
+    }
+    .instructions-col li::marker {
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+    .note-box {
+      margin-top: 14px;
+      background: #fbf8f4;
+      border-left: 3px solid #8b5e3c;
+      padding: 8px 12px;
+      font-size: 12.5px;
+      color: #57453b;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 8px; right: 8px; max-width: calc(100vw - 16px); background: #fff; padding: 7.2px 9.6px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999; font-size: 14.4px;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 6px 9.6px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13.2px; white-space: nowrap;">🖨️ Drukuj / PDF</button>
+    <button id="sharePdfBtn" onclick="shareRecipePdf()" style="background: #5c3a21; color: #fff; border: none; padding: 6px 9.6px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13.2px; white-space: nowrap;">📤 Udostępnij</button>
+    <a href="../index.html" style="background: #f4ede4; color: #8b5e3c; text-decoration: none; padding: 6px 9.6px; border-radius: 4px; font-weight: bold; font-size: 13.2px; white-space: nowrap; display: inline-block;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <div class="recipe-card">
+      <header>
+        <div class="category">Kuchnia gruzińska • Zapiski domowe</div>
+        <h1>Chaczapuri z mięsem</h1>
+        <div class="meta-info">Gruzińskie kubdari – aromatyczne placki drożdżowe z pikantnym nadzieniem mięsnym</div>
+      </header>
+
+      <div class="content-grid">
+        <section class="ingredients-col">
+          <h2>Składniki</h2>
+          
+          <div class="subheading">Ciasto drożdżowe:</div>
+          <ul>
+            <li>500 g mąki pszennej</li>
+            <li>250 ml ciepłej wody (lub mleka)</li>
+            <li>7 g drożdży suszonych (lub 20 g świeżych)</li>
+            <li>1 łyżeczka cukru</li>
+            <li>1 płaska łyżeczka soli</li>
+            <li>2–3 łyżki oleju roślinnego</li>
+          </ul>
+
+          <div class="subheading">Farsz mięsny:</div>
+          <ul>
+            <li>500 g mielonego mięsa (wołowina, wieprzowina lub mieszane)</li>
+            <li>1 duża lub 2 mniejsze cebule</li>
+            <li>2–3 ząbki czosnku</li>
+            <li>1 łyżeczka mielonej kolendry</li>
+            <li>½ łyżeczki kminu rzymskiego</li>
+            <li>szczypta ostrej papryki / chili</li>
+            <li>sól i świeżo mielony pieprz</li>
+            <li>posiekana świeża kolendra lub natka pietruszki</li>
+            <li>3–4 łyżki lodowatej wody</li>
+          </ul>
+
+          <div class="subheading">Do wykończenia:</div>
+          <ul>
+            <li>ok. 30–40 g masła (do posmarowania po upieczeniu)</li>
+          </ul>
+        </section>
+
+        <section class="instructions-col">
+          <h2>Sposób przygotowania</h2>
+          <ol>
+            <li><strong>Przygotowanie ciasta:</strong> W misce połącz drożdże z cukrem i połową ciepłej wody, odstawiając na parę minut. Przesiej mąkę z solą, wlej spienione drożdże, resztę płynu oraz olej. Wyrabiaj ciasto przez ok. 8–10 minut, aż stanie się gładkie i sprężyste. Przykryj ściereczką i odstaw w ciepłe miejsce na ok. 1 godzinę do podwojenia objętości.</li>
+            <li><strong>Przygotowanie farszu:</strong> Cebulę zetrzyj na tarce lub posiekaj w drobną kostkę, czosnek przeciśnij przez praskę. Do mięsa dodaj cebulę, czosnek, przyprawy, zieleninę oraz lodowatą wodę. Wyrabiaj dokładnie dłonią, aż masa wchłonie płyn i nabierze odpowiedniej kleistości.</li>
+            <li><strong>Formowanie placków:</strong> Wyrośnięte ciasto podziel na 3 równe części i uformuj z nich kule. Każdą rozwałkuj na okrągły placek o grubości ok. 7–8 mm. Na środek wyłóż solidną porcję mięsnego nadzienia.</li>
+            <li><strong>Zawijanie:</strong> Brzegi ciasta unieś ku górze, zbierz w sakiewkę i dokładnie zaciśnij na środku. Odwróć placek łączeniem do dołu i ostrożnie rozwałkuj lub rozgnieć dłońmi na płaski chlebek o grubości ok. 1,5 cm, dbając by ciasto się nie rozerwało. Na środku zrób małą dziurkę na uchodzenie pary.</li>
+            <li><strong>Pieczenie:</strong> Układaj na blasze wyłożonej papierem do pieczenia. Piecz w piekarniku rozgrzanym do 220°C (najlepiej grzanie góra-dół) przez około 15–18 minut, aż ciasto wyraźnie się zarumieni. <em>(Można też piec na suchej, dobrze rozgrzanej patelni pod przykryciem na umiarkowanym ogniu).</em></li>
+            <li><strong>Podanie:</strong> Wyjmij gorące chaczapuri z pieca i natychmiast obficie posmaruj wierzch kawałkiem zimnego masła, aby skórka zmiękła i zyskała połysk. Podawaj na ciepło.</li>
+          </ol>
+
+          <div class="note-box">
+            Wskazówka: Dodatek lodowatej wody do mięsa gwarantuje, że farsz pozostanie niezwykle soczysty po upieczeniu wewnątrz zwartego ciasta.
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function shareRecipePdf() {
+        const btn = document.getElementById('sharePdfBtn');
+        const panels = document.querySelectorAll('.no-print');
+        const targetEl = document.querySelector('.page-container') || document.body;
+        const prevPaddingTop = document.body.style.paddingTop;
+        const prevMarginBottom = targetEl.style.marginBottom;
+        const titleText = (document.querySelector('h1')?.innerText || 'przepis').trim();
+        const safeName = titleText.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/gi, '-').replace(/^-+|-+$/g, '') || 'przepis';
+
+        if (typeof html2pdf === 'undefined') {
+            alert('Nie udało się załadować generatora PDF.');
+            return;
+        }
+
+        const prevLabel = btn ? btn.innerText : '';
+        if (btn) {
+            btn.disabled = true;
+            btn.innerText = '⏳ PDF...';
+        }
+        panels.forEach(el => el.style.display = 'none');
+        document.body.style.paddingTop = '0px';
+        targetEl.style.marginBottom = '0px';
+
+        try {
+            const pdfBlob = await html2pdf().set({
+                margin: [8, 8, 8, 8],
+                filename: `${safeName}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 1.5, useCORS: true },
+                pagebreak: { mode: ['avoid-all'] },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            }).from(targetEl).outputPdf('blob');
+
+            const pdfFile = new File([pdfBlob], `${safeName}.pdf`, { type: 'application/pdf' });
+
+            if (navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+                await navigator.share({
+                    title: titleText,
+                    files: [pdfFile]
+                });
+            } else {
+                const url = URL.createObjectURL(pdfBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${safeName}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+            }
+        } catch (err) {
+            if (err && err.name !== 'AbortError') {
+                console.error('Błąd udostępniania PDF:', err);
+                alert('Błąd PDF: ' + (err && err.message ? err.message : err));
+            }
+        } finally {
+            targetEl.style.marginBottom = prevMarginBottom;
+            document.body.style.paddingTop = prevPaddingTop;
+            panels.forEach(el => el.style.display = '');
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = prevLabel || '📤 Udostępnij';
+            }
+        }
+    }
+
+    async function preventScreenSleep() {
+        if ('wakeLock' in navigator) {
+            try {
+                let wakeLock = await navigator.wakeLock.request('screen');
+                document.addEventListener('visibilitychange', async () => {
+                    if (wakeLock !== null && document.visibilityState === 'visible') {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                    }
+                });
+            } catch (err) {
+                console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+            }
+        }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>
