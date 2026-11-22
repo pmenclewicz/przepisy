@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bułki bez formowania (Siemię Lniane)</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding-top: 64px;
+      background-color: #f7f4ee;
+      font-family: "Georgia", "Garamond", "Times New Roman", serif;
+      color: #2c2523;
+      line-height: 1.45;
+    }
+
+    .no-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+
+    .page-container {
+      max-width: 820px;
+      margin: 16px auto 30px auto;
+      background: #fffdfa;
+      border: 1px solid #d8cbbe;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      padding: 28px 32px;
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1px solid #e5ded6;
+      padding: 22px 24px;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #8b5e3c;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 25px;
+      color: #5c3a21;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .meta-bar {
+      font-size: 13px;
+      color: #7d6858;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.55fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .section-title {
+      font-size: 16px;
+      color: #8b5e3c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      border-bottom: 1px solid #e2d7cc;
+      padding-bottom: 4px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 14px;
+      background-color: #8b5e3c;
+      margin-right: 8px;
+      border-radius: 2px;
+    }
+
+    .ingredients-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13.5px;
+    }
+
+    .ingredients-list li {
+      padding: 4px 0 4px 14px;
+      position: relative;
+      border-bottom: 1px dotted #ede4db;
+    }
+
+    .ingredients-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #8b5e3c;
+      font-weight: bold;
+    }
+
+    .ingredients-list li:last-child {
+      border-bottom: none;
+    }
+
+    .steps-list {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13.5px;
+    }
+
+    .steps-list li {
+      margin-bottom: 8px;
+      padding-left: 4px;
+      line-height: 1.4;
+    }
+
+    .steps-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .steps-list li strong {
+      color: #5c3a21;
+    }
+
+    .recipe-footer {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px dashed #d8cbbe;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #7b6f65;
+    }
+
+    @media (max-width: 680px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .page-container {
+        margin: 8px;
+        padding: 16px 14px;
+      }
+      .inner-border {
+        padding: 14px 12px;
+      }
+      h1 {
+        font-size: 21px;
+      }
+    }
+
+    @media print {
+      body {
+        padding-top: 0 !important;
+        background: #fff !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: #fff !important;
+      }
+      .inner-border {
+        border: 1px solid #b8a898 !important;
+        padding: 16px 20px !important;
+      }
+      .content-grid {
+        grid-template-columns: 1fr 1.55fr !important;
+        gap: 20px !important;
+      }
+      .ingredients-list, .steps-list {
+        font-size: 12.5px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="position: fixed; top: 8px; right: 8px; max-width: calc(100vw - 16px); background: #fff; padding: 7.2px 9.6px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 9999; font-size: 14.4px;">
+    <button onclick="window.print()" style="background: #8b5e3c; color: #fff; border: none; padding: 6px 9.6px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13.2px; white-space: nowrap;">🖨️ Drukuj / PDF</button>
+    <button id="sharePdfBtn" onclick="shareRecipePdf()" style="background: #5c3a21; color: #fff; border: none; padding: 6px 9.6px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13.2px; white-space: nowrap;">📤 Udostępnij</button>
+    <a href="../index.html" style="background: #f4ede4; color: #8b5e3c; text-decoration: none; padding: 6px 9.6px; border-radius: 4px; font-weight: bold; font-size: 13.2px; white-space: nowrap; display: inline-block;">← Powrót</a>
+  </div>
+
+  <div class="page-container">
+    <div class="inner-border">
+      <header class="header">
+        <h1>Bułki bez formowania (Siemię Lniane)</h1>
+        <div class="meta-bar">Temperatura: 200°C &nbsp;|&nbsp; Czas pieczenia: 15–20 min</div>
+      </header>
+
+      <main class="content-grid">
+        <section class="ingredients-column">
+          <h2 class="section-title">Składniki (Gramy)</h2>
+          <ul class="ingredients-list">
+            <li><strong>525 g</strong> mąki pszennej (3,5 szklanki)</li>
+            <li><strong>185 ml</strong> ciepłego mleka (3/4 szklanki)</li>
+            <li><strong>125 ml</strong> ciepłej wody (1/2 szklanki)</li>
+            <li><strong>80 g</strong> siemienia lnianego (1/2 szklanki)</li>
+            <li><strong>15 g</strong> świeżych drożdży</li>
+            <li><strong>35 g</strong> miodu (1,5 łyżki)</li>
+            <li><strong>20 g</strong> roztopionego masła (1,5 łyżki)</li>
+            <li><strong>1 szt.</strong> jajko</li>
+            <li><strong>3 g</strong> soli (1/2 łyżeczki)</li>
+            <li><strong>Dodatkowo:</strong> 1 jajko i siemię lniane do dekoracji</li>
+          </ul>
+        </section>
+
+        <section class="steps-column">
+          <h2 class="section-title">Przygotowanie</h2>
+          <ol class="steps-list">
+            <li>Drożdże wraz z miodem rozprowadzam w ciepłym mleku połączonym z wodą. Całość zostawiam na około 15 minut, by rozczyn wyraźnie zaczął pracować.</li>
+            <li>Do dużej miski wsypuję mąkę pszenną, siemię lniane oraz sól. Następnie dokładam aktywny rozczyn, jajko i płynne masło.</li>
+            <li>Wszystkie składniki łączę za pomocą łyżki, wyrabiając jednolite, dość luźne ciasto. Przykrywam naczynie i pozostawiam do wyrośnięcia na 1 godzinę.</li>
+            <li>Wyrośniętą masę wykładam na blat mocno podsypany mąką. <strong>Nie wyrabiam ciasta</strong> – jedynie ostrożnie rozklepuję dłońmi na prostokąt mający około 2–3 cm grubości.</li>
+            <li>Ciasto dzielę nożem na trójkąty. Przekładam porcje na blachę wyścieloną papierem do pieczenia i zostawiam na 15 minut do ponownego napuszenia.</li>
+            <li>Wierzch każdej bułeczki smaruję dokładnie roztrzepanym jajkiem i oprószam ziarenkami siemienia lnianego.</li>
+            <li>Piekę w piekarniku rozgrzanym do temperatury 200°C przez 15–20 minut, aż bułeczki uzyskają apetyczny, złocisty odcień.</li>
+          </ol>
+        </section>
+      </main>
+
+      <footer class="recipe-footer">
+        <span>Notatki kulinarne • Domowy wypiek</span>
+        <span>Piekarnik: 200°C | Czas: 15–20 min | Jedna strona A4</span>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    async function shareRecipePdf() {
+      const btn = document.getElementById('sharePdfBtn');
+      const panels = document.querySelectorAll('.no-print');
+      const targetEl = document.querySelector('.page-container') || document.body;
+      const prevPaddingTop = document.body.style.paddingTop;
+      const prevMarginBottom = targetEl.style.marginBottom;
+      const titleText = (document.querySelector('h1')?.innerText || 'przepis').trim();
+      const safeName = titleText.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/gi, '-').replace(/^-+|-+$/g, '') || 'przepis';
+
+      if (typeof html2pdf === 'undefined') {
+        alert('Nie udało się załadować generatora PDF.');
+        return;
+      }
+
+      const prevLabel = btn ? btn.innerText : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = '⏳ PDF...';
+      }
+      panels.forEach(el => el.style.display = 'none');
+      document.body.style.paddingTop = '0px';
+      targetEl.style.marginBottom = '0px';
+
+      try {
+        const pdfBlob = await html2pdf().set({
+          margin: [8, 8, 8, 8],
+          filename: `${safeName}.pdf`,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 1.5, useCORS: true },
+          pagebreak: { mode: ['avoid-all'] },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        }).from(targetEl).outputPdf('blob');
+
+        const pdfFile = new File([pdfBlob], `${safeName}.pdf`, { type: 'application/pdf' });
+
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+          await navigator.share({
+            title: titleText,
+            files: [pdfFile]
+          });
+        } else {
+          const url = URL.createObjectURL(pdfBlob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${safeName}.pdf`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+      } catch (err) {
+        if (err && err.name !== 'AbortError') {
+          console.error('Błąd udostępniania PDF:', err);
+          alert('Błąd PDF: ' + (err && err.message ? err.message : err));
+        }
+      } finally {
+        targetEl.style.marginBottom = prevMarginBottom;
+        document.body.style.paddingTop = prevPaddingTop;
+        panels.forEach(el => el.style.display = '');
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = prevLabel || '📤 Udostępnij';
+        }
+      }
+    }
+
+    async function preventScreenSleep() {
+      if ('wakeLock' in navigator) {
+        try {
+          let wakeLock = await navigator.wakeLock.request('screen');
+          document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+              wakeLock = await navigator.wakeLock.request('screen');
+            }
+          });
+        } catch (err) {
+          console.log(`Błąd Wake Lock: ${err.name}, ${err.message}`);
+        }
+      }
+    }
+    preventScreenSleep();
+  </script>
+</body>
+</html>
